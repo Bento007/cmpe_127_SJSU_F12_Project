@@ -1,0 +1,1143 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"highLevelInitialize.cpp"
+  14              		.section	.text._ZN9IO_DeviceD2Ev,"axG",%progbits,_ZN9IO_DeviceD5Ev,comdat
+  15              		.align	1
+  16              		.weak	_ZN9IO_DeviceD2Ev
+  17              		.thumb
+  18              		.thumb_func
+  20              	_ZN9IO_DeviceD2Ev:
+  21              		@ args = 0, pretend = 0, frame = 0
+  22              		@ frame_needed = 0, uses_anonymous_args = 0
+  23 0000 044B     		ldr	r3, .L3
+  24 0002 10B5     		push	{r4, lr}
+  25 0004 0446     		mov	r4, r0
+  26 0006 40F8043B 		str	r3, [r0], #4
+  27 000a FFF7FEFF 		bl	_ZN3strD1Ev
+  28 000e 2046     		mov	r0, r4
+  29 0010 10BD     		pop	{r4, pc}
+  30              	.L4:
+  31 0012 00BF     		.align	2
+  32              	.L3:
+  33 0014 08000000 		.word	_ZTV9IO_Device+8
+  35              		.section	.text._ZN9IO_DeviceD0Ev,"axG",%progbits,_ZN9IO_DeviceD5Ev,comdat
+  36              		.align	1
+  37              		.weak	_ZN9IO_DeviceD0Ev
+  38              		.thumb
+  39              		.thumb_func
+  41              	_ZN9IO_DeviceD0Ev:
+  42              		@ args = 0, pretend = 0, frame = 0
+  43              		@ frame_needed = 0, uses_anonymous_args = 0
+  44 0000 10B5     		push	{r4, lr}
+  45 0002 0446     		mov	r4, r0
+  46 0004 FFF7FEFF 		bl	_ZN9IO_DeviceD1Ev
+  47 0008 2046     		mov	r0, r4
+  48 000a FFF7FEFF 		bl	_ZdlPv
+  49 000e 2046     		mov	r0, r4
+  50 0010 10BD     		pop	{r4, pc}
+  52              		.section	.text._ZN9IO_Device16getValueAsStringEv,"axG",%progbits,_ZN9IO_Device16getValueAsStringEv
+  53              		.align	1
+  54              		.weak	_ZN9IO_Device16getValueAsStringEv
+  55              		.thumb
+  56              		.thumb_func
+  58              	_ZN9IO_Device16getValueAsStringEv:
+  59              		@ args = 0, pretend = 0, frame = 0
+  60              		@ frame_needed = 0, uses_anonymous_args = 0
+  61 0000 10B5     		push	{r4, lr}
+  62 0002 041D     		adds	r4, r0, #4
+  63 0004 2046     		mov	r0, r4
+  64 0006 0449     		ldr	r1, .L8
+  65 0008 FFF7FEFF 		bl	_ZN3straSEPKc
+  66 000c 2046     		mov	r0, r4
+  67 000e BDE81040 		pop	{r4, lr}
+  68 0012 FFF7FEBF 		b	_ZNK3strclEv
+  69              	.L9:
+  70 0016 00BF     		.align	2
+  71              	.L8:
+  72 0018 00000000 		.word	.LC0
+  74              		.section	.text.adc0_initialize,"axG",%progbits,adc0_initialize,comdat
+  75              		.align	1
+  76              		.weak	adc0_initialize
+  77              		.thumb
+  78              		.thumb_func
+  80              	adc0_initialize:
+  81              		@ args = 0, pretend = 0, frame = 0
+  82              		@ frame_needed = 0, uses_anonymous_args = 0
+  83 0000 10B5     		push	{r4, lr}
+  84 0002 124B     		ldr	r3, .L15
+  85 0004 124C     		ldr	r4, .L15+4
+  86 0006 D3F8C420 		ldr	r2, [r3, #196]
+  87 000a 42F48052 		orr	r2, r2, #4096
+  88 000e C3F8C420 		str	r2, [r3, #196]
+  89 0012 4FF40012 		mov	r2, #2097152
+  90 0016 2260     		str	r2, [r4, #0]
+  91 0018 D3F8A821 		ldr	r2, [r3, #424]
+  92 001c 22F04072 		bic	r2, r2, #50331648
+  93 0020 C3F8A821 		str	r2, [r3, #424]
+  94 0024 FFF7FEFF 		bl	getCpuClock
+  95 0028 0A4A     		ldr	r2, .L15+8
+  96 002a 8008     		lsrs	r0, r0, #2
+  97 002c 0023     		movs	r3, #0
+  98              	.L13:
+  99 002e B0FBF3F1 		udiv	r1, r0, r3
+ 100 0032 9142     		cmp	r1, r2
+ 101 0034 04D8     		bhi	.L11
+ 102 0036 2268     		ldr	r2, [r4, #0]
+ 103 0038 42EA0323 		orr	r3, r2, r3, lsl #8
+ 104 003c 2360     		str	r3, [r4, #0]
+ 105 003e 10BD     		pop	{r4, pc}
+ 106              	.L11:
+ 107 0040 0233     		adds	r3, r3, #2
+ 108 0042 B3F5807F 		cmp	r3, #256
+ 109 0046 F2D1     		bne	.L13
+ 110 0048 10BD     		pop	{r4, pc}
+ 111              	.L16:
+ 112 004a 00BF     		.align	2
+ 113              	.L15:
+ 114 004c 00C00F40 		.word	1074774016
+ 115 0050 00400340 		.word	1073954816
+ 116 0054 FF1AB700 		.word	11999999
+ 118              		.section	.text._ZN7Storage13getFlashDriveEv,"axG",%progbits,_ZN7Storage13getFlashDriveEv,comdat
+ 119              		.align	1
+ 120              		.weak	_ZN7Storage13getFlashDriveEv
+ 121              		.thumb
+ 122              		.thumb_func
+ 124              	_ZN7Storage13getFlashDriveEv:
+ 125              		@ args = 0, pretend = 0, frame = 0
+ 126              		@ frame_needed = 0, uses_anonymous_args = 0
+ 127 0000 38B5     		push	{r3, r4, r5, lr}
+ 128 0002 0F4C     		ldr	r4, .L20
+ 129 0004 2568     		ldr	r5, [r4, #0]
+ 130 0006 15F00105 		ands	r5, r5, #1
+ 131 000a 16D1     		bne	.L18
+ 132 000c 2046     		mov	r0, r4
+ 133 000e FFF7FEFF 		bl	__cxa_guard_acquire
+ 134 0012 90B1     		cbz	r0, .L18
+ 135 0014 4FF40E70 		mov	r0, #568
+ 136 0018 FFF7FEFF 		bl	_Znwj
+ 137 001c 3023     		movs	r3, #48
+ 138 001e 80F83532 		strb	r3, [r0, #565]
+ 139 0022 3A23     		movs	r3, #58
+ 140 0024 80F83632 		strb	r3, [r0, #566]
+ 141 0028 064B     		ldr	r3, .L20+4
+ 142 002a 80F83452 		strb	r5, [r0, #564]
+ 143 002e 80F83752 		strb	r5, [r0, #567]
+ 144 0032 1860     		str	r0, [r3, #0]
+ 145 0034 2046     		mov	r0, r4
+ 146 0036 FFF7FEFF 		bl	__cxa_guard_release
+ 147              	.L18:
+ 148 003a 024B     		ldr	r3, .L20+4
+ 149 003c 1868     		ldr	r0, [r3, #0]
+ 150 003e 38BD     		pop	{r3, r4, r5, pc}
+ 151              	.L21:
+ 152              		.align	2
+ 153              	.L20:
+ 154 0040 00000000 		.word	_ZGVZN7Storage13getFlashDriveEvE11pFlashDrive
+ 155 0044 00000000 		.word	_ZZN7Storage13getFlashDriveEvE11pFlashDrive
+ 157              		.section	.text._ZN7Storage4copyEPKcS1_PjS2_S2_,"axG",%progbits,_ZN7Storage4copyEPKcS1_PjS2_S2_,com
+ 158              		.align	1
+ 159              		.weak	_ZN7Storage4copyEPKcS1_PjS2_S2_
+ 160              		.thumb
+ 161              		.thumb_func
+ 163              	_ZN7Storage4copyEPKcS1_PjS2_S2_:
+ 164              		@ args = 4, pretend = 0, frame = 1112
+ 165              		@ frame_needed = 0, uses_anonymous_args = 0
+ 166 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 167 0004 ADF58A6D 		sub	sp, sp, #1104
+ 168 0008 83B0     		sub	sp, sp, #12
+ 169 000a 0546     		mov	r5, r0
+ 170 000c 0DF58068 		add	r8, sp, #1024
+ 171 0010 0C46     		mov	r4, r1
+ 172 0012 1746     		mov	r7, r2
+ 173 0014 4046     		mov	r0, r8
+ 174 0016 2946     		mov	r1, r5
+ 175 0018 0122     		movs	r2, #1
+ 176 001a 9A46     		mov	sl, r3
+ 177 001c FFF7FEFF 		bl	f_open
+ 178 0020 8346     		mov	fp, r0
+ 179 0022 0028     		cmp	r0, #0
+ 180 0024 3DD1     		bne	.L23
+ 181 0026 0DF58569 		add	r9, sp, #1064
+ 182 002a 2146     		mov	r1, r4
+ 183 002c 4846     		mov	r0, r9
+ 184 002e 0A22     		movs	r2, #10
+ 185 0030 FFF7FEFF 		bl	f_open
+ 186 0034 8346     		mov	fp, r0
+ 187 0036 0446     		mov	r4, r0
+ 188 0038 4046     		mov	r0, r8
+ 189 003a BBF1000F 		cmp	fp, #0
+ 190 003e 2ED1     		bne	.L35
+ 191 0040 CDF850B4 		str	fp, [sp, #1104]
+ 192 0044 CDF854B4 		str	fp, [sp, #1108]
+ 193 0048 5D46     		mov	r5, fp
+ 194 004a 5E46     		mov	r6, fp
+ 195              	.L32:
+ 196 004c FFF7FEFF 		bl	xTaskGetTickCount
+ 197 0050 6946     		mov	r1, sp
+ 198 0052 8046     		mov	r8, r0
+ 199 0054 4FF48062 		mov	r2, #1024
+ 200 0058 0DF58060 		add	r0, sp, #1024
+ 201 005c 0DF58A63 		add	r3, sp, #1104
+ 202 0060 FFF7FEFF 		bl	f_read
+ 203 0064 8346     		mov	fp, r0
+ 204 0066 48B9     		cbnz	r0, .L25
+ 205 0068 DDF85034 		ldr	r3, [sp, #1104]
+ 206 006c 33B1     		cbz	r3, .L25
+ 207 006e 1EE0     		b	.L36
+ 208              	.L37:
+ 209 0070 DDF85034 		ldr	r3, [sp, #1104]
+ 210 0074 DDF85424 		ldr	r2, [sp, #1108]
+ 211 0078 9A42     		cmp	r2, r3
+ 212 007a 2DD0     		beq	.L27
+ 213              	.L25:
+ 214 007c 07B1     		cbz	r7, .L28
+ 215 007e 3E60     		str	r6, [r7, #0]
+ 216              	.L28:
+ 217 0080 BAF1000F 		cmp	sl, #0
+ 218 0084 01D0     		beq	.L29
+ 219 0086 CAF80050 		str	r5, [sl, #0]
+ 220              	.L29:
+ 221 008a DDF88034 		ldr	r3, [sp, #1152]
+ 222 008e 03B1     		cbz	r3, .L30
+ 223 0090 1C60     		str	r4, [r3, #0]
+ 224              	.L30:
+ 225 0092 0DF58060 		add	r0, sp, #1024
+ 226 0096 FFF7FEFF 		bl	f_close
+ 227 009a 0DF58560 		add	r0, sp, #1064
+ 228              	.L35:
+ 229 009e FFF7FEFF 		bl	f_close
+ 230              	.L23:
+ 231 00a2 5846     		mov	r0, fp
+ 232 00a4 17B0     		add	sp, sp, #92
+ 233 00a6 0DF5806D 		add	sp, sp, #1024
+ 234 00aa BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+ 235              	.L36:
+ 236 00ae FFF7FEFF 		bl	xTaskGetTickCount
+ 237 00b2 C8EB0008 		rsb	r8, r8, r0
+ 238 00b6 FFF7FEFF 		bl	xTaskGetTickCount
+ 239 00ba 0DF58A63 		add	r3, sp, #1104
+ 240 00be 4644     		add	r6, r6, r8
+ 241 00c0 6946     		mov	r1, sp
+ 242 00c2 8046     		mov	r8, r0
+ 243 00c4 DDF85024 		ldr	r2, [sp, #1104]
+ 244 00c8 4846     		mov	r0, r9
+ 245 00ca 0433     		adds	r3, r3, #4
+ 246 00cc FFF7FEFF 		bl	f_write
+ 247 00d0 8346     		mov	fp, r0
+ 248 00d2 0028     		cmp	r0, #0
+ 249 00d4 D2D1     		bne	.L25
+ 250 00d6 CBE7     		b	.L37
+ 251              	.L27:
+ 252 00d8 FFF7FEFF 		bl	xTaskGetTickCount
+ 253 00dc DDF85034 		ldr	r3, [sp, #1104]
+ 254 00e0 C8EB0008 		rsb	r8, r8, r0
+ 255 00e4 4544     		add	r5, r5, r8
+ 256 00e6 E418     		adds	r4, r4, r3
+ 257 00e8 B0E7     		b	.L32
+ 259              		.section	.text._ZN9IO_DeviceC2Ev,"axG",%progbits,_ZN9IO_DeviceC5Ev,comdat
+ 260              		.align	1
+ 261              		.weak	_ZN9IO_DeviceC2Ev
+ 262              		.thumb
+ 263              		.thumb_func
+ 265              	_ZN9IO_DeviceC2Ev:
+ 266              		@ args = 0, pretend = 0, frame = 0
+ 267              		@ frame_needed = 0, uses_anonymous_args = 0
+ 268 0000 044B     		ldr	r3, .L40
+ 269 0002 10B5     		push	{r4, lr}
+ 270 0004 2021     		movs	r1, #32
+ 271 0006 0446     		mov	r4, r0
+ 272 0008 40F8043B 		str	r3, [r0], #4
+ 273 000c FFF7FEFF 		bl	_ZN3strC1Ei
+ 274 0010 2046     		mov	r0, r4
+ 275 0012 10BD     		pop	{r4, pc}
+ 276              	.L41:
+ 277              		.align	2
+ 278              	.L40:
+ 279 0014 08000000 		.word	_ZTV9IO_Device+8
+ 281              		.text
+ 282              		.align	1
+ 283              		.global	_Z9printLinev
+ 284              		.thumb
+ 285              		.thumb_func
+ 287              	_Z9printLinev:
+ 288              		@ args = 0, pretend = 0, frame = 0
+ 289              		@ frame_needed = 0, uses_anonymous_args = 0
+ 290              		@ link register save eliminated.
+ 291 0000 0148     		ldr	r0, .L43
+ 292 0002 FFF7FEBF 		b	puts
+ 293              	.L44:
+ 294 0006 00BF     		.align	2
+ 295              	.L43:
+ 296 0008 20000000 		.word	.LC1
+ 298              		.align	1
+ 299              		.global	_Z12mountStorageR16FileSystemObjectPKc
+ 300              		.thumb
+ 301              		.thumb_func
+ 303              	_Z12mountStorageR16FileSystemObjectPKc:
+ 304              		@ args = 0, pretend = 0, frame = 8
+ 305              		@ frame_needed = 0, uses_anonymous_args = 0
+ 306 000c 37B5     		push	{r0, r1, r2, r4, r5, lr}
+ 307 000e 0546     		mov	r5, r0
+ 308 0010 90F83402 		ldrb	r0, [r0, #564]	@ zero_extendqisi2
+ 309 0014 0C46     		mov	r4, r1
+ 310 0016 FFF7FEFF 		bl	disk_initialize
+ 311 001a 0028     		cmp	r0, #0
+ 312 001c 25D1     		bne	.L46
+ 313 001e 95F83402 		ldrb	r0, [r5, #564]	@ zero_extendqisi2
+ 314 0022 2946     		mov	r1, r5
+ 315 0024 FFF7FEFF 		bl	f_mount
+ 316 0028 F8B9     		cbnz	r0, .L46
+ 317 002a 02A9     		add	r1, sp, #8
+ 318 002c 05F50C75 		add	r5, r5, #560
+ 319 0030 41F8040D 		str	r0, [r1, #-4]!
+ 320 0034 6A46     		mov	r2, sp
+ 321 0036 681D     		adds	r0, r5, #5
+ 322 0038 FFF7FEFF 		bl	f_getfree
+ 323 003c A8B9     		cbnz	r0, .L46
+ 324 003e 009A     		ldr	r2, [sp, #0]
+ 325 0040 0199     		ldr	r1, [sp, #4]
+ 326 0042 D069     		ldr	r0, [r2, #28]
+ 327 0044 9578     		ldrb	r5, [r2, #2]	@ zero_extendqisi2
+ 328 0046 0238     		subs	r0, r0, #2
+ 329 0048 6843     		muls	r0, r5, r0
+ 330 004a 6943     		muls	r1, r5, r1
+ 331 004c 4208     		lsrs	r2, r0, #1
+ 332 004e 4B08     		lsrs	r3, r1, #1
+ 333 0050 B2F57A7F 		cmp	r2, #1000
+ 334 0054 38BF     		it	cc
+ 335 0056 0848     		ldrcc	r0, .L50
+ 336 0058 02D3     		bcc	.L49
+ 337 005a C20A     		lsrs	r2, r0, #11
+ 338 005c 0748     		ldr	r0, .L50+4
+ 339 005e CB0A     		lsrs	r3, r1, #11
+ 340              	.L49:
+ 341 0060 2146     		mov	r1, r4
+ 342 0062 FFF7FEFF 		bl	printf
+ 343 0066 0120     		movs	r0, #1
+ 344              	.L48:
+ 345 0068 3EBD     		pop	{r1, r2, r3, r4, r5, pc}
+ 346              	.L46:
+ 347 006a 0548     		ldr	r0, .L50+8
+ 348 006c 2146     		mov	r1, r4
+ 349 006e FFF7FEFF 		bl	printf
+ 350 0072 0020     		movs	r0, #0
+ 351 0074 F8E7     		b	.L48
+ 352              	.L51:
+ 353 0076 00BF     		.align	2
+ 354              	.L50:
+ 355 0078 4B000000 		.word	.LC2
+ 356 007c 79000000 		.word	.LC3
+ 357 0080 A7000000 		.word	.LC4
+ 359              		.align	1
+ 360              		.global	_Z19copyLogFileToSDCardv
+ 361              		.thumb
+ 362              		.thumb_func
+ 364              	_Z19copyLogFileToSDCardv:
+ 365              		@ args = 0, pretend = 0, frame = 16
+ 366              		@ frame_needed = 0, uses_anonymous_args = 0
+ 367 0084 7FB5     		push	{r0, r1, r2, r3, r4, r5, r6, lr}
+ 368 0086 0A22     		movs	r2, #10
+ 369 0088 1049     		ldr	r1, .L56
+ 370 008a 03A8     		add	r0, sp, #12
+ 371 008c FFF7FEFF 		bl	memcpy
+ 372 0090 3123     		movs	r3, #49
+ 373 0092 0F49     		ldr	r1, .L56+4
+ 374 0094 0F48     		ldr	r0, .L56+8
+ 375 0096 8DF80C30 		strb	r3, [sp, #12]
+ 376 009a FFF7FEFF 		bl	printf
+ 377 009e 0022     		movs	r2, #0
+ 378 00a0 0A48     		ldr	r0, .L56
+ 379 00a2 03A9     		add	r1, sp, #12
+ 380 00a4 1346     		mov	r3, r2
+ 381 00a6 0092     		str	r2, [sp, #0]
+ 382 00a8 FFF7FEFF 		bl	_ZN7Storage4copyEPKcS1_PjS2_S2_
+ 383 00ac 20B9     		cbnz	r0, .L53
+ 384 00ae 0748     		ldr	r0, .L56
+ 385 00b0 FFF7FEFF 		bl	f_unlink
+ 386 00b4 0848     		ldr	r0, .L56+12
+ 387 00b6 05E0     		b	.L54
+ 388              	.L53:
+ 389 00b8 084B     		ldr	r3, .L56+16
+ 390 00ba 094A     		ldr	r2, .L56+20
+ 391 00bc 0428     		cmp	r0, #4
+ 392 00be 14BF     		ite	ne
+ 393 00c0 1046     		movne	r0, r2
+ 394 00c2 1846     		moveq	r0, r3
+ 395              	.L54:
+ 396 00c4 FFF7FEFF 		bl	puts
+ 397 00c8 07B0     		add	sp, sp, #28
+ 398 00ca 00BD     		pop	{pc}
+ 399              	.L57:
+ 400              		.align	2
+ 401              	.L56:
+ 402 00cc F6000000 		.word	.LC8
+ 403 00d0 02000000 		.word	.LC8+2
+ 404 00d4 DC000000 		.word	.LC9
+ 405 00d8 CC000000 		.word	.LC6
+ 406 00dc D2000000 		.word	.LC7
+ 407 00e0 C5000000 		.word	.LC5
+ 409              		.align	1
+ 410              		.global	RIT_IRQHandler
+ 411              		.thumb
+ 412              		.thumb_func
+ 414              	RIT_IRQHandler:
+ 415              		@ args = 0, pretend = 0, frame = 0
+ 416              		@ frame_needed = 0, uses_anonymous_args = 0
+ 417 00e4 08B5     		push	{r3, lr}
+ 418 00e6 054B     		ldr	r3, .L60
+ 419 00e8 1B68     		ldr	r3, [r3, #0]
+ 420 00ea 03B1     		cbz	r3, .L59
+ 421 00ec 9847     		blx	r3
+ 422              	.L59:
+ 423 00ee 044B     		ldr	r3, .L60+4
+ 424 00f0 1A7A     		ldrb	r2, [r3, #8]	@ zero_extendqisi2
+ 425 00f2 42F00102 		orr	r2, r2, #1
+ 426 00f6 1A72     		strb	r2, [r3, #8]
+ 427 00f8 08BD     		pop	{r3, pc}
+ 428              	.L61:
+ 429 00fa 00BF     		.align	2
+ 430              	.L60:
+ 431 00fc 00000000 		.word	.LANCHOR0
+ 432 0100 00000B40 		.word	1074462720
+ 434              		.align	1
+ 435              		.global	_Z21setupPeriodicCallBackPFvvEj
+ 436              		.thumb
+ 437              		.thumb_func
+ 439              	_Z21setupPeriodicCallBackPFvvEj:
+ 440              		@ args = 0, pretend = 0, frame = 0
+ 441              		@ frame_needed = 0, uses_anonymous_args = 0
+ 442 0104 70B5     		push	{r4, r5, r6, lr}
+ 443 0106 174B     		ldr	r3, .L65
+ 444 0108 174D     		ldr	r5, .L65+4
+ 445 010a D3F8C420 		ldr	r2, [r3, #196]
+ 446 010e 0E46     		mov	r6, r1
+ 447 0110 42F48032 		orr	r2, r2, #65536
+ 448 0114 C3F8C420 		str	r2, [r3, #196]
+ 449 0118 D3F8AC21 		ldr	r2, [r3, #428]
+ 450 011c 0446     		mov	r4, r0
+ 451 011e 22F04062 		bic	r2, r2, #201326592
+ 452 0122 C3F8AC21 		str	r2, [r3, #428]
+ 453 0126 D3F8AC21 		ldr	r2, [r3, #428]
+ 454 012a 0029     		cmp	r1, #0
+ 455 012c 08BF     		it	eq
+ 456 012e 0126     		moveq	r6, #1
+ 457 0130 42F08062 		orr	r2, r2, #67108864
+ 458 0134 C3F8AC21 		str	r2, [r3, #428]
+ 459 0138 0023     		movs	r3, #0
+ 460 013a EB60     		str	r3, [r5, #12]
+ 461 013c 6B60     		str	r3, [r5, #4]
+ 462 013e FFF7FEFF 		bl	getCpuClock
+ 463 0142 4FF47A73 		mov	r3, #1000
+ 464 0146 B3FBF6F6 		udiv	r6, r3, r6
+ 465 014a B0FBF6F6 		udiv	r6, r0, r6
+ 466 014e 0A23     		movs	r3, #10
+ 467 0150 2E60     		str	r6, [r5, #0]
+ 468 0152 2B72     		strb	r3, [r5, #8]
+ 469 0154 054B     		ldr	r3, .L65+8
+ 470 0156 4FF00052 		mov	r2, #536870912
+ 471 015a 1C60     		str	r4, [r3, #0]
+ 472 015c 044B     		ldr	r3, .L65+12
+ 473 015e 1A60     		str	r2, [r3, #0]
+ 474 0160 70BD     		pop	{r4, r5, r6, pc}
+ 475              	.L66:
+ 476 0162 00BF     		.align	2
+ 477              	.L65:
+ 478 0164 00C00F40 		.word	1074774016
+ 479 0168 00000B40 		.word	1074462720
+ 480 016c 00000000 		.word	.LANCHOR0
+ 481 0170 00E100E0 		.word	-536813312
+ 483              		.section	.text._ZN17SingletonTemplateI4I2C2E11getInstanceEv,"axG",%progbits,_ZN17SingletonTemplate
+ 484              		.align	1
+ 485              		.weak	_ZN17SingletonTemplateI4I2C2E11getInstanceEv
+ 486              		.thumb
+ 487              		.thumb_func
+ 489              	_ZN17SingletonTemplateI4I2C2E11getInstanceEv:
+ 490              		@ args = 0, pretend = 0, frame = 0
+ 491              		@ frame_needed = 0, uses_anonymous_args = 0
+ 492 0000 38B5     		push	{r3, r4, r5, lr}
+ 493 0002 064C     		ldr	r4, .L69
+ 494 0004 2368     		ldr	r3, [r4, #0]
+ 495 0006 33B9     		cbnz	r3, .L68
+ 496 0008 1C20     		movs	r0, #28
+ 497 000a FFF7FEFF 		bl	_Znwj
+ 498 000e 0546     		mov	r5, r0
+ 499 0010 FFF7FEFF 		bl	_ZN4I2C2C1Ev
+ 500 0014 2560     		str	r5, [r4, #0]
+ 501              	.L68:
+ 502 0016 2068     		ldr	r0, [r4, #0]
+ 503 0018 38BD     		pop	{r3, r4, r5, pc}
+ 504              	.L70:
+ 505 001a 00BF     		.align	2
+ 506              	.L69:
+ 507 001c 00000000 		.word	_ZN17SingletonTemplateI4I2C2E19mpSingletonInstanceE
+ 509              		.text
+ 510              		.align	1
+ 511              		.global	_Z25discoverExternalDevsOnI2Cv
+ 512              		.thumb
+ 513              		.thumb_func
+ 515              	_Z25discoverExternalDevsOnI2Cv:
+ 516              		@ args = 0, pretend = 0, frame = 0
+ 517              		@ frame_needed = 0, uses_anonymous_args = 0
+ 518 0174 38B5     		push	{r3, r4, r5, lr}
+ 519 0176 0224     		movs	r4, #2
+ 520 0178 0025     		movs	r5, #0
+ 521              	.L73:
+ 522 017a FFF7FEFF 		bl	_ZN17SingletonTemplateI4I2C2E11getInstanceEv
+ 523 017e E1B2     		uxtb	r1, r4
+ 524 0180 FFF7FEFF 		bl	_ZN8I2C_Base15isDevicePresentEc
+ 525 0184 80B1     		cbz	r0, .L72
+ 526 0186 B4F13803 		subs	r3, r4, #56
+ 527 018a 18BF     		it	ne
+ 528 018c 0123     		movne	r3, #1
+ 529 018e 402C     		cmp	r4, #64
+ 530 0190 0CBF     		ite	eq
+ 531 0192 0023     		moveq	r3, #0
+ 532 0194 03F00103 		andne	r3, r3, #1
+ 533 0198 33B1     		cbz	r3, .L72
+ 534 019a 902C     		cmp	r4, #144
+ 535 019c 04D0     		beq	.L72
+ 536 019e 0548     		ldr	r0, .L75
+ 537 01a0 2146     		mov	r1, r4
+ 538 01a2 FFF7FEFF 		bl	printf
+ 539 01a6 0125     		movs	r5, #1
+ 540              	.L72:
+ 541 01a8 0234     		adds	r4, r4, #2
+ 542 01aa B4F5807F 		cmp	r4, #256
+ 543 01ae E4D1     		bne	.L73
+ 544 01b0 2846     		mov	r0, r5
+ 545 01b2 38BD     		pop	{r3, r4, r5, pc}
+ 546              	.L76:
+ 547              		.align	2
+ 548              	.L75:
+ 549 01b4 00010000 		.word	.LC10
+ 551              		.section	.text._ZN17SingletonTemplateI11LED_DisplayE11getInstanceEv,"axG",%progbits,_ZN17Singleton
+ 552              		.align	1
+ 553              		.weak	_ZN17SingletonTemplateI11LED_DisplayE11getInstanceEv
+ 554              		.thumb
+ 555              		.thumb_func
+ 557              	_ZN17SingletonTemplateI11LED_DisplayE11getInstanceEv:
+ 558              		@ args = 0, pretend = 0, frame = 0
+ 559              		@ frame_needed = 0, uses_anonymous_args = 0
+ 560 0000 38B5     		push	{r3, r4, r5, lr}
+ 561 0002 0A4D     		ldr	r5, .L82
+ 562 0004 2B68     		ldr	r3, [r5, #0]
+ 563 0006 6BB9     		cbnz	r3, .L78
+ 564 0008 2020     		movs	r0, #32
+ 565 000a FFF7FEFF 		bl	_Znwj
+ 566 000e 0446     		mov	r4, r0
+ 567 0010 FFF7FEFF 		bl	_ZN9IO_DeviceC2Ev
+ 568 0014 FFF7FEFF 		bl	_ZN17SingletonTemplateI4I2C2E11getInstanceEv
+ 569 0018 4023     		movs	r3, #64
+ 570 001a 2377     		strb	r3, [r4, #28]
+ 571 001c 044B     		ldr	r3, .L82+4
+ 572 001e A061     		str	r0, [r4, #24]
+ 573 0020 2360     		str	r3, [r4, #0]
+ 574 0022 2C60     		str	r4, [r5, #0]
+ 575              	.L78:
+ 576 0024 014B     		ldr	r3, .L82
+ 577 0026 1868     		ldr	r0, [r3, #0]
+ 578 0028 38BD     		pop	{r3, r4, r5, pc}
+ 579              	.L83:
+ 580 002a 00BF     		.align	2
+ 581              	.L82:
+ 582 002c 00000000 		.word	_ZN17SingletonTemplateI11LED_DisplayE19mpSingletonInstanceE
+ 583 0030 08000000 		.word	_ZTV11LED_Display+8
+ 585              		.text
+ 586              		.align	1
+ 587              		.global	_Z17initializeBoardIOv
+ 588              		.thumb
+ 589              		.thumb_func
+ 591              	_Z17initializeBoardIOv:
+ 592              		@ args = 0, pretend = 0, frame = 0
+ 593              		@ frame_needed = 0, uses_anonymous_args = 0
+ 594 01b8 70B5     		push	{r4, r5, r6, lr}
+ 595 01ba 454D     		ldr	r5, .L117
+ 596 01bc 2B68     		ldr	r3, [r5, #0]
+ 597 01be 6BB9     		cbnz	r3, .L85
+ 598 01c0 2020     		movs	r0, #32
+ 599 01c2 FFF7FEFF 		bl	_Znwj
+ 600 01c6 0446     		mov	r4, r0
+ 601 01c8 FFF7FEFF 		bl	_ZN9IO_DeviceC2Ev
+ 602 01cc FFF7FEFF 		bl	_ZN17SingletonTemplateI4I2C2E11getInstanceEv
+ 603 01d0 3823     		movs	r3, #56
+ 604 01d2 2377     		strb	r3, [r4, #28]
+ 605 01d4 3F4B     		ldr	r3, .L117+4
+ 606 01d6 A061     		str	r0, [r4, #24]
+ 607 01d8 2360     		str	r3, [r4, #0]
+ 608 01da 2C60     		str	r4, [r5, #0]
+ 609              	.L85:
+ 610 01dc 3C4B     		ldr	r3, .L117
+ 611 01de 3E4E     		ldr	r6, .L117+8
+ 612 01e0 1868     		ldr	r0, [r3, #0]
+ 613 01e2 0368     		ldr	r3, [r0, #0]
+ 614 01e4 1B68     		ldr	r3, [r3, #0]
+ 615 01e6 9847     		blx	r3
+ 616 01e8 3368     		ldr	r3, [r6, #0]
+ 617 01ea 0446     		mov	r4, r0
+ 618 01ec 43B9     		cbnz	r3, .L89
+ 619 01ee 1820     		movs	r0, #24
+ 620 01f0 FFF7FEFF 		bl	_Znwj
+ 621 01f4 0546     		mov	r5, r0
+ 622 01f6 FFF7FEFF 		bl	_ZN9IO_DeviceC2Ev
+ 623 01fa 384B     		ldr	r3, .L117+12
+ 624 01fc 2B60     		str	r3, [r5, #0]
+ 625 01fe 3560     		str	r5, [r6, #0]
+ 626              	.L89:
+ 627 0200 354B     		ldr	r3, .L117+8
+ 628 0202 374E     		ldr	r6, .L117+16
+ 629 0204 1868     		ldr	r0, [r3, #0]
+ 630 0206 0368     		ldr	r3, [r0, #0]
+ 631 0208 1B68     		ldr	r3, [r3, #0]
+ 632 020a 9847     		blx	r3
+ 633 020c 3368     		ldr	r3, [r6, #0]
+ 634 020e 0028     		cmp	r0, #0
+ 635 0210 08BF     		it	eq
+ 636 0212 0024     		moveq	r4, #0
+ 637 0214 43B9     		cbnz	r3, .L93
+ 638 0216 1820     		movs	r0, #24
+ 639 0218 FFF7FEFF 		bl	_Znwj
+ 640 021c 0546     		mov	r5, r0
+ 641 021e FFF7FEFF 		bl	_ZN9IO_DeviceC2Ev
+ 642 0222 304B     		ldr	r3, .L117+20
+ 643 0224 2B60     		str	r3, [r5, #0]
+ 644 0226 3560     		str	r5, [r6, #0]
+ 645              	.L93:
+ 646 0228 2D4B     		ldr	r3, .L117+16
+ 647 022a 2F4E     		ldr	r6, .L117+24
+ 648 022c 1868     		ldr	r0, [r3, #0]
+ 649 022e 0368     		ldr	r3, [r0, #0]
+ 650 0230 1B68     		ldr	r3, [r3, #0]
+ 651 0232 9847     		blx	r3
+ 652 0234 3368     		ldr	r3, [r6, #0]
+ 653 0236 0028     		cmp	r0, #0
+ 654 0238 08BF     		it	eq
+ 655 023a 0024     		moveq	r4, #0
+ 656 023c 6BB9     		cbnz	r3, .L97
+ 657 023e 2020     		movs	r0, #32
+ 658 0240 FFF7FEFF 		bl	_Znwj
+ 659 0244 0546     		mov	r5, r0
+ 660 0246 FFF7FEFF 		bl	_ZN9IO_DeviceC2Ev
+ 661 024a FFF7FEFF 		bl	_ZN17SingletonTemplateI4I2C2E11getInstanceEv
+ 662 024e 9023     		movs	r3, #144
+ 663 0250 2B77     		strb	r3, [r5, #28]
+ 664 0252 264B     		ldr	r3, .L117+28
+ 665 0254 A861     		str	r0, [r5, #24]
+ 666 0256 2B60     		str	r3, [r5, #0]
+ 667 0258 3560     		str	r5, [r6, #0]
+ 668              	.L97:
+ 669 025a 234B     		ldr	r3, .L117+24
+ 670 025c 244E     		ldr	r6, .L117+32
+ 671 025e 1868     		ldr	r0, [r3, #0]
+ 672 0260 0368     		ldr	r3, [r0, #0]
+ 673 0262 1B68     		ldr	r3, [r3, #0]
+ 674 0264 9847     		blx	r3
+ 675 0266 0028     		cmp	r0, #0
+ 676 0268 08BF     		it	eq
+ 677 026a 0024     		moveq	r4, #0
+ 678 026c FFF7FEFF 		bl	_ZN17SingletonTemplateI11LED_DisplayE11getInstanceEv
+ 679 0270 0368     		ldr	r3, [r0, #0]
+ 680 0272 1B68     		ldr	r3, [r3, #0]
+ 681 0274 9847     		blx	r3
+ 682 0276 3368     		ldr	r3, [r6, #0]
+ 683 0278 0028     		cmp	r0, #0
+ 684 027a 08BF     		it	eq
+ 685 027c 0024     		moveq	r4, #0
+ 686 027e 43B9     		cbnz	r3, .L103
+ 687 0280 1C20     		movs	r0, #28
+ 688 0282 FFF7FEFF 		bl	_Znwj
+ 689 0286 0546     		mov	r5, r0
+ 690 0288 FFF7FEFF 		bl	_ZN9IO_DeviceC2Ev
+ 691 028c 194B     		ldr	r3, .L117+36
+ 692 028e 2B60     		str	r3, [r5, #0]
+ 693 0290 3560     		str	r5, [r6, #0]
+ 694              	.L103:
+ 695 0292 174B     		ldr	r3, .L117+32
+ 696 0294 184E     		ldr	r6, .L117+40
+ 697 0296 1868     		ldr	r0, [r3, #0]
+ 698 0298 0368     		ldr	r3, [r0, #0]
+ 699 029a 1B68     		ldr	r3, [r3, #0]
+ 700 029c 9847     		blx	r3
+ 701 029e 3368     		ldr	r3, [r6, #0]
+ 702 02a0 0028     		cmp	r0, #0
+ 703 02a2 08BF     		it	eq
+ 704 02a4 0024     		moveq	r4, #0
+ 705 02a6 43B9     		cbnz	r3, .L107
+ 706 02a8 1820     		movs	r0, #24
+ 707 02aa FFF7FEFF 		bl	_Znwj
+ 708 02ae 0546     		mov	r5, r0
+ 709 02b0 FFF7FEFF 		bl	_ZN9IO_DeviceC2Ev
+ 710 02b4 114B     		ldr	r3, .L117+44
+ 711 02b6 2B60     		str	r3, [r5, #0]
+ 712 02b8 3560     		str	r5, [r6, #0]
+ 713              	.L107:
+ 714 02ba 0F4B     		ldr	r3, .L117+40
+ 715 02bc 1868     		ldr	r0, [r3, #0]
+ 716 02be 0368     		ldr	r3, [r0, #0]
+ 717 02c0 1B68     		ldr	r3, [r3, #0]
+ 718 02c2 9847     		blx	r3
+ 719 02c4 0028     		cmp	r0, #0
+ 720 02c6 08BF     		it	eq
+ 721 02c8 0024     		moveq	r4, #0
+ 722 02ca 2046     		mov	r0, r4
+ 723 02cc 70BD     		pop	{r4, r5, r6, pc}
+ 724              	.L118:
+ 725 02ce 00BF     		.align	2
+ 726              	.L117:
+ 727 02d0 00000000 		.word	_ZN17SingletonTemplateI19Acceleration_SensorE19mpSingletonInstanceE
+ 728 02d4 08000000 		.word	_ZTV19Acceleration_Sensor+8
+ 729 02d8 00000000 		.word	_ZN17SingletonTemplateI9IR_SensorE19mpSingletonInstanceE
+ 730 02dc 08000000 		.word	_ZTV9IR_Sensor+8
+ 731 02e0 00000000 		.word	_ZN17SingletonTemplateI12Light_SensorE19mpSingletonInstanceE
+ 732 02e4 08000000 		.word	_ZTV12Light_Sensor+8
+ 733 02e8 00000000 		.word	_ZN17SingletonTemplateI17TemperatureSensorE19mpSingletonInstanceE
+ 734 02ec 08000000 		.word	_ZTV17TemperatureSensor+8
+ 735 02f0 00000000 		.word	_ZN17SingletonTemplateI3LEDE19mpSingletonInstanceE
+ 736 02f4 08000000 		.word	_ZTV3LED+8
+ 737 02f8 00000000 		.word	_ZN17SingletonTemplateI8SwitchesE19mpSingletonInstanceE
+ 738 02fc 08000000 		.word	_ZTV8Switches+8
+ 740              		.align	1
+ 741              		.global	_Z19highLevelInitializev
+ 742              		.thumb
+ 743              		.thumb_func
+ 745              	_Z19highLevelInitializev:
+ 746              		@ args = 0, pretend = 0, frame = 0
+ 747              		@ frame_needed = 0, uses_anonymous_args = 0
+ 748 0300 70B5     		push	{r4, r5, r6, lr}
+ 749 0302 FFF7FEFF 		bl	sd_initializeCardSignals
+ 750 0306 FFF7FEFF 		bl	flash_InitializeSignals
+ 751 030a FFF7FEFF 		bl	rtc_initialize
+ 752 030e FFF7FEFF 		bl	_ZN17SingletonTemplateI4I2C2E11getInstanceEv
+ 753 0312 C821     		movs	r1, #200
+ 754 0314 FFF7FEFF 		bl	_ZN4I2C24initEj
+ 755 0318 434C     		ldr	r4, .L129
+ 756 031a FFF7FEFF 		bl	adc0_initialize
+ 757 031e FFF7FEFF 		bl	spi1_Init
+ 758 0322 FFF7FEFF 		bl	vConfigureTimerForRunTimeStats
+ 759 0326 4FF4FA60 		mov	r0, #2000
+ 760 032a FFF7FEFF 		bl	delay_ms
+ 761 032e 0A21     		movs	r1, #10
+ 762 0330 3E48     		ldr	r0, .L129+4
+ 763 0332 FFF7FEFF 		bl	_Z21setupPeriodicCallBackPFvvEj
+ 764 0336 2368     		ldr	r3, [r4, #0]
+ 765 0338 DB07     		lsls	r3, r3, #31
+ 766 033a 0AD4     		bmi	.L120
+ 767 033c 2046     		mov	r0, r4
+ 768 033e FFF7FEFF 		bl	__cxa_guard_acquire
+ 769 0342 30B1     		cbz	r0, .L120
+ 770 0344 FFF7FEFF 		bl	xQueueCreateMutex
+ 771 0348 394B     		ldr	r3, .L129+8
+ 772 034a 1860     		str	r0, [r3, #0]
+ 773 034c 2046     		mov	r0, r4
+ 774 034e FFF7FEFF 		bl	__cxa_guard_release
+ 775              	.L120:
+ 776 0352 3748     		ldr	r0, .L129+8
+ 777 0354 FFF7FEFF 		bl	diskio_initializeSPIMutex
+ 778 0358 FFF7FEFF 		bl	_ZN7Storage13getFlashDriveEv
+ 779 035c 3549     		ldr	r1, .L129+12
+ 780 035e FFF7FEFF 		bl	_Z12mountStorageR16FileSystemObjectPKc
+ 781 0362 0446     		mov	r4, r0
+ 782 0364 C0B9     		cbnz	r0, .L121
+ 783 0366 3448     		ldr	r0, .L129+16
+ 784 0368 FFF7FEFF 		bl	printf
+ 785 036c FFF7FEFF 		bl	_ZN7Storage13getFlashDriveEv
+ 786 0370 2146     		mov	r1, r4
+ 787 0372 2246     		mov	r2, r4
+ 788 0374 90F83402 		ldrb	r0, [r0, #564]	@ zero_extendqisi2
+ 789 0378 FFF7FEFF 		bl	f_mkfs
+ 790 037c 2F4B     		ldr	r3, .L129+20
+ 791 037e 304A     		ldr	r2, .L129+24
+ 792 0380 0028     		cmp	r0, #0
+ 793 0382 14BF     		ite	ne
+ 794 0384 1046     		movne	r0, r2
+ 795 0386 1846     		moveq	r0, r3
+ 796 0388 FFF7FEFF 		bl	puts
+ 797 038c FFF7FEFF 		bl	_ZN7Storage13getFlashDriveEv
+ 798 0390 2849     		ldr	r1, .L129+12
+ 799 0392 FFF7FEFF 		bl	_Z12mountStorageR16FileSystemObjectPKc
+ 800 0396 0446     		mov	r4, r0
+ 801              	.L121:
+ 802 0398 2A4D     		ldr	r5, .L129+28
+ 803 039a 2E68     		ldr	r6, [r5, #0]
+ 804 039c 16F00106 		ands	r6, r6, #1
+ 805 03a0 17D1     		bne	.L123
+ 806 03a2 2846     		mov	r0, r5
+ 807 03a4 FFF7FEFF 		bl	__cxa_guard_acquire
+ 808 03a8 98B1     		cbz	r0, .L123
+ 809 03aa 4FF40E70 		mov	r0, #568
+ 810 03ae FFF7FEFF 		bl	_Znwj
+ 811 03b2 0123     		movs	r3, #1
+ 812 03b4 80F83432 		strb	r3, [r0, #564]
+ 813 03b8 3123     		movs	r3, #49
+ 814 03ba 80F83532 		strb	r3, [r0, #565]
+ 815 03be 3A23     		movs	r3, #58
+ 816 03c0 80F83632 		strb	r3, [r0, #566]
+ 817 03c4 204B     		ldr	r3, .L129+32
+ 818 03c6 80F83762 		strb	r6, [r0, #567]
+ 819 03ca 1860     		str	r0, [r3, #0]
+ 820 03cc 2846     		mov	r0, r5
+ 821 03ce FFF7FEFF 		bl	__cxa_guard_release
+ 822              	.L123:
+ 823 03d2 1D4B     		ldr	r3, .L129+32
+ 824 03d4 1D49     		ldr	r1, .L129+36
+ 825 03d6 1868     		ldr	r0, [r3, #0]
+ 826 03d8 FFF7FEFF 		bl	_Z12mountStorageR16FileSystemObjectPKc
+ 827 03dc 14B1     		cbz	r4, .L125
+ 828 03de 08B1     		cbz	r0, .L125
+ 829 03e0 FFF7FEFF 		bl	_Z19copyLogFileToSDCardv
+ 830              	.L125:
+ 831 03e4 1820     		movs	r0, #24
+ 832 03e6 FFF7FEFF 		bl	spi1_SetMaxClockMhz
+ 833 03ea FFF7FEFF 		bl	_Z9printLinev
+ 834 03ee FFF7FEFF 		bl	_Z25discoverExternalDevsOnI2Cv
+ 835 03f2 08B1     		cbz	r0, .L126
+ 836 03f4 FFF7FEFF 		bl	_Z9printLinev
+ 837              	.L126:
+ 838 03f8 FFF7FEFF 		bl	printMemoryInfo
+ 839 03fc FFF7FEFF 		bl	_Z9printLinev
+ 840 0400 FFF7FEFF 		bl	_Z17initializeBoardIOv
+ 841 0404 10B9     		cbnz	r0, .L127
+ 842 0406 1248     		ldr	r0, .L129+40
+ 843 0408 FFF7FEFF 		bl	puts
+ 844              	.L127:
+ 845 040c FFF7FEFF 		bl	_ZN17SingletonTemplateI11LED_DisplayE11getInstanceEv
+ 846 0410 0446     		mov	r4, r0
+ 847 0412 FFF7FEFF 		bl	getCpuClock
+ 848 0416 0F4B     		ldr	r3, .L129+44
+ 849 0418 B0FBF3F1 		udiv	r1, r0, r3
+ 850 041c C9B2     		uxtb	r1, r1
+ 851 041e 2046     		mov	r0, r4
+ 852 0420 BDE87040 		pop	{r4, r5, r6, lr}
+ 853 0424 FFF7FEBF 		b	_ZN11LED_Display9setNumberEc
+ 854              	.L130:
+ 855              		.align	2
+ 856              	.L129:
+ 857 0428 00000000 		.word	_ZGVZ10getHandlesE7handles
+ 858 042c 00000000 		.word	sd_timerproc
+ 859 0430 00000000 		.word	_ZZ10getHandlesE7handles
+ 860 0434 25010000 		.word	.LC13
+ 861 0438 2D010000 		.word	.LC14
+ 862 043c 1A010000 		.word	.LC11
+ 863 0440 1F010000 		.word	.LC12
+ 864 0444 00000000 		.word	_ZGVZN7Storage10getSDDriveEvE12pSDCardDrive
+ 865 0448 00000000 		.word	_ZZN7Storage10getSDDriveEvE12pSDCardDrive
+ 866 044c 56010000 		.word	.LC15
+ 867 0450 5E010000 		.word	.LC16
+ 868 0454 40420F00 		.word	1000000
+ 870              		.weak	_ZGVZ10getHandlesE7handles
+ 871              		.section	.bss._ZGVZ10getHandlesE7handles,"awG",%nobits,_ZGVZ10getHandlesE7handles,comdat
+ 872              		.align	2
+ 875              	_ZGVZ10getHandlesE7handles:
+ 876 0000 00000000 		.space	4
+ 877              		.weak	_ZZ10getHandlesE7handles
+ 878              		.section	.bss._ZZ10getHandlesE7handles,"awG",%nobits,_ZZ10getHandlesE7handles,comdat
+ 879              		.align	2
+ 882              	_ZZ10getHandlesE7handles:
+ 883 0000 00000000 		.space	12
+ 883      00000000 
+ 883      00000000 
+ 884              		.weak	_ZGVZN7Storage10getSDDriveEvE12pSDCardDrive
+ 885              		.section	.bss._ZGVZN7Storage10getSDDriveEvE12pSDCardDrive,"awG",%nobits,_ZGVZN7Storage10getSDDrive
+ 886              		.align	2
+ 889              	_ZGVZN7Storage10getSDDriveEvE12pSDCardDrive:
+ 890 0000 00000000 		.space	4
+ 891              		.weak	_ZZN7Storage10getSDDriveEvE12pSDCardDrive
+ 892              		.section	.bss._ZZN7Storage10getSDDriveEvE12pSDCardDrive,"awG",%nobits,_ZZN7Storage10getSDDriveEvE1
+ 893              		.align	2
+ 896              	_ZZN7Storage10getSDDriveEvE12pSDCardDrive:
+ 897 0000 00000000 		.space	4
+ 898              		.weak	_ZN17SingletonTemplateI4I2C2E19mpSingletonInstanceE
+ 899              		.section	.bss._ZN17SingletonTemplateI4I2C2E19mpSingletonInstanceE,"awG",%nobits,_ZN17SingletonTemp
+ 900              		.align	2
+ 903              	_ZN17SingletonTemplateI4I2C2E19mpSingletonInstanceE:
+ 904 0000 00000000 		.space	4
+ 905              		.weak	_ZGVZN7Storage13getFlashDriveEvE11pFlashDrive
+ 906              		.section	.bss._ZGVZN7Storage13getFlashDriveEvE11pFlashDrive,"awG",%nobits,_ZGVZN7Storage13getFlash
+ 907              		.align	2
+ 910              	_ZGVZN7Storage13getFlashDriveEvE11pFlashDrive:
+ 911 0000 00000000 		.space	4
+ 912              		.weak	_ZZN7Storage13getFlashDriveEvE11pFlashDrive
+ 913              		.section	.bss._ZZN7Storage13getFlashDriveEvE11pFlashDrive,"awG",%nobits,_ZZN7Storage13getFlashDriv
+ 914              		.align	2
+ 917              	_ZZN7Storage13getFlashDriveEvE11pFlashDrive:
+ 918 0000 00000000 		.space	4
+ 919              		.weak	_ZN17SingletonTemplateI11LED_DisplayE19mpSingletonInstanceE
+ 920              		.section	.bss._ZN17SingletonTemplateI11LED_DisplayE19mpSingletonInstanceE,"awG",%nobits,_ZN17Singl
+ 921              		.align	2
+ 924              	_ZN17SingletonTemplateI11LED_DisplayE19mpSingletonInstanceE:
+ 925 0000 00000000 		.space	4
+ 926              		.weak	_ZTV9IO_Device
+ 927              		.section	.rodata._ZTV9IO_Device,"aG",%progbits,_ZTV9IO_Device,comdat
+ 928              		.align	3
+ 931              	_ZTV9IO_Device:
+ 932 0000 00000000 		.word	0
+ 933 0004 00000000 		.word	0
+ 934 0008 00000000 		.word	__cxa_pure_virtual
+ 935 000c 00000000 		.word	_ZN9IO_Device16getValueAsStringEv
+ 936 0010 00000000 		.word	_ZN9IO_DeviceD1Ev
+ 937 0014 00000000 		.word	_ZN9IO_DeviceD0Ev
+ 938              		.weak	_ZN17SingletonTemplateI19Acceleration_SensorE19mpSingletonInstanceE
+ 939              		.section	.bss._ZN17SingletonTemplateI19Acceleration_SensorE19mpSingletonInstanceE,"awG",%nobits,_Z
+ 940              		.align	2
+ 943              	_ZN17SingletonTemplateI19Acceleration_SensorE19mpSingletonInstanceE:
+ 944 0000 00000000 		.space	4
+ 945              		.weak	_ZN17SingletonTemplateI9IR_SensorE19mpSingletonInstanceE
+ 946              		.section	.bss._ZN17SingletonTemplateI9IR_SensorE19mpSingletonInstanceE,"awG",%nobits,_ZN17Singleto
+ 947              		.align	2
+ 950              	_ZN17SingletonTemplateI9IR_SensorE19mpSingletonInstanceE:
+ 951 0000 00000000 		.space	4
+ 952              		.weak	_ZN17SingletonTemplateI12Light_SensorE19mpSingletonInstanceE
+ 953              		.section	.bss._ZN17SingletonTemplateI12Light_SensorE19mpSingletonInstanceE,"awG",%nobits,_ZN17Sing
+ 954              		.align	2
+ 957              	_ZN17SingletonTemplateI12Light_SensorE19mpSingletonInstanceE:
+ 958 0000 00000000 		.space	4
+ 959              		.weak	_ZN17SingletonTemplateI17TemperatureSensorE19mpSingletonInstanceE
+ 960              		.section	.bss._ZN17SingletonTemplateI17TemperatureSensorE19mpSingletonInstanceE,"awG",%nobits,_ZN1
+ 961              		.align	2
+ 964              	_ZN17SingletonTemplateI17TemperatureSensorE19mpSingletonInstanceE:
+ 965 0000 00000000 		.space	4
+ 966              		.weak	_ZN17SingletonTemplateI3LEDE19mpSingletonInstanceE
+ 967              		.section	.bss._ZN17SingletonTemplateI3LEDE19mpSingletonInstanceE,"awG",%nobits,_ZN17SingletonTempl
+ 968              		.align	2
+ 971              	_ZN17SingletonTemplateI3LEDE19mpSingletonInstanceE:
+ 972 0000 00000000 		.space	4
+ 973              		.weak	_ZN17SingletonTemplateI8SwitchesE19mpSingletonInstanceE
+ 974              		.section	.bss._ZN17SingletonTemplateI8SwitchesE19mpSingletonInstanceE,"awG",%nobits,_ZN17Singleton
+ 975              		.align	2
+ 978              	_ZN17SingletonTemplateI8SwitchesE19mpSingletonInstanceE:
+ 979 0000 00000000 		.space	4
+ 980              		.weak	_ZN9IO_DeviceD1Ev
+ 981              		.thumb_set _ZN9IO_DeviceD1Ev,_ZN9IO_DeviceD2Ev
+ 982              		.weak	_ZN9IO_DeviceC1Ev
+ 983              		.thumb_set _ZN9IO_DeviceC1Ev,_ZN9IO_DeviceC2Ev
+ 984              		.section	.rodata.str1.1,"aMS",%progbits,1
+ 985              	.LC0:
+ 986 0000 4572726F 		.ascii	"Error: Function not implemented\000"
+ 986      723A2046 
+ 986      756E6374 
+ 986      696F6E20 
+ 986      6E6F7420 
+ 987              	.LC1:
+ 988 0020 2D2D2D2D 		.ascii	"------------------------------------------\000"
+ 988      2D2D2D2D 
+ 988      2D2D2D2D 
+ 988      2D2D2D2D 
+ 988      2D2D2D2D 
+ 989              	.LC2:
+ 990 004b 25733A20 		.ascii	"%s: OK -- Capacity %-5uKB, Available: %-5uKB\012\000"
+ 990      4F4B202D 
+ 990      2D204361 
+ 990      70616369 
+ 990      74792025 
+ 991              	.LC3:
+ 992 0079 25733A20 		.ascii	"%s: OK -- Capacity %-5uMB, Available: %-5uMB\012\000"
+ 992      4F4B202D 
+ 992      2D204361 
+ 992      70616369 
+ 992      74792025 
+ 993              	.LC4:
+ 994 00a7 25733A20 		.ascii	"%s: Failed to mount storage!\012\000"
+ 994      4661696C 
+ 994      65642074 
+ 994      6F206D6F 
+ 994      756E7420 
+ 995              	.LC5:
+ 996 00c5 4552524F 		.ascii	"ERROR!\000"
+ 996      522100
+ 997              	.LC6:
+ 998 00cc 446F6E65 		.ascii	"Done!\000"
+ 998      2100
+ 999              	.LC7:
+ 1000 00d2 4E6F7420 		.ascii	"Not found\000"
+ 1000      666F756E 
+ 1000      6400
+ 1001              	.LC9:
+ 1002 00dc 4D6F7669 		.ascii	"Moving %s to SD Card ... \000"
+ 1002      6E672025 
+ 1002      7320746F 
+ 1002      20534420 
+ 1002      43617264 
+ 1003              	.LC8:
+ 1004 00f6 303A6C6F 		.ascii	"0:log.csv\000"
+ 1004      672E6373 
+ 1004      7600
+ 1005              	.LC10:
+ 1006 0100 466F756E 		.ascii	"Found I2C Device: 0x%02X\012\000"
+ 1006      64204932 
+ 1006      43204465 
+ 1006      76696365 
+ 1006      3A203078 
+ 1007              	.LC11:
+ 1008 011a 446F6E65 		.ascii	"Done\000"
+ 1008      00
+ 1009              	.LC12:
+ 1010 011f 4572726F 		.ascii	"Error\000"
+ 1010      7200
+ 1011              	.LC13:
+ 1012 0125 20466C61 		.ascii	" Flash \000"
+ 1012      73682000 
+ 1013              	.LC14:
+ 1014 012d 464C4153 		.ascii	"FLASH not formatted, formatting now ... \000"
+ 1014      48206E6F 
+ 1014      7420666F 
+ 1014      726D6174 
+ 1014      7465642C 
+ 1015              	.LC15:
+ 1016 0156 53442043 		.ascii	"SD Card\000"
+ 1016      61726400 
+ 1017              	.LC16:
+ 1018 015e 4552524F 		.ascii	"ERROR: One of Board IOs failed to initialize!\000"
+ 1018      523A204F 
+ 1018      6E65206F 
+ 1018      6620426F 
+ 1018      61726420 
+ 1019              		.bss
+ 1020              		.align	2
+ 1021              		.set	.LANCHOR0,. + 0
+ 1024              	_ZL18RIT_TIMER_CALLBACK:
+ 1025 0000 00000000 		.space	4
+ 1026              		.ident	"GCC: (GNU) 4.6.2"
+DEFINED SYMBOLS
+                            *ABS*:00000000 highLevelInitialize.cpp
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:15     .text._ZN9IO_DeviceD2Ev:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:20     .text._ZN9IO_DeviceD2Ev:00000000 _ZN9IO_DeviceD2Ev
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:33     .text._ZN9IO_DeviceD2Ev:00000014 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:931    .rodata._ZTV9IO_Device:00000000 _ZTV9IO_Device
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:36     .text._ZN9IO_DeviceD0Ev:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:41     .text._ZN9IO_DeviceD0Ev:00000000 _ZN9IO_DeviceD0Ev
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:20     .text._ZN9IO_DeviceD2Ev:00000000 _ZN9IO_DeviceD1Ev
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:53     .text._ZN9IO_Device16getValueAsStringEv:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:58     .text._ZN9IO_Device16getValueAsStringEv:00000000 _ZN9IO_Device16getValueAsStringEv
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:72     .text._ZN9IO_Device16getValueAsStringEv:00000018 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:75     .text.adc0_initialize:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:80     .text.adc0_initialize:00000000 adc0_initialize
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:114    .text.adc0_initialize:0000004c $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:119    .text._ZN7Storage13getFlashDriveEv:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:124    .text._ZN7Storage13getFlashDriveEv:00000000 _ZN7Storage13getFlashDriveEv
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:154    .text._ZN7Storage13getFlashDriveEv:00000040 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:910    .bss._ZGVZN7Storage13getFlashDriveEvE11pFlashDrive:00000000 _ZGVZN7Storage13getFlashDriveEvE11pFlashDrive
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:917    .bss._ZZN7Storage13getFlashDriveEvE11pFlashDrive:00000000 _ZZN7Storage13getFlashDriveEvE11pFlashDrive
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:158    .text._ZN7Storage4copyEPKcS1_PjS2_S2_:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:163    .text._ZN7Storage4copyEPKcS1_PjS2_S2_:00000000 _ZN7Storage4copyEPKcS1_PjS2_S2_
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:260    .text._ZN9IO_DeviceC2Ev:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:265    .text._ZN9IO_DeviceC2Ev:00000000 _ZN9IO_DeviceC2Ev
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:279    .text._ZN9IO_DeviceC2Ev:00000014 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:282    .text:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:287    .text:00000000 _Z9printLinev
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:296    .text:00000008 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:298    .text:0000000c $t
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:303    .text:0000000c _Z12mountStorageR16FileSystemObjectPKc
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:355    .text:00000078 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:359    .text:00000084 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:364    .text:00000084 _Z19copyLogFileToSDCardv
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:402    .text:000000cc $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:409    .text:000000e4 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:414    .text:000000e4 RIT_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:431    .text:000000fc $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:434    .text:00000104 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:439    .text:00000104 _Z21setupPeriodicCallBackPFvvEj
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:478    .text:00000164 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:484    .text._ZN17SingletonTemplateI4I2C2E11getInstanceEv:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:489    .text._ZN17SingletonTemplateI4I2C2E11getInstanceEv:00000000 _ZN17SingletonTemplateI4I2C2E11getInstanceEv
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:507    .text._ZN17SingletonTemplateI4I2C2E11getInstanceEv:0000001c $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:903    .bss._ZN17SingletonTemplateI4I2C2E19mpSingletonInstanceE:00000000 _ZN17SingletonTemplateI4I2C2E19mpSingletonInstanceE
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:510    .text:00000174 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:515    .text:00000174 _Z25discoverExternalDevsOnI2Cv
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:549    .text:000001b4 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:552    .text._ZN17SingletonTemplateI11LED_DisplayE11getInstanceEv:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:557    .text._ZN17SingletonTemplateI11LED_DisplayE11getInstanceEv:00000000 _ZN17SingletonTemplateI11LED_DisplayE11getInstanceEv
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:582    .text._ZN17SingletonTemplateI11LED_DisplayE11getInstanceEv:0000002c $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:924    .bss._ZN17SingletonTemplateI11LED_DisplayE19mpSingletonInstanceE:00000000 _ZN17SingletonTemplateI11LED_DisplayE19mpSingletonInstanceE
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:586    .text:000001b8 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:591    .text:000001b8 _Z17initializeBoardIOv
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:727    .text:000002d0 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:943    .bss._ZN17SingletonTemplateI19Acceleration_SensorE19mpSingletonInstanceE:00000000 _ZN17SingletonTemplateI19Acceleration_SensorE19mpSingletonInstanceE
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:950    .bss._ZN17SingletonTemplateI9IR_SensorE19mpSingletonInstanceE:00000000 _ZN17SingletonTemplateI9IR_SensorE19mpSingletonInstanceE
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:957    .bss._ZN17SingletonTemplateI12Light_SensorE19mpSingletonInstanceE:00000000 _ZN17SingletonTemplateI12Light_SensorE19mpSingletonInstanceE
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:964    .bss._ZN17SingletonTemplateI17TemperatureSensorE19mpSingletonInstanceE:00000000 _ZN17SingletonTemplateI17TemperatureSensorE19mpSingletonInstanceE
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:971    .bss._ZN17SingletonTemplateI3LEDE19mpSingletonInstanceE:00000000 _ZN17SingletonTemplateI3LEDE19mpSingletonInstanceE
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:978    .bss._ZN17SingletonTemplateI8SwitchesE19mpSingletonInstanceE:00000000 _ZN17SingletonTemplateI8SwitchesE19mpSingletonInstanceE
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:740    .text:00000300 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:745    .text:00000300 _Z19highLevelInitializev
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:857    .text:00000428 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:875    .bss._ZGVZ10getHandlesE7handles:00000000 _ZGVZ10getHandlesE7handles
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:882    .bss._ZZ10getHandlesE7handles:00000000 _ZZ10getHandlesE7handles
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:889    .bss._ZGVZN7Storage10getSDDriveEvE12pSDCardDrive:00000000 _ZGVZN7Storage10getSDDriveEvE12pSDCardDrive
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:896    .bss._ZZN7Storage10getSDDriveEvE12pSDCardDrive:00000000 _ZZN7Storage10getSDDriveEvE12pSDCardDrive
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:872    .bss._ZGVZ10getHandlesE7handles:00000000 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:879    .bss._ZZ10getHandlesE7handles:00000000 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:886    .bss._ZGVZN7Storage10getSDDriveEvE12pSDCardDrive:00000000 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:893    .bss._ZZN7Storage10getSDDriveEvE12pSDCardDrive:00000000 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:900    .bss._ZN17SingletonTemplateI4I2C2E19mpSingletonInstanceE:00000000 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:907    .bss._ZGVZN7Storage13getFlashDriveEvE11pFlashDrive:00000000 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:914    .bss._ZZN7Storage13getFlashDriveEvE11pFlashDrive:00000000 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:921    .bss._ZN17SingletonTemplateI11LED_DisplayE19mpSingletonInstanceE:00000000 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:928    .rodata._ZTV9IO_Device:00000000 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:940    .bss._ZN17SingletonTemplateI19Acceleration_SensorE19mpSingletonInstanceE:00000000 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:947    .bss._ZN17SingletonTemplateI9IR_SensorE19mpSingletonInstanceE:00000000 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:954    .bss._ZN17SingletonTemplateI12Light_SensorE19mpSingletonInstanceE:00000000 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:961    .bss._ZN17SingletonTemplateI17TemperatureSensorE19mpSingletonInstanceE:00000000 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:968    .bss._ZN17SingletonTemplateI3LEDE19mpSingletonInstanceE:00000000 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:975    .bss._ZN17SingletonTemplateI8SwitchesE19mpSingletonInstanceE:00000000 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:265    .text._ZN9IO_DeviceC2Ev:00000000 _ZN9IO_DeviceC1Ev
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:1003   .rodata.str1.1:000000f6 .LC8
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:1020   .bss:00000000 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccnc99u2.s:1024   .bss:00000000 _ZL18RIT_TIMER_CALLBACK
+                           .group:00000000 _ZN9IO_DeviceD5Ev
+                           .group:00000000 _ZN9IO_DeviceC5Ev
+
+UNDEFINED SYMBOLS
+_ZN3strD1Ev
+_ZdlPv
+_ZN3straSEPKc
+_ZNK3strclEv
+getCpuClock
+__cxa_guard_acquire
+_Znwj
+__cxa_guard_release
+f_open
+xTaskGetTickCount
+f_read
+f_close
+f_write
+_ZN3strC1Ei
+puts
+disk_initialize
+f_mount
+f_getfree
+printf
+memcpy
+f_unlink
+_ZN4I2C2C1Ev
+_ZN8I2C_Base15isDevicePresentEc
+_ZTV11LED_Display
+_ZTV19Acceleration_Sensor
+_ZTV9IR_Sensor
+_ZTV12Light_Sensor
+_ZTV17TemperatureSensor
+_ZTV3LED
+_ZTV8Switches
+sd_initializeCardSignals
+flash_InitializeSignals
+rtc_initialize
+_ZN4I2C24initEj
+spi1_Init
+vConfigureTimerForRunTimeStats
+delay_ms
+xQueueCreateMutex
+diskio_initializeSPIMutex
+f_mkfs
+spi1_SetMaxClockMhz
+printMemoryInfo
+_ZN11LED_Display9setNumberEc
+sd_timerproc
+__cxa_pure_virtual

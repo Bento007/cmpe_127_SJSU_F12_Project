@@ -1,0 +1,287 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"logger.cpp"
+  14              		.text
+  15              		.align	1
+  16              		.global	_ZN10LoggerBase5flushEv
+  17              		.thumb
+  18              		.thumb_func
+  20              	_ZN10LoggerBase5flushEv:
+  21              		@ args = 0, pretend = 0, frame = 0
+  22              		@ frame_needed = 0, uses_anonymous_args = 0
+  23 0000 C268     		ldr	r2, [r0, #12]
+  24 0002 10B5     		push	{r4, lr}
+  25 0004 0446     		mov	r4, r0
+  26 0006 2AB1     		cbz	r2, .L1
+  27 0008 0368     		ldr	r3, [r0, #0]
+  28 000a 6168     		ldr	r1, [r4, #4]
+  29 000c 9B68     		ldr	r3, [r3, #8]
+  30 000e 9847     		blx	r3
+  31 0010 0023     		movs	r3, #0
+  32 0012 E360     		str	r3, [r4, #12]
+  33              	.L1:
+  34 0014 10BD     		pop	{r4, pc}
+  36              		.align	1
+  37              		.global	_ZN10LoggerBase3logEPKc
+  38              		.thumb
+  39              		.thumb_func
+  41              	_ZN10LoggerBase3logEPKc:
+  42              		@ args = 0, pretend = 0, frame = 0
+  43              		@ frame_needed = 0, uses_anonymous_args = 0
+  44 0016 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  45 0018 0446     		mov	r4, r0
+  46 001a 0D46     		mov	r5, r1
+  47 001c 0FE0     		b	.L4
+  48              	.L5:
+  49 001e DB1B     		subs	r3, r3, r7
+  50 0020 9E42     		cmp	r6, r3
+  51 0022 A8BF     		it	ge
+  52 0024 1E46     		movge	r6, r3
+  53 0026 2946     		mov	r1, r5
+  54 0028 3246     		mov	r2, r6
+  55 002a C019     		adds	r0, r0, r7
+  56 002c FFF7FEFF 		bl	memcpy
+  57 0030 E368     		ldr	r3, [r4, #12]
+  58 0032 2046     		mov	r0, r4
+  59 0034 9B19     		adds	r3, r3, r6
+  60 0036 E360     		str	r3, [r4, #12]
+  61 0038 FFF7FEFF 		bl	_ZN10LoggerBase5flushEv
+  62 003c AD19     		adds	r5, r5, r6
+  63              	.L4:
+  64 003e 2846     		mov	r0, r5
+  65 0040 FFF7FEFF 		bl	strlen
+  66 0044 E768     		ldr	r7, [r4, #12]
+  67 0046 A368     		ldr	r3, [r4, #8]
+  68 0048 C219     		adds	r2, r0, r7
+  69 004a 9A42     		cmp	r2, r3
+  70 004c 0646     		mov	r6, r0
+  71 004e 6068     		ldr	r0, [r4, #4]
+  72 0050 E5D8     		bhi	.L5
+  73 0052 3246     		mov	r2, r6
+  74 0054 C019     		adds	r0, r0, r7
+  75 0056 2946     		mov	r1, r5
+  76 0058 FFF7FEFF 		bl	memcpy
+  77 005c E368     		ldr	r3, [r4, #12]
+  78 005e 9E19     		adds	r6, r3, r6
+  79 0060 E660     		str	r6, [r4, #12]
+  80 0062 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+  82              		.align	1
+  83              		.global	_ZN9CSVLogger13logCsvMessageEPKcS1_S1_S1_i
+  84              		.thumb
+  85              		.thumb_func
+  87              	_ZN9CSVLogger13logCsvMessageEPKcS1_S1_S1_i:
+  88              		@ args = 8, pretend = 0, frame = 32
+  89              		@ frame_needed = 0, uses_anonymous_args = 0
+  90 0064 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+  91 0068 1F46     		mov	r7, r3
+  92 006a 0368     		ldr	r3, [r0, #0]
+  93 006c 89B0     		sub	sp, sp, #36
+  94 006e DB68     		ldr	r3, [r3, #12]
+  95 0070 0446     		mov	r4, r0
+  96 0072 0E46     		mov	r6, r1
+  97 0074 1546     		mov	r5, r2
+  98 0076 DDF84090 		ldr	r9, [sp, #64]
+  99 007a DDF84480 		ldr	r8, [sp, #68]
+ 100 007e 9847     		blx	r3
+ 101 0080 2C23     		movs	r3, #44
+ 102 0082 3249     		ldr	r1, .L12
+ 103 0084 0322     		movs	r2, #3
+ 104 0086 05A8     		add	r0, sp, #20
+ 105 0088 ADF81830 		strh	r3, [sp, #24]	@ movhi
+ 106 008c FFF7FEFF 		bl	memcpy
+ 107 0090 0A23     		movs	r3, #10
+ 108 0092 ADF81C30 		strh	r3, [sp, #28]	@ movhi
+ 109 0096 2368     		ldr	r3, [r4, #0]
+ 110 0098 2046     		mov	r0, r4
+ 111 009a 5B69     		ldr	r3, [r3, #20]
+ 112 009c 9847     		blx	r3
+ 113 009e 2C49     		ldr	r1, .L12+4
+ 114 00a0 0246     		mov	r2, r0
+ 115 00a2 01A8     		add	r0, sp, #4
+ 116 00a4 FFF7FEFF 		bl	sprintf
+ 117 00a8 2046     		mov	r0, r4
+ 118 00aa 01A9     		add	r1, sp, #4
+ 119 00ac FFF7FEFF 		bl	_ZN10LoggerBase3logEPKc
+ 120 00b0 2046     		mov	r0, r4
+ 121 00b2 06A9     		add	r1, sp, #24
+ 122 00b4 FFF7FEFF 		bl	_ZN10LoggerBase3logEPKc
+ 123 00b8 2046     		mov	r0, r4
+ 124 00ba 3146     		mov	r1, r6
+ 125 00bc FFF7FEFF 		bl	_ZN10LoggerBase3logEPKc
+ 126 00c0 2046     		mov	r0, r4
+ 127 00c2 06A9     		add	r1, sp, #24
+ 128 00c4 FFF7FEFF 		bl	_ZN10LoggerBase3logEPKc
+ 129 00c8 2046     		mov	r0, r4
+ 130 00ca 2946     		mov	r1, r5
+ 131 00cc FFF7FEFF 		bl	_ZN10LoggerBase3logEPKc
+ 132 00d0 2046     		mov	r0, r4
+ 133 00d2 06A9     		add	r1, sp, #24
+ 134 00d4 FFF7FEFF 		bl	_ZN10LoggerBase3logEPKc
+ 135 00d8 77B1     		cbz	r7, .L7
+ 136 00da 3846     		mov	r0, r7
+ 137 00dc 2F21     		movs	r1, #47
+ 138 00de FFF7FEFF 		bl	strrchr
+ 139 00e2 20B9     		cbnz	r0, .L8
+ 140 00e4 3846     		mov	r0, r7
+ 141 00e6 5C21     		movs	r1, #92
+ 142 00e8 FFF7FEFF 		bl	strrchr
+ 143 00ec 00B1     		cbz	r0, .L9
+ 144              	.L8:
+ 145 00ee 471C     		adds	r7, r0, #1
+ 146              	.L9:
+ 147 00f0 2046     		mov	r0, r4
+ 148 00f2 3946     		mov	r1, r7
+ 149 00f4 FFF7FEFF 		bl	_ZN10LoggerBase3logEPKc
+ 150              	.L7:
+ 151 00f8 2046     		mov	r0, r4
+ 152 00fa 06A9     		add	r1, sp, #24
+ 153 00fc FFF7FEFF 		bl	_ZN10LoggerBase3logEPKc
+ 154 0100 B9F1000F 		cmp	r9, #0
+ 155 0104 07D0     		beq	.L10
+ 156 0106 2046     		mov	r0, r4
+ 157 0108 4946     		mov	r1, r9
+ 158 010a FFF7FEFF 		bl	_ZN10LoggerBase3logEPKc
+ 159 010e 2046     		mov	r0, r4
+ 160 0110 05A9     		add	r1, sp, #20
+ 161 0112 FFF7FEFF 		bl	_ZN10LoggerBase3logEPKc
+ 162              	.L10:
+ 163 0116 2046     		mov	r0, r4
+ 164 0118 06A9     		add	r1, sp, #24
+ 165 011a FFF7FEFF 		bl	_ZN10LoggerBase3logEPKc
+ 166 011e B8F1000F 		cmp	r8, #0
+ 167 0122 08D0     		beq	.L11
+ 168 0124 0A49     		ldr	r1, .L12+4
+ 169 0126 01A8     		add	r0, sp, #4
+ 170 0128 4246     		mov	r2, r8
+ 171 012a FFF7FEFF 		bl	sprintf
+ 172 012e 2046     		mov	r0, r4
+ 173 0130 01A9     		add	r1, sp, #4
+ 174 0132 FFF7FEFF 		bl	_ZN10LoggerBase3logEPKc
+ 175              	.L11:
+ 176 0136 2046     		mov	r0, r4
+ 177 0138 07A9     		add	r1, sp, #28
+ 178 013a FFF7FEFF 		bl	_ZN10LoggerBase3logEPKc
+ 179 013e 2368     		ldr	r3, [r4, #0]
+ 180 0140 2046     		mov	r0, r4
+ 181 0142 1B69     		ldr	r3, [r3, #16]
+ 182 0144 9847     		blx	r3
+ 183 0146 09B0     		add	sp, sp, #36
+ 184 0148 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 185              	.L13:
+ 186              		.align	2
+ 187              	.L12:
+ 188 014c 03000000 		.word	.LC0
+ 189 0150 00000000 		.word	.LC1
+ 191              		.align	1
+ 192              		.global	_ZN9CSVLogger7logInfoEPKcS1_S1_i
+ 193              		.thumb
+ 194              		.thumb_func
+ 196              	_ZN9CSVLogger7logInfoEPKcS1_S1_i:
+ 197              		@ args = 4, pretend = 0, frame = 0
+ 198              		@ frame_needed = 0, uses_anonymous_args = 0
+ 199 0154 37B5     		push	{r0, r1, r2, r4, r5, lr}
+ 200 0156 0093     		str	r3, [sp, #0]
+ 201 0158 069B     		ldr	r3, [sp, #24]
+ 202 015a 0D46     		mov	r5, r1
+ 203 015c 1446     		mov	r4, r2
+ 204 015e 0193     		str	r3, [sp, #4]
+ 205 0160 0249     		ldr	r1, .L15
+ 206 0162 2A46     		mov	r2, r5
+ 207 0164 2346     		mov	r3, r4
+ 208 0166 FFF7FEFF 		bl	_ZN9CSVLogger13logCsvMessageEPKcS1_S1_S1_i
+ 209 016a 3EBD     		pop	{r1, r2, r3, r4, r5, pc}
+ 210              	.L16:
+ 211              		.align	2
+ 212              	.L15:
+ 213 016c 06000000 		.word	.LC2
+ 215              		.align	1
+ 216              		.global	_ZN9CSVLogger10logWarningEPKcS1_S1_i
+ 217              		.thumb
+ 218              		.thumb_func
+ 220              	_ZN9CSVLogger10logWarningEPKcS1_S1_i:
+ 221              		@ args = 4, pretend = 0, frame = 0
+ 222              		@ frame_needed = 0, uses_anonymous_args = 0
+ 223 0170 37B5     		push	{r0, r1, r2, r4, r5, lr}
+ 224 0172 0093     		str	r3, [sp, #0]
+ 225 0174 069B     		ldr	r3, [sp, #24]
+ 226 0176 0D46     		mov	r5, r1
+ 227 0178 1446     		mov	r4, r2
+ 228 017a 0193     		str	r3, [sp, #4]
+ 229 017c 0249     		ldr	r1, .L18
+ 230 017e 2A46     		mov	r2, r5
+ 231 0180 2346     		mov	r3, r4
+ 232 0182 FFF7FEFF 		bl	_ZN9CSVLogger13logCsvMessageEPKcS1_S1_S1_i
+ 233 0186 3EBD     		pop	{r1, r2, r3, r4, r5, pc}
+ 234              	.L19:
+ 235              		.align	2
+ 236              	.L18:
+ 237 0188 0B000000 		.word	.LC3
+ 239              		.align	1
+ 240              		.global	_ZN9CSVLogger8logErrorEPKcS1_S1_i
+ 241              		.thumb
+ 242              		.thumb_func
+ 244              	_ZN9CSVLogger8logErrorEPKcS1_S1_i:
+ 245              		@ args = 4, pretend = 0, frame = 0
+ 246              		@ frame_needed = 0, uses_anonymous_args = 0
+ 247 018c 37B5     		push	{r0, r1, r2, r4, r5, lr}
+ 248 018e 0093     		str	r3, [sp, #0]
+ 249 0190 069B     		ldr	r3, [sp, #24]
+ 250 0192 0D46     		mov	r5, r1
+ 251 0194 1446     		mov	r4, r2
+ 252 0196 0193     		str	r3, [sp, #4]
+ 253 0198 0249     		ldr	r1, .L21
+ 254 019a 2A46     		mov	r2, r5
+ 255 019c 2346     		mov	r3, r4
+ 256 019e FFF7FEFF 		bl	_ZN9CSVLogger13logCsvMessageEPKcS1_S1_S1_i
+ 257 01a2 3EBD     		pop	{r1, r2, r3, r4, r5, pc}
+ 258              	.L22:
+ 259              		.align	2
+ 260              	.L21:
+ 261 01a4 10000000 		.word	.LC4
+ 263              		.section	.rodata.str1.1,"aMS",%progbits,1
+ 264              	.LC1:
+ 265 0000 256900   		.ascii	"%i\000"
+ 266              	.LC0:
+ 267 0003 282900   		.ascii	"()\000"
+ 268              	.LC2:
+ 269 0006 494E464F 		.ascii	"INFO\000"
+ 269      00
+ 270              	.LC3:
+ 271 000b 5741524E 		.ascii	"WARN\000"
+ 271      00
+ 272              	.LC4:
+ 273 0010 4552524F 		.ascii	"ERROR\000"
+ 273      5200
+ 274              		.ident	"GCC: (GNU) 4.6.2"
+DEFINED SYMBOLS
+                            *ABS*:00000000 logger.cpp
+C:\Users\Rhonda\AppData\Local\Temp\ccefZHSf.s:15     .text:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccefZHSf.s:20     .text:00000000 _ZN10LoggerBase5flushEv
+C:\Users\Rhonda\AppData\Local\Temp\ccefZHSf.s:41     .text:00000016 _ZN10LoggerBase3logEPKc
+C:\Users\Rhonda\AppData\Local\Temp\ccefZHSf.s:87     .text:00000064 _ZN9CSVLogger13logCsvMessageEPKcS1_S1_S1_i
+C:\Users\Rhonda\AppData\Local\Temp\ccefZHSf.s:188    .text:0000014c $d
+C:\Users\Rhonda\AppData\Local\Temp\ccefZHSf.s:191    .text:00000154 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccefZHSf.s:196    .text:00000154 _ZN9CSVLogger7logInfoEPKcS1_S1_i
+C:\Users\Rhonda\AppData\Local\Temp\ccefZHSf.s:213    .text:0000016c $d
+C:\Users\Rhonda\AppData\Local\Temp\ccefZHSf.s:215    .text:00000170 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccefZHSf.s:220    .text:00000170 _ZN9CSVLogger10logWarningEPKcS1_S1_i
+C:\Users\Rhonda\AppData\Local\Temp\ccefZHSf.s:237    .text:00000188 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccefZHSf.s:239    .text:0000018c $t
+C:\Users\Rhonda\AppData\Local\Temp\ccefZHSf.s:244    .text:0000018c _ZN9CSVLogger8logErrorEPKcS1_S1_i
+C:\Users\Rhonda\AppData\Local\Temp\ccefZHSf.s:261    .text:000001a4 $d
+
+UNDEFINED SYMBOLS
+memcpy
+strlen
+sprintf
+strrchr

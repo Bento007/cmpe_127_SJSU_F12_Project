@@ -1,0 +1,696 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"i2c_base.cpp"
+  14              		.text
+  15              		.align	1
+  16              		.global	_ZN8I2C_BaseC2EP15LPC_I2C_TypeDef
+  17              		.thumb
+  18              		.thumb_func
+  20              	_ZN8I2C_BaseC2EP15LPC_I2C_TypeDef:
+  21              		@ args = 0, pretend = 0, frame = 0
+  22              		@ frame_needed = 0, uses_anonymous_args = 0
+  23 0000 10B5     		push	{r4, lr}
+  24 0002 0160     		str	r1, [r0, #0]
+  25 0004 0446     		mov	r4, r0
+  26 0006 FFF7FEFF 		bl	xQueueCreateMutex
+  27 000a 0021     		movs	r1, #0
+  28 000c A060     		str	r0, [r4, #8]
+  29 000e 0120     		movs	r0, #1
+  30 0010 FFF7FEFF 		bl	xQueueCreate
+  31 0014 E060     		str	r0, [r4, #12]
+  32 0016 20B1     		cbz	r0, .L2
+  33 0018 0021     		movs	r1, #0
+  34 001a 0A46     		mov	r2, r1
+  35 001c 0B46     		mov	r3, r1
+  36 001e FFF7FEFF 		bl	xQueueGenericSend
+  37              	.L2:
+  38 0022 0021     		movs	r1, #0
+  39 0024 0A46     		mov	r2, r1
+  40 0026 0B46     		mov	r3, r1
+  41 0028 E068     		ldr	r0, [r4, #12]
+  42 002a FFF7FEFF 		bl	xQueueGenericReceive
+  43 002e 2368     		ldr	r3, [r4, #0]
+  44 0030 094A     		ldr	r2, .L8
+  45 0032 9342     		cmp	r3, r2
+  46 0034 01D1     		bne	.L3
+  47 0036 0A23     		movs	r3, #10
+  48 0038 0AE0     		b	.L7
+  49              	.L3:
+  50 003a 084A     		ldr	r2, .L8+4
+  51 003c 9342     		cmp	r3, r2
+  52 003e 01D1     		bne	.L5
+  53 0040 0B23     		movs	r3, #11
+  54 0042 05E0     		b	.L7
+  55              	.L5:
+  56 0044 064A     		ldr	r2, .L8+8
+  57 0046 9342     		cmp	r3, r2
+  58 0048 01D1     		bne	.L6
+  59 004a 0C23     		movs	r3, #12
+  60 004c 00E0     		b	.L7
+  61              	.L6:
+  62 004e 6323     		movs	r3, #99
+  63              	.L7:
+  64 0050 2371     		strb	r3, [r4, #4]
+  65 0052 2046     		mov	r0, r4
+  66 0054 10BD     		pop	{r4, pc}
+  67              	.L9:
+  68 0056 00BF     		.align	2
+  69              	.L8:
+  70 0058 00C00140 		.word	1073856512
+  71 005c 00C00540 		.word	1074118656
+  72 0060 00000A40 		.word	1074397184
+  74              		.align	1
+  75              		.global	_ZN8I2C_Base4initEjj
+  76              		.thumb
+  77              		.thumb_func
+  79              	_ZN8I2C_Base4initEjj:
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82 0064 30B5     		push	{r4, r5, lr}
+  83 0066 0479     		ldrb	r4, [r0, #4]	@ zero_extendqisi2
+  84 0068 63B2     		sxtb	r3, r4
+  85 006a 0A2B     		cmp	r3, #10
+  86 006c 05D0     		beq	.L12
+  87 006e 3DDB     		blt	.L17
+  88 0070 0B2B     		cmp	r3, #11
+  89 0072 08D0     		beq	.L13
+  90 0074 0C2B     		cmp	r3, #12
+  91 0076 39D1     		bne	.L17
+  92 0078 0BE0     		b	.L20
+  93              	.L12:
+  94 007a 1D4B     		ldr	r3, .L21
+  95 007c D3F8C450 		ldr	r5, [r3, #196]
+  96 0080 45F08005 		orr	r5, r5, #128
+  97 0084 0AE0     		b	.L19
+  98              	.L13:
+  99 0086 1A4B     		ldr	r3, .L21
+ 100 0088 D3F8C450 		ldr	r5, [r3, #196]
+ 101 008c 45F40025 		orr	r5, r5, #524288
+ 102 0090 04E0     		b	.L19
+ 103              	.L20:
+ 104 0092 174B     		ldr	r3, .L21
+ 105 0094 D3F8C450 		ldr	r5, [r3, #196]
+ 106 0098 45F08065 		orr	r5, r5, #67108864
+ 107              	.L19:
+ 108 009c C3F8C450 		str	r5, [r3, #196]
+ 109 00a0 0368     		ldr	r3, [r0, #0]
+ 110 00a2 6C20     		movs	r0, #108
+ 111 00a4 B2F57A7F 		cmp	r2, #1000
+ 112 00a8 88BF     		it	hi
+ 113 00aa 124A     		ldrhi	r2, .L21+4
+ 114 00ac 9861     		str	r0, [r3, #24]
+ 115 00ae 9CBF     		itt	ls
+ 116 00b0 4FF47A70 		movls	r0, #1000
+ 117 00b4 4243     		mulls	r2, r0, r2
+ 118 00b6 501C     		adds	r0, r2, #1
+ 119 00b8 B1FBF0F0 		udiv	r0, r1, r0
+ 120 00bc B1FBF2F2 		udiv	r2, r1, r2
+ 121 00c0 4008     		lsrs	r0, r0, #1
+ 122 00c2 5208     		lsrs	r2, r2, #1
+ 123 00c4 1861     		str	r0, [r3, #16]
+ 124 00c6 5A61     		str	r2, [r3, #20]
+ 125 00c8 0022     		movs	r2, #0
+ 126 00ca DA60     		str	r2, [r3, #12]
+ 127 00cc 1A62     		str	r2, [r3, #32]
+ 128 00ce 5A62     		str	r2, [r3, #36]
+ 129 00d0 9A62     		str	r2, [r3, #40]
+ 130 00d2 4022     		movs	r2, #64
+ 131 00d4 1A60     		str	r2, [r3, #0]
+ 132 00d6 0120     		movs	r0, #1
+ 133 00d8 62B2     		sxtb	r2, r4
+ 134 00da 04F01F04 		and	r4, r4, #31
+ 135 00de 10FA04F4 		lsls	r4, r0, r4
+ 136 00e2 054B     		ldr	r3, .L21+8
+ 137 00e4 5209     		lsrs	r2, r2, #5
+ 138 00e6 43F82240 		str	r4, [r3, r2, lsl #2]
+ 139 00ea 30BD     		pop	{r4, r5, pc}
+ 140              	.L17:
+ 141 00ec 0020     		movs	r0, #0
+ 142 00ee 30BD     		pop	{r4, r5, pc}
+ 143              	.L22:
+ 144              		.align	2
+ 145              	.L21:
+ 146 00f0 00C00F40 		.word	1074774016
+ 147 00f4 A0860100 		.word	100000
+ 148 00f8 00E100E0 		.word	-536813312
+ 150              		.align	1
+ 151              		.global	_ZN8I2C_Base18i2cKickOffTransferENS_12mI2cModeTypeEccPci
+ 152              		.thumb
+ 153              		.thumb_func
+ 155              	_ZN8I2C_Base18i2cKickOffTransferENS_12mI2cModeTypeEccPci:
+ 156              		@ args = 8, pretend = 0, frame = 0
+ 157              		@ frame_needed = 0, uses_anonymous_args = 0
+ 158 00fc 38B5     		push	{r3, r4, r5, lr}
+ 159 00fe 0446     		mov	r4, r0
+ 160 0100 1046     		mov	r0, r2
+ 161 0102 059A     		ldr	r2, [sp, #20]
+ 162 0104 042A     		cmp	r2, #4
+ 163 0106 0FDC     		bgt	.L23
+ 164 0108 0025     		movs	r5, #0
+ 165 010a A574     		strb	r5, [r4, #18]
+ 166 010c E174     		strb	r1, [r4, #19]
+ 167 010e 2074     		strb	r0, [r4, #16]
+ 168 0110 6374     		strb	r3, [r4, #17]
+ 169 0112 2283     		strh	r2, [r4, #24]	@ movhi
+ 170 0114 6583     		strh	r5, [r4, #26]	@ movhi
+ 171 0116 21B9     		cbnz	r1, .L25
+ 172 0118 04F11400 		add	r0, r4, #20
+ 173 011c 0499     		ldr	r1, [sp, #16]
+ 174 011e FFF7FEFF 		bl	memcpy
+ 175              	.L25:
+ 176 0122 2368     		ldr	r3, [r4, #0]
+ 177 0124 2022     		movs	r2, #32
+ 178 0126 1A60     		str	r2, [r3, #0]
+ 179              	.L23:
+ 180 0128 38BD     		pop	{r3, r4, r5, pc}
+ 182              		.align	1
+ 183              		.global	_ZN8I2C_Base15i2cStateMachineEv
+ 184              		.thumb
+ 185              		.thumb_func
+ 187              	_ZN8I2C_Base15i2cStateMachineEv:
+ 188              		@ args = 0, pretend = 0, frame = 0
+ 189              		@ frame_needed = 0, uses_anonymous_args = 0
+ 190 012a 10B5     		push	{r4, lr}
+ 191 012c 0368     		ldr	r3, [r0, #0]
+ 192 012e 0246     		mov	r2, r0
+ 193 0130 5968     		ldr	r1, [r3, #4]
+ 194 0132 2829     		cmp	r1, #40
+ 195 0134 45D0     		beq	.L33
+ 196 0136 0FD8     		bhi	.L40
+ 197 0138 1029     		cmp	r1, #16
+ 198 013a 20D0     		beq	.L30
+ 199 013c 06D8     		bhi	.L41
+ 200 013e 0029     		cmp	r1, #0
+ 201 0140 00F0A380 		beq	.L28
+ 202 0144 0829     		cmp	r1, #8
+ 203 0146 40F0B980 		bne	.L27
+ 204 014a 16E0     		b	.L83
+ 205              	.L41:
+ 206 014c 1829     		cmp	r1, #24
+ 207 014e 1BD0     		beq	.L31
+ 208 0150 2029     		cmp	r1, #32
+ 209 0152 40F0B380 		bne	.L27
+ 210 0156 29E0     		b	.L84
+ 211              	.L40:
+ 212 0158 4029     		cmp	r1, #64
+ 213 015a 5ED0     		beq	.L36
+ 214 015c 05D8     		bhi	.L42
+ 215 015e 3029     		cmp	r1, #48
+ 216 0160 4FD0     		beq	.L34
+ 217 0162 3829     		cmp	r1, #56
+ 218 0164 40F0AA80 		bne	.L27
+ 219 0168 A0E0     		b	.L85
+ 220              	.L42:
+ 221 016a 5029     		cmp	r1, #80
+ 222 016c 6AD0     		beq	.L38
+ 223 016e 5829     		cmp	r1, #88
+ 224 0170 7AD0     		beq	.L39
+ 225 0172 4829     		cmp	r1, #72
+ 226 0174 40F0A280 		bne	.L27
+ 227 0178 58E0     		b	.L86
+ 228              	.L83:
+ 229 017a 027C     		ldrb	r2, [r0, #16]	@ zero_extendqisi2
+ 230 017c 13E0     		b	.L79
+ 231              	.L30:
+ 232 017e 027C     		ldrb	r2, [r0, #16]	@ zero_extendqisi2
+ 233 0180 42F00102 		orr	r2, r2, #1
+ 234 0184 9A60     		str	r2, [r3, #8]
+ 235 0186 21E0     		b	.L80
+ 236              	.L31:
+ 237 0188 B2F91840 		ldrsh	r4, [r2, #24]
+ 238 018c 2020     		movs	r0, #32
+ 239 018e 9861     		str	r0, [r3, #24]
+ 240 0190 0821     		movs	r1, #8
+ 241 0192 3CB9     		cbnz	r4, .L44
+ 242 0194 9861     		str	r0, [r3, #24]
+ 243 0196 1020     		movs	r0, #16
+ 244 0198 1860     		str	r0, [r3, #0]
+ 245 019a 9961     		str	r1, [r3, #24]
+ 246              	.L45:
+ 247 019c 1968     		ldr	r1, [r3, #0]
+ 248 019e C806     		lsls	r0, r1, #27
+ 249 01a0 FCD4     		bmi	.L45
+ 250 01a2 7DE0     		b	.L78
+ 251              	.L44:
+ 252 01a4 527C     		ldrb	r2, [r2, #17]	@ zero_extendqisi2
+ 253              	.L79:
+ 254 01a6 9A60     		str	r2, [r3, #8]
+ 255 01a8 9961     		str	r1, [r3, #24]
+ 256 01aa 11E0     		b	.L76
+ 257              	.L84:
+ 258 01ac 5868     		ldr	r0, [r3, #4]
+ 259 01ae 9074     		strb	r0, [r2, #18]
+ 260 01b0 9961     		str	r1, [r3, #24]
+ 261 01b2 1021     		movs	r1, #16
+ 262 01b4 1960     		str	r1, [r3, #0]
+ 263 01b6 0821     		movs	r1, #8
+ 264 01b8 9961     		str	r1, [r3, #24]
+ 265              	.L46:
+ 266 01ba 1968     		ldr	r1, [r3, #0]
+ 267 01bc C906     		lsls	r1, r1, #27
+ 268 01be FCD4     		bmi	.L46
+ 269 01c0 6EE0     		b	.L78
+ 270              	.L33:
+ 271 01c2 C17C     		ldrb	r1, [r0, #19]	@ zero_extendqisi2
+ 272 01c4 0129     		cmp	r1, #1
+ 273 01c6 05D1     		bne	.L47
+ 274 01c8 2022     		movs	r2, #32
+ 275              	.L82:
+ 276 01ca 1A60     		str	r2, [r3, #0]
+ 277              	.L80:
+ 278 01cc 0822     		movs	r2, #8
+ 279 01ce 9A61     		str	r2, [r3, #24]
+ 280              	.L76:
+ 281 01d0 0020     		movs	r0, #0
+ 282 01d2 10BD     		pop	{r4, pc}
+ 283              	.L47:
+ 284 01d4 418B     		ldrh	r1, [r0, #26]
+ 285 01d6 B0F91840 		ldrsh	r4, [r0, #24]
+ 286 01da 08B2     		sxth	r0, r1
+ 287 01dc 8442     		cmp	r4, r0
+ 288 01de 0ADC     		bgt	.L48
+ 289 01e0 2022     		movs	r2, #32
+ 290 01e2 9A61     		str	r2, [r3, #24]
+ 291 01e4 1022     		movs	r2, #16
+ 292 01e6 1A60     		str	r2, [r3, #0]
+ 293 01e8 0822     		movs	r2, #8
+ 294 01ea 9A61     		str	r2, [r3, #24]
+ 295              	.L49:
+ 296 01ec 1A68     		ldr	r2, [r3, #0]
+ 297 01ee D006     		lsls	r0, r2, #27
+ 298 01f0 FCD4     		bmi	.L49
+ 299 01f2 0220     		movs	r0, #2
+ 300 01f4 10BD     		pop	{r4, pc}
+ 301              	.L48:
+ 302 01f6 1018     		adds	r0, r2, r0
+ 303 01f8 007D     		ldrb	r0, [r0, #20]	@ zero_extendqisi2
+ 304 01fa 0131     		adds	r1, r1, #1
+ 305 01fc 9860     		str	r0, [r3, #8]
+ 306 01fe 5183     		strh	r1, [r2, #26]	@ movhi
+ 307 0200 E4E7     		b	.L80
+ 308              	.L34:
+ 309 0202 5968     		ldr	r1, [r3, #4]
+ 310 0204 8174     		strb	r1, [r0, #18]
+ 311 0206 2021     		movs	r1, #32
+ 312 0208 9961     		str	r1, [r3, #24]
+ 313 020a 1021     		movs	r1, #16
+ 314 020c 1960     		str	r1, [r3, #0]
+ 315 020e 0821     		movs	r1, #8
+ 316 0210 9961     		str	r1, [r3, #24]
+ 317              	.L50:
+ 318 0212 1968     		ldr	r1, [r3, #0]
+ 319 0214 C906     		lsls	r1, r1, #27
+ 320 0216 FCD4     		bmi	.L50
+ 321 0218 42E0     		b	.L78
+ 322              	.L36:
+ 323 021a B0F91820 		ldrsh	r2, [r0, #24]
+ 324 021e 2021     		movs	r1, #32
+ 325 0220 012A     		cmp	r2, #1
+ 326 0222 9961     		str	r1, [r3, #24]
+ 327 0224 4FF00402 		mov	r2, #4
+ 328 0228 CFDC     		bgt	.L82
+ 329 022a 1BE0     		b	.L81
+ 330              	.L86:
+ 331 022c 5968     		ldr	r1, [r3, #4]
+ 332 022e 8174     		strb	r1, [r0, #18]
+ 333 0230 2021     		movs	r1, #32
+ 334 0232 9961     		str	r1, [r3, #24]
+ 335 0234 1021     		movs	r1, #16
+ 336 0236 1960     		str	r1, [r3, #0]
+ 337 0238 0821     		movs	r1, #8
+ 338 023a 9961     		str	r1, [r3, #24]
+ 339              	.L53:
+ 340 023c 1968     		ldr	r1, [r3, #0]
+ 341 023e C806     		lsls	r0, r1, #27
+ 342 0240 FCD4     		bmi	.L53
+ 343 0242 2DE0     		b	.L78
+ 344              	.L38:
+ 345 0244 418B     		ldrh	r1, [r0, #26]
+ 346 0246 9C68     		ldr	r4, [r3, #8]
+ 347 0248 08B2     		sxth	r0, r1
+ 348 024a 0131     		adds	r1, r1, #1
+ 349 024c 89B2     		uxth	r1, r1
+ 350 024e 1018     		adds	r0, r2, r0
+ 351 0250 5183     		strh	r1, [r2, #26]	@ movhi
+ 352 0252 B2F91820 		ldrsh	r2, [r2, #24]
+ 353 0256 09B2     		sxth	r1, r1
+ 354 0258 013A     		subs	r2, r2, #1
+ 355 025a 9142     		cmp	r1, r2
+ 356 025c 0475     		strb	r4, [r0, #20]
+ 357 025e 4FF00402 		mov	r2, #4
+ 358 0262 B2DB     		blt	.L82
+ 359              	.L81:
+ 360 0264 9A61     		str	r2, [r3, #24]
+ 361 0266 B1E7     		b	.L80
+ 362              	.L39:
+ 363 0268 418B     		ldrh	r1, [r0, #26]
+ 364 026a 9C68     		ldr	r4, [r3, #8]
+ 365 026c 08B2     		sxth	r0, r1
+ 366 026e 0131     		adds	r1, r1, #1
+ 367 0270 5183     		strh	r1, [r2, #26]	@ movhi
+ 368 0272 1018     		adds	r0, r2, r0
+ 369 0274 2021     		movs	r1, #32
+ 370 0276 0475     		strb	r4, [r0, #20]
+ 371 0278 9961     		str	r1, [r3, #24]
+ 372 027a 1021     		movs	r1, #16
+ 373 027c 1960     		str	r1, [r3, #0]
+ 374 027e 0821     		movs	r1, #8
+ 375 0280 9961     		str	r1, [r3, #24]
+ 376              	.L56:
+ 377 0282 1968     		ldr	r1, [r3, #0]
+ 378 0284 C906     		lsls	r1, r1, #27
+ 379 0286 FCD4     		bmi	.L56
+ 380 0288 0AE0     		b	.L78
+ 381              	.L28:
+ 382 028a 5968     		ldr	r1, [r3, #4]
+ 383 028c 8174     		strb	r1, [r0, #18]
+ 384 028e 2021     		movs	r1, #32
+ 385 0290 9961     		str	r1, [r3, #24]
+ 386 0292 1021     		movs	r1, #16
+ 387 0294 1960     		str	r1, [r3, #0]
+ 388 0296 0821     		movs	r1, #8
+ 389 0298 9961     		str	r1, [r3, #24]
+ 390              	.L57:
+ 391 029a 1968     		ldr	r1, [r3, #0]
+ 392 029c C806     		lsls	r0, r1, #27
+ 393 029e FCD4     		bmi	.L57
+ 394              	.L78:
+ 395 02a0 D07C     		ldrb	r0, [r2, #19]	@ zero_extendqisi2
+ 396 02a2 0128     		cmp	r0, #1
+ 397 02a4 0CBF     		ite	eq
+ 398 02a6 0120     		moveq	r0, #1
+ 399 02a8 0220     		movne	r0, #2
+ 400 02aa 10BD     		pop	{r4, pc}
+ 401              	.L85:
+ 402 02ac C07C     		ldrb	r0, [r0, #19]	@ zero_extendqisi2
+ 403 02ae 5B68     		ldr	r3, [r3, #4]
+ 404 02b0 0128     		cmp	r0, #1
+ 405 02b2 0CBF     		ite	eq
+ 406 02b4 0120     		moveq	r0, #1
+ 407 02b6 0220     		movne	r0, #2
+ 408 02b8 9374     		strb	r3, [r2, #18]
+ 409 02ba 10BD     		pop	{r4, pc}
+ 410              	.L27:
+ 411 02bc 5968     		ldr	r1, [r3, #4]
+ 412 02be 9174     		strb	r1, [r2, #18]
+ 413 02c0 2021     		movs	r1, #32
+ 414 02c2 9961     		str	r1, [r3, #24]
+ 415 02c4 1021     		movs	r1, #16
+ 416 02c6 1960     		str	r1, [r3, #0]
+ 417 02c8 0821     		movs	r1, #8
+ 418 02ca 9961     		str	r1, [r3, #24]
+ 419              	.L59:
+ 420 02cc 1968     		ldr	r1, [r3, #0]
+ 421 02ce C906     		lsls	r1, r1, #27
+ 422 02d0 FCD4     		bmi	.L59
+ 423 02d2 D07C     		ldrb	r0, [r2, #19]	@ zero_extendqisi2
+ 424 02d4 0128     		cmp	r0, #1
+ 425 02d6 0CBF     		ite	eq
+ 426 02d8 0120     		moveq	r0, #1
+ 427 02da 0220     		movne	r0, #2
+ 428 02dc 10BD     		pop	{r4, pc}
+ 430              		.align	1
+ 431              		.global	_ZN8I2C_Base8writeRegEccc
+ 432              		.thumb
+ 433              		.thumb_func
+ 435              	_ZN8I2C_Base8writeRegEccc:
+ 436              		@ args = 0, pretend = 0, frame = 8
+ 437              		@ frame_needed = 0, uses_anonymous_args = 0
+ 438 02de F0B5     		push	{r4, r5, r6, r7, lr}
+ 439 02e0 85B0     		sub	sp, sp, #20
+ 440 02e2 0446     		mov	r4, r0
+ 441 02e4 0E46     		mov	r6, r1
+ 442 02e6 1546     		mov	r5, r2
+ 443 02e8 8DF80F30 		strb	r3, [sp, #15]
+ 444 02ec FFF7FEFF 		bl	xTaskGetSchedulerState
+ 445 02f0 0128     		cmp	r0, #1
+ 446 02f2 0746     		mov	r7, r0
+ 447 02f4 2AD0     		beq	.L88
+ 448 02f6 2379     		ldrb	r3, [r4, #4]	@ zero_extendqisi2
+ 449 02f8 1E4A     		ldr	r2, .L94
+ 450 02fa 59B2     		sxtb	r1, r3
+ 451 02fc 03F01F00 		and	r0, r3, #31
+ 452 0300 0123     		movs	r3, #1
+ 453 0302 13FA00F0 		lsls	r0, r3, r0
+ 454 0306 4909     		lsrs	r1, r1, #5
+ 455 0308 2031     		adds	r1, r1, #32
+ 456 030a 42F82100 		str	r0, [r2, r1, lsl #2]
+ 457 030e 0DF10F02 		add	r2, sp, #15
+ 458 0312 8DE80C00 		stmia	sp, {r2, r3}
+ 459 0316 2046     		mov	r0, r4
+ 460 0318 0021     		movs	r1, #0
+ 461 031a 3246     		mov	r2, r6
+ 462 031c 2B46     		mov	r3, r5
+ 463 031e FFF7FEFF 		bl	_ZN8I2C_Base18i2cKickOffTransferENS_12mI2cModeTypeEccPci
+ 464              	.L90:
+ 465 0322 2368     		ldr	r3, [r4, #0]
+ 466              	.L89:
+ 467 0324 1A68     		ldr	r2, [r3, #0]
+ 468 0326 1207     		lsls	r2, r2, #28
+ 469 0328 FCD5     		bpl	.L89
+ 470 032a 2046     		mov	r0, r4
+ 471 032c FFF7FEFF 		bl	_ZN8I2C_Base15i2cStateMachineEv
+ 472 0330 0228     		cmp	r0, #2
+ 473 0332 F6D1     		bne	.L90
+ 474 0334 2379     		ldrb	r3, [r4, #4]	@ zero_extendqisi2
+ 475 0336 0120     		movs	r0, #1
+ 476 0338 59B2     		sxtb	r1, r3
+ 477 033a 03F01F03 		and	r3, r3, #31
+ 478 033e 10FA03F3 		lsls	r3, r0, r3
+ 479 0342 0C4A     		ldr	r2, .L94
+ 480 0344 4909     		lsrs	r1, r1, #5
+ 481 0346 42F82130 		str	r3, [r2, r1, lsl #2]
+ 482 034a 11E0     		b	.L91
+ 483              	.L88:
+ 484 034c 0021     		movs	r1, #0
+ 485 034e 0B46     		mov	r3, r1
+ 486 0350 4FF0FF32 		mov	r2, #-1
+ 487 0354 A068     		ldr	r0, [r4, #8]
+ 488 0356 FFF7FEFF 		bl	xQueueGenericReceive
+ 489 035a 0DF10F03 		add	r3, sp, #15
+ 490 035e 8DE88800 		stmia	sp, {r3, r7}
+ 491 0362 2046     		mov	r0, r4
+ 492 0364 0021     		movs	r1, #0
+ 493 0366 3246     		mov	r2, r6
+ 494 0368 2B46     		mov	r3, r5
+ 495 036a FFF7FEFF 		bl	_ZN8I2C_Base18i2cKickOffTransferENS_12mI2cModeTypeEccPci
+ 496 036e 0020     		movs	r0, #0
+ 497              	.L91:
+ 498 0370 05B0     		add	sp, sp, #20
+ 499 0372 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 500              	.L95:
+ 501              		.align	2
+ 502              	.L94:
+ 503 0374 00E100E0 		.word	-536813312
+ 505              		.align	1
+ 506              		.global	_ZN8I2C_Base13readRegistersEccPcj
+ 507              		.thumb
+ 508              		.thumb_func
+ 510              	_ZN8I2C_Base13readRegistersEccPcj:
+ 511              		@ args = 4, pretend = 0, frame = 0
+ 512              		@ frame_needed = 0, uses_anonymous_args = 0
+ 513 0378 2DE9F743 		push	{r0, r1, r2, r4, r5, r6, r7, r8, r9, lr}
+ 514 037c 0A9D     		ldr	r5, [sp, #40]
+ 515 037e 0446     		mov	r4, r0
+ 516 0380 0020     		movs	r0, #0
+ 517 0382 042D     		cmp	r5, #4
+ 518 0384 8846     		mov	r8, r1
+ 519 0386 9146     		mov	r9, r2
+ 520 0388 1E46     		mov	r6, r3
+ 521 038a 64D8     		bhi	.L97
+ 522 038c FFF7FEFF 		bl	xTaskGetSchedulerState
+ 523 0390 0128     		cmp	r0, #1
+ 524 0392 0746     		mov	r7, r0
+ 525 0394 31D0     		beq	.L98
+ 526 0396 2379     		ldrb	r3, [r4, #4]	@ zero_extendqisi2
+ 527 0398 0121     		movs	r1, #1
+ 528 039a 58B2     		sxtb	r0, r3
+ 529 039c 03F01F03 		and	r3, r3, #31
+ 530 03a0 11FA03F3 		lsls	r3, r1, r3
+ 531 03a4 2D4A     		ldr	r2, .L106
+ 532 03a6 4009     		lsrs	r0, r0, #5
+ 533 03a8 2030     		adds	r0, r0, #32
+ 534 03aa 42F82030 		str	r3, [r2, r0, lsl #2]
+ 535 03ae 2046     		mov	r0, r4
+ 536 03b0 4246     		mov	r2, r8
+ 537 03b2 4B46     		mov	r3, r9
+ 538 03b4 0096     		str	r6, [sp, #0]
+ 539 03b6 0195     		str	r5, [sp, #4]
+ 540 03b8 FFF7FEFF 		bl	_ZN8I2C_Base18i2cKickOffTransferENS_12mI2cModeTypeEccPci
+ 541              	.L100:
+ 542 03bc 2368     		ldr	r3, [r4, #0]
+ 543              	.L99:
+ 544 03be 1A68     		ldr	r2, [r3, #0]
+ 545 03c0 1107     		lsls	r1, r2, #28
+ 546 03c2 FCD5     		bpl	.L99
+ 547 03c4 2046     		mov	r0, r4
+ 548 03c6 FFF7FEFF 		bl	_ZN8I2C_Base15i2cStateMachineEv
+ 549 03ca 0128     		cmp	r0, #1
+ 550 03cc 0746     		mov	r7, r0
+ 551 03ce F5D1     		bne	.L100
+ 552 03d0 04F11401 		add	r1, r4, #20
+ 553 03d4 2A46     		mov	r2, r5
+ 554 03d6 3046     		mov	r0, r6
+ 555 03d8 FFF7FEFF 		bl	memcpy
+ 556 03dc 2379     		ldrb	r3, [r4, #4]	@ zero_extendqisi2
+ 557 03de 1F4A     		ldr	r2, .L106
+ 558 03e0 59B2     		sxtb	r1, r3
+ 559 03e2 03F01F03 		and	r3, r3, #31
+ 560 03e6 9F40     		lsls	r7, r7, r3
+ 561 03e8 4909     		lsrs	r1, r1, #5
+ 562 03ea 42F82170 		str	r7, [r2, r1, lsl #2]
+ 563 03ee A07C     		ldrb	r0, [r4, #18]	@ zero_extendqisi2
+ 564 03f0 D0F10100 		rsbs	r0, r0, #1
+ 565 03f4 38BF     		it	cc
+ 566 03f6 0020     		movcc	r0, #0
+ 567 03f8 2DE0     		b	.L97
+ 568              	.L98:
+ 569 03fa 0021     		movs	r1, #0
+ 570 03fc 0B46     		mov	r3, r1
+ 571 03fe 4FF0FF32 		mov	r2, #-1
+ 572 0402 A068     		ldr	r0, [r4, #8]
+ 573 0404 FFF7FEFF 		bl	xQueueGenericReceive
+ 574 0408 0021     		movs	r1, #0
+ 575 040a 0A46     		mov	r2, r1
+ 576 040c 0B46     		mov	r3, r1
+ 577 040e E068     		ldr	r0, [r4, #12]
+ 578 0410 FFF7FEFF 		bl	xQueueGenericReceive
+ 579 0414 3946     		mov	r1, r7
+ 580 0416 2046     		mov	r0, r4
+ 581 0418 4246     		mov	r2, r8
+ 582 041a 4B46     		mov	r3, r9
+ 583 041c 0096     		str	r6, [sp, #0]
+ 584 041e 0195     		str	r5, [sp, #4]
+ 585 0420 FFF7FEFF 		bl	_ZN8I2C_Base18i2cKickOffTransferENS_12mI2cModeTypeEccPci
+ 586 0424 0021     		movs	r1, #0
+ 587 0426 6422     		movs	r2, #100
+ 588 0428 E068     		ldr	r0, [r4, #12]
+ 589 042a 0B46     		mov	r3, r1
+ 590 042c FFF7FEFF 		bl	xQueueGenericReceive
+ 591 0430 A77C     		ldrb	r7, [r4, #18]	@ zero_extendqisi2
+ 592 0432 D7F10107 		rsbs	r7, r7, #1
+ 593 0436 38BF     		it	cc
+ 594 0438 0027     		movcc	r7, #0
+ 595 043a 2FB1     		cbz	r7, .L102
+ 596 043c 04F11401 		add	r1, r4, #20
+ 597 0440 3046     		mov	r0, r6
+ 598 0442 2A46     		mov	r2, r5
+ 599 0444 FFF7FEFF 		bl	memcpy
+ 600              	.L102:
+ 601 0448 0021     		movs	r1, #0
+ 602 044a A068     		ldr	r0, [r4, #8]
+ 603 044c 0A46     		mov	r2, r1
+ 604 044e 0B46     		mov	r3, r1
+ 605 0450 FFF7FEFF 		bl	xQueueGenericSend
+ 606 0454 3846     		mov	r0, r7
+ 607              	.L97:
+ 608 0456 BDE8FE83 		pop	{r1, r2, r3, r4, r5, r6, r7, r8, r9, pc}
+ 609              	.L107:
+ 610 045a 00BF     		.align	2
+ 611              	.L106:
+ 612 045c 00E100E0 		.word	-536813312
+ 614              		.align	1
+ 615              		.global	_ZN8I2C_Base15isDevicePresentEc
+ 616              		.thumb
+ 617              		.thumb_func
+ 619              	_ZN8I2C_Base15isDevicePresentEc:
+ 620              		@ args = 0, pretend = 0, frame = 8
+ 621              		@ frame_needed = 0, uses_anonymous_args = 0
+ 622 0460 1FB5     		push	{r0, r1, r2, r3, r4, lr}
+ 623 0462 0022     		movs	r2, #0
+ 624 0464 04AB     		add	r3, sp, #16
+ 625 0466 03F8012D 		strb	r2, [r3, #-1]!
+ 626 046a 0092     		str	r2, [sp, #0]
+ 627 046c FFF7FEFF 		bl	_ZN8I2C_Base13readRegistersEccPcj
+ 628 0470 05B0     		add	sp, sp, #20
+ 629 0472 00BD     		pop	{pc}
+ 631              		.align	1
+ 632              		.global	_ZN8I2C_Base7readRegEcc
+ 633              		.thumb
+ 634              		.thumb_func
+ 636              	_ZN8I2C_Base7readRegEcc:
+ 637              		@ args = 0, pretend = 0, frame = 8
+ 638              		@ frame_needed = 0, uses_anonymous_args = 0
+ 639 0474 1FB5     		push	{r0, r1, r2, r3, r4, lr}
+ 640 0476 0024     		movs	r4, #0
+ 641 0478 04AB     		add	r3, sp, #16
+ 642 047a 03F8014D 		strb	r4, [r3, #-1]!
+ 643 047e 0124     		movs	r4, #1
+ 644 0480 0094     		str	r4, [sp, #0]
+ 645 0482 FFF7FEFF 		bl	_ZN8I2C_Base13readRegistersEccPcj
+ 646 0486 9DF80F00 		ldrb	r0, [sp, #15]	@ zero_extendqisi2
+ 647 048a 04B0     		add	sp, sp, #16
+ 648 048c 10BD     		pop	{r4, pc}
+ 650              		.align	1
+ 651              		.global	_ZN8I2C_Base15handleInterruptEv
+ 652              		.thumb
+ 653              		.thumb_func
+ 655              	_ZN8I2C_Base15handleInterruptEv:
+ 656              		@ args = 0, pretend = 0, frame = 8
+ 657              		@ frame_needed = 0, uses_anonymous_args = 0
+ 658 048e 37B5     		push	{r0, r1, r2, r4, r5, lr}
+ 659 0490 0024     		movs	r4, #0
+ 660 0492 0546     		mov	r5, r0
+ 661 0494 0194     		str	r4, [sp, #4]
+ 662 0496 FFF7FEFF 		bl	_ZN8I2C_Base15i2cStateMachineEv
+ 663 049a 0128     		cmp	r0, #1
+ 664 049c 08BF     		it	eq
+ 665 049e E868     		ldreq	r0, [r5, #12]
+ 666 04a0 02D0     		beq	.L114
+ 667 04a2 0228     		cmp	r0, #2
+ 668 04a4 09D1     		bne	.L110
+ 669 04a6 A868     		ldr	r0, [r5, #8]
+ 670              	.L114:
+ 671 04a8 2346     		mov	r3, r4
+ 672 04aa 2146     		mov	r1, r4
+ 673 04ac 01AA     		add	r2, sp, #4
+ 674 04ae FFF7FEFF 		bl	xQueueGenericSendFromISR
+ 675 04b2 019B     		ldr	r3, [sp, #4]
+ 676 04b4 0BB1     		cbz	r3, .L110
+ 677 04b6 FFF7FEFF 		bl	vPortYieldFromISR
+ 678              	.L110:
+ 679 04ba 3EBD     		pop	{r1, r2, r3, r4, r5, pc}
+ 681              		.global	_ZN8I2C_BaseC1EP15LPC_I2C_TypeDef
+ 682              		.thumb_set _ZN8I2C_BaseC1EP15LPC_I2C_TypeDef,_ZN8I2C_BaseC2EP15LPC_I2C_TypeDef
+ 683              		.ident	"GCC: (GNU) 4.6.2"
+DEFINED SYMBOLS
+                            *ABS*:00000000 i2c_base.cpp
+C:\Users\Rhonda\AppData\Local\Temp\ccFgBBae.s:15     .text:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccFgBBae.s:20     .text:00000000 _ZN8I2C_BaseC2EP15LPC_I2C_TypeDef
+C:\Users\Rhonda\AppData\Local\Temp\ccFgBBae.s:70     .text:00000058 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccFgBBae.s:74     .text:00000064 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccFgBBae.s:79     .text:00000064 _ZN8I2C_Base4initEjj
+C:\Users\Rhonda\AppData\Local\Temp\ccFgBBae.s:146    .text:000000f0 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccFgBBae.s:150    .text:000000fc $t
+C:\Users\Rhonda\AppData\Local\Temp\ccFgBBae.s:155    .text:000000fc _ZN8I2C_Base18i2cKickOffTransferENS_12mI2cModeTypeEccPci
+C:\Users\Rhonda\AppData\Local\Temp\ccFgBBae.s:187    .text:0000012a _ZN8I2C_Base15i2cStateMachineEv
+C:\Users\Rhonda\AppData\Local\Temp\ccFgBBae.s:435    .text:000002de _ZN8I2C_Base8writeRegEccc
+C:\Users\Rhonda\AppData\Local\Temp\ccFgBBae.s:503    .text:00000374 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccFgBBae.s:505    .text:00000378 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccFgBBae.s:510    .text:00000378 _ZN8I2C_Base13readRegistersEccPcj
+C:\Users\Rhonda\AppData\Local\Temp\ccFgBBae.s:612    .text:0000045c $d
+C:\Users\Rhonda\AppData\Local\Temp\ccFgBBae.s:614    .text:00000460 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccFgBBae.s:619    .text:00000460 _ZN8I2C_Base15isDevicePresentEc
+C:\Users\Rhonda\AppData\Local\Temp\ccFgBBae.s:636    .text:00000474 _ZN8I2C_Base7readRegEcc
+C:\Users\Rhonda\AppData\Local\Temp\ccFgBBae.s:655    .text:0000048e _ZN8I2C_Base15handleInterruptEv
+C:\Users\Rhonda\AppData\Local\Temp\ccFgBBae.s:20     .text:00000000 _ZN8I2C_BaseC1EP15LPC_I2C_TypeDef
+
+UNDEFINED SYMBOLS
+xQueueCreateMutex
+xQueueCreate
+xQueueGenericSend
+xQueueGenericReceive
+memcpy
+xTaskGetSchedulerState
+xQueueGenericSendFromISR
+vPortYieldFromISR

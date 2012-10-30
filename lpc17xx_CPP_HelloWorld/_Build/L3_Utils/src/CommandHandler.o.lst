@@ -1,0 +1,373 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"CommandHandler.cpp"
+  14              		.text
+  15              		.align	1
+  16              		.global	_ZN16CommandProcessor24getRegisteredCommandListER3str
+  17              		.thumb
+  18              		.thumb_func
+  20              	_ZN16CommandProcessor24getRegisteredCommandListER3str:
+  21              		@ args = 0, pretend = 0, frame = 0
+  22              		@ frame_needed = 0, uses_anonymous_args = 0
+  23 0000 70B5     		push	{r4, r5, r6, lr}
+  24 0002 0546     		mov	r5, r0
+  25 0004 0E46     		mov	r6, r1
+  26 0006 0846     		mov	r0, r1
+  27 0008 0C49     		ldr	r1, .L6
+  28 000a FFF7FEFF 		bl	_ZN3straSEPKc
+  29 000e 0024     		movs	r4, #0
+  30 0010 10E0     		b	.L2
+  31              	.L5:
+  32 0012 3046     		mov	r0, r6
+  33 0014 0A49     		ldr	r1, .L6+4
+  34 0016 FFF7FEFF 		bl	_ZN3strpLEPKc
+  35 001a AB68     		ldr	r3, [r5, #8]
+  36 001c 3046     		mov	r0, r6
+  37 001e 9C42     		cmp	r4, r3
+  38 0020 36BF     		itet	cc
+  39 0022 EB68     		ldrcc	r3, [r5, #12]
+  40 0024 05F11003 		addcs	r3, r5, #16
+  41 0028 53F82430 		ldrcc	r3, [r3, r4, lsl #2]
+  42 002c 0134     		adds	r4, r4, #1
+  43 002e 1968     		ldr	r1, [r3, #0]
+  44 0030 FFF7FEFF 		bl	_ZN3strpLEPKc
+  45              	.L2:
+  46 0034 AB68     		ldr	r3, [r5, #8]
+  47 0036 9C42     		cmp	r4, r3
+  48 0038 EBD3     		bcc	.L5
+  49 003a 70BD     		pop	{r4, r5, r6, pc}
+  50              	.L7:
+  51              		.align	2
+  52              	.L6:
+  53 003c 00000000 		.word	.LC0
+  54 0040 14000000 		.word	.LC1
+  56              		.align	1
+  57              		.global	_ZN16CommandProcessor11getHelpTextER3strS1_
+  58              		.thumb
+  59              		.thumb_func
+  61              	_ZN16CommandProcessor11getHelpTextER3strS1_:
+  62              		@ args = 0, pretend = 0, frame = 0
+  63              		@ frame_needed = 0, uses_anonymous_args = 0
+  64 0044 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  65 0048 0446     		mov	r4, r0
+  66 004a 0846     		mov	r0, r1
+  67 004c 0D46     		mov	r5, r1
+  68 004e 1746     		mov	r7, r2
+  69 0050 FFF7FEFF 		bl	_ZNK3str6getLenEv
+  70 0054 0028     		cmp	r0, #0
+  71 0056 23DD     		ble	.L9
+  72 0058 3846     		mov	r0, r7
+  73 005a 1449     		ldr	r1, .L17
+  74 005c FFF7FEFF 		bl	_ZN3straSEPKc
+  75 0060 0026     		movs	r6, #0
+  76 0062 18E0     		b	.L10
+  77              	.L13:
+  78 0064 E368     		ldr	r3, [r4, #12]
+  79 0066 2846     		mov	r0, r5
+  80 0068 53F82680 		ldr	r8, [r3, r6, lsl #2]
+  81 006c D8F80010 		ldr	r1, [r8, #0]
+  82 0070 FFF7FEFF 		bl	_ZNK3str19compareToIgnoreCaseEPKc
+  83 0074 70B1     		cbz	r0, .L11
+  84 0076 D8F80410 		ldr	r1, [r8, #4]
+  85 007a 29B1     		cbz	r1, .L15
+  86 007c 0A78     		ldrb	r2, [r1, #0]	@ zero_extendqisi2
+  87 007e 0C4B     		ldr	r3, .L17+4
+  88 0080 002A     		cmp	r2, #0
+  89 0082 08BF     		it	eq
+  90 0084 1946     		moveq	r1, r3
+  91 0086 00E0     		b	.L12
+  92              	.L15:
+  93 0088 0949     		ldr	r1, .L17+4
+  94              	.L12:
+  95 008a 3846     		mov	r0, r7
+  96 008c BDE8F041 		pop	{r4, r5, r6, r7, r8, lr}
+  97 0090 FFF7FEBF 		b	_ZN3straSEPKc
+  98              	.L11:
+  99 0094 0136     		adds	r6, r6, #1
+ 100              	.L10:
+ 101 0096 A368     		ldr	r3, [r4, #8]
+ 102 0098 9E42     		cmp	r6, r3
+ 103 009a E3D3     		bcc	.L13
+ 104 009c BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 105              	.L9:
+ 106 00a0 2046     		mov	r0, r4
+ 107 00a2 3946     		mov	r1, r7
+ 108 00a4 BDE8F041 		pop	{r4, r5, r6, r7, r8, lr}
+ 109 00a8 FEE7     		b	_ZN16CommandProcessor24getRegisteredCommandListER3str
+ 110              	.L18:
+ 111 00aa 00BF     		.align	2
+ 112              	.L17:
+ 113 00ac 3F000000 		.word	.LC3
+ 114 00b0 1B000000 		.word	.LC2
+ 116              		.align	1
+ 117              		.global	_ZN16CommandProcessor17pointToParametersER3strPKc
+ 118              		.thumb
+ 119              		.thumb_func
+ 121              	_ZN16CommandProcessor17pointToParametersER3strPKc:
+ 122              		@ args = 0, pretend = 0, frame = 0
+ 123              		@ frame_needed = 0, uses_anonymous_args = 0
+ 124 00b4 38B5     		push	{r3, r4, r5, lr}
+ 125 00b6 1046     		mov	r0, r2
+ 126 00b8 0C46     		mov	r4, r1
+ 127 00ba FFF7FEFF 		bl	strlen
+ 128 00be 0546     		mov	r5, r0
+ 129 00c0 2046     		mov	r0, r4
+ 130 00c2 FFF7FEFF 		bl	_ZNK3str6getLenEv
+ 131 00c6 691C     		adds	r1, r5, #1
+ 132 00c8 A842     		cmp	r0, r5
+ 133 00ca D8BF     		it	le
+ 134 00cc 2946     		movle	r1, r5
+ 135 00ce 2046     		mov	r0, r4
+ 136 00d0 BDE83840 		pop	{r3, r4, r5, lr}
+ 137 00d4 FFF7FEBF 		b	_ZN3str10eraseFirstEi
+ 139              		.align	1
+ 140              		.global	_ZN16CommandProcessor9handleCmdER3strS1_
+ 141              		.thumb
+ 142              		.thumb_func
+ 144              	_ZN16CommandProcessor9handleCmdER3strS1_:
+ 145              		@ args = 0, pretend = 0, frame = 0
+ 146              		@ frame_needed = 0, uses_anonymous_args = 0
+ 147 00d8 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 148 00dc 0446     		mov	r4, r0
+ 149 00de 8846     		mov	r8, r1
+ 150 00e0 1646     		mov	r6, r2
+ 151 00e2 0846     		mov	r0, r1
+ 152 00e4 2022     		movs	r2, #32
+ 153 00e6 1F49     		ldr	r1, .L29
+ 154 00e8 FFF7FEFF 		bl	_ZNK3str29beginsWithWholeWordIgnoreCaseEPKcc
+ 155 00ec 0028     		cmp	r0, #0
+ 156 00ee 29D0     		beq	.L28
+ 157 00f0 2046     		mov	r0, r4
+ 158 00f2 4146     		mov	r1, r8
+ 159 00f4 1B4A     		ldr	r2, .L29
+ 160 00f6 FFF7FEFF 		bl	_ZN16CommandProcessor17pointToParametersER3strPKc
+ 161 00fa 2046     		mov	r0, r4
+ 162 00fc 4146     		mov	r1, r8
+ 163 00fe 3246     		mov	r2, r6
+ 164 0100 BDE8F843 		pop	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 165 0104 FEE7     		b	_ZN16CommandProcessor11getHelpTextER3strS1_
+ 166              	.L26:
+ 167 0106 E368     		ldr	r3, [r4, #12]
+ 168 0108 4046     		mov	r0, r8
+ 169 010a 53F82590 		ldr	r9, [r3, r5, lsl #2]
+ 170 010e 2022     		movs	r2, #32
+ 171 0110 D9F80010 		ldr	r1, [r9, #0]
+ 172 0114 FFF7FEFF 		bl	_ZNK3str29beginsWithWholeWordIgnoreCaseEPKcc
+ 173 0118 90B1     		cbz	r0, .L24
+ 174 011a 4146     		mov	r1, r8
+ 175 011c D9F80020 		ldr	r2, [r9, #0]
+ 176 0120 2046     		mov	r0, r4
+ 177 0122 FFF7FEFF 		bl	_ZN16CommandProcessor17pointToParametersER3strPKc
+ 178 0126 3046     		mov	r0, r6
+ 179 0128 FFF7FEFF 		bl	_ZN3str5clearEv
+ 180 012c D9F80870 		ldr	r7, [r9, #8]
+ 181 0130 4046     		mov	r0, r8
+ 182 0132 3146     		mov	r1, r6
+ 183 0134 D9F80C20 		ldr	r2, [r9, #12]
+ 184 0138 D9F81030 		ldr	r3, [r9, #16]
+ 185 013c B847     		blx	r7
+ 186 013e 05E0     		b	.L25
+ 187              	.L24:
+ 188 0140 0135     		adds	r5, r5, #1
+ 189 0142 00E0     		b	.L23
+ 190              	.L28:
+ 191 0144 0546     		mov	r5, r0
+ 192              	.L23:
+ 193 0146 A368     		ldr	r3, [r4, #8]
+ 194 0148 9D42     		cmp	r5, r3
+ 195 014a DCD3     		bcc	.L26
+ 196              	.L25:
+ 197 014c A368     		ldr	r3, [r4, #8]
+ 198 014e 9D42     		cmp	r5, r3
+ 199 0150 05D3     		bcc	.L22
+ 200 0152 0549     		ldr	r1, .L29+4
+ 201 0154 3046     		mov	r0, r6
+ 202 0156 BDE8F843 		pop	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 203 015a FFF7FEBF 		b	_ZN3straSEPKc
+ 204              	.L22:
+ 205 015e BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 206              	.L30:
+ 207 0162 00BF     		.align	2
+ 208              	.L29:
+ 209 0164 4F000000 		.word	.LC4
+ 210 0168 3F000000 		.word	.LC3
+ 212              		.align	1
+ 213              		.global	_ZN16CommandProcessor13handleCommandEPKc
+ 214              		.thumb
+ 215              		.thumb_func
+ 217              	_ZN16CommandProcessor13handleCommandEPKc:
+ 218              		@ args = 0, pretend = 0, frame = 0
+ 219              		@ frame_needed = 0, uses_anonymous_args = 0
+ 220 016c 70B5     		push	{r4, r5, r6, lr}
+ 221 016e 0446     		mov	r4, r0
+ 222 0170 0846     		mov	r0, r1
+ 223 0172 0E46     		mov	r6, r1
+ 224 0174 FFF7FEFF 		bl	strlen
+ 225 0178 7F28     		cmp	r0, #127
+ 226 017a 05D9     		bls	.L32
+ 227 017c 04F13800 		add	r0, r4, #56
+ 228 0180 0A49     		ldr	r1, .L34
+ 229 0182 FFF7FEFF 		bl	_ZN3straSEPKc
+ 230 0186 0BE0     		b	.L33
+ 231              	.L32:
+ 232 0188 04F12405 		add	r5, r4, #36
+ 233 018c 2846     		mov	r0, r5
+ 234 018e 3146     		mov	r1, r6
+ 235 0190 FFF7FEFF 		bl	_ZN3straSEPKc
+ 236 0194 04F13802 		add	r2, r4, #56
+ 237 0198 2046     		mov	r0, r4
+ 238 019a 2946     		mov	r1, r5
+ 239 019c FFF7FEFF 		bl	_ZN16CommandProcessor9handleCmdER3strS1_
+ 240              	.L33:
+ 241 01a0 04F13800 		add	r0, r4, #56
+ 242 01a4 BDE87040 		pop	{r4, r5, r6, lr}
+ 243 01a8 FFF7FEBF 		b	_ZNK3strclEv
+ 244              	.L35:
+ 245              		.align	2
+ 246              	.L34:
+ 247 01ac 54000000 		.word	.LC5
+ 249              		.section	.text._ZN6VECTORIN16CommandProcessor16CmdProcessorTypeEE9push_backERKS1_,"axG",%progbits,
+ 250              		.align	1
+ 251              		.weak	_ZN6VECTORIN16CommandProcessor16CmdProcessorTypeEE9push_backERKS1_
+ 252              		.thumb
+ 253              		.thumb_func
+ 255              	_ZN6VECTORIN16CommandProcessor16CmdProcessorTypeEE9push_backERKS1_:
+ 256              		@ args = 0, pretend = 0, frame = 0
+ 257              		@ frame_needed = 0, uses_anonymous_args = 0
+ 258 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 259 0004 8268     		ldr	r2, [r0, #8]
+ 260 0006 4368     		ldr	r3, [r0, #4]
+ 261 0008 0446     		mov	r4, r0
+ 262 000a 9A42     		cmp	r2, r3
+ 263 000c 0E46     		mov	r6, r1
+ 264 000e 1CD3     		bcc	.L37
+ 265 0010 0768     		ldr	r7, [r0, #0]
+ 266 0012 DF19     		adds	r7, r3, r7
+ 267 0014 19D2     		bcs	.L37
+ 268 0016 B900     		lsls	r1, r7, #2
+ 269 0018 C068     		ldr	r0, [r0, #12]
+ 270 001a FFF7FEFF 		bl	realloc
+ 271 001e A568     		ldr	r5, [r4, #8]
+ 272 0020 E060     		str	r0, [r4, #12]
+ 273 0022 4FEA8508 		lsl	r8, r5, #2
+ 274 0026 0DE0     		b	.L38
+ 275              	.L39:
+ 276 0028 1420     		movs	r0, #20
+ 277 002a FFF7FEFF 		bl	_Znwj
+ 278 002e 0021     		movs	r1, #0
+ 279 0030 1422     		movs	r2, #20
+ 280 0032 8146     		mov	r9, r0
+ 281 0034 FFF7FEFF 		bl	memset
+ 282 0038 E368     		ldr	r3, [r4, #12]
+ 283 003a 0135     		adds	r5, r5, #1
+ 284 003c 43F80890 		str	r9, [r3, r8]
+ 285 0040 08F10408 		add	r8, r8, #4
+ 286              	.L38:
+ 287 0044 BD42     		cmp	r5, r7
+ 288 0046 EFD3     		bcc	.L39
+ 289 0048 6760     		str	r7, [r4, #4]
+ 290              	.L37:
+ 291 004a A768     		ldr	r7, [r4, #8]
+ 292 004c E368     		ldr	r3, [r4, #12]
+ 293 004e 53F82750 		ldr	r5, [r3, r7, lsl #2]
+ 294 0052 0FCE     		ldmia	r6!, {r0, r1, r2, r3}
+ 295 0054 0FC5     		stmia	r5!, {r0, r1, r2, r3}
+ 296 0056 3368     		ldr	r3, [r6, #0]
+ 297 0058 0137     		adds	r7, r7, #1
+ 298 005a 2B60     		str	r3, [r5, #0]
+ 299 005c A760     		str	r7, [r4, #8]
+ 300 005e BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 302              		.text
+ 303              		.align	1
+ 304              		.global	_ZN16CommandProcessor10addHandlerEPFvR3strS1_PviEPKcS6_S2_i
+ 305              		.thumb
+ 306              		.thumb_func
+ 308              	_ZN16CommandProcessor10addHandlerEPFvR3strS1_PviEPKcS6_S2_i:
+ 309              		@ args = 8, pretend = 0, frame = 24
+ 310              		@ frame_needed = 0, uses_anonymous_args = 0
+ 311 01b0 7FB5     		push	{r0, r1, r2, r3, r4, r5, r6, lr}
+ 312 01b2 0293     		str	r3, [sp, #8]
+ 313 01b4 089B     		ldr	r3, [sp, #32]
+ 314 01b6 0391     		str	r1, [sp, #12]
+ 315 01b8 0493     		str	r3, [sp, #16]
+ 316 01ba 099B     		ldr	r3, [sp, #36]
+ 317 01bc 01A9     		add	r1, sp, #4
+ 318 01be 0192     		str	r2, [sp, #4]
+ 319 01c0 0593     		str	r3, [sp, #20]
+ 320 01c2 FFF7FEFF 		bl	_ZN6VECTORIN16CommandProcessor16CmdProcessorTypeEE9push_backERKS1_
+ 321 01c6 07B0     		add	sp, sp, #28
+ 322 01c8 00BD     		pop	{pc}
+ 324 01ca 00BF     		.section	.rodata.str1.1,"aMS",%progbits,1
+ 325              	.LC0:
+ 326 0000 53757070 		.ascii	"Supported Commands:\000"
+ 326      6F727465 
+ 326      6420436F 
+ 326      6D6D616E 
+ 326      64733A00 
+ 327              	.LC1:
+ 328 0014 0A20202A 		.ascii	"\012  *  \000"
+ 328      202000
+ 329              	.LC2:
+ 330 001b 48656C70 		.ascii	"Help not specified for this command\000"
+ 330      206E6F74 
+ 330      20737065 
+ 330      63696669 
+ 330      65642066 
+ 331              	.LC3:
+ 332 003f 436F6D6D 		.ascii	"Command Invalid\000"
+ 332      616E6420 
+ 332      496E7661 
+ 332      6C696400 
+ 333              	.LC4:
+ 334 004f 48454C50 		.ascii	"HELP\000"
+ 334      00
+ 335              	.LC5:
+ 336 0054 436F6D6D 		.ascii	"Command Length Too Large\000"
+ 336      616E6420 
+ 336      4C656E67 
+ 336      74682054 
+ 336      6F6F204C 
+ 337              		.ident	"GCC: (GNU) 4.6.2"
+DEFINED SYMBOLS
+                            *ABS*:00000000 CommandHandler.cpp
+C:\Users\Rhonda\AppData\Local\Temp\cc1mswYT.s:15     .text:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\cc1mswYT.s:20     .text:00000000 _ZN16CommandProcessor24getRegisteredCommandListER3str
+C:\Users\Rhonda\AppData\Local\Temp\cc1mswYT.s:53     .text:0000003c $d
+C:\Users\Rhonda\AppData\Local\Temp\cc1mswYT.s:56     .text:00000044 $t
+C:\Users\Rhonda\AppData\Local\Temp\cc1mswYT.s:61     .text:00000044 _ZN16CommandProcessor11getHelpTextER3strS1_
+C:\Users\Rhonda\AppData\Local\Temp\cc1mswYT.s:113    .text:000000ac $d
+C:\Users\Rhonda\AppData\Local\Temp\cc1mswYT.s:116    .text:000000b4 $t
+C:\Users\Rhonda\AppData\Local\Temp\cc1mswYT.s:121    .text:000000b4 _ZN16CommandProcessor17pointToParametersER3strPKc
+C:\Users\Rhonda\AppData\Local\Temp\cc1mswYT.s:144    .text:000000d8 _ZN16CommandProcessor9handleCmdER3strS1_
+C:\Users\Rhonda\AppData\Local\Temp\cc1mswYT.s:209    .text:00000164 $d
+C:\Users\Rhonda\AppData\Local\Temp\cc1mswYT.s:212    .text:0000016c $t
+C:\Users\Rhonda\AppData\Local\Temp\cc1mswYT.s:217    .text:0000016c _ZN16CommandProcessor13handleCommandEPKc
+C:\Users\Rhonda\AppData\Local\Temp\cc1mswYT.s:247    .text:000001ac $d
+C:\Users\Rhonda\AppData\Local\Temp\cc1mswYT.s:250    .text._ZN6VECTORIN16CommandProcessor16CmdProcessorTypeEE9push_backERKS1_:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\cc1mswYT.s:255    .text._ZN6VECTORIN16CommandProcessor16CmdProcessorTypeEE9push_backERKS1_:00000000 _ZN6VECTORIN16CommandProcessor16CmdProcessorTypeEE9push_backERKS1_
+C:\Users\Rhonda\AppData\Local\Temp\cc1mswYT.s:303    .text:000001b0 $t
+C:\Users\Rhonda\AppData\Local\Temp\cc1mswYT.s:308    .text:000001b0 _ZN16CommandProcessor10addHandlerEPFvR3strS1_PviEPKcS6_S2_i
+
+UNDEFINED SYMBOLS
+_ZN3straSEPKc
+_ZN3strpLEPKc
+_ZNK3str6getLenEv
+_ZNK3str19compareToIgnoreCaseEPKc
+strlen
+_ZN3str10eraseFirstEi
+_ZNK3str29beginsWithWholeWordIgnoreCaseEPKcc
+_ZN3str5clearEv
+_ZNK3strclEv
+realloc
+_Znwj
+memset

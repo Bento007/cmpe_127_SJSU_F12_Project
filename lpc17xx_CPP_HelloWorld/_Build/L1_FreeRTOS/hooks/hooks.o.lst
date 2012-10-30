@@ -1,0 +1,100 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"hooks.c"
+  14              		.text
+  15              		.align	1
+  16              		.global	vApplicationIdleHook
+  17              		.thumb
+  18              		.thumb_func
+  20              	vApplicationIdleHook:
+  21              		@ args = 0, pretend = 0, frame = 0
+  22              		@ frame_needed = 0, uses_anonymous_args = 0
+  23              		@ link register save eliminated.
+  24              	@ 1196 "C:\Users\Rhonda\Desktop\SJSU_Dev\projects\lpc17xx_CPP_HelloWorld\L0_LowLevel/core_cm3.h" 1
+  25 0000 30BF     		wfi
+  26              	@ 0 "" 2
+  27              		.thumb
+  28 0002 7047     		bx	lr
+  30              		.align	1
+  31              		.global	vApplicationStackOverflowHook
+  32              		.thumb
+  33              		.thumb_func
+  35              	vApplicationStackOverflowHook:
+  36              		@ Volatile: function does not return.
+  37              		@ args = 0, pretend = 0, frame = 0
+  38              		@ frame_needed = 0, uses_anonymous_args = 0
+  39 0004 0C46     		mov	r4, r1
+  40 0006 08B5     		push	{r3, lr}
+  41 0008 0448     		ldr	r0, .L4
+  42 000a FFF7FEFF 		bl	printMessageUponCriticalSystemError
+  43 000e 2046     		mov	r0, r4
+  44 0010 FFF7FEFF 		bl	printMessageUponCriticalSystemError
+  45 0014 0248     		ldr	r0, .L4+4
+  46 0016 FFF7FEFF 		bl	printMessageUponCriticalSystemError
+  47              	.L3:
+  48 001a FEE7     		b	.L3
+  49              	.L5:
+  50              		.align	2
+  51              	.L4:
+  52 001c 00000000 		.word	.LC0
+  53 0020 29000000 		.word	.LC1
+  55              		.align	1
+  56              		.global	vApplicationMallocFailedHook
+  57              		.thumb
+  58              		.thumb_func
+  60              	vApplicationMallocFailedHook:
+  61              		@ Volatile: function does not return.
+  62              		@ args = 0, pretend = 0, frame = 0
+  63              		@ frame_needed = 0, uses_anonymous_args = 0
+  64 0024 08B5     		push	{r3, lr}
+  65 0026 0248     		ldr	r0, .L8
+  66 0028 FFF7FEFF 		bl	printMessageUponCriticalSystemError
+  67              	.L7:
+  68 002c FEE7     		b	.L7
+  69              	.L9:
+  70 002e 00BF     		.align	2
+  71              	.L8:
+  72 0030 55000000 		.word	.LC2
+  74              		.section	.rodata.str1.1,"aMS",%progbits,1
+  75              	.LC0:
+  76 0000 48414C54 		.ascii	"HALTING SYSTEM: Stack overflow by task: \000"
+  76      494E4720 
+  76      53595354 
+  76      454D3A20 
+  76      53746163 
+  77              	.LC1:
+  78 0029 0A547279 		.ascii	"\012Try increasing stack memory of this task.\012\000"
+  78      20696E63 
+  78      72656173 
+  78      696E6720 
+  78      73746163 
+  79              	.LC2:
+  80 0055 48414C54 		.ascii	"HALTING SYSTEM: Your system ran out of memory (RAM)"
+  80      494E4720 
+  80      53595354 
+  80      454D3A20 
+  80      596F7572 
+  81 0088 210A00   		.ascii	"!\012\000"
+  82              		.ident	"GCC: (GNU) 4.6.2"
+DEFINED SYMBOLS
+                            *ABS*:00000000 hooks.c
+C:\Users\Rhonda\AppData\Local\Temp\ccMGw31b.s:15     .text:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccMGw31b.s:20     .text:00000000 vApplicationIdleHook
+C:\Users\Rhonda\AppData\Local\Temp\ccMGw31b.s:35     .text:00000004 vApplicationStackOverflowHook
+C:\Users\Rhonda\AppData\Local\Temp\ccMGw31b.s:52     .text:0000001c $d
+C:\Users\Rhonda\AppData\Local\Temp\ccMGw31b.s:55     .text:00000024 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccMGw31b.s:60     .text:00000024 vApplicationMallocFailedHook
+C:\Users\Rhonda\AppData\Local\Temp\ccMGw31b.s:72     .text:00000030 $d
+
+UNDEFINED SYMBOLS
+printMessageUponCriticalSystemError

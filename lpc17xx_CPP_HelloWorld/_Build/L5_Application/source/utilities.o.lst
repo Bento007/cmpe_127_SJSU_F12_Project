@@ -1,0 +1,101 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"utilities.cpp"
+  14              		.text
+  15              		.align	1
+  16              		.global	delay_ms
+  17              		.thumb
+  18              		.thumb_func
+  20              	delay_ms:
+  21              		@ args = 0, pretend = 0, frame = 0
+  22              		@ frame_needed = 0, uses_anonymous_args = 0
+  23 0000 10B5     		push	{r4, lr}
+  24 0002 0446     		mov	r4, r0
+  25 0004 FFF7FEFF 		bl	xTaskGetSchedulerState
+  26 0008 0128     		cmp	r0, #1
+  27 000a 04D1     		bne	.L2
+  28 000c 2046     		mov	r0, r4
+  29 000e BDE81040 		pop	{r4, lr}
+  30 0012 FFF7FEBF 		b	vTaskDelay
+  31              	.L2:
+  32 0016 4FF47A71 		mov	r1, #1000
+  33 001a 4C43     		muls	r4, r1, r4
+  34 001c 4FF04023 		mov	r3, #1073758208
+  35 0020 9A68     		ldr	r2, [r3, #8]
+  36 0022 0A21     		movs	r1, #10
+  37 0024 B4FBF1F4 		udiv	r4, r4, r1
+  38 0028 A418     		adds	r4, r4, r2
+  39 002a 9A68     		ldr	r2, [r3, #8]
+  40 002c 9442     		cmp	r4, r2
+  41 002e 02D2     		bcs	.L3
+  42              	.L6:
+  43 0030 9A68     		ldr	r2, [r3, #8]
+  44 0032 A242     		cmp	r2, r4
+  45 0034 FCD8     		bhi	.L6
+  46              	.L3:
+  47 0036 4FF04023 		mov	r3, #1073758208
+  48              	.L5:
+  49 003a 9A68     		ldr	r2, [r3, #8]
+  50 003c A242     		cmp	r2, r4
+  51 003e FCD3     		bcc	.L5
+  52 0040 10BD     		pop	{r4, pc}
+  54              		.align	1
+  55              		.global	printMemoryInfo
+  56              		.thumb
+  57              		.thumb_func
+  59              	printMemoryInfo:
+  60              		@ args = 0, pretend = 0, frame = 16
+  61              		@ frame_needed = 0, uses_anonymous_args = 0
+  62 0042 7FB5     		push	{r0, r1, r2, r3, r4, r5, r6, lr}
+  63 0044 02A8     		add	r0, sp, #8
+  64 0046 FFF7FEFF 		bl	getMemoryInfo
+  65 004a 059B     		ldr	r3, [sp, #20]
+  66 004c 02A9     		add	r1, sp, #8
+  67 004e 0093     		str	r3, [sp, #0]
+  68 0050 0EC9     		ldmia	r1, {r1, r2, r3}
+  69 0052 0248     		ldr	r0, .L10
+  70 0054 FFF7FEFF 		bl	printf
+  71 0058 07B0     		add	sp, sp, #28
+  72 005a 00BD     		pop	{pc}
+  73              	.L11:
+  74              		.align	2
+  75              	.L10:
+  76 005c 00000000 		.word	.LC0
+  78              		.section	.rodata.str1.1,"aMS",%progbits,1
+  79              	.LC0:
+  80 0000 4D656D6F 		.ascii	"Memory Information:\012Global Used   : %5u\012Heap "
+  80      72792049 
+  80      6E666F72 
+  80      6D617469 
+  80      6F6E3A0A 
+  81 002d 20205573 		.ascii	"  Used   : %5u\012Heap Avail.   : %5u\012System Ava"
+  81      65642020 
+  81      203A2025 
+  81      35750A48 
+  81      65617020 
+  82 005a 696C2E20 		.ascii	"il. : %5u\012\000"
+  82      3A202535 
+  82      750A00
+  83              		.ident	"GCC: (GNU) 4.6.2"
+DEFINED SYMBOLS
+                            *ABS*:00000000 utilities.cpp
+C:\Users\Rhonda\AppData\Local\Temp\ccHHT6BJ.s:15     .text:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccHHT6BJ.s:20     .text:00000000 delay_ms
+C:\Users\Rhonda\AppData\Local\Temp\ccHHT6BJ.s:59     .text:00000042 printMemoryInfo
+C:\Users\Rhonda\AppData\Local\Temp\ccHHT6BJ.s:76     .text:0000005c $d
+
+UNDEFINED SYMBOLS
+xTaskGetSchedulerState
+vTaskDelay
+getMemoryInfo
+printf

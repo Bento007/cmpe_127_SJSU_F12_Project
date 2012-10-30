@@ -1,0 +1,425 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"spi_flash.cpp"
+  14              		.section	.text._Z11flashSelectv,"axG",%progbits,_Z11flashSelectv,comdat
+  15              		.align	1
+  16              		.weak	_Z11flashSelectv
+  17              		.thumb
+  18              		.thumb_func
+  20              	_Z11flashSelectv:
+  21              		@ args = 0, pretend = 0, frame = 0
+  22              		@ frame_needed = 0, uses_anonymous_args = 0
+  23              		@ link register save eliminated.
+  24 0000 034B     		ldr	r3, .L2
+  25 0002 4FF48032 		mov	r2, #65536
+  26 0006 9A61     		str	r2, [r3, #24]
+  27 0008 0020     		movs	r0, #0
+  28 000a 9A61     		str	r2, [r3, #24]
+  29 000c DA61     		str	r2, [r3, #28]
+  30 000e 7047     		bx	lr
+  31              	.L3:
+  32              		.align	2
+  33              	.L2:
+  34 0010 00C00920 		.word	537509888
+  36              		.text
+  37              		.align	1
+  38              		.global	flash_InitializeSignals
+  39              		.thumb
+  40              		.thumb_func
+  42              	flash_InitializeSignals:
+  43              		@ args = 0, pretend = 0, frame = 0
+  44              		@ frame_needed = 0, uses_anonymous_args = 0
+  45              		@ link register save eliminated.
+  46 0000 064B     		ldr	r3, .L5
+  47 0002 5A68     		ldr	r2, [r3, #4]
+  48 0004 22F00302 		bic	r2, r2, #3
+  49 0008 5A60     		str	r2, [r3, #4]
+  50 000a 054B     		ldr	r3, .L5+4
+  51 000c 1A68     		ldr	r2, [r3, #0]
+  52 000e 42F48032 		orr	r2, r2, #65536
+  53 0012 1A60     		str	r2, [r3, #0]
+  54 0014 4FF48032 		mov	r2, #65536
+  55 0018 9A61     		str	r2, [r3, #24]
+  56 001a 7047     		bx	lr
+  57              	.L6:
+  58              		.align	2
+  59              	.L5:
+  60 001c 00C00240 		.word	1073922048
+  61 0020 00C00920 		.word	537509888
+  63              		.section	.text._Z15spiExchangeBytec,"axG",%progbits,_Z15spiExchangeBytec,comdat
+  64              		.align	1
+  65              		.weak	_Z15spiExchangeBytec
+  66              		.thumb
+  67              		.thumb_func
+  69              	_Z15spiExchangeBytec:
+  70              		@ args = 0, pretend = 0, frame = 0
+  71              		@ frame_needed = 0, uses_anonymous_args = 0
+  72              		@ link register save eliminated.
+  73 0000 044B     		ldr	r3, .L10
+  74 0002 9860     		str	r0, [r3, #8]
+  75              	.L8:
+  76 0004 DA68     		ldr	r2, [r3, #12]
+  77 0006 D206     		lsls	r2, r2, #27
+  78 0008 FCD4     		bmi	.L8
+  79 000a 024B     		ldr	r3, .L10
+  80 000c 9868     		ldr	r0, [r3, #8]
+  81 000e C0B2     		uxtb	r0, r0
+  82 0010 7047     		bx	lr
+  83              	.L11:
+  84 0012 00BF     		.align	2
+  85              	.L10:
+  86 0014 00000340 		.word	1073938432
+  88              		.text
+  89              		.align	1
+  90              		.thumb
+  91              		.thumb_func
+  93              	_ZL16waitUntilNotBusyv:
+  94              		@ args = 0, pretend = 0, frame = 0
+  95              		@ frame_needed = 0, uses_anonymous_args = 0
+  96 0024 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  97 0026 FFF7FEFF 		bl	_Z11flashSelectv
+  98 002a 0024     		movs	r4, #0
+  99 002c 0746     		mov	r7, r0
+ 100 002e 094E     		ldr	r6, .L17
+ 101 0030 4FF48035 		mov	r5, #65536
+ 102 0034 09E0     		b	.L13
+ 103              	.L15:
+ 104 0036 D720     		movs	r0, #215
+ 105 0038 FFF7FEFF 		bl	_Z15spiExchangeBytec
+ 106              	.L14:
+ 107 003c FF20     		movs	r0, #255
+ 108 003e FFF7FEFF 		bl	_Z15spiExchangeBytec
+ 109 0042 0106     		lsls	r1, r0, #24
+ 110 0044 FAD5     		bpl	.L14
+ 111 0046 B561     		str	r5, [r6, #24]
+ 112 0048 0134     		adds	r4, r4, #1
+ 113              	.L13:
+ 114 004a E319     		adds	r3, r4, r7
+ 115 004c 012B     		cmp	r3, #1
+ 116 004e F2D1     		bne	.L15
+ 117 0050 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 118              	.L18:
+ 119 0052 00BF     		.align	2
+ 120              	.L17:
+ 121 0054 00C00920 		.word	537509888
+ 123              		.align	1
+ 124              		.thumb
+ 125              		.thumb_func
+ 127              	_ZL15flash_WritePagePKh16FlashAddressType.isra.1:
+ 128              		@ args = 0, pretend = 0, frame = 0
+ 129              		@ frame_needed = 0, uses_anonymous_args = 0
+ 130 0058 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, sl, lr}
+ 131 005c 0446     		mov	r4, r0
+ 132 005e 0D46     		mov	r5, r1
+ 133 0060 1646     		mov	r6, r2
+ 134 0062 9A46     		mov	sl, r3
+ 135 0064 FFF7DEFF 		bl	_ZL16waitUntilNotBusyv
+ 136 0068 FFF7FEFF 		bl	_Z11flashSelectv
+ 137 006c DFF83490 		ldr	r9, .L22
+ 138 0070 0746     		mov	r7, r0
+ 139 0072 4FF48038 		mov	r8, #65536
+ 140 0076 11E0     		b	.L20
+ 141              	.L21:
+ 142 0078 8220     		movs	r0, #130
+ 143 007a FFF7FEFF 		bl	_Z15spiExchangeBytec
+ 144 007e 5046     		mov	r0, sl
+ 145 0080 FFF7FEFF 		bl	_Z15spiExchangeBytec
+ 146 0084 3046     		mov	r0, r6
+ 147 0086 FFF7FEFF 		bl	_Z15spiExchangeBytec
+ 148 008a 2846     		mov	r0, r5
+ 149 008c FFF7FEFF 		bl	_Z15spiExchangeBytec
+ 150 0090 2046     		mov	r0, r4
+ 151 0092 FFF7FEFF 		bl	spi1_Send256Bytes
+ 152 0096 0137     		adds	r7, r7, #1
+ 153 0098 C9F81880 		str	r8, [r9, #24]
+ 154              	.L20:
+ 155 009c 012F     		cmp	r7, #1
+ 156 009e EBD1     		bne	.L21
+ 157 00a0 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, sl, pc}
+ 158              	.L23:
+ 159              		.align	2
+ 160              	.L22:
+ 161 00a4 00C00920 		.word	537509888
+ 163              		.align	1
+ 164              		.global	flash_Initialize
+ 165              		.thumb
+ 166              		.thumb_func
+ 168              	flash_Initialize:
+ 169              		@ args = 0, pretend = 0, frame = 0
+ 170              		@ frame_needed = 0, uses_anonymous_args = 0
+ 171 00a8 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 172 00ac FFF7BAFF 		bl	_ZL16waitUntilNotBusyv
+ 173 00b0 FFF7FEFF 		bl	_Z11flashSelectv
+ 174 00b4 0024     		movs	r4, #0
+ 175 00b6 8046     		mov	r8, r0
+ 176 00b8 2546     		mov	r5, r4
+ 177 00ba 254F     		ldr	r7, .L33
+ 178 00bc 4FF48036 		mov	r6, #65536
+ 179 00c0 08E0     		b	.L25
+ 180              	.L26:
+ 181 00c2 D720     		movs	r0, #215
+ 182 00c4 FFF7FEFF 		bl	_Z15spiExchangeBytec
+ 183 00c8 FF20     		movs	r0, #255
+ 184 00ca FFF7FEFF 		bl	_Z15spiExchangeBytec
+ 185 00ce 0134     		adds	r4, r4, #1
+ 186 00d0 0546     		mov	r5, r0
+ 187 00d2 BE61     		str	r6, [r7, #24]
+ 188              	.L25:
+ 189 00d4 04EB0803 		add	r3, r4, r8
+ 190 00d8 012B     		cmp	r3, #1
+ 191 00da F2D1     		bne	.L26
+ 192 00dc FFF7FEFF 		bl	_Z11flashSelectv
+ 193 00e0 0024     		movs	r4, #0
+ 194 00e2 8046     		mov	r8, r0
+ 195 00e4 1A4F     		ldr	r7, .L33
+ 196 00e6 2046     		mov	r0, r4
+ 197 00e8 4FF48036 		mov	r6, #65536
+ 198 00ec 07E0     		b	.L27
+ 199              	.L28:
+ 200 00ee 9F20     		movs	r0, #159
+ 201 00f0 FFF7FEFF 		bl	_Z15spiExchangeBytec
+ 202 00f4 FF20     		movs	r0, #255
+ 203 00f6 FFF7FEFF 		bl	_Z15spiExchangeBytec
+ 204 00fa 0134     		adds	r4, r4, #1
+ 205 00fc BE61     		str	r6, [r7, #24]
+ 206              	.L27:
+ 207 00fe 04EB0803 		add	r3, r4, r8
+ 208 0102 012B     		cmp	r3, #1
+ 209 0104 F3D1     		bne	.L28
+ 210 0106 15F00104 		ands	r4, r5, #1
+ 211 010a 1BD1     		bne	.L29
+ 212 010c FFF7FEFF 		bl	_Z11flashSelectv
+ 213 0110 0F4E     		ldr	r6, .L33
+ 214 0112 0746     		mov	r7, r0
+ 215 0114 4FF48035 		mov	r5, #65536
+ 216 0118 0DE0     		b	.L30
+ 217              	.L31:
+ 218 011a 3D20     		movs	r0, #61
+ 219 011c FFF7FEFF 		bl	_Z15spiExchangeBytec
+ 220 0120 2A20     		movs	r0, #42
+ 221 0122 FFF7FEFF 		bl	_Z15spiExchangeBytec
+ 222 0126 8020     		movs	r0, #128
+ 223 0128 FFF7FEFF 		bl	_Z15spiExchangeBytec
+ 224 012c A620     		movs	r0, #166
+ 225 012e FFF7FEFF 		bl	_Z15spiExchangeBytec
+ 226 0132 0134     		adds	r4, r4, #1
+ 227 0134 B561     		str	r5, [r6, #24]
+ 228              	.L30:
+ 229 0136 E319     		adds	r3, r4, r7
+ 230 0138 012B     		cmp	r3, #1
+ 231 013a EED1     		bne	.L31
+ 232 013c 0548     		ldr	r0, .L33+4
+ 233 013e FFF7FEFF 		bl	puts
+ 234              	.L32:
+ 235 0142 FEE7     		b	.L32
+ 236              	.L29:
+ 237 0144 1F38     		subs	r0, r0, #31
+ 238 0146 18BF     		it	ne
+ 239 0148 0120     		movne	r0, #1
+ 240 014a BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 241              	.L34:
+ 242 014e 00BF     		.align	2
+ 243              	.L33:
+ 244 0150 00C00920 		.word	537509888
+ 245 0154 00000000 		.word	.LC0
+ 247              		.align	1
+ 248              		.global	flash_ReadSector
+ 249              		.thumb
+ 250              		.thumb_func
+ 252              	flash_ReadSector:
+ 253              		@ args = 0, pretend = 0, frame = 8
+ 254              		@ frame_needed = 0, uses_anonymous_args = 0
+ 255 0158 2DE9F74F 		push	{r0, r1, r2, r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 256 015c 9146     		mov	r9, r2
+ 257 015e 0446     		mov	r4, r0
+ 258 0160 4F02     		lsls	r7, r1, #9
+ 259 0162 FFF75FFF 		bl	_ZL16waitUntilNotBusyv
+ 260 0166 FFF7FEFF 		bl	_Z11flashSelectv
+ 261 016a 29EAE97B 		bic	fp, r9, r9, asr #31
+ 262 016e 0190     		str	r0, [sp, #4]
+ 263 0170 0026     		movs	r6, #0
+ 264 0172 4FEA4B2B 		lsl	fp, fp, #9
+ 265 0176 DFF884A0 		ldr	sl, .L40
+ 266 017a 37E0     		b	.L36
+ 267              	.L39:
+ 268 017c C7F30743 		ubfx	r3, r7, #16, #8
+ 269 0180 E820     		movs	r0, #232
+ 270 0182 0093     		str	r3, [sp, #0]
+ 271 0184 FFF7FEFF 		bl	_Z15spiExchangeBytec
+ 272 0188 009B     		ldr	r3, [sp, #0]
+ 273 018a C7F30728 		ubfx	r8, r7, #8, #8
+ 274 018e 1846     		mov	r0, r3
+ 275 0190 5FFA88F8 		uxtb	r8, r8
+ 276 0194 FDB2     		uxtb	r5, r7
+ 277 0196 FFF7FEFF 		bl	_Z15spiExchangeBytec
+ 278 019a 4046     		mov	r0, r8
+ 279 019c FFF7FEFF 		bl	_Z15spiExchangeBytec
+ 280 01a0 2846     		mov	r0, r5
+ 281 01a2 FFF7FEFF 		bl	_Z15spiExchangeBytec
+ 282 01a6 FF20     		movs	r0, #255
+ 283 01a8 FFF7FEFF 		bl	_Z15spiExchangeBytec
+ 284 01ac FF20     		movs	r0, #255
+ 285 01ae FFF7FEFF 		bl	_Z15spiExchangeBytec
+ 286 01b2 FF20     		movs	r0, #255
+ 287 01b4 FFF7FEFF 		bl	_Z15spiExchangeBytec
+ 288 01b8 FF20     		movs	r0, #255
+ 289 01ba FFF7FEFF 		bl	_Z15spiExchangeBytec
+ 290 01be 2546     		mov	r5, r4
+ 291 01c0 4FF00008 		mov	r8, #0
+ 292 01c4 0AE0     		b	.L37
+ 293              	.L38:
+ 294 01c6 2846     		mov	r0, r5
+ 295 01c8 FFF7FEFF 		bl	spi1_Receive256Bytes
+ 296 01cc 05F58070 		add	r0, r5, #256
+ 297 01d0 FFF7FEFF 		bl	spi1_Receive256Bytes
+ 298 01d4 05F50075 		add	r5, r5, #512
+ 299 01d8 08F10108 		add	r8, r8, #1
+ 300              	.L37:
+ 301 01dc C845     		cmp	r8, r9
+ 302 01de F2DB     		blt	.L38
+ 303 01e0 4FF48033 		mov	r3, #65536
+ 304 01e4 5C44     		add	r4, r4, fp
+ 305 01e6 CAF81830 		str	r3, [sl, #24]
+ 306 01ea 0136     		adds	r6, r6, #1
+ 307              	.L36:
+ 308 01ec 019A     		ldr	r2, [sp, #4]
+ 309 01ee B318     		adds	r3, r6, r2
+ 310 01f0 012B     		cmp	r3, #1
+ 311 01f2 C3D1     		bne	.L39
+ 312 01f4 0020     		movs	r0, #0
+ 313 01f6 BDE8FE8F 		pop	{r1, r2, r3, r4, r5, r6, r7, r8, r9, sl, fp, pc}
+ 314              	.L41:
+ 315 01fa 00BF     		.align	2
+ 316              	.L40:
+ 317 01fc 00C00920 		.word	537509888
+ 319              		.align	1
+ 320              		.global	flash_WriteSector
+ 321              		.thumb
+ 322              		.thumb_func
+ 324              	flash_WriteSector:
+ 325              		@ args = 0, pretend = 0, frame = 0
+ 326              		@ frame_needed = 0, uses_anonymous_args = 0
+ 327 0200 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 328 0204 0546     		mov	r5, r0
+ 329 0206 9046     		mov	r8, r2
+ 330 0208 4C02     		lsls	r4, r1, #9
+ 331 020a 0026     		movs	r6, #0
+ 332 020c 18E0     		b	.L43
+ 333              	.L44:
+ 334 020e E1B2     		uxtb	r1, r4
+ 335 0210 C4F30722 		ubfx	r2, r4, #8, #8
+ 336 0214 C4F30743 		ubfx	r3, r4, #16, #8
+ 337 0218 2846     		mov	r0, r5
+ 338 021a 2746     		mov	r7, r4
+ 339 021c 04F58074 		add	r4, r4, #256
+ 340 0220 FFF71AFF 		bl	_ZL15flash_WritePagePKh16FlashAddressType.isra.1
+ 341 0224 05F58070 		add	r0, r5, #256
+ 342 0228 E1B2     		uxtb	r1, r4
+ 343 022a C4F30722 		ubfx	r2, r4, #8, #8
+ 344 022e C4F30743 		ubfx	r3, r4, #16, #8
+ 345 0232 FFF711FF 		bl	_ZL15flash_WritePagePKh16FlashAddressType.isra.1
+ 346 0236 05F50075 		add	r5, r5, #512
+ 347 023a 07F50074 		add	r4, r7, #512
+ 348 023e 0136     		adds	r6, r6, #1
+ 349              	.L43:
+ 350 0240 4645     		cmp	r6, r8
+ 351 0242 E4DB     		blt	.L44
+ 352 0244 0020     		movs	r0, #0
+ 353 0246 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 355              		.align	1
+ 356              		.global	flash_ioctl
+ 357              		.thumb
+ 358              		.thumb_func
+ 360              	flash_ioctl:
+ 361              		@ args = 0, pretend = 0, frame = 0
+ 362              		@ frame_needed = 0, uses_anonymous_args = 0
+ 363 024a 08B5     		push	{r3, lr}
+ 364 024c 0628     		cmp	r0, #6
+ 365 024e 13D8     		bhi	.L53
+ 366 0250 DFE800F0 		tbb	[pc, r0]
+ 367              	.L52:
+ 368 0254 04       		.byte	(.L47-.L52)/2
+ 369 0255 07       		.byte	(.L48-.L52)/2
+ 370 0256 0A       		.byte	(.L49-.L52)/2
+ 371 0257 0E       		.byte	(.L50-.L52)/2
+ 372 0258 10       		.byte	(.L54-.L52)/2
+ 373 0259 10       		.byte	(.L54-.L52)/2
+ 374 025a 10       		.byte	(.L54-.L52)/2
+ 375 025b 00       		.align	1
+ 376              	.L47:
+ 377 025c FFF7E2FE 		bl	_ZL16waitUntilNotBusyv
+ 378 0260 08E0     		b	.L54
+ 379              	.L48:
+ 380 0262 4FF40063 		mov	r3, #2048
+ 381 0266 04E0     		b	.L55
+ 382              	.L49:
+ 383 0268 4FF40073 		mov	r3, #512	@ movhi
+ 384 026c 0B80     		strh	r3, [r1, #0]	@ movhi
+ 385 026e 01E0     		b	.L54
+ 386              	.L50:
+ 387 0270 0123     		movs	r3, #1
+ 388              	.L55:
+ 389 0272 0B60     		str	r3, [r1, #0]
+ 390              	.L54:
+ 391 0274 0020     		movs	r0, #0
+ 392 0276 08BD     		pop	{r3, pc}
+ 393              	.L53:
+ 394 0278 0420     		movs	r0, #4
+ 395 027a 08BD     		pop	{r3, pc}
+ 397              		.section	.rodata.str1.1,"aMS",%progbits,1
+ 398              	.LC0:
+ 399 0000 2D2D2D2D 		.ascii	"----> POWER OFF AND POWER ON CPU TO INITIALIZE FLAS"
+ 399      3E20504F 
+ 399      57455220 
+ 399      4F464620 
+ 399      414E4420 
+ 400 0033 48204D45 		.ascii	"H MEMORY!!! <-------\000"
+ 400      4D4F5259 
+ 400      21212120 
+ 400      3C2D2D2D 
+ 400      2D2D2D2D 
+ 401              		.ident	"GCC: (GNU) 4.6.2"
+DEFINED SYMBOLS
+                            *ABS*:00000000 spi_flash.cpp
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:15     .text._Z11flashSelectv:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:20     .text._Z11flashSelectv:00000000 _Z11flashSelectv
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:34     .text._Z11flashSelectv:00000010 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:37     .text:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:42     .text:00000000 flash_InitializeSignals
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:60     .text:0000001c $d
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:64     .text._Z15spiExchangeBytec:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:69     .text._Z15spiExchangeBytec:00000000 _Z15spiExchangeBytec
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:86     .text._Z15spiExchangeBytec:00000014 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:89     .text:00000024 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:93     .text:00000024 _ZL16waitUntilNotBusyv
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:121    .text:00000054 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:123    .text:00000058 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:127    .text:00000058 _ZL15flash_WritePagePKh16FlashAddressType.isra.1
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:161    .text:000000a4 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:163    .text:000000a8 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:168    .text:000000a8 flash_Initialize
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:244    .text:00000150 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:247    .text:00000158 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:252    .text:00000158 flash_ReadSector
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:317    .text:000001fc $d
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:319    .text:00000200 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:324    .text:00000200 flash_WriteSector
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:360    .text:0000024a flash_ioctl
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:368    .text:00000254 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:375    .text:0000025b $d
+C:\Users\Rhonda\AppData\Local\Temp\ccfQNu2I.s:375    .text:0000025c $t
+
+UNDEFINED SYMBOLS
+spi1_Send256Bytes
+puts
+spi1_Receive256Bytes

@@ -1,0 +1,101 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"rtc.c"
+  14              		.text
+  15              		.align	1
+  16              		.global	rtc_initialize
+  17              		.thumb
+  18              		.thumb_func
+  20              	rtc_initialize:
+  21              		@ args = 0, pretend = 0, frame = 0
+  22              		@ frame_needed = 0, uses_anonymous_args = 0
+  23              		@ link register save eliminated.
+  24 0000 054B     		ldr	r3, .L2
+  25 0002 D3F8C420 		ldr	r2, [r3, #196]
+  26 0006 42F40072 		orr	r2, r2, #512
+  27 000a C3F8C420 		str	r2, [r3, #196]
+  28 000e 0122     		movs	r2, #1
+  29 0010 A3F55823 		sub	r3, r3, #884736
+  30 0014 1A72     		strb	r2, [r3, #8]
+  31 0016 7047     		bx	lr
+  32              	.L3:
+  33              		.align	2
+  34              	.L2:
+  35 0018 00C00F40 		.word	1074774016
+  37              		.align	1
+  38              		.global	rtc_gettime
+  39              		.thumb
+  40              		.thumb_func
+  42              	rtc_gettime:
+  43              		@ args = 0, pretend = 0, frame = 0
+  44              		@ frame_needed = 0, uses_anonymous_args = 0
+  45              		@ link register save eliminated.
+  46 001c 034A     		ldr	r2, .L5
+  47 001e 0346     		mov	r3, r0
+  48 0020 92E80300 		ldmia	r2, {r0, r1}
+  49 0024 83E80300 		stmia	r3, {r0, r1}
+  50 0028 1846     		mov	r0, r3
+  51 002a 7047     		bx	lr
+  52              	.L6:
+  53              		.align	2
+  54              	.L5:
+  55 002c 14400240 		.word	1073889300
+  57              		.align	1
+  58              		.global	rtc_settime
+  59              		.thumb
+  60              		.thumb_func
+  62              	rtc_settime:
+  63              		@ args = 0, pretend = 0, frame = 0
+  64              		@ frame_needed = 0, uses_anonymous_args = 0
+  65              		@ link register save eliminated.
+  66 0030 0278     		ldrb	r2, [r0, #0]	@ zero_extendqisi2
+  67 0032 114B     		ldr	r3, .L8
+  68 0034 C2F30502 		ubfx	r2, r2, #0, #6
+  69 0038 83F82020 		strb	r2, [r3, #32]
+  70 003c 4278     		ldrb	r2, [r0, #1]	@ zero_extendqisi2
+  71 003e C2F30502 		ubfx	r2, r2, #0, #6
+  72 0042 83F82420 		strb	r2, [r3, #36]
+  73 0046 8278     		ldrb	r2, [r0, #2]	@ zero_extendqisi2
+  74 0048 C2F30402 		ubfx	r2, r2, #0, #5
+  75 004c 83F82820 		strb	r2, [r3, #40]
+  76 0050 C278     		ldrb	r2, [r0, #3]	@ zero_extendqisi2
+  77 0052 C2F30202 		ubfx	r2, r2, #0, #3
+  78 0056 83F83020 		strb	r2, [r3, #48]
+  79 005a 0279     		ldrb	r2, [r0, #4]	@ zero_extendqisi2
+  80 005c C2F30402 		ubfx	r2, r2, #0, #5
+  81 0060 83F82C20 		strb	r2, [r3, #44]
+  82 0064 4279     		ldrb	r2, [r0, #5]	@ zero_extendqisi2
+  83 0066 C2F30302 		ubfx	r2, r2, #0, #4
+  84 006a 83F83820 		strb	r2, [r3, #56]
+  85 006e C288     		ldrh	r2, [r0, #6]
+  86 0070 C2F30B02 		ubfx	r2, r2, #0, #12
+  87 0074 9A87     		strh	r2, [r3, #60]	@ movhi
+  88 0076 7047     		bx	lr
+  89              	.L9:
+  90              		.align	2
+  91              	.L8:
+  92 0078 00400240 		.word	1073889280
+  94              		.ident	"GCC: (GNU) 4.6.2"
+DEFINED SYMBOLS
+                            *ABS*:00000000 rtc.c
+C:\Users\Rhonda\AppData\Local\Temp\cchgINEP.s:15     .text:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\cchgINEP.s:20     .text:00000000 rtc_initialize
+C:\Users\Rhonda\AppData\Local\Temp\cchgINEP.s:35     .text:00000018 $d
+C:\Users\Rhonda\AppData\Local\Temp\cchgINEP.s:37     .text:0000001c $t
+C:\Users\Rhonda\AppData\Local\Temp\cchgINEP.s:42     .text:0000001c rtc_gettime
+C:\Users\Rhonda\AppData\Local\Temp\cchgINEP.s:55     .text:0000002c $d
+C:\Users\Rhonda\AppData\Local\Temp\cchgINEP.s:57     .text:00000030 $t
+C:\Users\Rhonda\AppData\Local\Temp\cchgINEP.s:62     .text:00000030 rtc_settime
+C:\Users\Rhonda\AppData\Local\Temp\cchgINEP.s:92     .text:00000078 $d
+
+NO UNDEFINED SYMBOLS

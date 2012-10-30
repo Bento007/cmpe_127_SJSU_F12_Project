@@ -1,0 +1,268 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"sys_clock.cpp"
+  14              		.text
+  15              		.align	1
+  16              		.thumb
+  17              		.thumb_func
+  19              	_ZL8pll_feedv:
+  20              		@ args = 0, pretend = 0, frame = 0
+  21              		@ frame_needed = 0, uses_anonymous_args = 0
+  22              		@ link register save eliminated.
+  23 0000 034B     		ldr	r3, .L2
+  24 0002 AA22     		movs	r2, #170
+  25 0004 C3F88C20 		str	r2, [r3, #140]
+  26 0008 5522     		movs	r2, #85
+  27 000a C3F88C20 		str	r2, [r3, #140]
+  28 000e 7047     		bx	lr
+  29              	.L3:
+  30              		.align	2
+  31              	.L2:
+  32 0010 00C00F40 		.word	1074774016
+  34              		.align	1
+  35              		.global	_Z22calculatePLLParametersjjPiS_S_
+  36              		.thumb
+  37              		.thumb_func
+  39              	_Z22calculatePLLParametersjjPiS_S_:
+  40              		@ args = 4, pretend = 0, frame = 8
+  41              		@ frame_needed = 0, uses_anonymous_args = 0
+  42 0014 2DE9F74F 		push	{r0, r1, r2, r4, r5, r6, r7, r8, r9, sl, fp, lr}
+  43 0018 DDF830C0 		ldr	ip, [sp, #48]
+  44 001c 8346     		mov	fp, r0
+  45 001e 0020     		movs	r0, #0
+  46 0020 1060     		str	r0, [r2, #0]
+  47 0022 4FEA410A 		lsl	sl, r1, #1
+  48 0026 1860     		str	r0, [r3, #0]
+  49 0028 8902     		lsls	r1, r1, #10
+  50 002a CCF80000 		str	r0, [ip, #0]
+  51 002e 40F2FF10 		movw	r0, #511
+  52 0032 25E0     		b	.L5
+  53              	.L13:
+  54 0034 2C46     		mov	r4, r5
+  55              	.L10:
+  56 0036 651C     		adds	r5, r4, #1
+  57 0038 B1FBF5F9 		udiv	r9, r1, r5
+  58 003c A9F58626 		sub	r6, r9, #274432
+  59 0040 134F     		ldr	r7, .L15
+  60 0042 A6F50E76 		sub	r6, r6, #568
+  61 0046 BE42     		cmp	r6, r7
+  62 0048 13D8     		bhi	.L6
+  63 004a 0026     		movs	r6, #0
+  64 004c 0191     		str	r1, [sp, #4]
+  65 004e 00E0     		b	.L9
+  66              	.L12:
+  67 0050 3E46     		mov	r6, r7
+  68              	.L9:
+  69 0052 771C     		adds	r7, r6, #1
+  70 0054 0F49     		ldr	r1, .L15+4
+  71 0056 B9FBF7F8 		udiv	r8, r9, r7
+  72 005a 8845     		cmp	r8, r1
+  73 005c 05D8     		bhi	.L7
+  74 005e D845     		cmp	r8, fp
+  75 0060 1060     		str	r0, [r2, #0]
+  76 0062 1C60     		str	r4, [r3, #0]
+  77 0064 CCF80060 		str	r6, [ip, #0]
+  78 0068 0CD0     		beq	.L11
+  79              	.L7:
+  80 006a B7F5807F 		cmp	r7, #256
+  81 006e EFD1     		bne	.L12
+  82 0070 0199     		ldr	r1, [sp, #4]
+  83              	.L6:
+  84 0072 202D     		cmp	r5, #32
+  85 0074 DED1     		bne	.L13
+  86 0076 0138     		subs	r0, r0, #1
+  87 0078 0528     		cmp	r0, #5
+  88 007a CAEB0101 		rsb	r1, sl, r1
+  89 007e 03D0     		beq	.L14
+  90              	.L5:
+  91 0080 0024     		movs	r4, #0
+  92 0082 D8E7     		b	.L10
+  93              	.L11:
+  94 0084 0120     		movs	r0, #1
+  95 0086 00E0     		b	.L8
+  96              	.L14:
+  97 0088 0020     		movs	r0, #0
+  98              	.L8:
+  99 008a BDE8FE8F 		pop	{r1, r2, r3, r4, r5, r6, r7, r8, r9, sl, fp, pc}
+ 100              	.L16:
+ 101 008e 00BF     		.align	2
+ 102              	.L15:
+ 103 0090 38320400 		.word	275000
+ 104 0094 A0860100 		.word	100000
+ 106              		.align	1
+ 107              		.global	_Z20configureSystemClockv
+ 108              		.thumb
+ 109              		.thumb_func
+ 111              	_Z20configureSystemClockv:
+ 112              		@ args = 0, pretend = 0, frame = 16
+ 113              		@ frame_needed = 0, uses_anonymous_args = 0
+ 114 0098 70B5     		push	{r4, r5, r6, lr}
+ 115 009a 86B0     		sub	sp, sp, #24
+ 116 009c 0024     		movs	r4, #0
+ 117 009e 05AD     		add	r5, sp, #20
+ 118 00a0 4BF68030 		movw	r0, #48000
+ 119 00a4 4FF47A61 		mov	r1, #4000
+ 120 00a8 03AA     		add	r2, sp, #12
+ 121 00aa 04AB     		add	r3, sp, #16
+ 122 00ac 0394     		str	r4, [sp, #12]
+ 123 00ae 0494     		str	r4, [sp, #16]
+ 124 00b0 0594     		str	r4, [sp, #20]
+ 125 00b2 0095     		str	r5, [sp, #0]
+ 126 00b4 FFF7FEFF 		bl	_Z22calculatePLLParametersjjPiS_S_
+ 127 00b8 40B9     		cbnz	r0, .L18
+ 128 00ba 45F6C050 		movw	r0, #24000
+ 129 00be 4FF47A61 		mov	r1, #4000
+ 130 00c2 03AA     		add	r2, sp, #12
+ 131 00c4 04AB     		add	r3, sp, #16
+ 132 00c6 0095     		str	r5, [sp, #0]
+ 133 00c8 FFF7FEFF 		bl	_Z22calculatePLLParametersjjPiS_S_
+ 134              	.L18:
+ 135 00cc 039B     		ldr	r3, [sp, #12]
+ 136 00ce 214D     		ldr	r5, .L23
+ 137 00d0 63F30F04 		bfi	r4, r3, #0, #16
+ 138 00d4 049B     		ldr	r3, [sp, #16]
+ 139 00d6 0026     		movs	r6, #0
+ 140 00d8 63F31744 		bfi	r4, r3, #16, #8
+ 141 00dc D5F88030 		ldr	r3, [r5, #128]
+ 142 00e0 23F00203 		bic	r3, r3, #2
+ 143 00e4 C5F88030 		str	r3, [r5, #128]
+ 144 00e8 FFF78AFF 		bl	_ZL8pll_feedv
+ 145 00ec D5F88030 		ldr	r3, [r5, #128]
+ 146 00f0 23F00103 		bic	r3, r3, #1
+ 147 00f4 C5F88030 		str	r3, [r5, #128]
+ 148 00f8 FFF782FF 		bl	_ZL8pll_feedv
+ 149 00fc C5F80C61 		str	r6, [r5, #268]
+ 150 0100 C5F88460 		str	r6, [r5, #132]
+ 151 0104 FFF77CFF 		bl	_ZL8pll_feedv
+ 152 0108 059B     		ldr	r3, [sp, #20]
+ 153 010a C5F80461 		str	r6, [r5, #260]
+ 154 010e C5F8A861 		str	r6, [r5, #424]
+ 155 0112 C5F8AC61 		str	r6, [r5, #428]
+ 156 0116 C5F80C61 		str	r6, [r5, #268]
+ 157 011a C5F80431 		str	r3, [r5, #260]
+ 158 011e C5F88440 		str	r4, [r5, #132]
+ 159 0122 FFF76DFF 		bl	_ZL8pll_feedv
+ 160 0126 0123     		movs	r3, #1
+ 161 0128 C5F88030 		str	r3, [r5, #128]
+ 162 012c FFF768FF 		bl	_ZL8pll_feedv
+ 163              	.L19:
+ 164 0130 D5F88830 		ldr	r3, [r5, #136]
+ 165 0134 074C     		ldr	r4, .L23
+ 166 0136 5B01     		lsls	r3, r3, #5
+ 167 0138 FAD5     		bpl	.L19
+ 168 013a 0323     		movs	r3, #3
+ 169 013c C4F88030 		str	r3, [r4, #128]
+ 170 0140 FFF75EFF 		bl	_ZL8pll_feedv
+ 171              	.L20:
+ 172 0144 D4F88830 		ldr	r3, [r4, #136]
+ 173 0148 13F0407F 		tst	r3, #50331648
+ 174 014c FAD0     		beq	.L20
+ 175 014e 06B0     		add	sp, sp, #24
+ 176 0150 70BD     		pop	{r4, r5, r6, pc}
+ 177              	.L24:
+ 178 0152 00BF     		.align	2
+ 179              	.L23:
+ 180 0154 00C00F40 		.word	1074774016
+ 182              		.align	1
+ 183              		.global	getCpuClock
+ 184              		.thumb
+ 185              		.thumb_func
+ 187              	getCpuClock:
+ 188              		@ args = 0, pretend = 0, frame = 0
+ 189              		@ frame_needed = 0, uses_anonymous_args = 0
+ 190              		@ link register save eliminated.
+ 191 0158 224B     		ldr	r3, .L38
+ 192 015a D3F88820 		ldr	r2, [r3, #136]
+ 193 015e C2F30162 		ubfx	r2, r2, #24, #2
+ 194 0162 032A     		cmp	r2, #3
+ 195 0164 D3F80C21 		ldr	r2, [r3, #268]
+ 196 0168 02F00302 		and	r2, r2, #3
+ 197 016c 26D1     		bne	.L26
+ 198 016e 012A     		cmp	r2, #1
+ 199 0170 D3F88800 		ldr	r0, [r3, #136]
+ 200 0174 0BD0     		beq	.L28
+ 201 0176 022A     		cmp	r2, #2
+ 202 0178 4FEA4040 		lsl	r0, r0, #17
+ 203 017c D3F88820 		ldr	r2, [r3, #136]
+ 204 0180 D3F80431 		ldr	r3, [r3, #260]
+ 205 0184 16D0     		beq	.L29
+ 206 0186 400C     		lsrs	r0, r0, #17
+ 207 0188 0130     		adds	r0, r0, #1
+ 208 018a 1749     		ldr	r1, .L38+4
+ 209 018c 07E0     		b	.L34
+ 210              	.L28:
+ 211 018e 4004     		lsls	r0, r0, #17
+ 212 0190 D3F88820 		ldr	r2, [r3, #136]
+ 213 0194 400C     		lsrs	r0, r0, #17
+ 214 0196 D3F80431 		ldr	r3, [r3, #260]
+ 215 019a 1449     		ldr	r1, .L38+8
+ 216 019c 0130     		adds	r0, r0, #1
+ 217              	.L34:
+ 218 019e 4843     		muls	r0, r1, r0
+ 219              	.L35:
+ 220 01a0 C2F30742 		ubfx	r2, r2, #16, #8
+ 221 01a4 0132     		adds	r2, r2, #1
+ 222 01a6 DBB2     		uxtb	r3, r3
+ 223 01a8 B0FBF2F0 		udiv	r0, r0, r2
+ 224 01ac 0133     		adds	r3, r3, #1
+ 225 01ae B0FBF3F0 		udiv	r0, r0, r3
+ 226 01b2 7047     		bx	lr
+ 227              	.L29:
+ 228 01b4 4008     		lsrs	r0, r0, #1
+ 229 01b6 00F58030 		add	r0, r0, #65536
+ 230 01ba F1E7     		b	.L35
+ 231              	.L26:
+ 232 01bc D3F80401 		ldr	r0, [r3, #260]
+ 233 01c0 C0B2     		uxtb	r0, r0
+ 234 01c2 0130     		adds	r0, r0, #1
+ 235 01c4 012A     		cmp	r2, #1
+ 236 01c6 04D0     		beq	.L32
+ 237 01c8 022A     		cmp	r2, #2
+ 238 01ca 18BF     		it	ne
+ 239 01cc 084B     		ldrne	r3, .L38+12
+ 240 01ce 01D1     		bne	.L36
+ 241 01d0 03E0     		b	.L37
+ 242              	.L32:
+ 243 01d2 084B     		ldr	r3, .L38+16
+ 244              	.L36:
+ 245 01d4 B3FBF0F0 		udiv	r0, r3, r0
+ 246 01d8 7047     		bx	lr
+ 247              	.L37:
+ 248 01da 4FF40043 		mov	r3, #32768
+ 249 01de B3FBF0F0 		udiv	r0, r3, r0
+ 250 01e2 7047     		bx	lr
+ 251              	.L39:
+ 252              		.align	2
+ 253              	.L38:
+ 254 01e4 00C00F40 		.word	1074774016
+ 255 01e8 00127A00 		.word	8000000
+ 256 01ec 00366E01 		.word	24000000
+ 257 01f0 00093D00 		.word	4000000
+ 258 01f4 001BB700 		.word	12000000
+ 260              		.ident	"GCC: (GNU) 4.6.2"
+DEFINED SYMBOLS
+                            *ABS*:00000000 sys_clock.cpp
+C:\Users\Rhonda\AppData\Local\Temp\ccu3neBn.s:15     .text:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccu3neBn.s:19     .text:00000000 _ZL8pll_feedv
+C:\Users\Rhonda\AppData\Local\Temp\ccu3neBn.s:32     .text:00000010 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccu3neBn.s:34     .text:00000014 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccu3neBn.s:39     .text:00000014 _Z22calculatePLLParametersjjPiS_S_
+C:\Users\Rhonda\AppData\Local\Temp\ccu3neBn.s:103    .text:00000090 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccu3neBn.s:106    .text:00000098 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccu3neBn.s:111    .text:00000098 _Z20configureSystemClockv
+C:\Users\Rhonda\AppData\Local\Temp\ccu3neBn.s:180    .text:00000154 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccu3neBn.s:182    .text:00000158 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccu3neBn.s:187    .text:00000158 getCpuClock
+C:\Users\Rhonda\AppData\Local\Temp\ccu3neBn.s:254    .text:000001e4 $d
+
+NO UNDEFINED SYMBOLS

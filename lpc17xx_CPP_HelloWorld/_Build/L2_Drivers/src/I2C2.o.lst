@@ -1,0 +1,115 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"I2C2.cpp"
+  14              		.text
+  15              		.align	1
+  16              		.global	_ZN4I2C24initEj
+  17              		.thumb
+  18              		.thumb_func
+  20              	_ZN4I2C24initEj:
+  21              		@ args = 0, pretend = 0, frame = 0
+  22              		@ frame_needed = 0, uses_anonymous_args = 0
+  23 0000 38B5     		push	{r3, r4, r5, lr}
+  24 0002 0E4B     		ldr	r3, .L2
+  25 0004 0C46     		mov	r4, r1
+  26 0006 1A68     		ldr	r2, [r3, #0]
+  27 0008 0546     		mov	r5, r0
+  28 000a 22F47002 		bic	r2, r2, #15728640
+  29 000e 1A60     		str	r2, [r3, #0]
+  30 0010 1A68     		ldr	r2, [r3, #0]
+  31 0012 42F42002 		orr	r2, r2, #10485760
+  32 0016 1A60     		str	r2, [r3, #0]
+  33 0018 03F55023 		add	r3, r3, #851968
+  34 001c D3F8AC21 		ldr	r2, [r3, #428]
+  35 0020 22F44012 		bic	r2, r2, #3145728
+  36 0024 C3F8AC21 		str	r2, [r3, #428]
+  37 0028 FFF7FEFF 		bl	getCpuClock
+  38 002c 2246     		mov	r2, r4
+  39 002e 8108     		lsrs	r1, r0, #2
+  40 0030 2846     		mov	r0, r5
+  41 0032 BDE83840 		pop	{r3, r4, r5, lr}
+  42 0036 FFF7FEBF 		b	_ZN8I2C_Base4initEjj
+  43              	.L3:
+  44 003a 00BF     		.align	2
+  45              	.L2:
+  46 003c 00C00240 		.word	1073922048
+  48              		.align	1
+  49              		.global	_ZN4I2C2C2Ev
+  50              		.thumb
+  51              		.thumb_func
+  53              	_ZN4I2C2C2Ev:
+  54              		@ args = 0, pretend = 0, frame = 0
+  55              		@ frame_needed = 0, uses_anonymous_args = 0
+  56 0040 10B5     		push	{r4, lr}
+  57 0042 0349     		ldr	r1, .L7
+  58 0044 0446     		mov	r4, r0
+  59 0046 FFF7FEFF 		bl	_ZN8I2C_BaseC2EP15LPC_I2C_TypeDef
+  60 004a 2046     		mov	r0, r4
+  61 004c 10BD     		pop	{r4, pc}
+  62              	.L8:
+  63 004e 00BF     		.align	2
+  64              	.L7:
+  65 0050 00000A40 		.word	1074397184
+  67              		.align	1
+  68              		.global	I2C2_IRQHandler
+  69              		.thumb
+  70              		.thumb_func
+  72              	I2C2_IRQHandler:
+  73              		@ args = 0, pretend = 0, frame = 0
+  74              		@ frame_needed = 0, uses_anonymous_args = 0
+  75 0054 38B5     		push	{r3, r4, r5, lr}
+  76 0056 074C     		ldr	r4, .L11
+  77 0058 2368     		ldr	r3, [r4, #0]
+  78 005a 33B9     		cbnz	r3, .L10
+  79 005c 1C20     		movs	r0, #28
+  80 005e FFF7FEFF 		bl	_Znwj
+  81 0062 0546     		mov	r5, r0
+  82 0064 FFF7FEFF 		bl	_ZN4I2C2C1Ev
+  83 0068 2560     		str	r5, [r4, #0]
+  84              	.L10:
+  85 006a 2068     		ldr	r0, [r4, #0]
+  86 006c BDE83840 		pop	{r3, r4, r5, lr}
+  87 0070 FFF7FEBF 		b	_ZN8I2C_Base15handleInterruptEv
+  88              	.L12:
+  89              		.align	2
+  90              	.L11:
+  91 0074 00000000 		.word	_ZN17SingletonTemplateI4I2C2E19mpSingletonInstanceE
+  93              		.weak	_ZN17SingletonTemplateI4I2C2E19mpSingletonInstanceE
+  94              		.section	.bss._ZN17SingletonTemplateI4I2C2E19mpSingletonInstanceE,"awG",%nobits,_ZN17SingletonTemp
+  95              		.align	2
+  98              	_ZN17SingletonTemplateI4I2C2E19mpSingletonInstanceE:
+  99 0000 00000000 		.space	4
+ 100              		.global	_ZN4I2C2C1Ev
+ 101              		.thumb_set _ZN4I2C2C1Ev,_ZN4I2C2C2Ev
+ 102              		.ident	"GCC: (GNU) 4.6.2"
+DEFINED SYMBOLS
+                            *ABS*:00000000 I2C2.cpp
+C:\Users\Rhonda\AppData\Local\Temp\ccp1g6eb.s:15     .text:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccp1g6eb.s:20     .text:00000000 _ZN4I2C24initEj
+C:\Users\Rhonda\AppData\Local\Temp\ccp1g6eb.s:46     .text:0000003c $d
+C:\Users\Rhonda\AppData\Local\Temp\ccp1g6eb.s:48     .text:00000040 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccp1g6eb.s:53     .text:00000040 _ZN4I2C2C2Ev
+C:\Users\Rhonda\AppData\Local\Temp\ccp1g6eb.s:65     .text:00000050 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccp1g6eb.s:67     .text:00000054 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccp1g6eb.s:72     .text:00000054 I2C2_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\ccp1g6eb.s:53     .text:00000040 _ZN4I2C2C1Ev
+C:\Users\Rhonda\AppData\Local\Temp\ccp1g6eb.s:91     .text:00000074 $d
+C:\Users\Rhonda\AppData\Local\Temp\ccp1g6eb.s:98     .bss._ZN17SingletonTemplateI4I2C2E19mpSingletonInstanceE:00000000 _ZN17SingletonTemplateI4I2C2E19mpSingletonInstanceE
+C:\Users\Rhonda\AppData\Local\Temp\ccp1g6eb.s:95     .bss._ZN17SingletonTemplateI4I2C2E19mpSingletonInstanceE:00000000 $d
+
+UNDEFINED SYMBOLS
+getCpuClock
+_ZN8I2C_Base4initEjj
+_ZN8I2C_BaseC2EP15LPC_I2C_TypeDef
+_Znwj
+_ZN8I2C_Base15handleInterruptEv

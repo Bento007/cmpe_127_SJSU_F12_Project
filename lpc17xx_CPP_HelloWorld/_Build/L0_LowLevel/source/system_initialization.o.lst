@@ -1,0 +1,153 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"system_initialization.cpp"
+  14              		.text
+  15              		.align	1
+  16              		.global	_Z25configureFlashAcceleratorj
+  17              		.thumb
+  18              		.thumb_func
+  20              	_Z25configureFlashAcceleratorj:
+  21              		@ args = 0, pretend = 0, frame = 0
+  22              		@ frame_needed = 0, uses_anonymous_args = 0
+  23              		@ link register save eliminated.
+  24 0000 144B     		ldr	r3, .L15
+  25 0002 1A68     		ldr	r2, [r3, #0]
+  26 0004 02F47042 		and	r2, r2, #61440
+  27 0008 1A60     		str	r2, [r3, #0]
+  28 000a 134A     		ldr	r2, .L15+4
+  29 000c B0FBF2F0 		udiv	r0, r0, r2
+  30 0010 3C28     		cmp	r0, #60
+  31 0012 0AD8     		bhi	.L8
+  32 0014 2928     		cmp	r0, #41
+  33 0016 24BF     		itt	cs
+  34 0018 1A68     		ldrcs	r2, [r3, #0]
+  35 001a 42F40052 		orrcs	r2, r2, #8192
+  36 001e 17D2     		bcs	.L12
+  37 0020 1428     		cmp	r0, #20
+  38 0022 98BF     		it	ls
+  39 0024 1A68     		ldrls	r2, [r3, #0]
+  40 0026 13D9     		bls	.L12
+  41 0028 0BE0     		b	.L13
+  42              	.L8:
+  43 002a 5028     		cmp	r0, #80
+  44 002c 9CBF     		itt	ls
+  45 002e 1A68     		ldrls	r2, [r3, #0]
+  46 0030 42F44052 		orrls	r2, r2, #12288
+  47 0034 0CD9     		bls	.L12
+  48 0036 6428     		cmp	r0, #100
+  49 0038 88BF     		it	hi
+  50 003a 4FF4A042 		movhi	r2, #20480
+  51 003e 07D8     		bhi	.L12
+  52 0040 03E0     		b	.L14
+  53              	.L13:
+  54 0042 1A68     		ldr	r2, [r3, #0]
+  55 0044 42F48052 		orr	r2, r2, #4096
+  56 0048 02E0     		b	.L12
+  57              	.L14:
+  58 004a 1A68     		ldr	r2, [r3, #0]
+  59 004c 42F48042 		orr	r2, r2, #16384
+  60              	.L12:
+  61 0050 1A60     		str	r2, [r3, #0]
+  62 0052 7047     		bx	lr
+  63              	.L16:
+  64              		.align	2
+  65              	.L15:
+  66 0054 00C00F40 		.word	1074774016
+  67 0058 40420F00 		.word	1000000
+  69              		.align	1
+  70              		.global	_Z18lowLevelInitializev
+  71              		.thumb
+  72              		.thumb_func
+  74              	_Z18lowLevelInitializev:
+  75              		@ args = 0, pretend = 0, frame = 0
+  76              		@ frame_needed = 0, uses_anonymous_args = 0
+  77 005c 37B5     		push	{r0, r1, r2, r4, r5, lr}
+  78 005e FFF7FEFF 		bl	_Z20configureSystemClockv
+  79 0062 FFF7FEFF 		bl	getCpuClock
+  80 0066 0446     		mov	r4, r0
+  81 0068 FFF7FEFF 		bl	_Z25configureFlashAcceleratorj
+  82 006c A108     		lsrs	r1, r4, #2
+  83 006e 4FF41640 		mov	r0, #38400
+  84 0072 FFF7FEFF 		bl	uart0Init
+  85 0076 104D     		ldr	r5, .L18
+  86 0078 1048     		ldr	r0, .L18+4
+  87 007a FFF7FEFF 		bl	stdio_SetOutputCharFunction
+  88 007e 1048     		ldr	r0, .L18+8
+  89 0080 FFF7FEFF 		bl	stdio_SetInputCharFunction
+  90 0084 2B68     		ldr	r3, [r5, #0]
+  91 0086 0021     		movs	r1, #0
+  92 0088 0222     		movs	r2, #2
+  93 008a 9868     		ldr	r0, [r3, #8]
+  94 008c 0B46     		mov	r3, r1
+  95 008e FFF7FEFF 		bl	setvbuf
+  96 0092 2B68     		ldr	r3, [r5, #0]
+  97 0094 0021     		movs	r1, #0
+  98 0096 0222     		movs	r2, #2
+  99 0098 5868     		ldr	r0, [r3, #4]
+ 100 009a 0B46     		mov	r3, r1
+ 101 009c FFF7FEFF 		bl	setvbuf
+ 102 00a0 084A     		ldr	r2, .L18+12
+ 103 00a2 094B     		ldr	r3, .L18+16
+ 104 00a4 B4FBF2F1 		udiv	r1, r4, r2
+ 105 00a8 0093     		str	r3, [sp, #0]
+ 106 00aa 02FB1142 		mls	r2, r2, r1, r4
+ 107 00ae 074B     		ldr	r3, .L18+20
+ 108 00b0 0748     		ldr	r0, .L18+24
+ 109 00b2 FFF7FEFF 		bl	printf
+ 110 00b6 3EBD     		pop	{r1, r2, r3, r4, r5, pc}
+ 111              	.L19:
+ 112              		.align	2
+ 113              	.L18:
+ 114 00b8 00000000 		.word	_impure_ptr
+ 115 00bc 00000000 		.word	uart0Putchar
+ 116 00c0 00000000 		.word	uart0Getchar
+ 117 00c4 40420F00 		.word	1000000
+ 118 00c8 36000000 		.word	.LC2
+ 119 00cc 2A000000 		.word	.LC1
+ 120 00d0 00000000 		.word	.LC0
+ 122              		.section	.rodata.str1.1,"aMS",%progbits,1
+ 123              	.LC0:
+ 124 0000 0A537973 		.ascii	"\012System Boot @ %u.%u Mhz (Build: %s, %s)\012\000"
+ 124      74656D20 
+ 124      426F6F74 
+ 124      20402025 
+ 124      752E2575 
+ 125              	.LC1:
+ 126 002a 4F637420 		.ascii	"Oct 17 2012\000"
+ 126      31372032 
+ 126      30313200 
+ 127              	.LC2:
+ 128 0036 31323A30 		.ascii	"12:00:06\000"
+ 128      303A3036 
+ 128      00
+ 129              		.ident	"GCC: (GNU) 4.6.2"
+DEFINED SYMBOLS
+                            *ABS*:00000000 system_initialization.cpp
+C:\Users\Rhonda\AppData\Local\Temp\cccAJNjY.s:15     .text:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\cccAJNjY.s:20     .text:00000000 _Z25configureFlashAcceleratorj
+C:\Users\Rhonda\AppData\Local\Temp\cccAJNjY.s:66     .text:00000054 $d
+C:\Users\Rhonda\AppData\Local\Temp\cccAJNjY.s:69     .text:0000005c $t
+C:\Users\Rhonda\AppData\Local\Temp\cccAJNjY.s:74     .text:0000005c _Z18lowLevelInitializev
+C:\Users\Rhonda\AppData\Local\Temp\cccAJNjY.s:114    .text:000000b8 $d
+
+UNDEFINED SYMBOLS
+_Z20configureSystemClockv
+getCpuClock
+uart0Init
+stdio_SetOutputCharFunction
+stdio_SetInputCharFunction
+setvbuf
+printf
+_impure_ptr
+uart0Putchar
+uart0Getchar

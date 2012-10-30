@@ -1,0 +1,615 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"main.cpp"
+  14              		.section	.text._ZN9IO_Device16getValueAsStringEv,"axG",%progbits,_ZN9IO_Device16getValueAsStringEv
+  15              		.align	1
+  16              		.weak	_ZN9IO_Device16getValueAsStringEv
+  17              		.thumb
+  18              		.thumb_func
+  20              	_ZN9IO_Device16getValueAsStringEv:
+  21              		@ args = 0, pretend = 0, frame = 0
+  22              		@ frame_needed = 0, uses_anonymous_args = 0
+  23 0000 10B5     		push	{r4, lr}
+  24 0002 041D     		adds	r4, r0, #4
+  25 0004 2046     		mov	r0, r4
+  26 0006 0449     		ldr	r1, .L2
+  27 0008 FFF7FEFF 		bl	_ZN3straSEPKc
+  28 000c 2046     		mov	r0, r4
+  29 000e BDE81040 		pop	{r4, lr}
+  30 0012 FFF7FEBF 		b	_ZNK3strclEv
+  31              	.L3:
+  32 0016 00BF     		.align	2
+  33              	.L2:
+  34 0018 00000000 		.word	.LC0
+  36              		.section	.text._ZN9IO_DeviceD2Ev,"axG",%progbits,_ZN9IO_DeviceD5Ev,comdat
+  37              		.align	1
+  38              		.weak	_ZN9IO_DeviceD2Ev
+  39              		.thumb
+  40              		.thumb_func
+  42              	_ZN9IO_DeviceD2Ev:
+  43              		@ args = 0, pretend = 0, frame = 0
+  44              		@ frame_needed = 0, uses_anonymous_args = 0
+  45 0000 044B     		ldr	r3, .L6
+  46 0002 10B5     		push	{r4, lr}
+  47 0004 0446     		mov	r4, r0
+  48 0006 40F8043B 		str	r3, [r0], #4
+  49 000a FFF7FEFF 		bl	_ZN3strD1Ev
+  50 000e 2046     		mov	r0, r4
+  51 0010 10BD     		pop	{r4, pc}
+  52              	.L7:
+  53 0012 00BF     		.align	2
+  54              	.L6:
+  55 0014 08000000 		.word	_ZTV9IO_Device+8
+  57              		.section	.text._ZN9IO_DeviceD0Ev,"axG",%progbits,_ZN9IO_DeviceD5Ev,comdat
+  58              		.align	1
+  59              		.weak	_ZN9IO_DeviceD0Ev
+  60              		.thumb
+  61              		.thumb_func
+  63              	_ZN9IO_DeviceD0Ev:
+  64              		@ args = 0, pretend = 0, frame = 0
+  65              		@ frame_needed = 0, uses_anonymous_args = 0
+  66 0000 10B5     		push	{r4, lr}
+  67 0002 0446     		mov	r4, r0
+  68 0004 FFF7FEFF 		bl	_ZN9IO_DeviceD1Ev
+  69 0008 2046     		mov	r0, r4
+  70 000a FFF7FEFF 		bl	_ZdlPv
+  71 000e 2046     		mov	r0, r4
+  72 0010 10BD     		pop	{r4, pc}
+  74              		.section	.text._ZN9IO_DeviceC2Ev,"axG",%progbits,_ZN9IO_DeviceC5Ev,comdat
+  75              		.align	1
+  76              		.weak	_ZN9IO_DeviceC2Ev
+  77              		.thumb
+  78              		.thumb_func
+  80              	_ZN9IO_DeviceC2Ev:
+  81              		@ args = 0, pretend = 0, frame = 0
+  82              		@ frame_needed = 0, uses_anonymous_args = 0
+  83 0000 044B     		ldr	r3, .L12
+  84 0002 10B5     		push	{r4, lr}
+  85 0004 2021     		movs	r1, #32
+  86 0006 0446     		mov	r4, r0
+  87 0008 40F8043B 		str	r3, [r0], #4
+  88 000c FFF7FEFF 		bl	_ZN3strC1Ei
+  89 0010 2046     		mov	r0, r4
+  90 0012 10BD     		pop	{r4, pc}
+  91              	.L13:
+  92              		.align	2
+  93              	.L12:
+  94 0014 08000000 		.word	_ZTV9IO_Device+8
+  96              		.section	.text._ZN15I2C_Device_BaseC2Eh,"axG",%progbits,_ZN15I2C_Device_BaseC5Eh,comdat
+  97              		.align	1
+  98              		.weak	_ZN15I2C_Device_BaseC2Eh
+  99              		.thumb
+ 100              		.thumb_func
+ 102              	_ZN15I2C_Device_BaseC2Eh:
+ 103              		@ args = 0, pretend = 0, frame = 0
+ 104              		@ frame_needed = 0, uses_anonymous_args = 0
+ 105 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 106 0002 084D     		ldr	r5, .L17
+ 107 0004 0446     		mov	r4, r0
+ 108 0006 2B68     		ldr	r3, [r5, #0]
+ 109 0008 0F46     		mov	r7, r1
+ 110 000a 33B9     		cbnz	r3, .L15
+ 111 000c 1C20     		movs	r0, #28
+ 112 000e FFF7FEFF 		bl	_Znwj
+ 113 0012 0646     		mov	r6, r0
+ 114 0014 FFF7FEFF 		bl	_ZN4I2C2C1Ev
+ 115 0018 2E60     		str	r6, [r5, #0]
+ 116              	.L15:
+ 117 001a 2B68     		ldr	r3, [r5, #0]
+ 118 001c 2771     		strb	r7, [r4, #4]
+ 119 001e 2360     		str	r3, [r4, #0]
+ 120 0020 2046     		mov	r0, r4
+ 121 0022 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 122              	.L18:
+ 123              		.align	2
+ 124              	.L17:
+ 125 0024 00000000 		.word	_ZN17SingletonTemplateI4I2C2E19mpSingletonInstanceE
+ 127              		.section	.text._ZN17SingletonTemplateI3LCDE11getInstanceEv,"axG",%progbits,_ZN17SingletonTemplateI
+ 128              		.align	1
+ 129              		.weak	_ZN17SingletonTemplateI3LCDE11getInstanceEv
+ 130              		.thumb
+ 131              		.thumb_func
+ 133              	_ZN17SingletonTemplateI3LCDE11getInstanceEv:
+ 134              		@ args = 0, pretend = 0, frame = 0
+ 135              		@ frame_needed = 0, uses_anonymous_args = 0
+ 136 0000 38B5     		push	{r3, r4, r5, lr}
+ 137 0002 074D     		ldr	r5, .L23
+ 138 0004 2B68     		ldr	r3, [r5, #0]
+ 139 0006 43B9     		cbnz	r3, .L20
+ 140 0008 1820     		movs	r0, #24
+ 141 000a FFF7FEFF 		bl	_Znwj
+ 142 000e 0446     		mov	r4, r0
+ 143 0010 FFF7FEFF 		bl	_ZN9IO_DeviceC2Ev
+ 144 0014 034B     		ldr	r3, .L23+4
+ 145 0016 2360     		str	r3, [r4, #0]
+ 146 0018 2C60     		str	r4, [r5, #0]
+ 147              	.L20:
+ 148 001a 014B     		ldr	r3, .L23
+ 149 001c 1868     		ldr	r0, [r3, #0]
+ 150 001e 38BD     		pop	{r3, r4, r5, pc}
+ 151              	.L24:
+ 152              		.align	2
+ 153              	.L23:
+ 154 0020 00000000 		.word	_ZN17SingletonTemplateI3LCDE19mpSingletonInstanceE
+ 155 0024 08000000 		.word	_ZTV3LCD+8
+ 157              		.section	.text._ZN17SingletonTemplateI8SwitchesE11getInstanceEv,"axG",%progbits,_ZN17SingletonTemp
+ 158              		.align	1
+ 159              		.weak	_ZN17SingletonTemplateI8SwitchesE11getInstanceEv
+ 160              		.thumb
+ 161              		.thumb_func
+ 163              	_ZN17SingletonTemplateI8SwitchesE11getInstanceEv:
+ 164              		@ args = 0, pretend = 0, frame = 0
+ 165              		@ frame_needed = 0, uses_anonymous_args = 0
+ 166 0000 38B5     		push	{r3, r4, r5, lr}
+ 167 0002 074D     		ldr	r5, .L29
+ 168 0004 2B68     		ldr	r3, [r5, #0]
+ 169 0006 43B9     		cbnz	r3, .L26
+ 170 0008 1820     		movs	r0, #24
+ 171 000a FFF7FEFF 		bl	_Znwj
+ 172 000e 0446     		mov	r4, r0
+ 173 0010 FFF7FEFF 		bl	_ZN9IO_DeviceC2Ev
+ 174 0014 034B     		ldr	r3, .L29+4
+ 175 0016 2360     		str	r3, [r4, #0]
+ 176 0018 2C60     		str	r4, [r5, #0]
+ 177              	.L26:
+ 178 001a 014B     		ldr	r3, .L29
+ 179 001c 1868     		ldr	r0, [r3, #0]
+ 180 001e 38BD     		pop	{r3, r4, r5, pc}
+ 181              	.L30:
+ 182              		.align	2
+ 183              	.L29:
+ 184 0020 00000000 		.word	_ZN17SingletonTemplateI8SwitchesE19mpSingletonInstanceE
+ 185 0024 08000000 		.word	_ZTV8Switches+8
+ 187              		.section	.text._ZN17SingletonTemplateI11LED_DisplayE11getInstanceEv,"axG",%progbits,_ZN17Singleton
+ 188              		.align	1
+ 189              		.weak	_ZN17SingletonTemplateI11LED_DisplayE11getInstanceEv
+ 190              		.thumb
+ 191              		.thumb_func
+ 193              	_ZN17SingletonTemplateI11LED_DisplayE11getInstanceEv:
+ 194              		@ args = 0, pretend = 0, frame = 0
+ 195              		@ frame_needed = 0, uses_anonymous_args = 0
+ 196 0000 38B5     		push	{r3, r4, r5, lr}
+ 197 0002 0A4D     		ldr	r5, .L35
+ 198 0004 2B68     		ldr	r3, [r5, #0]
+ 199 0006 6BB9     		cbnz	r3, .L32
+ 200 0008 2020     		movs	r0, #32
+ 201 000a FFF7FEFF 		bl	_Znwj
+ 202 000e 0446     		mov	r4, r0
+ 203 0010 FFF7FEFF 		bl	_ZN9IO_DeviceC2Ev
+ 204 0014 04F11800 		add	r0, r4, #24
+ 205 0018 4021     		movs	r1, #64
+ 206 001a FFF7FEFF 		bl	_ZN15I2C_Device_BaseC2Eh
+ 207 001e 044B     		ldr	r3, .L35+4
+ 208 0020 2360     		str	r3, [r4, #0]
+ 209 0022 2C60     		str	r4, [r5, #0]
+ 210              	.L32:
+ 211 0024 014B     		ldr	r3, .L35
+ 212 0026 1868     		ldr	r0, [r3, #0]
+ 213 0028 38BD     		pop	{r3, r4, r5, pc}
+ 214              	.L36:
+ 215 002a 00BF     		.align	2
+ 216              	.L35:
+ 217 002c 00000000 		.word	_ZN17SingletonTemplateI11LED_DisplayE19mpSingletonInstanceE
+ 218 0030 08000000 		.word	_ZTV11LED_Display+8
+ 220              		.section	.text._ZN17SingletonTemplateI3LEDE11getInstanceEv,"axG",%progbits,_ZN17SingletonTemplateI
+ 221              		.align	1
+ 222              		.weak	_ZN17SingletonTemplateI3LEDE11getInstanceEv
+ 223              		.thumb
+ 224              		.thumb_func
+ 226              	_ZN17SingletonTemplateI3LEDE11getInstanceEv:
+ 227              		@ args = 0, pretend = 0, frame = 0
+ 228              		@ frame_needed = 0, uses_anonymous_args = 0
+ 229 0000 38B5     		push	{r3, r4, r5, lr}
+ 230 0002 074D     		ldr	r5, .L41
+ 231 0004 2B68     		ldr	r3, [r5, #0]
+ 232 0006 43B9     		cbnz	r3, .L38
+ 233 0008 1C20     		movs	r0, #28
+ 234 000a FFF7FEFF 		bl	_Znwj
+ 235 000e 0446     		mov	r4, r0
+ 236 0010 FFF7FEFF 		bl	_ZN9IO_DeviceC2Ev
+ 237 0014 034B     		ldr	r3, .L41+4
+ 238 0016 2360     		str	r3, [r4, #0]
+ 239 0018 2C60     		str	r4, [r5, #0]
+ 240              	.L38:
+ 241 001a 014B     		ldr	r3, .L41
+ 242 001c 1868     		ldr	r0, [r3, #0]
+ 243 001e 38BD     		pop	{r3, r4, r5, pc}
+ 244              	.L42:
+ 245              		.align	2
+ 246              	.L41:
+ 247 0020 00000000 		.word	_ZN17SingletonTemplateI3LEDE19mpSingletonInstanceE
+ 248 0024 08000000 		.word	_ZTV3LED+8
+ 250              		.section	.text._ZN17SingletonTemplateI6KeypadE11getInstanceEv,"axG",%progbits,_ZN17SingletonTempla
+ 251              		.align	1
+ 252              		.weak	_ZN17SingletonTemplateI6KeypadE11getInstanceEv
+ 253              		.thumb
+ 254              		.thumb_func
+ 256              	_ZN17SingletonTemplateI6KeypadE11getInstanceEv:
+ 257              		@ args = 0, pretend = 0, frame = 0
+ 258              		@ frame_needed = 0, uses_anonymous_args = 0
+ 259 0000 38B5     		push	{r3, r4, r5, lr}
+ 260 0002 074D     		ldr	r5, .L47
+ 261 0004 2B68     		ldr	r3, [r5, #0]
+ 262 0006 43B9     		cbnz	r3, .L44
+ 263 0008 1820     		movs	r0, #24
+ 264 000a FFF7FEFF 		bl	_Znwj
+ 265 000e 0446     		mov	r4, r0
+ 266 0010 FFF7FEFF 		bl	_ZN9IO_DeviceC2Ev
+ 267 0014 034B     		ldr	r3, .L47+4
+ 268 0016 2360     		str	r3, [r4, #0]
+ 269 0018 2C60     		str	r4, [r5, #0]
+ 270              	.L44:
+ 271 001a 014B     		ldr	r3, .L47
+ 272 001c 1868     		ldr	r0, [r3, #0]
+ 273 001e 38BD     		pop	{r3, r4, r5, pc}
+ 274              	.L48:
+ 275              		.align	2
+ 276              	.L47:
+ 277 0020 00000000 		.word	_ZN17SingletonTemplateI6KeypadE19mpSingletonInstanceE
+ 278 0024 08000000 		.word	_ZTV6Keypad+8
+ 280              		.section	.text.startup,"ax",%progbits
+ 281              		.align	1
+ 282              		.global	main
+ 283              		.thumb
+ 284              		.thumb_func
+ 286              	main:
+ 287              		@ args = 0, pretend = 0, frame = 32
+ 288              		@ frame_needed = 0, uses_anonymous_args = 0
+ 289 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+ 290 0004 89B0     		sub	sp, sp, #36
+ 291 0006 7349     		ldr	r1, .L69
+ 292 0008 0A22     		movs	r2, #10
+ 293 000a 05A8     		add	r0, sp, #20
+ 294 000c FFF7FEFF 		bl	memcpy
+ 295 0010 6846     		mov	r0, sp
+ 296 0012 FFF7FEFF 		bl	_ZN3strC1Ev
+ 297 0016 C820     		movs	r0, #200
+ 298 0018 FFF7FEFF 		bl	delay_ms
+ 299 001c 6E4D     		ldr	r5, .L69+4
+ 300 001e 6F4E     		ldr	r6, .L69+8
+ 301 0020 4FF00108 		mov	r8, #1
+ 302              	.L68:
+ 303 0024 2B68     		ldr	r3, [r5, #0]
+ 304 0026 63B9     		cbnz	r3, .L50
+ 305 0028 2020     		movs	r0, #32
+ 306 002a FFF7FEFF 		bl	_Znwj
+ 307 002e 0746     		mov	r7, r0
+ 308 0030 FFF7FEFF 		bl	_ZN9IO_DeviceC2Ev
+ 309 0034 07F11800 		add	r0, r7, #24
+ 310 0038 9021     		movs	r1, #144
+ 311 003a FFF7FEFF 		bl	_ZN15I2C_Device_BaseC2Eh
+ 312 003e 3E60     		str	r6, [r7, #0]
+ 313 0040 2F60     		str	r7, [r5, #0]
+ 314              	.L50:
+ 315 0042 2868     		ldr	r0, [r5, #0]
+ 316 0044 0368     		ldr	r3, [r0, #0]
+ 317 0046 5B68     		ldr	r3, [r3, #4]
+ 318 0048 9847     		blx	r3
+ 319 004a 0146     		mov	r1, r0
+ 320 004c 6846     		mov	r0, sp
+ 321 004e FFF7FEFF 		bl	_ZN3straSEPKc
+ 322 0052 FFF7FEFF 		bl	_ZN17SingletonTemplateI3LCDE11getInstanceEv
+ 323 0056 0746     		mov	r7, r0
+ 324 0058 6846     		mov	r0, sp
+ 325 005a FFF7FEFF 		bl	_ZNK3strclEv
+ 326 005e 0122     		movs	r2, #1
+ 327 0060 0146     		mov	r1, r0
+ 328 0062 3846     		mov	r0, r7
+ 329 0064 FFF7FEFF 		bl	_ZN3LCD5writeEPKcj
+ 330 0068 6846     		mov	r0, sp
+ 331 006a FFF7FEFF 		bl	_ZNK3strclEv
+ 332 006e FFF7FEFF 		bl	puts
+ 333 0072 FFF7FEFF 		bl	_ZN17SingletonTemplateI8SwitchesE11getInstanceEv
+ 334 0076 0368     		ldr	r3, [r0, #0]
+ 335 0078 1B68     		ldr	r3, [r3, #0]
+ 336 007a 9847     		blx	r3
+ 337 007c 0028     		cmp	r0, #0
+ 338 007e 3FD0     		beq	.L63
+ 339 0080 FFF7FEFF 		bl	_ZN17SingletonTemplateI8SwitchesE11getInstanceEv
+ 340 0084 FFF7FEFF 		bl	_ZN8Switches15getSwitchValuesEv
+ 341 0088 0028     		cmp	r0, #0
+ 342 008a 39D0     		beq	.L63
+ 343 008c FFF7FEFF 		bl	_ZN17SingletonTemplateI8SwitchesE11getInstanceEv
+ 344 0090 0368     		ldr	r3, [r0, #0]
+ 345 0092 5B68     		ldr	r3, [r3, #4]
+ 346 0094 9847     		blx	r3
+ 347 0096 0146     		mov	r1, r0
+ 348 0098 6846     		mov	r0, sp
+ 349 009a FFF7FEFF 		bl	_ZN3straSEPKc
+ 350 009e FFF7FEFF 		bl	_ZN17SingletonTemplateI3LCDE11getInstanceEv
+ 351 00a2 0368     		ldr	r3, [r0, #0]
+ 352 00a4 1B68     		ldr	r3, [r3, #0]
+ 353 00a6 9847     		blx	r3
+ 354 00a8 FFF7FEFF 		bl	_ZN17SingletonTemplateI3LCDE11getInstanceEv
+ 355 00ac 0746     		mov	r7, r0
+ 356 00ae 6846     		mov	r0, sp
+ 357 00b0 FFF7FEFF 		bl	_ZNK3strclEv
+ 358 00b4 0222     		movs	r2, #2
+ 359 00b6 0146     		mov	r1, r0
+ 360 00b8 3846     		mov	r0, r7
+ 361 00ba FFF7FEFF 		bl	_ZN3LCD5writeEPKcj
+ 362 00be FFF7FEFF 		bl	_ZN17SingletonTemplateI8SwitchesE11getInstanceEv
+ 363 00c2 0368     		ldr	r3, [r0, #0]
+ 364 00c4 0127     		movs	r7, #1
+ 365 00c6 5B68     		ldr	r3, [r3, #4]
+ 366 00c8 9847     		blx	r3
+ 367 00ca FFF7FEFF 		bl	puts
+ 368              	.L56:
+ 369 00ce FFF7FEFF 		bl	_ZN17SingletonTemplateI8SwitchesE11getInstanceEv
+ 370 00d2 3946     		mov	r1, r7
+ 371 00d4 FFF7FEFF 		bl	_ZN8Switches9getSwitchEi
+ 372 00d8 50B1     		cbz	r0, .L54
+ 373 00da FFF7FEFF 		bl	_ZN17SingletonTemplateI11LED_DisplayE11getInstanceEv
+ 374 00de F9B2     		uxtb	r1, r7
+ 375 00e0 FFF7FEFF 		bl	_ZN11LED_Display9setNumberEc
+ 376 00e4 FFF7FEFF 		bl	_ZN17SingletonTemplateI3LEDE11getInstanceEv
+ 377 00e8 3946     		mov	r1, r7
+ 378 00ea FFF7FEFF 		bl	_ZN3LED2onEi
+ 379 00ee 04E0     		b	.L55
+ 380              	.L54:
+ 381 00f0 FFF7FEFF 		bl	_ZN17SingletonTemplateI3LEDE11getInstanceEv
+ 382 00f4 3946     		mov	r1, r7
+ 383 00f6 FFF7FEFF 		bl	_ZN3LED3offEi
+ 384              	.L55:
+ 385 00fa 0137     		adds	r7, r7, #1
+ 386 00fc 092F     		cmp	r7, #9
+ 387 00fe E6D1     		bne	.L56
+ 388              	.L63:
+ 389 0100 FFF7FEFF 		bl	_ZN17SingletonTemplateI6KeypadE11getInstanceEv
+ 390 0104 0368     		ldr	r3, [r0, #0]
+ 391 0106 05AF     		add	r7, sp, #20
+ 392 0108 1B68     		ldr	r3, [r3, #0]
+ 393 010a 9847     		blx	r3
+ 394 010c FFF7FEFF 		bl	_ZN17SingletonTemplateI6KeypadE11getInstanceEv
+ 395 0110 3946     		mov	r1, r7
+ 396 0112 FFF7FEFF 		bl	_ZN6Keypad7getCharEPc
+ 397 0116 70B3     		cbz	r0, .L57
+ 398 0118 3946     		mov	r1, r7
+ 399 011a 3148     		ldr	r0, .L69+12
+ 400 011c FFF7FEFF 		bl	printf
+ 401 0120 FFF7FEFF 		bl	_ZN17SingletonTemplateI11LED_DisplayE11getInstanceEv
+ 402 0124 9DF81410 		ldrb	r1, [sp, #20]	@ zero_extendqisi2
+ 403 0128 FFF7FEFF 		bl	_ZN11LED_Display13setRightDigitEc
+ 404 012c FFF7FEFF 		bl	_ZN17SingletonTemplateI11LED_DisplayE11getInstanceEv
+ 405 0130 9DF81510 		ldrb	r1, [sp, #21]	@ zero_extendqisi2
+ 406 0134 FFF7FEFF 		bl	_ZN11LED_Display12setLeftDigitEc
+ 407 0138 6846     		mov	r0, sp
+ 408 013a 2A49     		ldr	r1, .L69+16
+ 409 013c FFF7FEFF 		bl	_ZN3straSEPKc
+ 410 0140 3946     		mov	r1, r7
+ 411 0142 6846     		mov	r0, sp
+ 412 0144 FFF7FEFF 		bl	_ZN3strpLEPKc
+ 413 0148 FFF7FEFF 		bl	_ZN17SingletonTemplateI3LCDE11getInstanceEv
+ 414 014c 0368     		ldr	r3, [r0, #0]
+ 415 014e 1B68     		ldr	r3, [r3, #0]
+ 416 0150 9847     		blx	r3
+ 417 0152 FFF7FEFF 		bl	_ZN17SingletonTemplateI3LCDE11getInstanceEv
+ 418 0156 8146     		mov	r9, r0
+ 419 0158 6846     		mov	r0, sp
+ 420 015a FFF7FEFF 		bl	_ZNK3strclEv
+ 421 015e 0322     		movs	r2, #3
+ 422 0160 0146     		mov	r1, r0
+ 423 0162 4846     		mov	r0, r9
+ 424 0164 FFF7FEFF 		bl	_ZN3LCD5writeEPKcj
+ 425 0168 07F10803 		add	r3, r7, #8
+ 426              	.L58:
+ 427 016c 13F8012D 		ldrb	r2, [r3, #-1]!	@ zero_extendqisi2
+ 428 0170 BB42     		cmp	r3, r7
+ 429 0172 5A70     		strb	r2, [r3, #1]
+ 430 0174 FAD1     		bne	.L58
+ 431              	.L57:
+ 432 0176 FFF7FEFF 		bl	_ZN17SingletonTemplateI8SwitchesE11getInstanceEv
+ 433 017a 0821     		movs	r1, #8
+ 434 017c FFF7FEFF 		bl	_ZN8Switches9getSwitchEi
+ 435 0180 28B1     		cbz	r0, .L59
+ 436 0182 FFF7FEFF 		bl	_ZN17SingletonTemplateI8SwitchesE11getInstanceEv
+ 437 0186 0121     		movs	r1, #1
+ 438 0188 FFF7FEFF 		bl	_ZN8Switches9getSwitchEi
+ 439 018c 18B9     		cbnz	r0, .L60
+ 440              	.L59:
+ 441 018e B8F1000F 		cmp	r8, #0
+ 442 0192 3FF447AF 		beq	.L68
+ 443              	.L60:
+ 444 0196 1449     		ldr	r1, .L69+20
+ 445 0198 6846     		mov	r0, sp
+ 446 019a FFF7FEFF 		bl	_ZN3straSEPKc
+ 447 019e FFF7FEFF 		bl	_ZN17SingletonTemplateI3LCDE11getInstanceEv
+ 448 01a2 0368     		ldr	r3, [r0, #0]
+ 449 01a4 4FF00008 		mov	r8, #0
+ 450 01a8 1B68     		ldr	r3, [r3, #0]
+ 451 01aa 9847     		blx	r3
+ 452 01ac FFF7FEFF 		bl	_ZN17SingletonTemplateI3LCDE11getInstanceEv
+ 453 01b0 0221     		movs	r1, #2
+ 454 01b2 2822     		movs	r2, #40
+ 455 01b4 0123     		movs	r3, #1
+ 456 01b6 FFF7FEFF 		bl	_ZN3LCD5setupEjjb
+ 457 01ba FFF7FEFF 		bl	_ZN17SingletonTemplateI3LCDE11getInstanceEv
+ 458 01be 0746     		mov	r7, r0
+ 459 01c0 6846     		mov	r0, sp
+ 460 01c2 FFF7FEFF 		bl	_ZNK3strclEv
+ 461 01c6 0022     		movs	r2, #0
+ 462 01c8 0146     		mov	r1, r0
+ 463 01ca 3846     		mov	r0, r7
+ 464 01cc FFF7FEFF 		bl	_ZN3LCD5writeEPKcj
+ 465 01d0 28E7     		b	.L68
+ 466              	.L70:
+ 467 01d2 00BF     		.align	2
+ 468              	.L69:
+ 469 01d4 3C000000 		.word	.LC1
+ 470 01d8 00000000 		.word	_ZN17SingletonTemplateI17TemperatureSensorE19mpSingletonInstanceE
+ 471 01dc 08000000 		.word	_ZTV17TemperatureSensor+8
+ 472 01e0 20000000 		.word	.LC2
+ 473 01e4 28000000 		.word	.LC3
+ 474 01e8 2D000000 		.word	.LC4
+ 476              		.weak	_ZN17SingletonTemplateI17TemperatureSensorE19mpSingletonInstanceE
+ 477              		.section	.bss._ZN17SingletonTemplateI17TemperatureSensorE19mpSingletonInstanceE,"awG",%nobits,_ZN1
+ 478              		.align	2
+ 481              	_ZN17SingletonTemplateI17TemperatureSensorE19mpSingletonInstanceE:
+ 482 0000 00000000 		.space	4
+ 483              		.weak	_ZTV9IO_Device
+ 484              		.section	.rodata._ZTV9IO_Device,"aG",%progbits,_ZTV9IO_Device,comdat
+ 485              		.align	3
+ 488              	_ZTV9IO_Device:
+ 489 0000 00000000 		.word	0
+ 490 0004 00000000 		.word	0
+ 491 0008 00000000 		.word	__cxa_pure_virtual
+ 492 000c 00000000 		.word	_ZN9IO_Device16getValueAsStringEv
+ 493 0010 00000000 		.word	_ZN9IO_DeviceD1Ev
+ 494 0014 00000000 		.word	_ZN9IO_DeviceD0Ev
+ 495              		.weak	_ZN17SingletonTemplateI4I2C2E19mpSingletonInstanceE
+ 496              		.section	.bss._ZN17SingletonTemplateI4I2C2E19mpSingletonInstanceE,"awG",%nobits,_ZN17SingletonTemp
+ 497              		.align	2
+ 500              	_ZN17SingletonTemplateI4I2C2E19mpSingletonInstanceE:
+ 501 0000 00000000 		.space	4
+ 502              		.weak	_ZN17SingletonTemplateI3LEDE19mpSingletonInstanceE
+ 503              		.section	.bss._ZN17SingletonTemplateI3LEDE19mpSingletonInstanceE,"awG",%nobits,_ZN17SingletonTempl
+ 504              		.align	2
+ 507              	_ZN17SingletonTemplateI3LEDE19mpSingletonInstanceE:
+ 508 0000 00000000 		.space	4
+ 509              		.weak	_ZN17SingletonTemplateI6KeypadE19mpSingletonInstanceE
+ 510              		.section	.bss._ZN17SingletonTemplateI6KeypadE19mpSingletonInstanceE,"awG",%nobits,_ZN17SingletonTe
+ 511              		.align	2
+ 514              	_ZN17SingletonTemplateI6KeypadE19mpSingletonInstanceE:
+ 515 0000 00000000 		.space	4
+ 516              		.weak	_ZN17SingletonTemplateI11LED_DisplayE19mpSingletonInstanceE
+ 517              		.section	.bss._ZN17SingletonTemplateI11LED_DisplayE19mpSingletonInstanceE,"awG",%nobits,_ZN17Singl
+ 518              		.align	2
+ 521              	_ZN17SingletonTemplateI11LED_DisplayE19mpSingletonInstanceE:
+ 522 0000 00000000 		.space	4
+ 523              		.weak	_ZN17SingletonTemplateI8SwitchesE19mpSingletonInstanceE
+ 524              		.section	.bss._ZN17SingletonTemplateI8SwitchesE19mpSingletonInstanceE,"awG",%nobits,_ZN17Singleton
+ 525              		.align	2
+ 528              	_ZN17SingletonTemplateI8SwitchesE19mpSingletonInstanceE:
+ 529 0000 00000000 		.space	4
+ 530              		.weak	_ZN17SingletonTemplateI3LCDE19mpSingletonInstanceE
+ 531              		.section	.bss._ZN17SingletonTemplateI3LCDE19mpSingletonInstanceE,"awG",%nobits,_ZN17SingletonTempl
+ 532              		.align	2
+ 535              	_ZN17SingletonTemplateI3LCDE19mpSingletonInstanceE:
+ 536 0000 00000000 		.space	4
+ 537              		.weak	_ZN9IO_DeviceD1Ev
+ 538              		.thumb_set _ZN9IO_DeviceD1Ev,_ZN9IO_DeviceD2Ev
+ 539              		.weak	_ZN9IO_DeviceC1Ev
+ 540              		.thumb_set _ZN9IO_DeviceC1Ev,_ZN9IO_DeviceC2Ev
+ 541              		.weak	_ZN15I2C_Device_BaseC1Eh
+ 542              		.thumb_set _ZN15I2C_Device_BaseC1Eh,_ZN15I2C_Device_BaseC2Eh
+ 543              		.section	.rodata.str1.1,"aMS",%progbits,1
+ 544              	.LC0:
+ 545 0000 4572726F 		.ascii	"Error: Function not implemented\000"
+ 545      723A2046 
+ 545      756E6374 
+ 545      696F6E20 
+ 545      6E6F7420 
+ 546              	.LC2:
+ 547 0020 4B503A20 		.ascii	"KP: %s\012\000"
+ 547      25730A00 
+ 548              	.LC3:
+ 549 0028 4B503A20 		.ascii	"KP: \000"
+ 549      00
+ 550              	.LC4:
+ 551 002d 5472656E 		.ascii	"Trent B. Smith\000"
+ 551      7420422E 
+ 551      20536D69 
+ 551      746800
+ 552              	.LC1:
+ 553 003c 2D2D2D2D 		.ascii	"---------\000"
+ 553      2D2D2D2D 
+ 553      2D00
+ 554              		.ident	"GCC: (GNU) 4.6.2"
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.cpp
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:15     .text._ZN9IO_Device16getValueAsStringEv:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:20     .text._ZN9IO_Device16getValueAsStringEv:00000000 _ZN9IO_Device16getValueAsStringEv
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:34     .text._ZN9IO_Device16getValueAsStringEv:00000018 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:37     .text._ZN9IO_DeviceD2Ev:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:42     .text._ZN9IO_DeviceD2Ev:00000000 _ZN9IO_DeviceD2Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:55     .text._ZN9IO_DeviceD2Ev:00000014 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:488    .rodata._ZTV9IO_Device:00000000 _ZTV9IO_Device
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:58     .text._ZN9IO_DeviceD0Ev:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:63     .text._ZN9IO_DeviceD0Ev:00000000 _ZN9IO_DeviceD0Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:42     .text._ZN9IO_DeviceD2Ev:00000000 _ZN9IO_DeviceD1Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:75     .text._ZN9IO_DeviceC2Ev:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:80     .text._ZN9IO_DeviceC2Ev:00000000 _ZN9IO_DeviceC2Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:94     .text._ZN9IO_DeviceC2Ev:00000014 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:97     .text._ZN15I2C_Device_BaseC2Eh:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:102    .text._ZN15I2C_Device_BaseC2Eh:00000000 _ZN15I2C_Device_BaseC2Eh
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:125    .text._ZN15I2C_Device_BaseC2Eh:00000024 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:500    .bss._ZN17SingletonTemplateI4I2C2E19mpSingletonInstanceE:00000000 _ZN17SingletonTemplateI4I2C2E19mpSingletonInstanceE
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:128    .text._ZN17SingletonTemplateI3LCDE11getInstanceEv:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:133    .text._ZN17SingletonTemplateI3LCDE11getInstanceEv:00000000 _ZN17SingletonTemplateI3LCDE11getInstanceEv
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:154    .text._ZN17SingletonTemplateI3LCDE11getInstanceEv:00000020 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:535    .bss._ZN17SingletonTemplateI3LCDE19mpSingletonInstanceE:00000000 _ZN17SingletonTemplateI3LCDE19mpSingletonInstanceE
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:158    .text._ZN17SingletonTemplateI8SwitchesE11getInstanceEv:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:163    .text._ZN17SingletonTemplateI8SwitchesE11getInstanceEv:00000000 _ZN17SingletonTemplateI8SwitchesE11getInstanceEv
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:184    .text._ZN17SingletonTemplateI8SwitchesE11getInstanceEv:00000020 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:528    .bss._ZN17SingletonTemplateI8SwitchesE19mpSingletonInstanceE:00000000 _ZN17SingletonTemplateI8SwitchesE19mpSingletonInstanceE
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:188    .text._ZN17SingletonTemplateI11LED_DisplayE11getInstanceEv:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:193    .text._ZN17SingletonTemplateI11LED_DisplayE11getInstanceEv:00000000 _ZN17SingletonTemplateI11LED_DisplayE11getInstanceEv
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:217    .text._ZN17SingletonTemplateI11LED_DisplayE11getInstanceEv:0000002c $d
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:521    .bss._ZN17SingletonTemplateI11LED_DisplayE19mpSingletonInstanceE:00000000 _ZN17SingletonTemplateI11LED_DisplayE19mpSingletonInstanceE
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:221    .text._ZN17SingletonTemplateI3LEDE11getInstanceEv:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:226    .text._ZN17SingletonTemplateI3LEDE11getInstanceEv:00000000 _ZN17SingletonTemplateI3LEDE11getInstanceEv
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:247    .text._ZN17SingletonTemplateI3LEDE11getInstanceEv:00000020 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:507    .bss._ZN17SingletonTemplateI3LEDE19mpSingletonInstanceE:00000000 _ZN17SingletonTemplateI3LEDE19mpSingletonInstanceE
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:251    .text._ZN17SingletonTemplateI6KeypadE11getInstanceEv:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:256    .text._ZN17SingletonTemplateI6KeypadE11getInstanceEv:00000000 _ZN17SingletonTemplateI6KeypadE11getInstanceEv
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:277    .text._ZN17SingletonTemplateI6KeypadE11getInstanceEv:00000020 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:514    .bss._ZN17SingletonTemplateI6KeypadE19mpSingletonInstanceE:00000000 _ZN17SingletonTemplateI6KeypadE19mpSingletonInstanceE
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:281    .text.startup:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:286    .text.startup:00000000 main
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:469    .text.startup:000001d4 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:481    .bss._ZN17SingletonTemplateI17TemperatureSensorE19mpSingletonInstanceE:00000000 _ZN17SingletonTemplateI17TemperatureSensorE19mpSingletonInstanceE
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:478    .bss._ZN17SingletonTemplateI17TemperatureSensorE19mpSingletonInstanceE:00000000 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:485    .rodata._ZTV9IO_Device:00000000 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:497    .bss._ZN17SingletonTemplateI4I2C2E19mpSingletonInstanceE:00000000 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:504    .bss._ZN17SingletonTemplateI3LEDE19mpSingletonInstanceE:00000000 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:511    .bss._ZN17SingletonTemplateI6KeypadE19mpSingletonInstanceE:00000000 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:518    .bss._ZN17SingletonTemplateI11LED_DisplayE19mpSingletonInstanceE:00000000 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:525    .bss._ZN17SingletonTemplateI8SwitchesE19mpSingletonInstanceE:00000000 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:532    .bss._ZN17SingletonTemplateI3LCDE19mpSingletonInstanceE:00000000 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:80     .text._ZN9IO_DeviceC2Ev:00000000 _ZN9IO_DeviceC1Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\cchOdPyY.s:102    .text._ZN15I2C_Device_BaseC2Eh:00000000 _ZN15I2C_Device_BaseC1Eh
+                           .group:00000000 _ZN9IO_DeviceD5Ev
+                           .group:00000000 _ZN9IO_DeviceC5Ev
+                           .group:00000000 _ZN15I2C_Device_BaseC5Eh
+
+UNDEFINED SYMBOLS
+_ZN3straSEPKc
+_ZNK3strclEv
+_ZN3strD1Ev
+_ZdlPv
+_ZN3strC1Ei
+_Znwj
+_ZN4I2C2C1Ev
+_ZTV3LCD
+_ZTV8Switches
+_ZTV11LED_Display
+_ZTV3LED
+_ZTV6Keypad
+memcpy
+_ZN3strC1Ev
+delay_ms
+_ZN3LCD5writeEPKcj
+puts
+_ZN8Switches15getSwitchValuesEv
+_ZN8Switches9getSwitchEi
+_ZN11LED_Display9setNumberEc
+_ZN3LED2onEi
+_ZN3LED3offEi
+_ZN6Keypad7getCharEPc
+printf
+_ZN11LED_Display13setRightDigitEc
+_ZN11LED_Display12setLeftDigitEc
+_ZN3strpLEPKc
+_ZN3LCD5setupEjjb
+_ZTV17TemperatureSensor
+__cxa_pure_virtual

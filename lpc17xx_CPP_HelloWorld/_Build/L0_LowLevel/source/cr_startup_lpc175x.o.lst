@@ -1,0 +1,633 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"cr_startup_lpc175x.cpp"
+  14              		.section	.after_vectors,"ax",%progbits
+  15              		.align	1
+  16              		.weak	HardFault_Handler
+  17              		.thumb
+  18              		.thumb_func
+  20              	HardFault_Handler:
+  21              		@ args = 0, pretend = 0, frame = 0
+  22              		@ frame_needed = 0, uses_anonymous_args = 0
+  23              		@ link register save eliminated.
+  24              	@ 406 "../L0_LowLevel/source/cr_startup_lpc175x.cpp" 1
+  25 0000 0420     		MOVS   R0, #4  
+  26 0002 7146     	MOV    R1, LR  
+  27 0004 0842     	TST    R0, R1  
+  28 0006 03D0     	BEQ    _MSP    
+  29 0008 EFF30980 	MRS    R0, PSP 
+  30 000c FFF7FEBF 	B      HardFault_HandlerC      
+  31              	_MSP:  
+  32 0010 EFF30880 	MRS    R0, MSP 
+  33 0014 FFF7FEBF 	B      HardFault_HandlerC      
+  34              	
+  35              	@ 0 "" 2
+  36              		.thumb
+  37 0018 7047     		bx	lr
+  39              		.align	1
+  40              		.weak	DebugMon_Handler
+  41              		.thumb
+  42              		.thumb_func
+  44              	DebugMon_Handler:
+  45              		@ args = 0, pretend = 0, frame = 0
+  46              		@ frame_needed = 0, uses_anonymous_args = 0
+  47 001a 08B5     		push	{r3, lr}
+  48 001c 0148     		ldr	r0, .L4
+  49 001e FFF7FEFF 		bl	printMessageUponCriticalSystemError
+  50              	.L3:
+  51 0022 FEE7     		b	.L3
+  52              	.L5:
+  53              		.align	2
+  54              	.L4:
+  55 0024 00000000 		.word	.LC0
+  57              		.align	1
+  58              		.weak	UsageFault_Handler
+  59              		.thumb
+  60              		.thumb_func
+  62              	UsageFault_Handler:
+  63              		@ args = 0, pretend = 0, frame = 0
+  64              		@ frame_needed = 0, uses_anonymous_args = 0
+  65 0028 08B5     		push	{r3, lr}
+  66 002a 0248     		ldr	r0, .L8
+  67 002c FFF7FEFF 		bl	printMessageUponCriticalSystemError
+  68              	.L7:
+  69 0030 FEE7     		b	.L7
+  70              	.L9:
+  71 0032 00BF     		.align	2
+  72              	.L8:
+  73 0034 10000000 		.word	.LC1
+  75              		.align	1
+  76              		.weak	BusFault_Handler
+  77              		.thumb
+  78              		.thumb_func
+  80              	BusFault_Handler:
+  81              		@ args = 0, pretend = 0, frame = 0
+  82              		@ frame_needed = 0, uses_anonymous_args = 0
+  83 0038 08B5     		push	{r3, lr}
+  84 003a 0248     		ldr	r0, .L12
+  85 003c FFF7FEFF 		bl	printMessageUponCriticalSystemError
+  86              	.L11:
+  87 0040 FEE7     		b	.L11
+  88              	.L13:
+  89 0042 00BF     		.align	2
+  90              	.L12:
+  91 0044 1D000000 		.word	.LC2
+  93              		.align	1
+  94              		.weak	MemManage_Handler
+  95              		.thumb
+  96              		.thumb_func
+  98              	MemManage_Handler:
+  99              		@ args = 0, pretend = 0, frame = 0
+ 100              		@ frame_needed = 0, uses_anonymous_args = 0
+ 101 0048 08B5     		push	{r3, lr}
+ 102 004a 0248     		ldr	r0, .L16
+ 103 004c FFF7FEFF 		bl	printMessageUponCriticalSystemError
+ 104              	.L15:
+ 105 0050 FEE7     		b	.L15
+ 106              	.L17:
+ 107 0052 00BF     		.align	2
+ 108              	.L16:
+ 109 0054 28000000 		.word	.LC3
+ 111              		.align	1
+ 112              		.weak	NMI_Handler
+ 113              		.thumb
+ 114              		.thumb_func
+ 116              	NMI_Handler:
+ 117              		@ args = 0, pretend = 0, frame = 0
+ 118              		@ frame_needed = 0, uses_anonymous_args = 0
+ 119 0058 08B5     		push	{r3, lr}
+ 120 005a 0248     		ldr	r0, .L20
+ 121 005c FFF7FEFF 		bl	printMessageUponCriticalSystemError
+ 122              	.L19:
+ 123 0060 FEE7     		b	.L19
+ 124              	.L21:
+ 125 0062 00BF     		.align	2
+ 126              	.L20:
+ 127 0064 33000000 		.word	.LC4
+ 129              		.text
+ 130              		.align	1
+ 131              		.global	HardFault_HandlerC
+ 132              		.thumb
+ 133              		.thumb_func
+ 135              	HardFault_HandlerC:
+ 136              		@ args = 0, pretend = 0, frame = 32
+ 137              		@ frame_needed = 0, uses_anonymous_args = 0
+ 138 0000 10B5     		push	{r4, lr}
+ 139 0002 0368     		ldr	r3, [r0, #0]
+ 140 0004 8AB0     		sub	sp, sp, #40
+ 141 0006 0293     		str	r3, [sp, #8]
+ 142 0008 4368     		ldr	r3, [r0, #4]
+ 143 000a 0393     		str	r3, [sp, #12]
+ 144 000c 8368     		ldr	r3, [r0, #8]
+ 145 000e 0493     		str	r3, [sp, #16]
+ 146 0010 C368     		ldr	r3, [r0, #12]
+ 147 0012 0593     		str	r3, [sp, #20]
+ 148 0014 0369     		ldr	r3, [r0, #16]
+ 149 0016 0693     		str	r3, [sp, #24]
+ 150 0018 4369     		ldr	r3, [r0, #20]
+ 151 001a 0793     		str	r3, [sp, #28]
+ 152 001c 8369     		ldr	r3, [r0, #24]
+ 153 001e 0893     		str	r3, [sp, #32]
+ 154 0020 C369     		ldr	r3, [r0, #28]
+ 155 0022 0C48     		ldr	r0, .L24
+ 156 0024 0993     		str	r3, [sp, #36]
+ 157 0026 FFF7FEFF 		bl	stdio_SetOutputCharFunction
+ 158 002a 0B48     		ldr	r0, .L24+4
+ 159 002c FFF7FEFF 		bl	puts
+ 160 0030 0299     		ldr	r1, [sp, #8]
+ 161 0032 039A     		ldr	r2, [sp, #12]
+ 162 0034 049B     		ldr	r3, [sp, #16]
+ 163 0036 059C     		ldr	r4, [sp, #20]
+ 164 0038 0698     		ldr	r0, [sp, #24]
+ 165 003a 0094     		str	r4, [sp, #0]
+ 166 003c 0190     		str	r0, [sp, #4]
+ 167 003e 0748     		ldr	r0, .L24+8
+ 168 0040 FFF7FEFF 		bl	printf
+ 169 0044 0799     		ldr	r1, [sp, #28]
+ 170 0046 0648     		ldr	r0, .L24+12
+ 171 0048 089A     		ldr	r2, [sp, #32]
+ 172 004a 099B     		ldr	r3, [sp, #36]
+ 173 004c FFF7FEFF 		bl	printf
+ 174              	.L23:
+ 175 0050 FEE7     		b	.L23
+ 176              	.L25:
+ 177 0052 00BF     		.align	2
+ 178              	.L24:
+ 179 0054 00000000 		.word	uart0Putchar
+ 180 0058 3E000000 		.word	.LC5
+ 181 005c 4D000000 		.word	.LC6
+ 182 0060 80000000 		.word	.LC7
+ 184              		.section	.after_vectors
+ 185              		.align	1
+ 186              		.global	_Z9data_initjjj
+ 187              		.thumb
+ 188              		.thumb_func
+ 190              	_Z9data_initjjj:
+ 191              		@ args = 0, pretend = 0, frame = 0
+ 192              		@ frame_needed = 0, uses_anonymous_args = 0
+ 193 0068 10B5     		push	{r4, lr}
+ 194 006a 0023     		movs	r3, #0
+ 195 006c 02E0     		b	.L27
+ 196              	.L28:
+ 197 006e 1C58     		ldr	r4, [r3, r0]
+ 198 0070 5C50     		str	r4, [r3, r1]
+ 199 0072 0433     		adds	r3, r3, #4
+ 200              	.L27:
+ 201 0074 9342     		cmp	r3, r2
+ 202 0076 FAD3     		bcc	.L28
+ 203 0078 10BD     		pop	{r4, pc}
+ 205              		.align	1
+ 206              		.global	_Z8bss_initjj
+ 207              		.thumb
+ 208              		.thumb_func
+ 210              	_Z8bss_initjj:
+ 211              		@ args = 0, pretend = 0, frame = 0
+ 212              		@ frame_needed = 0, uses_anonymous_args = 0
+ 213              		@ link register save eliminated.
+ 214 007a 0023     		movs	r3, #0
+ 215 007c 1A46     		mov	r2, r3
+ 216 007e 01E0     		b	.L30
+ 217              	.L31:
+ 218 0080 1A50     		str	r2, [r3, r0]
+ 219 0082 0433     		adds	r3, r3, #4
+ 220              	.L30:
+ 221 0084 8B42     		cmp	r3, r1
+ 222 0086 FBD3     		bcc	.L31
+ 223 0088 7047     		bx	lr
+ 225              		.align	1
+ 226              		.global	ResetISR
+ 227              		.thumb
+ 228              		.thumb_func
+ 230              	ResetISR:
+ 231              		@ args = 0, pretend = 0, frame = 0
+ 232              		@ frame_needed = 0, uses_anonymous_args = 0
+ 233 008a 38B5     		push	{r3, r4, r5, lr}
+ 234 008c 134C     		ldr	r4, .L41
+ 235 008e 144D     		ldr	r5, .L41+4
+ 236 0090 04E0     		b	.L33
+ 237              	.L34:
+ 238 0092 94E80700 		ldmia	r4, {r0, r1, r2}
+ 239 0096 0C34     		adds	r4, r4, #12
+ 240 0098 FFF7FEFF 		bl	_Z9data_initjjj
+ 241              	.L33:
+ 242 009c AC42     		cmp	r4, r5
+ 243 009e F8D3     		bcc	.L34
+ 244 00a0 05E0     		b	.L40
+ 245              	.L36:
+ 246 00a2 94E80300 		ldmia	r4, {r0, r1}
+ 247 00a6 0834     		adds	r4, r4, #8
+ 248 00a8 FFF7FEFF 		bl	_Z8bss_initjj
+ 249 00ac 00E0     		b	.L39
+ 250              	.L40:
+ 251 00ae 0D4D     		ldr	r5, .L41+8
+ 252              	.L39:
+ 253 00b0 AC42     		cmp	r4, r5
+ 254 00b2 F6D3     		bcc	.L36
+ 255 00b4 FFF7FEFF 		bl	__libc_init_array
+ 256 00b8 FFF7FEFF 		bl	_Z18lowLevelInitializev
+ 257 00bc FFF7FEFF 		bl	_Z19highLevelInitializev
+ 258 00c0 FFF7FEFF 		bl	main
+ 259 00c4 FFF7FEFF 		bl	getCpuClock
+ 260 00c8 8108     		lsrs	r1, r0, #2
+ 261 00ca 4FF41640 		mov	r0, #38400
+ 262 00ce FFF7FEFF 		bl	uart0Init
+ 263 00d2 0548     		ldr	r0, .L41+12
+ 264 00d4 FFF7FEFF 		bl	uart0Puts
+ 265              	.L37:
+ 266 00d8 FEE7     		b	.L37
+ 267              	.L42:
+ 268 00da 00BF     		.align	2
+ 269              	.L41:
+ 270 00dc 00000000 		.word	__data_section_table
+ 271 00e0 00000000 		.word	__data_section_table_end
+ 272 00e4 00000000 		.word	__bss_section_table_end
+ 273 00e8 A5000000 		.word	.LC8
+ 275              		.text
+ 276              		.align	1
+ 277              		.global	_Z4linev
+ 278              		.thumb
+ 279              		.thumb_func
+ 281              	_Z4linev:
+ 282              		@ args = 0, pretend = 0, frame = 0
+ 283              		@ frame_needed = 0, uses_anonymous_args = 0
+ 284              		@ link register save eliminated.
+ 285 0064 0148     		ldr	r0, .L44
+ 286 0066 FFF7FEBF 		b	puts
+ 287              	.L45:
+ 288 006a 00BF     		.align	2
+ 289              	.L44:
+ 290 006c C1000000 		.word	.LC9
+ 292              		.section	.after_vectors
+ 293              		.align	1
+ 294              		.weak	SVC_Handler
+ 295              		.thumb
+ 296              		.thumb_func
+ 298              	SVC_Handler:
+ 299              		@ args = 0, pretend = 0, frame = 0
+ 300              		@ frame_needed = 0, uses_anonymous_args = 0
+ 301 00ec 08B5     		push	{r3, lr}
+ 302 00ee 0248     		ldr	r0, .L48
+ 303 00f0 FFF7FEFF 		bl	printMessageUponCriticalSystemError
+ 304              	.L47:
+ 305 00f4 FEE7     		b	.L47
+ 306              	.L49:
+ 307 00f6 00BF     		.align	2
+ 308              	.L48:
+ 309 00f8 E7000000 		.word	.LC10
+ 311              		.align	1
+ 312              		.weak	PendSV_Handler
+ 313              		.thumb
+ 314              		.thumb_func
+ 316              	PendSV_Handler:
+ 317              		@ args = 0, pretend = 0, frame = 0
+ 318              		@ frame_needed = 0, uses_anonymous_args = 0
+ 319 00fc 08B5     		push	{r3, lr}
+ 320 00fe 0248     		ldr	r0, .L52
+ 321 0100 FFF7FEFF 		bl	printMessageUponCriticalSystemError
+ 322              	.L51:
+ 323 0104 FEE7     		b	.L51
+ 324              	.L53:
+ 325 0106 00BF     		.align	2
+ 326              	.L52:
+ 327 0108 F2000000 		.word	.LC11
+ 329              		.align	1
+ 330              		.weak	SysTick_Handler
+ 331              		.thumb
+ 332              		.thumb_func
+ 334              	SysTick_Handler:
+ 335              		@ args = 0, pretend = 0, frame = 0
+ 336              		@ frame_needed = 0, uses_anonymous_args = 0
+ 337 010c 08B5     		push	{r3, lr}
+ 338 010e 0248     		ldr	r0, .L56
+ 339 0110 FFF7FEFF 		bl	printMessageUponCriticalSystemError
+ 340              	.L55:
+ 341 0114 FEE7     		b	.L55
+ 342              	.L57:
+ 343 0116 00BF     		.align	2
+ 344              	.L56:
+ 345 0118 01010000 		.word	.LC12
+ 347              		.align	1
+ 348              		.weak	IntDefaultHandler
+ 349              		.thumb
+ 350              		.thumb_func
+ 352              	IntDefaultHandler:
+ 353              		@ args = 0, pretend = 0, frame = 0
+ 354              		@ frame_needed = 0, uses_anonymous_args = 0
+ 355 011c 08B5     		push	{r3, lr}
+ 356 011e 0248     		ldr	r0, .L60
+ 357 0120 FFF7FEFF 		bl	printMessageUponCriticalSystemError
+ 358              	.L59:
+ 359 0124 FEE7     		b	.L59
+ 360              	.L61:
+ 361 0126 00BF     		.align	2
+ 362              	.L60:
+ 363 0128 11010000 		.word	.LC13
+ 365              		.global	g_pfnVectors
+ 366              		.weak	WDT_IRQHandler
+ 367              		.thumb_set WDT_IRQHandler,IntDefaultHandler
+ 368              		.weak	TIMER0_IRQHandler
+ 369              		.thumb_set TIMER0_IRQHandler,IntDefaultHandler
+ 370              		.weak	TIMER1_IRQHandler
+ 371              		.thumb_set TIMER1_IRQHandler,IntDefaultHandler
+ 372              		.weak	TIMER2_IRQHandler
+ 373              		.thumb_set TIMER2_IRQHandler,IntDefaultHandler
+ 374              		.weak	TIMER3_IRQHandler
+ 375              		.thumb_set TIMER3_IRQHandler,IntDefaultHandler
+ 376              		.weak	UART0_IRQHandler
+ 377              		.thumb_set UART0_IRQHandler,IntDefaultHandler
+ 378              		.weak	UART1_IRQHandler
+ 379              		.thumb_set UART1_IRQHandler,IntDefaultHandler
+ 380              		.weak	UART2_IRQHandler
+ 381              		.thumb_set UART2_IRQHandler,IntDefaultHandler
+ 382              		.weak	UART3_IRQHandler
+ 383              		.thumb_set UART3_IRQHandler,IntDefaultHandler
+ 384              		.weak	PWM1_IRQHandler
+ 385              		.thumb_set PWM1_IRQHandler,IntDefaultHandler
+ 386              		.weak	I2C0_IRQHandler
+ 387              		.thumb_set I2C0_IRQHandler,IntDefaultHandler
+ 388              		.weak	I2C1_IRQHandler
+ 389              		.thumb_set I2C1_IRQHandler,IntDefaultHandler
+ 390              		.weak	I2C2_IRQHandler
+ 391              		.thumb_set I2C2_IRQHandler,IntDefaultHandler
+ 392              		.weak	SPI_IRQHandler
+ 393              		.thumb_set SPI_IRQHandler,IntDefaultHandler
+ 394              		.weak	SSP0_IRQHandler
+ 395              		.thumb_set SSP0_IRQHandler,IntDefaultHandler
+ 396              		.weak	SSP1_IRQHandler
+ 397              		.thumb_set SSP1_IRQHandler,IntDefaultHandler
+ 398              		.weak	PLL0_IRQHandler
+ 399              		.thumb_set PLL0_IRQHandler,IntDefaultHandler
+ 400              		.weak	RTC_IRQHandler
+ 401              		.thumb_set RTC_IRQHandler,IntDefaultHandler
+ 402              		.weak	EINT0_IRQHandler
+ 403              		.thumb_set EINT0_IRQHandler,IntDefaultHandler
+ 404              		.weak	EINT1_IRQHandler
+ 405              		.thumb_set EINT1_IRQHandler,IntDefaultHandler
+ 406              		.weak	EINT2_IRQHandler
+ 407              		.thumb_set EINT2_IRQHandler,IntDefaultHandler
+ 408              		.weak	EINT3_IRQHandler
+ 409              		.thumb_set EINT3_IRQHandler,IntDefaultHandler
+ 410              		.weak	ADC_IRQHandler
+ 411              		.thumb_set ADC_IRQHandler,IntDefaultHandler
+ 412              		.weak	BOD_IRQHandler
+ 413              		.thumb_set BOD_IRQHandler,IntDefaultHandler
+ 414              		.weak	USB_IRQHandler
+ 415              		.thumb_set USB_IRQHandler,IntDefaultHandler
+ 416              		.weak	CAN_IRQHandler
+ 417              		.thumb_set CAN_IRQHandler,IntDefaultHandler
+ 418              		.weak	DMA_IRQHandler
+ 419              		.thumb_set DMA_IRQHandler,IntDefaultHandler
+ 420              		.weak	I2S_IRQHandler
+ 421              		.thumb_set I2S_IRQHandler,IntDefaultHandler
+ 422              		.weak	ENET_IRQHandler
+ 423              		.thumb_set ENET_IRQHandler,IntDefaultHandler
+ 424              		.weak	RIT_IRQHandler
+ 425              		.thumb_set RIT_IRQHandler,IntDefaultHandler
+ 426              		.weak	MCPWM_IRQHandler
+ 427              		.thumb_set MCPWM_IRQHandler,IntDefaultHandler
+ 428              		.weak	QEI_IRQHandler
+ 429              		.thumb_set QEI_IRQHandler,IntDefaultHandler
+ 430              		.weak	PLL1_IRQHandler
+ 431              		.thumb_set PLL1_IRQHandler,IntDefaultHandler
+ 432              		.weak	USBActivity_IRQHandler
+ 433              		.thumb_set USBActivity_IRQHandler,IntDefaultHandler
+ 434              		.weak	CANActivity_IRQHandler
+ 435              		.thumb_set CANActivity_IRQHandler,IntDefaultHandler
+ 436              		.section	.isr_vector,"a",%progbits
+ 437              		.align	2
+ 440              	g_pfnVectors:
+ 441 0000 00000000 		.word	_vStackTop
+ 442 0004 00000000 		.word	ResetISR
+ 443 0008 00000000 		.word	NMI_Handler
+ 444 000c 00000000 		.word	HardFault_Handler
+ 445 0010 00000000 		.word	MemManage_Handler
+ 446 0014 00000000 		.word	BusFault_Handler
+ 447 0018 00000000 		.word	UsageFault_Handler
+ 448 001c 00000000 		.word	0
+ 449 0020 00000000 		.word	0
+ 450 0024 00000000 		.word	0
+ 451 0028 00000000 		.word	0
+ 452 002c 00000000 		.word	vPortSVCHandler
+ 453 0030 00000000 		.word	DebugMon_Handler
+ 454 0034 00000000 		.word	0
+ 455 0038 00000000 		.word	xPortPendSVHandler
+ 456 003c 00000000 		.word	xPortSysTickHandler
+ 457 0040 00000000 		.word	WDT_IRQHandler
+ 458 0044 00000000 		.word	TIMER0_IRQHandler
+ 459 0048 00000000 		.word	TIMER1_IRQHandler
+ 460 004c 00000000 		.word	TIMER2_IRQHandler
+ 461 0050 00000000 		.word	TIMER3_IRQHandler
+ 462 0054 00000000 		.word	UART0_IRQHandler
+ 463 0058 00000000 		.word	UART1_IRQHandler
+ 464 005c 00000000 		.word	UART2_IRQHandler
+ 465 0060 00000000 		.word	UART3_IRQHandler
+ 466 0064 00000000 		.word	PWM1_IRQHandler
+ 467 0068 00000000 		.word	I2C0_IRQHandler
+ 468 006c 00000000 		.word	I2C1_IRQHandler
+ 469 0070 00000000 		.word	I2C2_IRQHandler
+ 470 0074 00000000 		.word	SPI_IRQHandler
+ 471 0078 00000000 		.word	SSP0_IRQHandler
+ 472 007c 00000000 		.word	SSP1_IRQHandler
+ 473 0080 00000000 		.word	PLL0_IRQHandler
+ 474 0084 00000000 		.word	RTC_IRQHandler
+ 475 0088 00000000 		.word	EINT0_IRQHandler
+ 476 008c 00000000 		.word	EINT1_IRQHandler
+ 477 0090 00000000 		.word	EINT2_IRQHandler
+ 478 0094 00000000 		.word	EINT3_IRQHandler
+ 479 0098 00000000 		.word	ADC_IRQHandler
+ 480 009c 00000000 		.word	BOD_IRQHandler
+ 481 00a0 00000000 		.word	USB_IRQHandler
+ 482 00a4 00000000 		.word	CAN_IRQHandler
+ 483 00a8 00000000 		.word	DMA_IRQHandler
+ 484 00ac 00000000 		.word	I2S_IRQHandler
+ 485 00b0 00000000 		.word	ENET_IRQHandler
+ 486 00b4 00000000 		.word	RIT_IRQHandler
+ 487 00b8 00000000 		.word	MCPWM_IRQHandler
+ 488 00bc 00000000 		.word	QEI_IRQHandler
+ 489 00c0 00000000 		.word	PLL1_IRQHandler
+ 490 00c4 00000000 		.word	USBActivity_IRQHandler
+ 491 00c8 00000000 		.word	CANActivity_IRQHandler
+ 492              		.section	.rodata.str1.1,"aMS",%progbits,1
+ 493              	.LC0:
+ 494 0000 44656275 		.ascii	"DebugMon Fault\012\000"
+ 494      674D6F6E 
+ 494      20466175 
+ 494      6C740A00 
+ 495              	.LC1:
+ 496 0010 55736167 		.ascii	"Usage Fault\012\000"
+ 496      65204661 
+ 496      756C740A 
+ 496      00
+ 497              	.LC2:
+ 498 001d 42555320 		.ascii	"BUS Fault\012\000"
+ 498      4661756C 
+ 498      740A00
+ 499              	.LC3:
+ 500 0028 4D656D20 		.ascii	"Mem Fault\012\000"
+ 500      4661756C 
+ 500      740A00
+ 501              	.LC4:
+ 502 0033 4E4D4920 		.ascii	"NMI Fault\012\000"
+ 502      4661756C 
+ 502      740A00
+ 503              	.LC5:
+ 504 003e 0A537973 		.ascii	"\012System Crash!\000"
+ 504      74656D20 
+ 504      43726173 
+ 504      682100
+ 505              	.LC6:
+ 506 004d 52656769 		.ascii	"Registers: 0x%08X, 0x%08X, 0x%08X, 0x%08X, 0x%08X\012"
+ 506      73746572 
+ 506      733A2030 
+ 506      78253038 
+ 506      582C2030 
+ 507 007f 00       		.ascii	"\000"
+ 508              	.LC7:
+ 509 0080 4C523A20 		.ascii	"LR: 0x%08X, PC: 0x%08X, PSR: 0x%08X\012\000"
+ 509      30782530 
+ 509      38582C20 
+ 509      50433A20 
+ 509      30782530 
+ 510              	.LC8:
+ 511 00a5 556E6578 		.ascii	"Unexpected exit from main()\000"
+ 511      70656374 
+ 511      65642065 
+ 511      78697420 
+ 511      66726F6D 
+ 512              	.LC9:
+ 513 00c1 2D2D2D2D 		.ascii	"-------------------------------------\000"
+ 513      2D2D2D2D 
+ 513      2D2D2D2D 
+ 513      2D2D2D2D 
+ 513      2D2D2D2D 
+ 514              	.LC10:
+ 515 00e7 53564320 		.ascii	"SVC Fault\012\000"
+ 515      4661756C 
+ 515      740A00
+ 516              	.LC11:
+ 517 00f2 50656E64 		.ascii	"Pend SV Fault\012\000"
+ 517      20535620 
+ 517      4661756C 
+ 517      740A00
+ 518              	.LC12:
+ 519 0101 53797320 		.ascii	"Sys Tick Fault\012\000"
+ 519      5469636B 
+ 519      20466175 
+ 519      6C740A00 
+ 520              	.LC13:
+ 521 0111 556E6578 		.ascii	"Unexpected ISR Fault\012\000"
+ 521      70656374 
+ 521      65642049 
+ 521      53522046 
+ 521      61756C74 
+ 522              		.ident	"GCC: (GNU) 4.6.2"
+DEFINED SYMBOLS
+                            *ABS*:00000000 cr_startup_lpc175x.cpp
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:15     .after_vectors:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:20     .after_vectors:00000000 HardFault_Handler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:31     .after_vectors:00000010 _MSP
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:135    .text:00000000 HardFault_HandlerC
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:44     .after_vectors:0000001a DebugMon_Handler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:55     .after_vectors:00000024 $d
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:57     .after_vectors:00000028 $t
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:62     .after_vectors:00000028 UsageFault_Handler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:73     .after_vectors:00000034 $d
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:75     .after_vectors:00000038 $t
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:80     .after_vectors:00000038 BusFault_Handler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:91     .after_vectors:00000044 $d
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:93     .after_vectors:00000048 $t
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:98     .after_vectors:00000048 MemManage_Handler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:109    .after_vectors:00000054 $d
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:111    .after_vectors:00000058 $t
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:116    .after_vectors:00000058 NMI_Handler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:127    .after_vectors:00000064 $d
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:130    .text:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:179    .text:00000054 $d
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:185    .after_vectors:00000068 $t
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:190    .after_vectors:00000068 _Z9data_initjjj
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:210    .after_vectors:0000007a _Z8bss_initjj
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:230    .after_vectors:0000008a ResetISR
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:270    .after_vectors:000000dc $d
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:276    .text:00000064 $t
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:281    .text:00000064 _Z4linev
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:290    .text:0000006c $d
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:293    .after_vectors:000000ec $t
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:298    .after_vectors:000000ec SVC_Handler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:309    .after_vectors:000000f8 $d
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:311    .after_vectors:000000fc $t
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:316    .after_vectors:000000fc PendSV_Handler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:327    .after_vectors:00000108 $d
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:329    .after_vectors:0000010c $t
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:334    .after_vectors:0000010c SysTick_Handler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:345    .after_vectors:00000118 $d
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:347    .after_vectors:0000011c $t
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c IntDefaultHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:363    .after_vectors:00000128 $d
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:440    .isr_vector:00000000 g_pfnVectors
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c WDT_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c TIMER0_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c TIMER1_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c TIMER2_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c TIMER3_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c UART0_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c UART1_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c UART2_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c UART3_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c PWM1_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c I2C0_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c I2C1_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c I2C2_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c SPI_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c SSP0_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c SSP1_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c PLL0_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c RTC_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c EINT0_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c EINT1_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c EINT2_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c EINT3_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c ADC_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c BOD_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c USB_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c CAN_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c DMA_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c I2S_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c ENET_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c RIT_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c MCPWM_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c QEI_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c PLL1_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c USBActivity_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:352    .after_vectors:0000011c CANActivity_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cc65Yqtc.s:437    .isr_vector:00000000 $d
+
+UNDEFINED SYMBOLS
+printMessageUponCriticalSystemError
+stdio_SetOutputCharFunction
+puts
+printf
+uart0Putchar
+__libc_init_array
+_Z18lowLevelInitializev
+_Z19highLevelInitializev
+main
+getCpuClock
+uart0Init
+uart0Puts
+__data_section_table
+__data_section_table_end
+__bss_section_table_end
+_vStackTop
+vPortSVCHandler
+xPortPendSVHandler
+xPortSysTickHandler

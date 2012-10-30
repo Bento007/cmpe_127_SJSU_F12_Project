@@ -1,0 +1,63 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"heap_3.c"
+  14              		.text
+  15              		.align	1
+  16              		.global	pvPortMalloc
+  17              		.thumb
+  18              		.thumb_func
+  20              	pvPortMalloc:
+  21              		@ args = 0, pretend = 0, frame = 0
+  22              		@ frame_needed = 0, uses_anonymous_args = 0
+  23 0000 10B5     		push	{r4, lr}
+  24 0002 0446     		mov	r4, r0
+  25 0004 FFF7FEFF 		bl	vTaskSuspendAll
+  26 0008 2046     		mov	r0, r4
+  27 000a FFF7FEFF 		bl	malloc
+  28 000e 0446     		mov	r4, r0
+  29 0010 FFF7FEFF 		bl	xTaskResumeAll
+  30 0014 0CB9     		cbnz	r4, .L2
+  31 0016 FFF7FEFF 		bl	vApplicationMallocFailedHook
+  32              	.L2:
+  33 001a 2046     		mov	r0, r4
+  34 001c 10BD     		pop	{r4, pc}
+  36              		.align	1
+  37              		.global	vPortFree
+  38              		.thumb
+  39              		.thumb_func
+  41              	vPortFree:
+  42              		@ args = 0, pretend = 0, frame = 0
+  43              		@ frame_needed = 0, uses_anonymous_args = 0
+  44 001e 10B5     		push	{r4, lr}
+  45 0020 0446     		mov	r4, r0
+  46 0022 40B1     		cbz	r0, .L3
+  47 0024 FFF7FEFF 		bl	vTaskSuspendAll
+  48 0028 2046     		mov	r0, r4
+  49 002a FFF7FEFF 		bl	free
+  50 002e BDE81040 		pop	{r4, lr}
+  51 0032 FFF7FEBF 		b	xTaskResumeAll
+  52              	.L3:
+  53 0036 10BD     		pop	{r4, pc}
+  55              		.ident	"GCC: (GNU) 4.6.2"
+DEFINED SYMBOLS
+                            *ABS*:00000000 heap_3.c
+C:\Users\Rhonda\AppData\Local\Temp\cc2tIqmd.s:15     .text:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\cc2tIqmd.s:20     .text:00000000 pvPortMalloc
+C:\Users\Rhonda\AppData\Local\Temp\cc2tIqmd.s:41     .text:0000001e vPortFree
+
+UNDEFINED SYMBOLS
+vTaskSuspendAll
+malloc
+xTaskResumeAll
+vApplicationMallocFailedHook
+free

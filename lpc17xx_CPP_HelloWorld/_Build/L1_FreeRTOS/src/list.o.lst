@@ -1,0 +1,131 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"list.c"
+  14              		.text
+  15              		.align	1
+  16              		.global	vListInitialise
+  17              		.thumb
+  18              		.thumb_func
+  20              	vListInitialise:
+  21              		@ args = 0, pretend = 0, frame = 0
+  22              		@ frame_needed = 0, uses_anonymous_args = 0
+  23              		@ link register save eliminated.
+  24 0000 00F10803 		add	r3, r0, #8
+  25 0004 4FF0FF32 		mov	r2, #-1
+  26 0008 8260     		str	r2, [r0, #8]
+  27 000a 4360     		str	r3, [r0, #4]
+  28 000c C360     		str	r3, [r0, #12]
+  29 000e 0361     		str	r3, [r0, #16]
+  30 0010 0023     		movs	r3, #0
+  31 0012 0360     		str	r3, [r0, #0]
+  32 0014 7047     		bx	lr
+  34              		.align	1
+  35              		.global	vListInitialiseItem
+  36              		.thumb
+  37              		.thumb_func
+  39              	vListInitialiseItem:
+  40              		@ args = 0, pretend = 0, frame = 0
+  41              		@ frame_needed = 0, uses_anonymous_args = 0
+  42              		@ link register save eliminated.
+  43 0016 0023     		movs	r3, #0
+  44 0018 0361     		str	r3, [r0, #16]
+  45 001a 7047     		bx	lr
+  47              		.align	1
+  48              		.global	vListInsertEnd
+  49              		.thumb
+  50              		.thumb_func
+  52              	vListInsertEnd:
+  53              		@ args = 0, pretend = 0, frame = 0
+  54              		@ frame_needed = 0, uses_anonymous_args = 0
+  55              		@ link register save eliminated.
+  56 001c 4368     		ldr	r3, [r0, #4]
+  57 001e 5A68     		ldr	r2, [r3, #4]
+  58 0020 8B60     		str	r3, [r1, #8]
+  59 0022 4A60     		str	r2, [r1, #4]
+  60 0024 5A68     		ldr	r2, [r3, #4]
+  61 0026 9160     		str	r1, [r2, #8]
+  62 0028 5960     		str	r1, [r3, #4]
+  63 002a 4160     		str	r1, [r0, #4]
+  64 002c 0861     		str	r0, [r1, #16]
+  65 002e 0368     		ldr	r3, [r0, #0]
+  66 0030 0133     		adds	r3, r3, #1
+  67 0032 0360     		str	r3, [r0, #0]
+  68 0034 7047     		bx	lr
+  70              		.align	1
+  71              		.global	vListInsert
+  72              		.thumb
+  73              		.thumb_func
+  75              	vListInsert:
+  76              		@ args = 0, pretend = 0, frame = 0
+  77              		@ frame_needed = 0, uses_anonymous_args = 0
+  78 0036 0A68     		ldr	r2, [r1, #0]
+  79 0038 10B5     		push	{r4, lr}
+  80 003a 531C     		adds	r3, r2, #1
+  81 003c 0CBF     		ite	eq
+  82 003e 0369     		ldreq	r3, [r0, #16]
+  83 0040 00F10803 		addne	r3, r0, #8
+  84 0044 01D1     		bne	.L7
+  85 0046 04E0     		b	.L6
+  86              	.L8:
+  87 0048 5B68     		ldr	r3, [r3, #4]
+  88              	.L7:
+  89 004a 5C68     		ldr	r4, [r3, #4]
+  90 004c 2468     		ldr	r4, [r4, #0]
+  91 004e 9442     		cmp	r4, r2
+  92 0050 FAD9     		bls	.L8
+  93              	.L6:
+  94 0052 5A68     		ldr	r2, [r3, #4]
+  95 0054 0861     		str	r0, [r1, #16]
+  96 0056 9160     		str	r1, [r2, #8]
+  97 0058 4A60     		str	r2, [r1, #4]
+  98 005a 8B60     		str	r3, [r1, #8]
+  99 005c 5960     		str	r1, [r3, #4]
+ 100 005e 0368     		ldr	r3, [r0, #0]
+ 101 0060 0133     		adds	r3, r3, #1
+ 102 0062 0360     		str	r3, [r0, #0]
+ 103 0064 10BD     		pop	{r4, pc}
+ 105              		.align	1
+ 106              		.global	vListRemove
+ 107              		.thumb
+ 108              		.thumb_func
+ 110              	vListRemove:
+ 111              		@ args = 0, pretend = 0, frame = 0
+ 112              		@ frame_needed = 0, uses_anonymous_args = 0
+ 113              		@ link register save eliminated.
+ 114 0066 4368     		ldr	r3, [r0, #4]
+ 115 0068 8268     		ldr	r2, [r0, #8]
+ 116 006a 9A60     		str	r2, [r3, #8]
+ 117 006c 8268     		ldr	r2, [r0, #8]
+ 118 006e 5360     		str	r3, [r2, #4]
+ 119 0070 0369     		ldr	r3, [r0, #16]
+ 120 0072 5968     		ldr	r1, [r3, #4]
+ 121 0074 8142     		cmp	r1, r0
+ 122 0076 08BF     		it	eq
+ 123 0078 5A60     		streq	r2, [r3, #4]
+ 124 007a 0022     		movs	r2, #0
+ 125 007c 0261     		str	r2, [r0, #16]
+ 126 007e 1A68     		ldr	r2, [r3, #0]
+ 127 0080 013A     		subs	r2, r2, #1
+ 128 0082 1A60     		str	r2, [r3, #0]
+ 129 0084 7047     		bx	lr
+ 131              		.ident	"GCC: (GNU) 4.6.2"
+DEFINED SYMBOLS
+                            *ABS*:00000000 list.c
+C:\Users\Rhonda\AppData\Local\Temp\ccCcLs38.s:15     .text:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\ccCcLs38.s:20     .text:00000000 vListInitialise
+C:\Users\Rhonda\AppData\Local\Temp\ccCcLs38.s:39     .text:00000016 vListInitialiseItem
+C:\Users\Rhonda\AppData\Local\Temp\ccCcLs38.s:52     .text:0000001c vListInsertEnd
+C:\Users\Rhonda\AppData\Local\Temp\ccCcLs38.s:75     .text:00000036 vListInsert
+C:\Users\Rhonda\AppData\Local\Temp\ccCcLs38.s:110    .text:00000066 vListRemove
+
+NO UNDEFINED SYMBOLS

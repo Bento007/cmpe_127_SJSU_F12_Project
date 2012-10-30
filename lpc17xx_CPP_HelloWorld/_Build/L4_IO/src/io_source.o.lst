@@ -1,0 +1,2664 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"io_source.cpp"
+  14              		.text
+  15              		.align	1
+  16              		.global	_ZN3LED4initEv
+  17              		.thumb
+  18              		.thumb_func
+  20              	_ZN3LED4initEv:
+  21              		@ args = 0, pretend = 0, frame = 0
+  22              		@ frame_needed = 0, uses_anonymous_args = 0
+  23              		@ link register save eliminated.
+  24 0000 034A     		ldr	r2, .L2
+  25 0002 4CF21373 		movw	r3, #50963
+  26 0006 1168     		ldr	r1, [r2, #0]
+  27 0008 0120     		movs	r0, #1
+  28 000a 0B43     		orrs	r3, r3, r1
+  29 000c 1360     		str	r3, [r2, #0]
+  30 000e 7047     		bx	lr
+  31              	.L3:
+  32              		.align	2
+  33              	.L2:
+  34 0010 20C00920 		.word	537509920
+  36              		.align	1
+  37              		.global	_ZN8Switches4initEv
+  38              		.thumb
+  39              		.thumb_func
+  41              	_ZN8Switches4initEv:
+  42              		@ args = 0, pretend = 0, frame = 0
+  43              		@ frame_needed = 0, uses_anonymous_args = 0
+  44              		@ link register save eliminated.
+  45 0014 024B     		ldr	r3, .L5
+  46 0016 0022     		movs	r2, #0
+  47 0018 1A70     		strb	r2, [r3, #0]
+  48 001a 0120     		movs	r0, #1
+  49 001c 7047     		bx	lr
+  50              	.L6:
+  51 001e 00BF     		.align	2
+  52              	.L5:
+  53 0020 40C00920 		.word	537509952
+  55              		.align	1
+  56              		.global	_ZN6Keypad4initEv
+  57              		.thumb
+  58              		.thumb_func
+  60              	_ZN6Keypad4initEv:
+  61              		@ args = 0, pretend = 0, frame = 0
+  62              		@ frame_needed = 0, uses_anonymous_args = 0
+  63              		@ link register save eliminated.
+  64 0024 044B     		ldr	r3, .L8
+  65 0026 0022     		movs	r2, #0
+  66 0028 5A82     		strh	r2, [r3, #18]	@ movhi
+  67 002a 1146     		mov	r1, r2	@ movhi
+  68 002c FF22     		movs	r2, #255
+  69 002e 9A70     		strb	r2, [r3, #2]
+  70 0030 0120     		movs	r0, #1
+  71 0032 D970     		strb	r1, [r3, #3]
+  72 0034 7047     		bx	lr
+  73              	.L9:
+  74 0036 00BF     		.align	2
+  75              	.L8:
+  76 0038 20C00920 		.word	537509920
+  78              		.section	.text._ZN9IO_DeviceD2Ev,"axG",%progbits,_ZN9IO_DeviceD5Ev,comdat
+  79              		.align	1
+  80              		.weak	_ZN9IO_DeviceD2Ev
+  81              		.thumb
+  82              		.thumb_func
+  84              	_ZN9IO_DeviceD2Ev:
+  85              		@ args = 0, pretend = 0, frame = 0
+  86              		@ frame_needed = 0, uses_anonymous_args = 0
+  87 0000 044B     		ldr	r3, .L12
+  88 0002 10B5     		push	{r4, lr}
+  89 0004 0446     		mov	r4, r0
+  90 0006 40F8043B 		str	r3, [r0], #4
+  91 000a FFF7FEFF 		bl	_ZN3strD1Ev
+  92 000e 2046     		mov	r0, r4
+  93 0010 10BD     		pop	{r4, pc}
+  94              	.L13:
+  95 0012 00BF     		.align	2
+  96              	.L12:
+  97 0014 08000000 		.word	_ZTV9IO_Device+8
+  99              		.section	.text._ZN19Acceleration_SensorD2Ev,"axG",%progbits,_ZN19Acceleration_SensorD5Ev,comdat
+ 100              		.align	1
+ 101              		.weak	_ZN19Acceleration_SensorD2Ev
+ 102              		.thumb
+ 103              		.thumb_func
+ 105              	_ZN19Acceleration_SensorD2Ev:
+ 106              		@ args = 0, pretend = 0, frame = 0
+ 107              		@ frame_needed = 0, uses_anonymous_args = 0
+ 108 0000 034B     		ldr	r3, .L16
+ 109 0002 10B5     		push	{r4, lr}
+ 110 0004 0446     		mov	r4, r0
+ 111 0006 0360     		str	r3, [r0, #0]
+ 112 0008 FFF7FEFF 		bl	_ZN9IO_DeviceD2Ev
+ 113 000c 2046     		mov	r0, r4
+ 114 000e 10BD     		pop	{r4, pc}
+ 115              	.L17:
+ 116              		.align	2
+ 117              	.L16:
+ 118 0010 08000000 		.word	.LANCHOR0+8
+ 120              		.section	.text._ZN19Acceleration_SensorD0Ev,"axG",%progbits,_ZN19Acceleration_SensorD5Ev,comdat
+ 121              		.align	1
+ 122              		.weak	_ZN19Acceleration_SensorD0Ev
+ 123              		.thumb
+ 124              		.thumb_func
+ 126              	_ZN19Acceleration_SensorD0Ev:
+ 127              		@ args = 0, pretend = 0, frame = 0
+ 128              		@ frame_needed = 0, uses_anonymous_args = 0
+ 129 0000 054B     		ldr	r3, .L21
+ 130 0002 10B5     		push	{r4, lr}
+ 131 0004 0446     		mov	r4, r0
+ 132 0006 0360     		str	r3, [r0, #0]
+ 133 0008 FFF7FEFF 		bl	_ZN9IO_DeviceD2Ev
+ 134 000c 2046     		mov	r0, r4
+ 135 000e FFF7FEFF 		bl	_ZdlPv
+ 136 0012 2046     		mov	r0, r4
+ 137 0014 10BD     		pop	{r4, pc}
+ 138              	.L22:
+ 139 0016 00BF     		.align	2
+ 140              	.L21:
+ 141 0018 08000000 		.word	.LANCHOR0+8
+ 143              		.section	.text._ZN9IR_SensorD2Ev,"axG",%progbits,_ZN9IR_SensorD5Ev,comdat
+ 144              		.align	1
+ 145              		.weak	_ZN9IR_SensorD2Ev
+ 146              		.thumb
+ 147              		.thumb_func
+ 149              	_ZN9IR_SensorD2Ev:
+ 150              		@ args = 0, pretend = 0, frame = 0
+ 151              		@ frame_needed = 0, uses_anonymous_args = 0
+ 152 0000 034B     		ldr	r3, .L25
+ 153 0002 10B5     		push	{r4, lr}
+ 154 0004 0446     		mov	r4, r0
+ 155 0006 0360     		str	r3, [r0, #0]
+ 156 0008 FFF7FEFF 		bl	_ZN9IO_DeviceD2Ev
+ 157 000c 2046     		mov	r0, r4
+ 158 000e 10BD     		pop	{r4, pc}
+ 159              	.L26:
+ 160              		.align	2
+ 161              	.L25:
+ 162 0010 20000000 		.word	.LANCHOR0+32
+ 164              		.section	.text._ZN9IR_SensorD0Ev,"axG",%progbits,_ZN9IR_SensorD5Ev,comdat
+ 165              		.align	1
+ 166              		.weak	_ZN9IR_SensorD0Ev
+ 167              		.thumb
+ 168              		.thumb_func
+ 170              	_ZN9IR_SensorD0Ev:
+ 171              		@ args = 0, pretend = 0, frame = 0
+ 172              		@ frame_needed = 0, uses_anonymous_args = 0
+ 173 0000 054B     		ldr	r3, .L30
+ 174 0002 10B5     		push	{r4, lr}
+ 175 0004 0446     		mov	r4, r0
+ 176 0006 0360     		str	r3, [r0, #0]
+ 177 0008 FFF7FEFF 		bl	_ZN9IO_DeviceD2Ev
+ 178 000c 2046     		mov	r0, r4
+ 179 000e FFF7FEFF 		bl	_ZdlPv
+ 180 0012 2046     		mov	r0, r4
+ 181 0014 10BD     		pop	{r4, pc}
+ 182              	.L31:
+ 183 0016 00BF     		.align	2
+ 184              	.L30:
+ 185 0018 20000000 		.word	.LANCHOR0+32
+ 187              		.section	.text._ZN11LED_DisplayD2Ev,"axG",%progbits,_ZN11LED_DisplayD5Ev,comdat
+ 188              		.align	1
+ 189              		.weak	_ZN11LED_DisplayD2Ev
+ 190              		.thumb
+ 191              		.thumb_func
+ 193              	_ZN11LED_DisplayD2Ev:
+ 194              		@ args = 0, pretend = 0, frame = 0
+ 195              		@ frame_needed = 0, uses_anonymous_args = 0
+ 196 0000 034B     		ldr	r3, .L34
+ 197 0002 10B5     		push	{r4, lr}
+ 198 0004 0446     		mov	r4, r0
+ 199 0006 0360     		str	r3, [r0, #0]
+ 200 0008 FFF7FEFF 		bl	_ZN9IO_DeviceD2Ev
+ 201 000c 2046     		mov	r0, r4
+ 202 000e 10BD     		pop	{r4, pc}
+ 203              	.L35:
+ 204              		.align	2
+ 205              	.L34:
+ 206 0010 38000000 		.word	.LANCHOR0+56
+ 208              		.section	.text._ZN11LED_DisplayD0Ev,"axG",%progbits,_ZN11LED_DisplayD5Ev,comdat
+ 209              		.align	1
+ 210              		.weak	_ZN11LED_DisplayD0Ev
+ 211              		.thumb
+ 212              		.thumb_func
+ 214              	_ZN11LED_DisplayD0Ev:
+ 215              		@ args = 0, pretend = 0, frame = 0
+ 216              		@ frame_needed = 0, uses_anonymous_args = 0
+ 217 0000 054B     		ldr	r3, .L39
+ 218 0002 10B5     		push	{r4, lr}
+ 219 0004 0446     		mov	r4, r0
+ 220 0006 0360     		str	r3, [r0, #0]
+ 221 0008 FFF7FEFF 		bl	_ZN9IO_DeviceD2Ev
+ 222 000c 2046     		mov	r0, r4
+ 223 000e FFF7FEFF 		bl	_ZdlPv
+ 224 0012 2046     		mov	r0, r4
+ 225 0014 10BD     		pop	{r4, pc}
+ 226              	.L40:
+ 227 0016 00BF     		.align	2
+ 228              	.L39:
+ 229 0018 38000000 		.word	.LANCHOR0+56
+ 231              		.section	.text._ZN3LEDD2Ev,"axG",%progbits,_ZN3LEDD5Ev,comdat
+ 232              		.align	1
+ 233              		.weak	_ZN3LEDD2Ev
+ 234              		.thumb
+ 235              		.thumb_func
+ 237              	_ZN3LEDD2Ev:
+ 238              		@ args = 0, pretend = 0, frame = 0
+ 239              		@ frame_needed = 0, uses_anonymous_args = 0
+ 240 0000 034B     		ldr	r3, .L43
+ 241 0002 10B5     		push	{r4, lr}
+ 242 0004 0446     		mov	r4, r0
+ 243 0006 0360     		str	r3, [r0, #0]
+ 244 0008 FFF7FEFF 		bl	_ZN9IO_DeviceD2Ev
+ 245 000c 2046     		mov	r0, r4
+ 246 000e 10BD     		pop	{r4, pc}
+ 247              	.L44:
+ 248              		.align	2
+ 249              	.L43:
+ 250 0010 50000000 		.word	.LANCHOR0+80
+ 252              		.section	.text._ZN3LEDD0Ev,"axG",%progbits,_ZN3LEDD5Ev,comdat
+ 253              		.align	1
+ 254              		.weak	_ZN3LEDD0Ev
+ 255              		.thumb
+ 256              		.thumb_func
+ 258              	_ZN3LEDD0Ev:
+ 259              		@ args = 0, pretend = 0, frame = 0
+ 260              		@ frame_needed = 0, uses_anonymous_args = 0
+ 261 0000 054B     		ldr	r3, .L48
+ 262 0002 10B5     		push	{r4, lr}
+ 263 0004 0446     		mov	r4, r0
+ 264 0006 0360     		str	r3, [r0, #0]
+ 265 0008 FFF7FEFF 		bl	_ZN9IO_DeviceD2Ev
+ 266 000c 2046     		mov	r0, r4
+ 267 000e FFF7FEFF 		bl	_ZdlPv
+ 268 0012 2046     		mov	r0, r4
+ 269 0014 10BD     		pop	{r4, pc}
+ 270              	.L49:
+ 271 0016 00BF     		.align	2
+ 272              	.L48:
+ 273 0018 50000000 		.word	.LANCHOR0+80
+ 275              		.section	.text._ZN12Light_SensorD2Ev,"axG",%progbits,_ZN12Light_SensorD5Ev,comdat
+ 276              		.align	1
+ 277              		.weak	_ZN12Light_SensorD2Ev
+ 278              		.thumb
+ 279              		.thumb_func
+ 281              	_ZN12Light_SensorD2Ev:
+ 282              		@ args = 0, pretend = 0, frame = 0
+ 283              		@ frame_needed = 0, uses_anonymous_args = 0
+ 284 0000 034B     		ldr	r3, .L52
+ 285 0002 10B5     		push	{r4, lr}
+ 286 0004 0446     		mov	r4, r0
+ 287 0006 0360     		str	r3, [r0, #0]
+ 288 0008 FFF7FEFF 		bl	_ZN9IO_DeviceD2Ev
+ 289 000c 2046     		mov	r0, r4
+ 290 000e 10BD     		pop	{r4, pc}
+ 291              	.L53:
+ 292              		.align	2
+ 293              	.L52:
+ 294 0010 68000000 		.word	.LANCHOR0+104
+ 296              		.section	.text._ZN12Light_SensorD0Ev,"axG",%progbits,_ZN12Light_SensorD5Ev,comdat
+ 297              		.align	1
+ 298              		.weak	_ZN12Light_SensorD0Ev
+ 299              		.thumb
+ 300              		.thumb_func
+ 302              	_ZN12Light_SensorD0Ev:
+ 303              		@ args = 0, pretend = 0, frame = 0
+ 304              		@ frame_needed = 0, uses_anonymous_args = 0
+ 305 0000 054B     		ldr	r3, .L57
+ 306 0002 10B5     		push	{r4, lr}
+ 307 0004 0446     		mov	r4, r0
+ 308 0006 0360     		str	r3, [r0, #0]
+ 309 0008 FFF7FEFF 		bl	_ZN9IO_DeviceD2Ev
+ 310 000c 2046     		mov	r0, r4
+ 311 000e FFF7FEFF 		bl	_ZdlPv
+ 312 0012 2046     		mov	r0, r4
+ 313 0014 10BD     		pop	{r4, pc}
+ 314              	.L58:
+ 315 0016 00BF     		.align	2
+ 316              	.L57:
+ 317 0018 68000000 		.word	.LANCHOR0+104
+ 319              		.section	.text._ZN8SwitchesD2Ev,"axG",%progbits,_ZN8SwitchesD5Ev,comdat
+ 320              		.align	1
+ 321              		.weak	_ZN8SwitchesD2Ev
+ 322              		.thumb
+ 323              		.thumb_func
+ 325              	_ZN8SwitchesD2Ev:
+ 326              		@ args = 0, pretend = 0, frame = 0
+ 327              		@ frame_needed = 0, uses_anonymous_args = 0
+ 328 0000 034B     		ldr	r3, .L61
+ 329 0002 10B5     		push	{r4, lr}
+ 330 0004 0446     		mov	r4, r0
+ 331 0006 0360     		str	r3, [r0, #0]
+ 332 0008 FFF7FEFF 		bl	_ZN9IO_DeviceD2Ev
+ 333 000c 2046     		mov	r0, r4
+ 334 000e 10BD     		pop	{r4, pc}
+ 335              	.L62:
+ 336              		.align	2
+ 337              	.L61:
+ 338 0010 80000000 		.word	.LANCHOR0+128
+ 340              		.section	.text._ZN8SwitchesD0Ev,"axG",%progbits,_ZN8SwitchesD5Ev,comdat
+ 341              		.align	1
+ 342              		.weak	_ZN8SwitchesD0Ev
+ 343              		.thumb
+ 344              		.thumb_func
+ 346              	_ZN8SwitchesD0Ev:
+ 347              		@ args = 0, pretend = 0, frame = 0
+ 348              		@ frame_needed = 0, uses_anonymous_args = 0
+ 349 0000 054B     		ldr	r3, .L66
+ 350 0002 10B5     		push	{r4, lr}
+ 351 0004 0446     		mov	r4, r0
+ 352 0006 0360     		str	r3, [r0, #0]
+ 353 0008 FFF7FEFF 		bl	_ZN9IO_DeviceD2Ev
+ 354 000c 2046     		mov	r0, r4
+ 355 000e FFF7FEFF 		bl	_ZdlPv
+ 356 0012 2046     		mov	r0, r4
+ 357 0014 10BD     		pop	{r4, pc}
+ 358              	.L67:
+ 359 0016 00BF     		.align	2
+ 360              	.L66:
+ 361 0018 80000000 		.word	.LANCHOR0+128
+ 363              		.section	.text._ZN17TemperatureSensorD2Ev,"axG",%progbits,_ZN17TemperatureSensorD5Ev,comdat
+ 364              		.align	1
+ 365              		.weak	_ZN17TemperatureSensorD2Ev
+ 366              		.thumb
+ 367              		.thumb_func
+ 369              	_ZN17TemperatureSensorD2Ev:
+ 370              		@ args = 0, pretend = 0, frame = 0
+ 371              		@ frame_needed = 0, uses_anonymous_args = 0
+ 372 0000 034B     		ldr	r3, .L70
+ 373 0002 10B5     		push	{r4, lr}
+ 374 0004 0446     		mov	r4, r0
+ 375 0006 0360     		str	r3, [r0, #0]
+ 376 0008 FFF7FEFF 		bl	_ZN9IO_DeviceD2Ev
+ 377 000c 2046     		mov	r0, r4
+ 378 000e 10BD     		pop	{r4, pc}
+ 379              	.L71:
+ 380              		.align	2
+ 381              	.L70:
+ 382 0010 98000000 		.word	.LANCHOR0+152
+ 384              		.section	.text._ZN17TemperatureSensorD0Ev,"axG",%progbits,_ZN17TemperatureSensorD5Ev,comdat
+ 385              		.align	1
+ 386              		.weak	_ZN17TemperatureSensorD0Ev
+ 387              		.thumb
+ 388              		.thumb_func
+ 390              	_ZN17TemperatureSensorD0Ev:
+ 391              		@ args = 0, pretend = 0, frame = 0
+ 392              		@ frame_needed = 0, uses_anonymous_args = 0
+ 393 0000 054B     		ldr	r3, .L75
+ 394 0002 10B5     		push	{r4, lr}
+ 395 0004 0446     		mov	r4, r0
+ 396 0006 0360     		str	r3, [r0, #0]
+ 397 0008 FFF7FEFF 		bl	_ZN9IO_DeviceD2Ev
+ 398 000c 2046     		mov	r0, r4
+ 399 000e FFF7FEFF 		bl	_ZdlPv
+ 400 0012 2046     		mov	r0, r4
+ 401 0014 10BD     		pop	{r4, pc}
+ 402              	.L76:
+ 403 0016 00BF     		.align	2
+ 404              	.L75:
+ 405 0018 98000000 		.word	.LANCHOR0+152
+ 407              		.section	.text._ZN6KeypadD2Ev,"axG",%progbits,_ZN6KeypadD5Ev,comdat
+ 408              		.align	1
+ 409              		.weak	_ZN6KeypadD2Ev
+ 410              		.thumb
+ 411              		.thumb_func
+ 413              	_ZN6KeypadD2Ev:
+ 414              		@ args = 0, pretend = 0, frame = 0
+ 415              		@ frame_needed = 0, uses_anonymous_args = 0
+ 416 0000 034B     		ldr	r3, .L79
+ 417 0002 10B5     		push	{r4, lr}
+ 418 0004 0446     		mov	r4, r0
+ 419 0006 0360     		str	r3, [r0, #0]
+ 420 0008 FFF7FEFF 		bl	_ZN9IO_DeviceD2Ev
+ 421 000c 2046     		mov	r0, r4
+ 422 000e 10BD     		pop	{r4, pc}
+ 423              	.L80:
+ 424              		.align	2
+ 425              	.L79:
+ 426 0010 B0000000 		.word	.LANCHOR0+176
+ 428              		.section	.text._ZN6KeypadD0Ev,"axG",%progbits,_ZN6KeypadD5Ev,comdat
+ 429              		.align	1
+ 430              		.weak	_ZN6KeypadD0Ev
+ 431              		.thumb
+ 432              		.thumb_func
+ 434              	_ZN6KeypadD0Ev:
+ 435              		@ args = 0, pretend = 0, frame = 0
+ 436              		@ frame_needed = 0, uses_anonymous_args = 0
+ 437 0000 054B     		ldr	r3, .L84
+ 438 0002 10B5     		push	{r4, lr}
+ 439 0004 0446     		mov	r4, r0
+ 440 0006 0360     		str	r3, [r0, #0]
+ 441 0008 FFF7FEFF 		bl	_ZN9IO_DeviceD2Ev
+ 442 000c 2046     		mov	r0, r4
+ 443 000e FFF7FEFF 		bl	_ZdlPv
+ 444 0012 2046     		mov	r0, r4
+ 445 0014 10BD     		pop	{r4, pc}
+ 446              	.L85:
+ 447 0016 00BF     		.align	2
+ 448              	.L84:
+ 449 0018 B0000000 		.word	.LANCHOR0+176
+ 451              		.section	.text._ZN3LCDD2Ev,"axG",%progbits,_ZN3LCDD5Ev,comdat
+ 452              		.align	1
+ 453              		.weak	_ZN3LCDD2Ev
+ 454              		.thumb
+ 455              		.thumb_func
+ 457              	_ZN3LCDD2Ev:
+ 458              		@ args = 0, pretend = 0, frame = 0
+ 459              		@ frame_needed = 0, uses_anonymous_args = 0
+ 460 0000 034B     		ldr	r3, .L88
+ 461 0002 10B5     		push	{r4, lr}
+ 462 0004 0446     		mov	r4, r0
+ 463 0006 0360     		str	r3, [r0, #0]
+ 464 0008 FFF7FEFF 		bl	_ZN9IO_DeviceD2Ev
+ 465 000c 2046     		mov	r0, r4
+ 466 000e 10BD     		pop	{r4, pc}
+ 467              	.L89:
+ 468              		.align	2
+ 469              	.L88:
+ 470 0010 C8000000 		.word	.LANCHOR0+200
+ 472              		.section	.text._ZN3LCDD0Ev,"axG",%progbits,_ZN3LCDD5Ev,comdat
+ 473              		.align	1
+ 474              		.weak	_ZN3LCDD0Ev
+ 475              		.thumb
+ 476              		.thumb_func
+ 478              	_ZN3LCDD0Ev:
+ 479              		@ args = 0, pretend = 0, frame = 0
+ 480              		@ frame_needed = 0, uses_anonymous_args = 0
+ 481 0000 054B     		ldr	r3, .L93
+ 482 0002 10B5     		push	{r4, lr}
+ 483 0004 0446     		mov	r4, r0
+ 484 0006 0360     		str	r3, [r0, #0]
+ 485 0008 FFF7FEFF 		bl	_ZN9IO_DeviceD2Ev
+ 486 000c 2046     		mov	r0, r4
+ 487 000e FFF7FEFF 		bl	_ZdlPv
+ 488 0012 2046     		mov	r0, r4
+ 489 0014 10BD     		pop	{r4, pc}
+ 490              	.L94:
+ 491 0016 00BF     		.align	2
+ 492              	.L93:
+ 493 0018 C8000000 		.word	.LANCHOR0+200
+ 495              		.section	.text._ZN9IO_DeviceD0Ev,"axG",%progbits,_ZN9IO_DeviceD5Ev,comdat
+ 496              		.align	1
+ 497              		.weak	_ZN9IO_DeviceD0Ev
+ 498              		.thumb
+ 499              		.thumb_func
+ 501              	_ZN9IO_DeviceD0Ev:
+ 502              		@ args = 0, pretend = 0, frame = 0
+ 503              		@ frame_needed = 0, uses_anonymous_args = 0
+ 504 0000 10B5     		push	{r4, lr}
+ 505 0002 0446     		mov	r4, r0
+ 506 0004 FFF7FEFF 		bl	_ZN9IO_DeviceD1Ev
+ 507 0008 2046     		mov	r0, r4
+ 508 000a FFF7FEFF 		bl	_ZdlPv
+ 509 000e 2046     		mov	r0, r4
+ 510 0010 10BD     		pop	{r4, pc}
+ 512              		.text
+ 513              		.align	1
+ 514              		.global	_ZN11LED_Display16getValueAsStringEv
+ 515              		.thumb
+ 516              		.thumb_func
+ 518              	_ZN11LED_Display16getValueAsStringEv:
+ 519              		@ args = 0, pretend = 0, frame = 0
+ 520              		@ frame_needed = 0, uses_anonymous_args = 0
+ 521 003c 10B5     		push	{r4, lr}
+ 522 003e 041D     		adds	r4, r0, #4
+ 523 0040 427F     		ldrb	r2, [r0, #29]	@ zero_extendqisi2
+ 524 0042 837F     		ldrb	r3, [r0, #30]	@ zero_extendqisi2
+ 525 0044 0449     		ldr	r1, .L98
+ 526 0046 2046     		mov	r0, r4
+ 527 0048 FFF7FEFF 		bl	_ZN3str6printfEPKcz
+ 528 004c 2046     		mov	r0, r4
+ 529 004e BDE81040 		pop	{r4, lr}
+ 530 0052 FFF7FEBF 		b	_ZNK3strclEv
+ 531              	.L99:
+ 532 0056 00BF     		.align	2
+ 533              	.L98:
+ 534 0058 00000000 		.word	.LC0
+ 536              		.align	1
+ 537              		.global	_ZN9IR_Sensor16getValueAsStringEv
+ 538              		.thumb
+ 539              		.thumb_func
+ 541              	_ZN9IR_Sensor16getValueAsStringEv:
+ 542              		@ args = 0, pretend = 0, frame = 0
+ 543              		@ frame_needed = 0, uses_anonymous_args = 0
+ 544 005c 074B     		ldr	r3, .L101
+ 545 005e 10B5     		push	{r4, lr}
+ 546 0060 0021     		movs	r1, #0
+ 547 0062 041D     		adds	r4, r0, #4
+ 548 0064 1A68     		ldr	r2, [r3, #0]
+ 549 0066 2046     		mov	r0, r4
+ 550 0068 1960     		str	r1, [r3, #0]
+ 551 006a 0549     		ldr	r1, .L101+4
+ 552 006c FFF7FEFF 		bl	_ZN3str6printfEPKcz
+ 553 0070 2046     		mov	r0, r4
+ 554 0072 BDE81040 		pop	{r4, lr}
+ 555 0076 FFF7FEBF 		b	_ZNK3strclEv
+ 556              	.L102:
+ 557 007a 00BF     		.align	2
+ 558              	.L101:
+ 559 007c 00000000 		.word	.LANCHOR1
+ 560 0080 0A000000 		.word	.LC1
+ 562              		.align	1
+ 563              		.global	_ZN17TemperatureSensor4initEv
+ 564              		.thumb
+ 565              		.thumb_func
+ 567              	_ZN17TemperatureSensor4initEv:
+ 568              		@ args = 0, pretend = 0, frame = 0
+ 569              		@ frame_needed = 0, uses_anonymous_args = 0
+ 570 0084 08B5     		push	{r3, lr}
+ 571 0086 0122     		movs	r2, #1
+ 572 0088 017F     		ldrb	r1, [r0, #28]	@ zero_extendqisi2
+ 573 008a 8069     		ldr	r0, [r0, #24]
+ 574 008c FFF7FEFF 		bl	_ZN8I2C_Base7readRegEcc
+ 575 0090 10F0600F 		tst	r0, #96
+ 576 0094 0CBF     		ite	eq
+ 577 0096 0020     		moveq	r0, #0
+ 578 0098 0120     		movne	r0, #1
+ 579 009a 08BD     		pop	{r3, pc}
+ 581              		.align	1
+ 582              		.global	_ZN3LCD4initEv
+ 583              		.thumb
+ 584              		.thumb_func
+ 586              	_ZN3LCD4initEv:
+ 587              		@ args = 0, pretend = 0, frame = 0
+ 588              		@ frame_needed = 0, uses_anonymous_args = 0
+ 589 009c 08B5     		push	{r3, lr}
+ 590 009e FFF7FEFF 		bl	spi1_Init
+ 591 00a2 0B4B     		ldr	r3, .L105
+ 592 00a4 C222     		movs	r2, #194
+ 593 00a6 1A61     		str	r2, [r3, #16]
+ 594 00a8 1A68     		ldr	r2, [r3, #0]
+ 595 00aa 0120     		movs	r0, #1
+ 596 00ac 42F48062 		orr	r2, r2, #1024
+ 597 00b0 1A60     		str	r2, [r3, #0]
+ 598 00b2 084A     		ldr	r2, .L105+4
+ 599 00b4 1168     		ldr	r1, [r2, #0]
+ 600 00b6 41F40041 		orr	r1, r1, #32768
+ 601 00ba 1160     		str	r1, [r2, #0]
+ 602 00bc 1A68     		ldr	r2, [r3, #0]
+ 603 00be 42F04002 		orr	r2, r2, #64
+ 604 00c2 1A60     		str	r2, [r3, #0]
+ 605 00c4 1A68     		ldr	r2, [r3, #0]
+ 606 00c6 42F08002 		orr	r2, r2, #128
+ 607 00ca 1A60     		str	r2, [r3, #0]
+ 608 00cc 08BD     		pop	{r3, pc}
+ 609              	.L106:
+ 610 00ce 00BF     		.align	2
+ 611              	.L105:
+ 612 00d0 00000340 		.word	1073938432
+ 613 00d4 00C00920 		.word	537509888
+ 615              		.section	.text._ZN9IO_Device16getValueAsStringEv,"axG",%progbits,_ZN9IO_Device16getValueAsStringEv
+ 616              		.align	1
+ 617              		.weak	_ZN9IO_Device16getValueAsStringEv
+ 618              		.thumb
+ 619              		.thumb_func
+ 621              	_ZN9IO_Device16getValueAsStringEv:
+ 622              		@ args = 0, pretend = 0, frame = 0
+ 623              		@ frame_needed = 0, uses_anonymous_args = 0
+ 624 0000 10B5     		push	{r4, lr}
+ 625 0002 041D     		adds	r4, r0, #4
+ 626 0004 2046     		mov	r0, r4
+ 627 0006 0449     		ldr	r1, .L108
+ 628 0008 FFF7FEFF 		bl	_ZN3straSEPKc
+ 629 000c 2046     		mov	r0, r4
+ 630 000e BDE81040 		pop	{r4, lr}
+ 631 0012 FFF7FEBF 		b	_ZNK3strclEv
+ 632              	.L109:
+ 633 0016 00BF     		.align	2
+ 634              	.L108:
+ 635 0018 15000000 		.word	.LC2
+ 637              		.text
+ 638              		.align	1
+ 639              		.global	_ZN3LED16getValueAsStringEv
+ 640              		.thumb
+ 641              		.thumb_func
+ 643              	_ZN3LED16getValueAsStringEv:
+ 644              		@ args = 0, pretend = 0, frame = 0
+ 645              		@ frame_needed = 0, uses_anonymous_args = 0
+ 646 00d8 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 647 00dc 051D     		adds	r5, r0, #4
+ 648 00de 0646     		mov	r6, r0
+ 649 00e0 1049     		ldr	r1, .L119
+ 650 00e2 2846     		mov	r0, r5
+ 651 00e4 FFF7FEFF 		bl	_ZN3straSEPKc
+ 652 00e8 0724     		movs	r4, #7
+ 653 00ea DFF84480 		ldr	r8, .L119+12
+ 654 00ee 0E4F     		ldr	r7, .L119+4
+ 655 00f0 05E0     		b	.L118
+ 656              	.L114:
+ 657 00f2 032C     		cmp	r4, #3
+ 658 00f4 03D1     		bne	.L118
+ 659 00f6 2846     		mov	r0, r5
+ 660 00f8 0C49     		ldr	r1, .L119+8
+ 661 00fa FFF7FEFF 		bl	_ZN3strpLEPKc
+ 662              	.L118:
+ 663 00fe 337E     		ldrb	r3, [r6, #24]	@ zero_extendqisi2
+ 664 0100 2846     		mov	r0, r5
+ 665 0102 2341     		asrs	r3, r3, r4
+ 666 0104 13F0010F 		tst	r3, #1
+ 667 0108 0CBF     		ite	eq
+ 668 010a 4146     		moveq	r1, r8
+ 669 010c 3946     		movne	r1, r7
+ 670 010e FFF7FEFF 		bl	_ZN3strpLEPKc
+ 671 0112 14F1FF34 		adds	r4, r4, #-1
+ 672 0116 ECD2     		bcs	.L114
+ 673 0118 2846     		mov	r0, r5
+ 674 011a BDE8F041 		pop	{r4, r5, r6, r7, r8, lr}
+ 675 011e FFF7FEBF 		b	_ZNK3strclEv
+ 676              	.L120:
+ 677 0122 00BF     		.align	2
+ 678              	.L119:
+ 679 0124 39000000 		.word	.LC5
+ 680 0128 35000000 		.word	.LC3
+ 681 012c 40000000 		.word	.LC6
+ 682 0130 37000000 		.word	.LC4
+ 684              		.align	1
+ 685              		.global	_ZN8Switches16getValueAsStringEv
+ 686              		.thumb
+ 687              		.thumb_func
+ 689              	_ZN8Switches16getValueAsStringEv:
+ 690              		@ args = 0, pretend = 0, frame = 0
+ 691              		@ frame_needed = 0, uses_anonymous_args = 0
+ 692 0134 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 693 0138 051D     		adds	r5, r0, #4
+ 694 013a 2846     		mov	r0, r5
+ 695 013c 1049     		ldr	r1, .L127
+ 696 013e FFF7FEFF 		bl	_ZN3straSEPKc
+ 697 0142 0724     		movs	r4, #7
+ 698 0144 DFF84880 		ldr	r8, .L127+16
+ 699 0148 0E4F     		ldr	r7, .L127+4
+ 700 014a 0F4E     		ldr	r6, .L127+8
+ 701 014c 06E0     		b	.L122
+ 702              	.L125:
+ 703 014e 042C     		cmp	r4, #4
+ 704 0150 03D1     		bne	.L123
+ 705 0152 2846     		mov	r0, r5
+ 706 0154 0D49     		ldr	r1, .L127+12
+ 707 0156 FFF7FEFF 		bl	_ZN3strpLEPKc
+ 708              	.L123:
+ 709 015a 013C     		subs	r4, r4, #1
+ 710              	.L122:
+ 711 015c 98F81430 		ldrb	r3, [r8, #20]	@ zero_extendqisi2
+ 712 0160 2846     		mov	r0, r5
+ 713 0162 2341     		asrs	r3, r3, r4
+ 714 0164 13F0010F 		tst	r3, #1
+ 715 0168 0CBF     		ite	eq
+ 716 016a 3946     		moveq	r1, r7
+ 717 016c 3146     		movne	r1, r6
+ 718 016e FFF7FEFF 		bl	_ZN3strpLEPKc
+ 719 0172 002C     		cmp	r4, #0
+ 720 0174 EBD1     		bne	.L125
+ 721 0176 2846     		mov	r0, r5
+ 722 0178 BDE8F041 		pop	{r4, r5, r6, r7, r8, lr}
+ 723 017c FFF7FEBF 		b	_ZNK3strclEv
+ 724              	.L128:
+ 725              		.align	2
+ 726              	.L127:
+ 727 0180 42000000 		.word	.LC7
+ 728 0184 37000000 		.word	.LC4
+ 729 0188 35000000 		.word	.LC3
+ 730 018c 40000000 		.word	.LC6
+ 731 0190 40C00920 		.word	537509952
+ 733              		.align	1
+ 734              		.global	_ZN9IR_Sensor4initEv
+ 735              		.thumb
+ 736              		.thumb_func
+ 738              	_ZN9IR_Sensor4initEv:
+ 739              		@ args = 0, pretend = 0, frame = 0
+ 740              		@ frame_needed = 0, uses_anonymous_args = 0
+ 741 0194 70B5     		push	{r4, r5, r6, lr}
+ 742 0196 1A4B     		ldr	r3, .L130
+ 743 0198 1A4C     		ldr	r4, .L130+4
+ 744 019a D3F8C420 		ldr	r2, [r3, #196]
+ 745 019e 0125     		movs	r5, #1
+ 746 01a0 42F00202 		orr	r2, r2, #2
+ 747 01a4 C3F8C420 		str	r2, [r3, #196]
+ 748 01a8 D3F8A821 		ldr	r2, [r3, #424]
+ 749 01ac 0026     		movs	r6, #0
+ 750 01ae 22F03002 		bic	r2, r2, #48
+ 751 01b2 C3F8A821 		str	r2, [r3, #424]
+ 752 01b6 D3F8A821 		ldr	r2, [r3, #424]
+ 753 01ba 42F01002 		orr	r2, r2, #16
+ 754 01be C3F8A821 		str	r2, [r3, #424]
+ 755 01c2 6560     		str	r5, [r4, #4]
+ 756 01c4 2667     		str	r6, [r4, #112]
+ 757 01c6 FFF7FEFF 		bl	getCpuClock
+ 758 01ca 42F21073 		movw	r3, #10000
+ 759 01ce B0FBF3F0 		udiv	r0, r0, r3
+ 760 01d2 E060     		str	r0, [r4, #12]
+ 761 01d4 A36A     		ldr	r3, [r4, #40]
+ 762 01d6 2846     		mov	r0, r5
+ 763 01d8 23F00703 		bic	r3, r3, #7
+ 764 01dc A362     		str	r3, [r4, #40]
+ 765 01de A36A     		ldr	r3, [r4, #40]
+ 766 01e0 43F00603 		orr	r3, r3, #6
+ 767 01e4 A362     		str	r3, [r4, #40]
+ 768 01e6 A661     		str	r6, [r4, #24]
+ 769 01e8 6369     		ldr	r3, [r4, #20]
+ 770 01ea 2B43     		orrs	r3, r3, r5
+ 771 01ec 6361     		str	r3, [r4, #20]
+ 772 01ee 064B     		ldr	r3, .L130+8
+ 773 01f0 DA68     		ldr	r2, [r3, #12]
+ 774 01f2 42F03002 		orr	r2, r2, #48
+ 775 01f6 DA60     		str	r2, [r3, #12]
+ 776 01f8 044B     		ldr	r3, .L130+12
+ 777 01fa 0422     		movs	r2, #4
+ 778 01fc 1A60     		str	r2, [r3, #0]
+ 779 01fe 70BD     		pop	{r4, r5, r6, pc}
+ 780              	.L131:
+ 781              		.align	2
+ 782              	.L130:
+ 783 0200 00C00F40 		.word	1074774016
+ 784 0204 00800040 		.word	1073774592
+ 785 0208 00C00240 		.word	1073922048
+ 786 020c 00E100E0 		.word	-536813312
+ 788              		.section	.text._ZN15I2C_Device_Base8writeRegEhh,"axG",%progbits,_ZN15I2C_Device_Base8writeRegEhh,c
+ 789              		.align	1
+ 790              		.weak	_ZN15I2C_Device_Base8writeRegEhh
+ 791              		.thumb
+ 792              		.thumb_func
+ 794              	_ZN15I2C_Device_Base8writeRegEhh:
+ 795              		@ args = 0, pretend = 0, frame = 0
+ 796              		@ frame_needed = 0, uses_anonymous_args = 0
+ 797 0000 10B5     		push	{r4, lr}
+ 798 0002 0C46     		mov	r4, r1
+ 799 0004 0179     		ldrb	r1, [r0, #4]	@ zero_extendqisi2
+ 800 0006 0068     		ldr	r0, [r0, #0]
+ 801 0008 1346     		mov	r3, r2
+ 802 000a 2246     		mov	r2, r4
+ 803 000c BDE81040 		pop	{r4, lr}
+ 804 0010 FFF7FEBF 		b	_ZN8I2C_Base8writeRegEccc
+ 806              		.text
+ 807              		.align	1
+ 808              		.global	_ZN19Acceleration_Sensor4initEv
+ 809              		.thumb
+ 810              		.thumb_func
+ 812              	_ZN19Acceleration_Sensor4initEv:
+ 813              		@ args = 0, pretend = 0, frame = 0
+ 814              		@ frame_needed = 0, uses_anonymous_args = 0
+ 815 0210 10B5     		push	{r4, lr}
+ 816 0212 2A21     		movs	r1, #42
+ 817 0214 0446     		mov	r4, r0
+ 818 0216 1922     		movs	r2, #25
+ 819 0218 00F11800 		add	r0, r0, #24
+ 820 021c FFF7FEFF 		bl	_ZN15I2C_Device_Base8writeRegEhh
+ 821 0220 0D22     		movs	r2, #13
+ 822 0222 217F     		ldrb	r1, [r4, #28]	@ zero_extendqisi2
+ 823 0224 A069     		ldr	r0, [r4, #24]
+ 824 0226 FFF7FEFF 		bl	_ZN8I2C_Base7readRegEcc
+ 825 022a A0F11A03 		sub	r3, r0, #26
+ 826 022e 5842     		rsbs	r0, r3, #0
+ 827 0230 40EB0300 		adc	r0, r0, r3
+ 828 0234 10BD     		pop	{r4, pc}
+ 830              		.section	.text._ZN15I2C_Device_Base16get16BitRegisterEh,"axG",%progbits,_ZN15I2C_Device_Base16get1
+ 831              		.align	1
+ 832              		.weak	_ZN15I2C_Device_Base16get16BitRegisterEh
+ 833              		.thumb
+ 834              		.thumb_func
+ 836              	_ZN15I2C_Device_Base16get16BitRegisterEh:
+ 837              		@ args = 0, pretend = 0, frame = 8
+ 838              		@ frame_needed = 0, uses_anonymous_args = 0
+ 839 0000 1FB5     		push	{r0, r1, r2, r3, r4, lr}
+ 840 0002 0A46     		mov	r2, r1
+ 841 0004 04AB     		add	r3, sp, #16
+ 842 0006 0021     		movs	r1, #0
+ 843 0008 0224     		movs	r4, #2
+ 844 000a 23F8041D 		strh	r1, [r3, #-4]!	@ movhi
+ 845 000e 0179     		ldrb	r1, [r0, #4]	@ zero_extendqisi2
+ 846 0010 0094     		str	r4, [sp, #0]
+ 847 0012 0068     		ldr	r0, [r0, #0]
+ 848 0014 FFF7FEFF 		bl	_ZN8I2C_Base13readRegistersEccPcj
+ 849 0018 9DF80C00 		ldrb	r0, [sp, #12]	@ zero_extendqisi2
+ 850 001c 9DF80D30 		ldrb	r3, [sp, #13]	@ zero_extendqisi2
+ 851 0020 43EA0020 		orr	r0, r3, r0, lsl #8
+ 852 0024 04B0     		add	sp, sp, #16
+ 853 0026 10BD     		pop	{r4, pc}
+ 855              		.section	.text.adc0_initialize,"axG",%progbits,adc0_initialize,comdat
+ 856              		.align	1
+ 857              		.weak	adc0_initialize
+ 858              		.thumb
+ 859              		.thumb_func
+ 861              	adc0_initialize:
+ 862              		@ args = 0, pretend = 0, frame = 0
+ 863              		@ frame_needed = 0, uses_anonymous_args = 0
+ 864 0000 10B5     		push	{r4, lr}
+ 865 0002 124B     		ldr	r3, .L140
+ 866 0004 124C     		ldr	r4, .L140+4
+ 867 0006 D3F8C420 		ldr	r2, [r3, #196]
+ 868 000a 42F48052 		orr	r2, r2, #4096
+ 869 000e C3F8C420 		str	r2, [r3, #196]
+ 870 0012 4FF40012 		mov	r2, #2097152
+ 871 0016 2260     		str	r2, [r4, #0]
+ 872 0018 D3F8A821 		ldr	r2, [r3, #424]
+ 873 001c 22F04072 		bic	r2, r2, #50331648
+ 874 0020 C3F8A821 		str	r2, [r3, #424]
+ 875 0024 FFF7FEFF 		bl	getCpuClock
+ 876 0028 0A4A     		ldr	r2, .L140+8
+ 877 002a 8008     		lsrs	r0, r0, #2
+ 878 002c 0023     		movs	r3, #0
+ 879              	.L138:
+ 880 002e B0FBF3F1 		udiv	r1, r0, r3
+ 881 0032 9142     		cmp	r1, r2
+ 882 0034 04D8     		bhi	.L136
+ 883 0036 2268     		ldr	r2, [r4, #0]
+ 884 0038 42EA0323 		orr	r3, r2, r3, lsl #8
+ 885 003c 2360     		str	r3, [r4, #0]
+ 886 003e 10BD     		pop	{r4, pc}
+ 887              	.L136:
+ 888 0040 0233     		adds	r3, r3, #2
+ 889 0042 B3F5807F 		cmp	r3, #256
+ 890 0046 F2D1     		bne	.L138
+ 891 0048 10BD     		pop	{r4, pc}
+ 892              	.L141:
+ 893 004a 00BF     		.align	2
+ 894              	.L140:
+ 895 004c 00C00F40 		.word	1074774016
+ 896 0050 00400340 		.word	1073954816
+ 897 0054 FF1AB700 		.word	11999999
+ 899              		.text
+ 900              		.align	1
+ 901              		.global	_ZN12Light_Sensor4initEv
+ 902              		.thumb
+ 903              		.thumb_func
+ 905              	_ZN12Light_Sensor4initEv:
+ 906              		@ args = 0, pretend = 0, frame = 0
+ 907              		@ frame_needed = 0, uses_anonymous_args = 0
+ 908 0236 08B5     		push	{r3, lr}
+ 909 0238 064B     		ldr	r3, .L143
+ 910 023a 5A68     		ldr	r2, [r3, #4]
+ 911 023c 22F44022 		bic	r2, r2, #786432
+ 912 0240 5A60     		str	r2, [r3, #4]
+ 913 0242 5A68     		ldr	r2, [r3, #4]
+ 914 0244 42F48022 		orr	r2, r2, #262144
+ 915 0248 5A60     		str	r2, [r3, #4]
+ 916 024a FFF7FEFF 		bl	adc0_initialize
+ 917 024e 0120     		movs	r0, #1
+ 918 0250 08BD     		pop	{r3, pc}
+ 919              	.L144:
+ 920 0252 00BF     		.align	2
+ 921              	.L143:
+ 922 0254 00C00240 		.word	1073922048
+ 924              		.section	.text.spi1_ExchangeByte,"axG",%progbits,spi1_ExchangeByte,comdat
+ 925              		.align	1
+ 926              		.weak	spi1_ExchangeByte
+ 927              		.thumb
+ 928              		.thumb_func
+ 930              	spi1_ExchangeByte:
+ 931              		@ args = 0, pretend = 0, frame = 0
+ 932              		@ frame_needed = 0, uses_anonymous_args = 0
+ 933              		@ link register save eliminated.
+ 934 0000 044B     		ldr	r3, .L148
+ 935 0002 9860     		str	r0, [r3, #8]
+ 936              	.L146:
+ 937 0004 DA68     		ldr	r2, [r3, #12]
+ 938 0006 D206     		lsls	r2, r2, #27
+ 939 0008 FCD4     		bmi	.L146
+ 940 000a 024B     		ldr	r3, .L148
+ 941 000c 9868     		ldr	r0, [r3, #8]
+ 942 000e C0B2     		uxtb	r0, r0
+ 943 0010 7047     		bx	lr
+ 944              	.L149:
+ 945 0012 00BF     		.align	2
+ 946              	.L148:
+ 947 0014 00000340 		.word	1073938432
+ 949              		.text
+ 950              		.align	1
+ 951              		.global	_ZN19Acceleration_Sensor4getXEv
+ 952              		.thumb
+ 953              		.thumb_func
+ 955              	_ZN19Acceleration_Sensor4getXEv:
+ 956              		@ args = 0, pretend = 0, frame = 0
+ 957              		@ frame_needed = 0, uses_anonymous_args = 0
+ 958 0258 08B5     		push	{r3, lr}
+ 959 025a 1830     		adds	r0, r0, #24
+ 960 025c 0121     		movs	r1, #1
+ 961 025e FFF7FEFF 		bl	_ZN15I2C_Device_Base16get16BitRegisterEh
+ 962 0262 1023     		movs	r3, #16
+ 963 0264 00B2     		sxth	r0, r0
+ 964 0266 90FBF3F0 		sdiv	r0, r0, r3
+ 965 026a 08BD     		pop	{r3, pc}
+ 967              		.align	1
+ 968              		.global	_ZN19Acceleration_Sensor4getYEv
+ 969              		.thumb
+ 970              		.thumb_func
+ 972              	_ZN19Acceleration_Sensor4getYEv:
+ 973              		@ args = 0, pretend = 0, frame = 0
+ 974              		@ frame_needed = 0, uses_anonymous_args = 0
+ 975 026c 08B5     		push	{r3, lr}
+ 976 026e 1830     		adds	r0, r0, #24
+ 977 0270 0321     		movs	r1, #3
+ 978 0272 FFF7FEFF 		bl	_ZN15I2C_Device_Base16get16BitRegisterEh
+ 979 0276 1023     		movs	r3, #16
+ 980 0278 00B2     		sxth	r0, r0
+ 981 027a 90FBF3F0 		sdiv	r0, r0, r3
+ 982 027e 08BD     		pop	{r3, pc}
+ 984              		.align	1
+ 985              		.global	_ZN19Acceleration_Sensor4getZEv
+ 986              		.thumb
+ 987              		.thumb_func
+ 989              	_ZN19Acceleration_Sensor4getZEv:
+ 990              		@ args = 0, pretend = 0, frame = 0
+ 991              		@ frame_needed = 0, uses_anonymous_args = 0
+ 992 0280 08B5     		push	{r3, lr}
+ 993 0282 1830     		adds	r0, r0, #24
+ 994 0284 0521     		movs	r1, #5
+ 995 0286 FFF7FEFF 		bl	_ZN15I2C_Device_Base16get16BitRegisterEh
+ 996 028a 1023     		movs	r3, #16
+ 997 028c 00B2     		sxth	r0, r0
+ 998 028e 90FBF3F0 		sdiv	r0, r0, r3
+ 999 0292 08BD     		pop	{r3, pc}
+ 1001              		.align	1
+ 1002              		.global	_ZN19Acceleration_Sensor16getValueAsStringEv
+ 1003              		.thumb
+ 1004              		.thumb_func
+ 1006              	_ZN19Acceleration_Sensor16getValueAsStringEv:
+ 1007              		@ args = 0, pretend = 0, frame = 0
+ 1008              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1009 0294 F7B5     		push	{r0, r1, r2, r4, r5, r6, r7, lr}
+ 1010 0296 0746     		mov	r7, r0
+ 1011 0298 041D     		adds	r4, r0, #4
+ 1012 029a FFF7FEFF 		bl	_ZN19Acceleration_Sensor4getXEv
+ 1013 029e 0646     		mov	r6, r0
+ 1014 02a0 3846     		mov	r0, r7
+ 1015 02a2 FFF7FEFF 		bl	_ZN19Acceleration_Sensor4getYEv
+ 1016 02a6 0546     		mov	r5, r0
+ 1017 02a8 3846     		mov	r0, r7
+ 1018 02aa FFF7FEFF 		bl	_ZN19Acceleration_Sensor4getZEv
+ 1019 02ae 0649     		ldr	r1, .L154
+ 1020 02b0 0090     		str	r0, [sp, #0]
+ 1021 02b2 3246     		mov	r2, r6
+ 1022 02b4 2046     		mov	r0, r4
+ 1023 02b6 2B46     		mov	r3, r5
+ 1024 02b8 FFF7FEFF 		bl	_ZN3str6printfEPKcz
+ 1025 02bc 2046     		mov	r0, r4
+ 1026 02be 03B0     		add	sp, sp, #12
+ 1027 02c0 BDE8F040 		pop	{r4, r5, r6, r7, lr}
+ 1028 02c4 FFF7FEBF 		b	_ZNK3strclEv
+ 1029              	.L155:
+ 1030              		.align	2
+ 1031              	.L154:
+ 1032 02c8 47000000 		.word	.LC8
+ 1034              		.align	1
+ 1035              		.global	TIMER1_IRQHandler
+ 1036              		.thumb
+ 1037              		.thumb_func
+ 1039              	TIMER1_IRQHandler:
+ 1040              		@ args = 0, pretend = 0, frame = 0
+ 1041              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1042 02cc 70B5     		push	{r4, r5, r6, lr}
+ 1043 02ce 2449     		ldr	r1, .L166
+ 1044 02d0 0A68     		ldr	r2, [r1, #0]
+ 1045 02d2 0B46     		mov	r3, r1
+ 1046 02d4 12F01002 		ands	r2, r2, #16
+ 1047 02d8 0FD0     		beq	.L157
+ 1048 02da 8A68     		ldr	r2, [r1, #8]
+ 1049 02dc C832     		adds	r2, r2, #200
+ 1050 02de 8A61     		str	r2, [r1, #24]
+ 1051 02e0 204A     		ldr	r2, .L166+4
+ 1052 02e2 9188     		ldrh	r1, [r2, #4]
+ 1053 02e4 1F29     		cmp	r1, #31
+ 1054 02e6 05D8     		bhi	.L158
+ 1055 02e8 DC6A     		ldr	r4, [r3, #44]
+ 1056 02ea 02EB8100 		add	r0, r2, r1, lsl #2
+ 1057 02ee 0131     		adds	r1, r1, #1
+ 1058 02f0 8460     		str	r4, [r0, #8]
+ 1059 02f2 9180     		strh	r1, [r2, #4]	@ movhi
+ 1060              	.L158:
+ 1061 02f4 1022     		movs	r2, #16
+ 1062 02f6 1A60     		str	r2, [r3, #0]
+ 1063 02f8 70BD     		pop	{r4, r5, r6, pc}
+ 1064              	.L157:
+ 1065 02fa 0B68     		ldr	r3, [r1, #0]
+ 1066 02fc D907     		lsls	r1, r3, #31
+ 1067 02fe 2ED5     		bpl	.L156
+ 1068 0300 184B     		ldr	r3, .L166+4
+ 1069 0302 9888     		ldrh	r0, [r3, #4]
+ 1070 0304 0128     		cmp	r0, #1
+ 1071 0306 24D9     		bls	.L160
+ 1072 0308 0833     		adds	r3, r3, #8
+ 1073 030a 1946     		mov	r1, r3
+ 1074 030c 0138     		subs	r0, r0, #1
+ 1075 030e 07E0     		b	.L161
+ 1076              	.L162:
+ 1077 0310 51F8045F 		ldr	r5, [r1, #4]!
+ 1078 0314 53F8044C 		ldr	r4, [r3, #-4]
+ 1079 0318 0132     		adds	r2, r2, #1
+ 1080 031a 2C1B     		subs	r4, r5, r4
+ 1081 031c 43F8044C 		str	r4, [r3, #-4]
+ 1082              	.L161:
+ 1083 0320 0433     		adds	r3, r3, #4
+ 1084 0322 8242     		cmp	r2, r0
+ 1085 0324 F4DB     		blt	.L162
+ 1086 0326 0F49     		ldr	r1, .L166+4
+ 1087 0328 0124     		movs	r4, #1
+ 1088 032a CB68     		ldr	r3, [r1, #12]
+ 1089 032c 03EB5305 		add	r5, r3, r3, lsr #1
+ 1090 0330 0023     		movs	r3, #0
+ 1091 0332 1A46     		mov	r2, r3
+ 1092 0334 09E0     		b	.L163
+ 1093              	.L165:
+ 1094 0336 01EB8306 		add	r6, r1, r3, lsl #2
+ 1095 033a B668     		ldr	r6, [r6, #8]
+ 1096 033c AE42     		cmp	r6, r5
+ 1097 033e 02D9     		bls	.L164
+ 1098 0340 14FA03F6 		lsls	r6, r4, r3
+ 1099 0344 3243     		orrs	r2, r2, r6
+ 1100              	.L164:
+ 1101 0346 0133     		adds	r3, r3, #1
+ 1102 0348 9BB2     		uxth	r3, r3
+ 1103              	.L163:
+ 1104 034a 8342     		cmp	r3, r0
+ 1105 034c F3DB     		blt	.L165
+ 1106 034e 054B     		ldr	r3, .L166+4
+ 1107 0350 1A60     		str	r2, [r3, #0]
+ 1108              	.L160:
+ 1109 0352 044B     		ldr	r3, .L166+4
+ 1110 0354 0022     		movs	r2, #0
+ 1111 0356 9A80     		strh	r2, [r3, #4]	@ movhi
+ 1112 0358 014B     		ldr	r3, .L166
+ 1113 035a 0122     		movs	r2, #1
+ 1114 035c 1A60     		str	r2, [r3, #0]
+ 1115              	.L156:
+ 1116 035e 70BD     		pop	{r4, r5, r6, pc}
+ 1117              	.L167:
+ 1118              		.align	2
+ 1119              	.L166:
+ 1120 0360 00800040 		.word	1073774592
+ 1121 0364 00000000 		.word	.LANCHOR1
+ 1123              		.align	1
+ 1124              		.global	_ZN9IR_Sensor16isIRCodeReceivedEv
+ 1125              		.thumb
+ 1126              		.thumb_func
+ 1128              	_ZN9IR_Sensor16isIRCodeReceivedEv:
+ 1129              		@ args = 0, pretend = 0, frame = 0
+ 1130              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1131              		@ link register save eliminated.
+ 1132 0368 024B     		ldr	r3, .L169
+ 1133 036a 1868     		ldr	r0, [r3, #0]
+ 1134 036c 0030     		adds	r0, r0, #0
+ 1135 036e 18BF     		it	ne
+ 1136 0370 0120     		movne	r0, #1
+ 1137 0372 7047     		bx	lr
+ 1138              	.L170:
+ 1139              		.align	2
+ 1140              	.L169:
+ 1141 0374 00000000 		.word	.LANCHOR1
+ 1143              		.align	1
+ 1144              		.global	_ZN9IR_Sensor13getLastIRCodeEv
+ 1145              		.thumb
+ 1146              		.thumb_func
+ 1148              	_ZN9IR_Sensor13getLastIRCodeEv:
+ 1149              		@ args = 0, pretend = 0, frame = 0
+ 1150              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1151              		@ link register save eliminated.
+ 1152 0378 024B     		ldr	r3, .L172
+ 1153 037a 0022     		movs	r2, #0
+ 1154 037c 1868     		ldr	r0, [r3, #0]
+ 1155 037e 1A60     		str	r2, [r3, #0]
+ 1156 0380 7047     		bx	lr
+ 1157              	.L173:
+ 1158 0382 00BF     		.align	2
+ 1159              	.L172:
+ 1160 0384 00000000 		.word	.LANCHOR1
+ 1162              		.align	1
+ 1163              		.global	_ZN11LED_Display12setLeftDigitEc
+ 1164              		.thumb
+ 1165              		.thumb_func
+ 1167              	_ZN11LED_Display12setLeftDigitEc:
+ 1168              		@ args = 0, pretend = 0, frame = 0
+ 1169              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1170              		@ link register save eliminated.
+ 1171 0388 044B     		ldr	r3, .L175
+ 1172 038a 4177     		strb	r1, [r0, #29]
+ 1173 038c 5918     		adds	r1, r3, r1
+ 1174 038e 91F8D820 		ldrb	r2, [r1, #216]	@ zero_extendqisi2
+ 1175 0392 1830     		adds	r0, r0, #24
+ 1176 0394 0321     		movs	r1, #3
+ 1177 0396 FFF7FEBF 		b	_ZN15I2C_Device_Base8writeRegEhh
+ 1178              	.L176:
+ 1179 039a 00BF     		.align	2
+ 1180              	.L175:
+ 1181 039c 00000000 		.word	.LANCHOR0
+ 1183              		.align	1
+ 1184              		.global	_ZN11LED_Display13setRightDigitEc
+ 1185              		.thumb
+ 1186              		.thumb_func
+ 1188              	_ZN11LED_Display13setRightDigitEc:
+ 1189              		@ args = 0, pretend = 0, frame = 0
+ 1190              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1191              		@ link register save eliminated.
+ 1192 03a0 044B     		ldr	r3, .L178
+ 1193 03a2 8177     		strb	r1, [r0, #30]
+ 1194 03a4 5918     		adds	r1, r3, r1
+ 1195 03a6 91F8D820 		ldrb	r2, [r1, #216]	@ zero_extendqisi2
+ 1196 03aa 1830     		adds	r0, r0, #24
+ 1197 03ac 0221     		movs	r1, #2
+ 1198 03ae FFF7FEBF 		b	_ZN15I2C_Device_Base8writeRegEhh
+ 1199              	.L179:
+ 1200 03b2 00BF     		.align	2
+ 1201              	.L178:
+ 1202 03b4 00000000 		.word	.LANCHOR0
+ 1204              		.align	1
+ 1205              		.global	_ZN11LED_Display9setNumberEc
+ 1206              		.thumb
+ 1207              		.thumb_func
+ 1209              	_ZN11LED_Display9setNumberEc:
+ 1210              		@ args = 0, pretend = 0, frame = 0
+ 1211              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1212 03b8 6423     		movs	r3, #100
+ 1213 03ba 70B5     		push	{r4, r5, r6, lr}
+ 1214 03bc B1FBF3F5 		udiv	r5, r1, r3
+ 1215 03c0 03FB1515 		mls	r5, r3, r5, r1
+ 1216 03c4 0A21     		movs	r1, #10
+ 1217 03c6 EDB2     		uxtb	r5, r5
+ 1218 03c8 B5FBF1F6 		udiv	r6, r5, r1
+ 1219 03cc 01FB1651 		mls	r1, r1, r6, r5
+ 1220 03d0 3031     		adds	r1, r1, #48
+ 1221 03d2 C9B2     		uxtb	r1, r1
+ 1222 03d4 0446     		mov	r4, r0
+ 1223 03d6 FFF7FEFF 		bl	_ZN11LED_Display13setRightDigitEc
+ 1224 03da 2021     		movs	r1, #32
+ 1225 03dc 092D     		cmp	r5, #9
+ 1226 03de 2046     		mov	r0, r4
+ 1227 03e0 02D9     		bls	.L182
+ 1228 03e2 3036     		adds	r6, r6, #48
+ 1229 03e4 F1B2     		uxtb	r1, r6
+ 1230 03e6 2046     		mov	r0, r4
+ 1231              	.L182:
+ 1232 03e8 BDE87040 		pop	{r4, r5, r6, lr}
+ 1233 03ec FEE7     		b	_ZN11LED_Display12setLeftDigitEc
+ 1235              		.align	1
+ 1236              		.global	_ZN11LED_Display4initEv
+ 1237              		.thumb
+ 1238              		.thumb_func
+ 1240              	_ZN11LED_Display4initEv:
+ 1241              		@ args = 0, pretend = 0, frame = 0
+ 1242              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1243 03ee 70B5     		push	{r4, r5, r6, lr}
+ 1244 03f0 0446     		mov	r4, r0
+ 1245 03f2 017F     		ldrb	r1, [r0, #28]	@ zero_extendqisi2
+ 1246 03f4 8069     		ldr	r0, [r0, #24]
+ 1247 03f6 FFF7FEFF 		bl	_ZN8I2C_Base15isDevicePresentEc
+ 1248 03fa 051C     		adds	r5, r0, #0
+ 1249 03fc 18BF     		it	ne
+ 1250 03fe 0125     		movne	r5, #1
+ 1251 0400 9DB1     		cbz	r5, .L184
+ 1252 0402 04F11806 		add	r6, r4, #24
+ 1253 0406 3046     		mov	r0, r6
+ 1254 0408 0621     		movs	r1, #6
+ 1255 040a 0022     		movs	r2, #0
+ 1256 040c FFF7FEFF 		bl	_ZN15I2C_Device_Base8writeRegEhh
+ 1257 0410 3046     		mov	r0, r6
+ 1258 0412 0721     		movs	r1, #7
+ 1259 0414 0022     		movs	r2, #0
+ 1260 0416 FFF7FEFF 		bl	_ZN15I2C_Device_Base8writeRegEhh
+ 1261 041a 2046     		mov	r0, r4
+ 1262 041c 2E21     		movs	r1, #46
+ 1263 041e FFF7FEFF 		bl	_ZN11LED_Display12setLeftDigitEc
+ 1264 0422 2046     		mov	r0, r4
+ 1265 0424 2E21     		movs	r1, #46
+ 1266 0426 FFF7FEFF 		bl	_ZN11LED_Display13setRightDigitEc
+ 1267              	.L184:
+ 1268 042a 2846     		mov	r0, r5
+ 1269 042c 70BD     		pop	{r4, r5, r6, pc}
+ 1271              		.align	1
+ 1272              		.global	_ZN3LED6setAllEc
+ 1273              		.thumb
+ 1274              		.thumb_func
+ 1276              	_ZN3LED6setAllEc:
+ 1277              		@ args = 0, pretend = 0, frame = 0
+ 1278              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1279              		@ link register save eliminated.
+ 1280 042e 184B     		ldr	r3, .L194
+ 1281 0430 4CF21372 		movw	r2, #50963
+ 1282 0434 0176     		strb	r1, [r0, #24]
+ 1283 0436 DA61     		str	r2, [r3, #28]
+ 1284 0438 CA07     		lsls	r2, r1, #31
+ 1285 043a 01D5     		bpl	.L186
+ 1286 043c 0122     		movs	r2, #1
+ 1287 043e 9A61     		str	r2, [r3, #24]
+ 1288              	.L186:
+ 1289 0440 8807     		lsls	r0, r1, #30
+ 1290 0442 01D5     		bpl	.L187
+ 1291 0444 0222     		movs	r2, #2
+ 1292 0446 9A61     		str	r2, [r3, #24]
+ 1293              	.L187:
+ 1294 0448 4A07     		lsls	r2, r1, #29
+ 1295 044a 02D5     		bpl	.L188
+ 1296 044c 104B     		ldr	r3, .L194
+ 1297 044e 1022     		movs	r2, #16
+ 1298 0450 9A61     		str	r2, [r3, #24]
+ 1299              	.L188:
+ 1300 0452 0B07     		lsls	r3, r1, #28
+ 1301 0454 42BF     		ittt	mi
+ 1302 0456 0E4B     		ldrmi	r3, .L194
+ 1303 0458 4FF48072 		movmi	r2, #256
+ 1304 045c 9A61     		strmi	r2, [r3, #24]
+ 1305 045e C806     		lsls	r0, r1, #27
+ 1306 0460 42BF     		ittt	mi
+ 1307 0462 0B4B     		ldrmi	r3, .L194
+ 1308 0464 4FF40072 		movmi	r2, #512
+ 1309 0468 9A61     		strmi	r2, [r3, #24]
+ 1310 046a 8A06     		lsls	r2, r1, #26
+ 1311 046c 42BF     		ittt	mi
+ 1312 046e 084B     		ldrmi	r3, .L194
+ 1313 0470 4FF48062 		movmi	r2, #1024
+ 1314 0474 9A61     		strmi	r2, [r3, #24]
+ 1315 0476 4B06     		lsls	r3, r1, #25
+ 1316 0478 42BF     		ittt	mi
+ 1317 047a 054B     		ldrmi	r3, .L194
+ 1318 047c 4FF48042 		movmi	r2, #16384
+ 1319 0480 9A61     		strmi	r2, [r3, #24]
+ 1320 0482 0806     		lsls	r0, r1, #24
+ 1321 0484 42BF     		ittt	mi
+ 1322 0486 024B     		ldrmi	r3, .L194
+ 1323 0488 4FF40042 		movmi	r2, #32768
+ 1324 048c 9A61     		strmi	r2, [r3, #24]
+ 1325 048e 7047     		bx	lr
+ 1326              	.L195:
+ 1327              		.align	2
+ 1328              	.L194:
+ 1329 0490 20C00920 		.word	537509920
+ 1331              		.align	1
+ 1332              		.global	_ZN3LED3offEi
+ 1333              		.thumb
+ 1334              		.thumb_func
+ 1336              	_ZN3LED3offEi:
+ 1337              		@ args = 0, pretend = 0, frame = 0
+ 1338              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1339              		@ link register save eliminated.
+ 1340 0494 0123     		movs	r3, #1
+ 1341 0496 0139     		subs	r1, r1, #1
+ 1342 0498 13FA01F1 		lsls	r1, r3, r1
+ 1343 049c 037E     		ldrb	r3, [r0, #24]	@ zero_extendqisi2
+ 1344 049e 23EA0101 		bic	r1, r3, r1
+ 1345 04a2 0176     		strb	r1, [r0, #24]
+ 1346 04a4 FEE7     		b	_ZN3LED6setAllEc
+ 1348              		.align	1
+ 1349              		.global	_ZN3LED2onEi
+ 1350              		.thumb
+ 1351              		.thumb_func
+ 1353              	_ZN3LED2onEi:
+ 1354              		@ args = 0, pretend = 0, frame = 0
+ 1355              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1356              		@ link register save eliminated.
+ 1357 04a6 0123     		movs	r3, #1
+ 1358 04a8 0139     		subs	r1, r1, #1
+ 1359 04aa 13FA01F1 		lsls	r1, r3, r1
+ 1360 04ae 037E     		ldrb	r3, [r0, #24]	@ zero_extendqisi2
+ 1361 04b0 1943     		orrs	r1, r1, r3
+ 1362 04b2 C9B2     		uxtb	r1, r1
+ 1363 04b4 0176     		strb	r1, [r0, #24]
+ 1364 04b6 FEE7     		b	_ZN3LED6setAllEc
+ 1366              		.align	1
+ 1367              		.global	_ZN12Light_Sensor15getLightReadingEv
+ 1368              		.thumb
+ 1369              		.thumb_func
+ 1371              	_ZN12Light_Sensor15getLightReadingEv:
+ 1372              		@ args = 0, pretend = 0, frame = 0
+ 1373              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1374              		@ link register save eliminated.
+ 1375 04b8 0A4B     		ldr	r3, .L201
+ 1376 04ba 0B4A     		ldr	r2, .L201+4
+ 1377 04bc 1968     		ldr	r1, [r3, #0]
+ 1378 04be 0A40     		ands	r2, r2, r1
+ 1379 04c0 1A60     		str	r2, [r3, #0]
+ 1380 04c2 1A68     		ldr	r2, [r3, #0]
+ 1381 04c4 42F00402 		orr	r2, r2, #4
+ 1382 04c8 1A60     		str	r2, [r3, #0]
+ 1383 04ca 1A68     		ldr	r2, [r3, #0]
+ 1384 04cc 42F08072 		orr	r2, r2, #16777216
+ 1385 04d0 1A60     		str	r2, [r3, #0]
+ 1386              	.L199:
+ 1387 04d2 5A68     		ldr	r2, [r3, #4]
+ 1388 04d4 002A     		cmp	r2, #0
+ 1389 04d6 FCDA     		bge	.L199
+ 1390 04d8 024B     		ldr	r3, .L201
+ 1391 04da 5868     		ldr	r0, [r3, #4]
+ 1392 04dc C0F30B10 		ubfx	r0, r0, #4, #12
+ 1393 04e0 7047     		bx	lr
+ 1394              	.L202:
+ 1395 04e2 00BF     		.align	2
+ 1396              	.L201:
+ 1397 04e4 00400340 		.word	1073954816
+ 1398 04e8 00FFFFF8 		.word	-117440768
+ 1400              		.align	1
+ 1401              		.global	_ZN12Light_Sensor16getValueAsStringEv
+ 1402              		.thumb
+ 1403              		.thumb_func
+ 1405              	_ZN12Light_Sensor16getValueAsStringEv:
+ 1406              		@ args = 0, pretend = 0, frame = 0
+ 1407              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1408 04ec 10B5     		push	{r4, lr}
+ 1409 04ee 041D     		adds	r4, r0, #4
+ 1410 04f0 FFF7FEFF 		bl	_ZN12Light_Sensor15getLightReadingEv
+ 1411 04f4 6422     		movs	r2, #100
+ 1412 04f6 4243     		muls	r2, r0, r2
+ 1413 04f8 0449     		ldr	r1, .L204
+ 1414 04fa 9212     		asrs	r2, r2, #10
+ 1415 04fc 2046     		mov	r0, r4
+ 1416 04fe FFF7FEFF 		bl	_ZN3str6printfEPKcz
+ 1417 0502 2046     		mov	r0, r4
+ 1418 0504 BDE81040 		pop	{r4, lr}
+ 1419 0508 FFF7FEBF 		b	_ZNK3strclEv
+ 1420              	.L205:
+ 1421              		.align	2
+ 1422              	.L204:
+ 1423 050c 53000000 		.word	.LC9
+ 1425              		.align	1
+ 1426              		.global	_ZN8Switches15getSwitchValuesEv
+ 1427              		.thumb
+ 1428              		.thumb_func
+ 1430              	_ZN8Switches15getSwitchValuesEv:
+ 1431              		@ args = 0, pretend = 0, frame = 0
+ 1432              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1433              		@ link register save eliminated.
+ 1434 0510 014B     		ldr	r3, .L207
+ 1435 0512 187D     		ldrb	r0, [r3, #20]	@ zero_extendqisi2
+ 1436 0514 7047     		bx	lr
+ 1437              	.L208:
+ 1438 0516 00BF     		.align	2
+ 1439              	.L207:
+ 1440 0518 40C00920 		.word	537509952
+ 1442              		.align	1
+ 1443              		.global	_ZN8Switches9getSwitchEi
+ 1444              		.thumb
+ 1445              		.thumb_func
+ 1447              	_ZN8Switches9getSwitchEi:
+ 1448              		@ args = 0, pretend = 0, frame = 0
+ 1449              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1450              		@ link register save eliminated.
+ 1451 051c 034B     		ldr	r3, .L210
+ 1452 051e 0139     		subs	r1, r1, #1
+ 1453 0520 187D     		ldrb	r0, [r3, #20]	@ zero_extendqisi2
+ 1454 0522 0841     		asrs	r0, r0, r1
+ 1455 0524 00F00100 		and	r0, r0, #1
+ 1456 0528 7047     		bx	lr
+ 1457              	.L211:
+ 1458 052a 00BF     		.align	2
+ 1459              	.L210:
+ 1460 052c 40C00920 		.word	537509952
+ 1462              		.align	1
+ 1463              		.global	_ZN6Keypad6setColEi
+ 1464              		.thumb
+ 1465              		.thumb_func
+ 1467              	_ZN6Keypad6setColEi:
+ 1468              		@ args = 0, pretend = 0, frame = 0
+ 1469              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1470              		@ link register save eliminated.
+ 1471 0530 0139     		subs	r1, r1, #1
+ 1472 0532 0329     		cmp	r1, #3
+ 1473 0534 0ED8     		bhi	.L212
+ 1474 0536 DFE801F0 		tbb	[pc, r1]
+ 1475              	.L218:
+ 1476 053a 02       		.byte	(.L214-.L218)/2
+ 1477 053b 04       		.byte	(.L215-.L218)/2
+ 1478 053c 06       		.byte	(.L216-.L218)/2
+ 1479 053d 0A       		.byte	(.L217-.L218)/2
+ 1480              		.align	1
+ 1481              	.L214:
+ 1482 053e F722     		movs	r2, #247
+ 1483 0540 02E0     		b	.L219
+ 1484              	.L215:
+ 1485 0542 EF22     		movs	r2, #239
+ 1486 0544 00E0     		b	.L219
+ 1487              	.L216:
+ 1488 0546 BF22     		movs	r2, #191
+ 1489              	.L219:
+ 1490 0548 034B     		ldr	r3, .L220
+ 1491 054a 9A75     		strb	r2, [r3, #22]
+ 1492 054c 7047     		bx	lr
+ 1493              	.L217:
+ 1494 054e 024B     		ldr	r3, .L220
+ 1495 0550 7F22     		movs	r2, #127
+ 1496 0552 9A75     		strb	r2, [r3, #22]
+ 1497              	.L212:
+ 1498 0554 7047     		bx	lr
+ 1499              	.L221:
+ 1500 0556 00BF     		.align	2
+ 1501              	.L220:
+ 1502 0558 20C00920 		.word	537509920
+ 1504              		.align	1
+ 1505              		.global	_ZN6Keypad6chkRowEi
+ 1506              		.thumb
+ 1507              		.thumb_func
+ 1509              	_ZN6Keypad6chkRowEi:
+ 1510              		@ args = 0, pretend = 0, frame = 0
+ 1511              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1512              		@ link register save eliminated.
+ 1513 055c 0139     		subs	r1, r1, #1
+ 1514 055e 0329     		cmp	r1, #3
+ 1515 0560 19D8     		bhi	.L229
+ 1516 0562 DFE801F0 		tbb	[pc, r1]
+ 1517              	.L228:
+ 1518 0566 02       		.byte	(.L224-.L228)/2
+ 1519 0567 07       		.byte	(.L225-.L228)/2
+ 1520 0568 0C       		.byte	(.L226-.L228)/2
+ 1521 0569 11       		.byte	(.L227-.L228)/2
+ 1522              		.align	1
+ 1523              	.L224:
+ 1524 056a 0C4B     		ldr	r3, .L231
+ 1525 056c D87D     		ldrb	r0, [r3, #23]	@ zero_extendqisi2
+ 1526 056e 00F00100 		and	r0, r0, #1
+ 1527 0572 0DE0     		b	.L230
+ 1528              	.L225:
+ 1529 0574 094B     		ldr	r3, .L231
+ 1530 0576 D87D     		ldrb	r0, [r3, #23]	@ zero_extendqisi2
+ 1531 0578 C0F34000 		ubfx	r0, r0, #1, #1
+ 1532 057c 08E0     		b	.L230
+ 1533              	.L226:
+ 1534 057e 074B     		ldr	r3, .L231
+ 1535 0580 D87D     		ldrb	r0, [r3, #23]	@ zero_extendqisi2
+ 1536 0582 C0F38000 		ubfx	r0, r0, #2, #1
+ 1537 0586 03E0     		b	.L230
+ 1538              	.L227:
+ 1539 0588 044B     		ldr	r3, .L231
+ 1540 058a D87D     		ldrb	r0, [r3, #23]	@ zero_extendqisi2
+ 1541 058c C0F30010 		ubfx	r0, r0, #4, #1
+ 1542              	.L230:
+ 1543 0590 80F00100 		eor	r0, r0, #1
+ 1544 0594 7047     		bx	lr
+ 1545              	.L229:
+ 1546 0596 0020     		movs	r0, #0
+ 1547 0598 7047     		bx	lr
+ 1548              	.L232:
+ 1549 059a 00BF     		.align	2
+ 1550              	.L231:
+ 1551 059c 20C00920 		.word	537509920
+ 1553              		.align	1
+ 1554              		.global	_ZN6Keypad6chkRowEv
+ 1555              		.thumb
+ 1556              		.thumb_func
+ 1558              	_ZN6Keypad6chkRowEv:
+ 1559              		@ args = 0, pretend = 0, frame = 0
+ 1560              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1561              		@ link register save eliminated.
+ 1562 05a0 0A4B     		ldr	r3, .L238
+ 1563 05a2 D87D     		ldrb	r0, [r3, #23]	@ zero_extendqisi2
+ 1564 05a4 DA7D     		ldrb	r2, [r3, #23]	@ zero_extendqisi2
+ 1565 05a6 DB7D     		ldrb	r3, [r3, #23]	@ zero_extendqisi2
+ 1566 05a8 9107     		lsls	r1, r2, #30
+ 1567 05aa 46BF     		itte	mi
+ 1568 05ac 00F00100 		andmi	r0, r0, #1
+ 1569 05b0 80F00100 		eormi	r0, r0, #1
+ 1570 05b4 0220     		movpl	r0, #2
+ 1571 05b6 13F0040F 		tst	r3, #4
+ 1572 05ba 044B     		ldr	r3, .L238
+ 1573 05bc 08BF     		it	eq
+ 1574 05be 0320     		moveq	r0, #3
+ 1575 05c0 DB7D     		ldrb	r3, [r3, #23]	@ zero_extendqisi2
+ 1576 05c2 13F0100F 		tst	r3, #16
+ 1577 05c6 08BF     		it	eq
+ 1578 05c8 0420     		moveq	r0, #4
+ 1579 05ca 7047     		bx	lr
+ 1580              	.L239:
+ 1581              		.align	2
+ 1582              	.L238:
+ 1583 05cc 20C00920 		.word	537509920
+ 1585              		.align	1
+ 1586              		.global	_ZN6Keypad7getCharEv
+ 1587              		.thumb
+ 1588              		.thumb_func
+ 1590              	_ZN6Keypad7getCharEv:
+ 1591              		@ args = 0, pretend = 0, frame = 0
+ 1592              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1593 05d0 38B5     		push	{r3, r4, r5, lr}
+ 1594 05d2 0546     		mov	r5, r0
+ 1595 05d4 0124     		movs	r4, #1
+ 1596              	.L241:
+ 1597 05d6 2146     		mov	r1, r4
+ 1598 05d8 2846     		mov	r0, r5
+ 1599 05da FFF7FEFF 		bl	_ZN6Keypad6setColEi
+ 1600 05de 0134     		adds	r4, r4, #1
+ 1601 05e0 2846     		mov	r0, r5
+ 1602 05e2 FFF7FEFF 		bl	_ZN6Keypad6chkRowEv
+ 1603 05e6 052C     		cmp	r4, #5
+ 1604 05e8 F5D1     		bne	.L241
+ 1605 05ea 10B1     		cbz	r0, .L242
+ 1606 05ec 6420     		movs	r0, #100
+ 1607 05ee FFF7FEFF 		bl	delay_ms
+ 1608              	.L242:
+ 1609 05f2 0020     		movs	r0, #0
+ 1610 05f4 38BD     		pop	{r3, r4, r5, pc}
+ 1612              		.align	1
+ 1613              		.global	_ZN6Keypad7getCharEPc
+ 1614              		.thumb
+ 1615              		.thumb_func
+ 1617              	_ZN6Keypad7getCharEPc:
+ 1618              		@ args = 0, pretend = 0, frame = 0
+ 1619              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1620 05f6 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 1621 05fa 104F     		ldr	r7, .L248
+ 1622 05fc 0646     		mov	r6, r0
+ 1623 05fe 8846     		mov	r8, r1
+ 1624 0600 0124     		movs	r4, #1
+ 1625 0602 0025     		movs	r5, #0
+ 1626              	.L246:
+ 1627 0604 3046     		mov	r0, r6
+ 1628 0606 2146     		mov	r1, r4
+ 1629 0608 FFF7FEFF 		bl	_ZN6Keypad6setColEi
+ 1630 060c 3046     		mov	r0, r6
+ 1631 060e FFF7FEFF 		bl	_ZN6Keypad6chkRowEv
+ 1632 0612 68B1     		cbz	r0, .L245
+ 1633 0614 65B9     		cbnz	r5, .L245
+ 1634 0616 C4F10403 		rsb	r3, r4, #4
+ 1635 061a C0F10400 		rsb	r0, r0, #4
+ 1636 061e 03EB8000 		add	r0, r3, r0, lsl #2
+ 1637 0622 3B5C     		ldrb	r3, [r7, r0]	@ zero_extendqisi2
+ 1638 0624 C820     		movs	r0, #200
+ 1639 0626 88F80030 		strb	r3, [r8, #0]
+ 1640 062a FFF7FEFF 		bl	delay_ms
+ 1641 062e 0125     		movs	r5, #1
+ 1642              	.L245:
+ 1643 0630 0134     		adds	r4, r4, #1
+ 1644 0632 052C     		cmp	r4, #5
+ 1645 0634 E6D1     		bne	.L246
+ 1646 0636 2846     		mov	r0, r5
+ 1647 0638 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 1648              	.L249:
+ 1649              		.align	2
+ 1650              	.L248:
+ 1651 063c 00000000 		.word	.LANCHOR2
+ 1653              		.align	1
+ 1654              		.global	_ZN6Keypad6getValEv
+ 1655              		.thumb
+ 1656              		.thumb_func
+ 1658              	_ZN6Keypad6getValEv:
+ 1659              		@ args = 0, pretend = 0, frame = 0
+ 1660              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1661 0640 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 1662 0644 134D     		ldr	r5, .L255
+ 1663 0646 144F     		ldr	r7, .L255+4
+ 1664 0648 0646     		mov	r6, r0
+ 1665 064a 0124     		movs	r4, #1
+ 1666 064c A846     		mov	r8, r5
+ 1667              	.L252:
+ 1668 064e 3046     		mov	r0, r6
+ 1669 0650 2146     		mov	r1, r4
+ 1670 0652 FFF7FEFF 		bl	_ZN6Keypad6setColEi
+ 1671 0656 3046     		mov	r0, r6
+ 1672 0658 FFF7FEFF 		bl	_ZN6Keypad6chkRowEv
+ 1673 065c 031C     		adds	r3, r0, #0
+ 1674 065e 18BF     		it	ne
+ 1675 0660 0123     		movne	r3, #1
+ 1676 0662 4545     		cmp	r5, r8
+ 1677 0664 14BF     		ite	ne
+ 1678 0666 0023     		movne	r3, #0
+ 1679 0668 03F00103 		andeq	r3, r3, #1
+ 1680 066c 43B1     		cbz	r3, .L251
+ 1681 066e C4F10403 		rsb	r3, r4, #4
+ 1682 0672 C0F10402 		rsb	r2, r0, #4
+ 1683 0676 03EB8203 		add	r3, r3, r2, lsl #2
+ 1684 067a 07EB8303 		add	r3, r7, r3, lsl #2
+ 1685 067e 1D69     		ldr	r5, [r3, #16]
+ 1686              	.L251:
+ 1687 0680 0134     		adds	r4, r4, #1
+ 1688 0682 052C     		cmp	r4, #5
+ 1689 0684 E3D1     		bne	.L252
+ 1690 0686 10B1     		cbz	r0, .L253
+ 1691 0688 C820     		movs	r0, #200
+ 1692 068a FFF7FEFF 		bl	delay_ms
+ 1693              	.L253:
+ 1694 068e 2846     		mov	r0, r5
+ 1695 0690 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 1696              	.L256:
+ 1697              		.align	2
+ 1698              	.L255:
+ 1699 0694 19FCFFFF 		.word	-999
+ 1700 0698 00000000 		.word	.LANCHOR2
+ 1702              		.align	1
+ 1703              		.global	_ZN6Keypad6getValEPi
+ 1704              		.thumb
+ 1705              		.thumb_func
+ 1707              	_ZN6Keypad6getValEPi:
+ 1708              		@ args = 0, pretend = 0, frame = 0
+ 1709              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1710 069c 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 1711 06a0 0F4F     		ldr	r7, .L261
+ 1712 06a2 0646     		mov	r6, r0
+ 1713 06a4 8846     		mov	r8, r1
+ 1714 06a6 0124     		movs	r4, #1
+ 1715 06a8 0025     		movs	r5, #0
+ 1716              	.L259:
+ 1717 06aa 3046     		mov	r0, r6
+ 1718 06ac 2146     		mov	r1, r4
+ 1719 06ae FFF7FEFF 		bl	_ZN6Keypad6setColEi
+ 1720 06b2 3046     		mov	r0, r6
+ 1721 06b4 FFF7FEFF 		bl	_ZN6Keypad6chkRowEv
+ 1722 06b8 60B1     		cbz	r0, .L258
+ 1723 06ba 5DB9     		cbnz	r5, .L258
+ 1724 06bc C4F10403 		rsb	r3, r4, #4
+ 1725 06c0 C0F10400 		rsb	r0, r0, #4
+ 1726 06c4 03EB8000 		add	r0, r3, r0, lsl #2
+ 1727 06c8 07EB8000 		add	r0, r7, r0, lsl #2
+ 1728 06cc 0369     		ldr	r3, [r0, #16]
+ 1729 06ce 0125     		movs	r5, #1
+ 1730 06d0 C8F80030 		str	r3, [r8, #0]
+ 1731              	.L258:
+ 1732 06d4 0134     		adds	r4, r4, #1
+ 1733 06d6 052C     		cmp	r4, #5
+ 1734 06d8 E7D1     		bne	.L259
+ 1735 06da 2846     		mov	r0, r5
+ 1736 06dc BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 1737              	.L262:
+ 1738              		.align	2
+ 1739              	.L261:
+ 1740 06e0 00000000 		.word	.LANCHOR2
+ 1742              		.align	1
+ 1743              		.global	_ZN3LCD5setupEjjb
+ 1744              		.thumb
+ 1745              		.thumb_func
+ 1747              	_ZN3LCD5setupEjjb:
+ 1748              		@ args = 0, pretend = 0, frame = 0
+ 1749              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1750 06e4 70B5     		push	{r4, r5, r6, lr}
+ 1751 06e6 1E46     		mov	r6, r3
+ 1752 06e8 194B     		ldr	r3, .L267
+ 1753 06ea 1546     		mov	r5, r2
+ 1754 06ec 9A69     		ldr	r2, [r3, #24]
+ 1755 06ee FE20     		movs	r0, #254
+ 1756 06f0 42F40042 		orr	r2, r2, #32768
+ 1757 06f4 9A61     		str	r2, [r3, #24]
+ 1758 06f6 DA69     		ldr	r2, [r3, #28]
+ 1759 06f8 0C46     		mov	r4, r1
+ 1760 06fa 42F40042 		orr	r2, r2, #32768
+ 1761 06fe DA61     		str	r2, [r3, #28]
+ 1762 0700 FFF7FEFF 		bl	spi1_ExchangeByte
+ 1763 0704 4120     		movs	r0, #65
+ 1764 0706 06B9     		cbnz	r6, .L266
+ 1765 0708 4220     		movs	r0, #66
+ 1766              	.L266:
+ 1767 070a FFF7FEFF 		bl	spi1_ExchangeByte
+ 1768 070e FE20     		movs	r0, #254
+ 1769 0710 FFF7FEFF 		bl	spi1_ExchangeByte
+ 1770 0714 5220     		movs	r0, #82
+ 1771 0716 FFF7FEFF 		bl	spi1_ExchangeByte
+ 1772 071a E8B2     		uxtb	r0, r5
+ 1773 071c FFF7FEFF 		bl	spi1_ExchangeByte
+ 1774 0720 FE20     		movs	r0, #254
+ 1775 0722 FFF7FEFF 		bl	spi1_ExchangeByte
+ 1776 0726 5320     		movs	r0, #83
+ 1777 0728 FFF7FEFF 		bl	spi1_ExchangeByte
+ 1778 072c E0B2     		uxtb	r0, r4
+ 1779 072e FFF7FEFF 		bl	spi1_ExchangeByte
+ 1780 0732 FE20     		movs	r0, #254
+ 1781 0734 FFF7FEFF 		bl	spi1_ExchangeByte
+ 1782 0738 5120     		movs	r0, #81
+ 1783 073a FFF7FEFF 		bl	spi1_ExchangeByte
+ 1784 073e 0220     		movs	r0, #2
+ 1785 0740 FFF7FEFF 		bl	delay_ms
+ 1786 0744 024B     		ldr	r3, .L267
+ 1787 0746 9A69     		ldr	r2, [r3, #24]
+ 1788 0748 42F40042 		orr	r2, r2, #32768
+ 1789 074c 9A61     		str	r2, [r3, #24]
+ 1790 074e 70BD     		pop	{r4, r5, r6, pc}
+ 1791              	.L268:
+ 1792              		.align	2
+ 1793              	.L267:
+ 1794 0750 00C00920 		.word	537509888
+ 1796              		.align	1
+ 1797              		.global	_ZN3LCD2onEv
+ 1798              		.thumb
+ 1799              		.thumb_func
+ 1801              	_ZN3LCD2onEv:
+ 1802              		@ args = 0, pretend = 0, frame = 0
+ 1803              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1804 0754 10B5     		push	{r4, lr}
+ 1805 0756 0B4C     		ldr	r4, .L270
+ 1806 0758 FE20     		movs	r0, #254
+ 1807 075a A369     		ldr	r3, [r4, #24]
+ 1808 075c 43F40043 		orr	r3, r3, #32768
+ 1809 0760 A361     		str	r3, [r4, #24]
+ 1810 0762 E369     		ldr	r3, [r4, #28]
+ 1811 0764 43F40043 		orr	r3, r3, #32768
+ 1812 0768 E361     		str	r3, [r4, #28]
+ 1813 076a FFF7FEFF 		bl	spi1_ExchangeByte
+ 1814 076e 4120     		movs	r0, #65
+ 1815 0770 FFF7FEFF 		bl	spi1_ExchangeByte
+ 1816 0774 0120     		movs	r0, #1
+ 1817 0776 FFF7FEFF 		bl	delay_ms
+ 1818 077a A369     		ldr	r3, [r4, #24]
+ 1819 077c 43F40043 		orr	r3, r3, #32768
+ 1820 0780 A361     		str	r3, [r4, #24]
+ 1821 0782 10BD     		pop	{r4, pc}
+ 1822              	.L271:
+ 1823              		.align	2
+ 1824              	.L270:
+ 1825 0784 00C00920 		.word	537509888
+ 1827              		.align	1
+ 1828              		.global	_ZN3LCD3offEv
+ 1829              		.thumb
+ 1830              		.thumb_func
+ 1832              	_ZN3LCD3offEv:
+ 1833              		@ args = 0, pretend = 0, frame = 0
+ 1834              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1835 0788 10B5     		push	{r4, lr}
+ 1836 078a 0B4C     		ldr	r4, .L273
+ 1837 078c FE20     		movs	r0, #254
+ 1838 078e A369     		ldr	r3, [r4, #24]
+ 1839 0790 43F40043 		orr	r3, r3, #32768
+ 1840 0794 A361     		str	r3, [r4, #24]
+ 1841 0796 E369     		ldr	r3, [r4, #28]
+ 1842 0798 43F40043 		orr	r3, r3, #32768
+ 1843 079c E361     		str	r3, [r4, #28]
+ 1844 079e FFF7FEFF 		bl	spi1_ExchangeByte
+ 1845 07a2 4220     		movs	r0, #66
+ 1846 07a4 FFF7FEFF 		bl	spi1_ExchangeByte
+ 1847 07a8 0120     		movs	r0, #1
+ 1848 07aa FFF7FEFF 		bl	delay_ms
+ 1849 07ae A369     		ldr	r3, [r4, #24]
+ 1850 07b0 43F40043 		orr	r3, r3, #32768
+ 1851 07b4 A361     		str	r3, [r4, #24]
+ 1852 07b6 10BD     		pop	{r4, pc}
+ 1853              	.L274:
+ 1854              		.align	2
+ 1855              	.L273:
+ 1856 07b8 00C00920 		.word	537509888
+ 1858              		.align	1
+ 1859              		.global	_ZN3LCD5clearEv
+ 1860              		.thumb
+ 1861              		.thumb_func
+ 1863              	_ZN3LCD5clearEv:
+ 1864              		@ args = 0, pretend = 0, frame = 0
+ 1865              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1866 07bc 10B5     		push	{r4, lr}
+ 1867 07be 0B4C     		ldr	r4, .L276
+ 1868 07c0 FE20     		movs	r0, #254
+ 1869 07c2 A369     		ldr	r3, [r4, #24]
+ 1870 07c4 43F40043 		orr	r3, r3, #32768
+ 1871 07c8 A361     		str	r3, [r4, #24]
+ 1872 07ca E369     		ldr	r3, [r4, #28]
+ 1873 07cc 43F40043 		orr	r3, r3, #32768
+ 1874 07d0 E361     		str	r3, [r4, #28]
+ 1875 07d2 FFF7FEFF 		bl	spi1_ExchangeByte
+ 1876 07d6 5120     		movs	r0, #81
+ 1877 07d8 FFF7FEFF 		bl	spi1_ExchangeByte
+ 1878 07dc 0220     		movs	r0, #2
+ 1879 07de FFF7FEFF 		bl	delay_ms
+ 1880 07e2 A369     		ldr	r3, [r4, #24]
+ 1881 07e4 43F40043 		orr	r3, r3, #32768
+ 1882 07e8 A361     		str	r3, [r4, #24]
+ 1883 07ea 10BD     		pop	{r4, pc}
+ 1884              	.L277:
+ 1885              		.align	2
+ 1886              	.L276:
+ 1887 07ec 00C00920 		.word	537509888
+ 1889              		.align	1
+ 1890              		.global	_ZN3LCD5clearEj
+ 1891              		.thumb
+ 1892              		.thumb_func
+ 1894              	_ZN3LCD5clearEj:
+ 1895              		@ args = 0, pretend = 0, frame = 0
+ 1896              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1897 07f0 4B1E     		subs	r3, r1, #1
+ 1898 07f2 032B     		cmp	r3, #3
+ 1899 07f4 10B5     		push	{r4, lr}
+ 1900 07f6 0C46     		mov	r4, r1
+ 1901 07f8 54D8     		bhi	.L278
+ 1902 07fa 2B4B     		ldr	r3, .L289
+ 1903 07fc FE20     		movs	r0, #254
+ 1904 07fe 9A69     		ldr	r2, [r3, #24]
+ 1905 0800 42F40042 		orr	r2, r2, #32768
+ 1906 0804 9A61     		str	r2, [r3, #24]
+ 1907 0806 DA69     		ldr	r2, [r3, #28]
+ 1908 0808 42F40042 		orr	r2, r2, #32768
+ 1909 080c DA61     		str	r2, [r3, #28]
+ 1910 080e FFF7FEFF 		bl	spi1_ExchangeByte
+ 1911 0812 4520     		movs	r0, #69
+ 1912 0814 FFF7FEFF 		bl	spi1_ExchangeByte
+ 1913 0818 FE20     		movs	r0, #254
+ 1914 081a 022C     		cmp	r4, #2
+ 1915 081c 0DD0     		beq	.L282
+ 1916 081e 032C     		cmp	r4, #3
+ 1917 0820 12D0     		beq	.L283
+ 1918 0822 012C     		cmp	r4, #1
+ 1919 0824 17D1     		bne	.L287
+ 1920 0826 FFF7FEFF 		bl	spi1_ExchangeByte
+ 1921 082a 4520     		movs	r0, #69
+ 1922 082c FFF7FEFF 		bl	spi1_ExchangeByte
+ 1923 0830 1420     		movs	r0, #20
+ 1924              	.L288:
+ 1925 0832 FFF7FEFF 		bl	spi1_ExchangeByte
+ 1926 0836 1524     		movs	r4, #21
+ 1927 0838 20E0     		b	.L284
+ 1928              	.L282:
+ 1929 083a FFF7FEFF 		bl	spi1_ExchangeByte
+ 1930 083e 4520     		movs	r0, #69
+ 1931 0840 FFF7FEFF 		bl	spi1_ExchangeByte
+ 1932 0844 5420     		movs	r0, #84
+ 1933 0846 F4E7     		b	.L288
+ 1934              	.L283:
+ 1935 0848 FFF7FEFF 		bl	spi1_ExchangeByte
+ 1936 084c 4520     		movs	r0, #69
+ 1937 084e FFF7FEFF 		bl	spi1_ExchangeByte
+ 1938 0852 2820     		movs	r0, #40
+ 1939 0854 EDE7     		b	.L288
+ 1940              	.L287:
+ 1941 0856 FFF7FEFF 		bl	spi1_ExchangeByte
+ 1942 085a 4520     		movs	r0, #69
+ 1943 085c FFF7FEFF 		bl	spi1_ExchangeByte
+ 1944 0860 6720     		movs	r0, #103
+ 1945 0862 FFF7FEFF 		bl	spi1_ExchangeByte
+ 1946 0866 2020     		movs	r0, #32
+ 1947 0868 FFF7FEFF 		bl	spi1_ExchangeByte
+ 1948 086c FE20     		movs	r0, #254
+ 1949 086e FFF7FEFF 		bl	spi1_ExchangeByte
+ 1950 0872 4520     		movs	r0, #69
+ 1951 0874 FFF7FEFF 		bl	spi1_ExchangeByte
+ 1952 0878 6720     		movs	r0, #103
+ 1953 087a DAE7     		b	.L288
+ 1954              	.L284:
+ 1955 087c FE20     		movs	r0, #254
+ 1956 087e FFF7FEFF 		bl	spi1_ExchangeByte
+ 1957 0882 4E20     		movs	r0, #78
+ 1958 0884 FFF7FEFF 		bl	spi1_ExchangeByte
+ 1959 0888 4FF4A570 		mov	r0, #330
+ 1960 088c FFF7FEFF 		bl	delay_ms
+ 1961 0890 013C     		subs	r4, r4, #1
+ 1962 0892 F3D1     		bne	.L284
+ 1963 0894 0320     		movs	r0, #3
+ 1964 0896 FFF7FEFF 		bl	delay_ms
+ 1965 089a 034B     		ldr	r3, .L289
+ 1966 089c 9A69     		ldr	r2, [r3, #24]
+ 1967 089e 42F40042 		orr	r2, r2, #32768
+ 1968 08a2 9A61     		str	r2, [r3, #24]
+ 1969              	.L278:
+ 1970 08a4 10BD     		pop	{r4, pc}
+ 1971              	.L290:
+ 1972 08a6 00BF     		.align	2
+ 1973              	.L289:
+ 1974 08a8 00C00920 		.word	537509888
+ 1976              		.align	1
+ 1977              		.global	_ZN3LCD7B_LightEj
+ 1978              		.thumb
+ 1979              		.thumb_func
+ 1981              	_ZN3LCD7B_LightEj:
+ 1982              		@ args = 0, pretend = 0, frame = 0
+ 1983              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1984 08ac 0829     		cmp	r1, #8
+ 1985 08ae 38B5     		push	{r3, r4, r5, lr}
+ 1986 08b0 0D46     		mov	r5, r1
+ 1987 08b2 18D8     		bhi	.L291
+ 1988 08b4 0C4C     		ldr	r4, .L293
+ 1989 08b6 FE20     		movs	r0, #254
+ 1990 08b8 A369     		ldr	r3, [r4, #24]
+ 1991 08ba 43F40043 		orr	r3, r3, #32768
+ 1992 08be A361     		str	r3, [r4, #24]
+ 1993 08c0 E369     		ldr	r3, [r4, #28]
+ 1994 08c2 43F40043 		orr	r3, r3, #32768
+ 1995 08c6 E361     		str	r3, [r4, #28]
+ 1996 08c8 FFF7FEFF 		bl	spi1_ExchangeByte
+ 1997 08cc 5320     		movs	r0, #83
+ 1998 08ce FFF7FEFF 		bl	spi1_ExchangeByte
+ 1999 08d2 E8B2     		uxtb	r0, r5
+ 2000 08d4 FFF7FEFF 		bl	spi1_ExchangeByte
+ 2001 08d8 0120     		movs	r0, #1
+ 2002 08da FFF7FEFF 		bl	delay_ms
+ 2003 08de A369     		ldr	r3, [r4, #24]
+ 2004 08e0 43F40043 		orr	r3, r3, #32768
+ 2005 08e4 A361     		str	r3, [r4, #24]
+ 2006              	.L291:
+ 2007 08e6 38BD     		pop	{r3, r4, r5, pc}
+ 2008              	.L294:
+ 2009              		.align	2
+ 2010              	.L293:
+ 2011 08e8 00C00920 		.word	537509888
+ 2013              		.align	1
+ 2014              		.global	_ZN3LCD8ContrastEj
+ 2015              		.thumb
+ 2016              		.thumb_func
+ 2018              	_ZN3LCD8ContrastEj:
+ 2019              		@ args = 0, pretend = 0, frame = 0
+ 2020              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2021 08ec 3229     		cmp	r1, #50
+ 2022 08ee 38B5     		push	{r3, r4, r5, lr}
+ 2023 08f0 0D46     		mov	r5, r1
+ 2024 08f2 18D8     		bhi	.L295
+ 2025 08f4 0C4C     		ldr	r4, .L297
+ 2026 08f6 FE20     		movs	r0, #254
+ 2027 08f8 A369     		ldr	r3, [r4, #24]
+ 2028 08fa 43F40043 		orr	r3, r3, #32768
+ 2029 08fe A361     		str	r3, [r4, #24]
+ 2030 0900 E369     		ldr	r3, [r4, #28]
+ 2031 0902 43F40043 		orr	r3, r3, #32768
+ 2032 0906 E361     		str	r3, [r4, #28]
+ 2033 0908 FFF7FEFF 		bl	spi1_ExchangeByte
+ 2034 090c 5220     		movs	r0, #82
+ 2035 090e FFF7FEFF 		bl	spi1_ExchangeByte
+ 2036 0912 E8B2     		uxtb	r0, r5
+ 2037 0914 FFF7FEFF 		bl	spi1_ExchangeByte
+ 2038 0918 0120     		movs	r0, #1
+ 2039 091a FFF7FEFF 		bl	delay_ms
+ 2040 091e A369     		ldr	r3, [r4, #24]
+ 2041 0920 43F40043 		orr	r3, r3, #32768
+ 2042 0924 A361     		str	r3, [r4, #24]
+ 2043              	.L295:
+ 2044 0926 38BD     		pop	{r3, r4, r5, pc}
+ 2045              	.L298:
+ 2046              		.align	2
+ 2047              	.L297:
+ 2048 0928 00C00920 		.word	537509888
+ 2050              		.align	1
+ 2051              		.global	_ZN3LCD5writeEPKcj
+ 2052              		.thumb
+ 2053              		.thumb_func
+ 2055              	_ZN3LCD5writeEPKcj:
+ 2056              		@ args = 0, pretend = 0, frame = 0
+ 2057              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2058 092c 032A     		cmp	r2, #3
+ 2059 092e 38B5     		push	{r3, r4, r5, lr}
+ 2060 0930 0C46     		mov	r4, r1
+ 2061 0932 42D8     		bhi	.L299
+ 2062 0934 214B     		ldr	r3, .L310
+ 2063 0936 FE20     		movs	r0, #254
+ 2064 0938 9969     		ldr	r1, [r3, #24]
+ 2065 093a 022A     		cmp	r2, #2
+ 2066 093c 41F40041 		orr	r1, r1, #32768
+ 2067 0940 9961     		str	r1, [r3, #24]
+ 2068 0942 D969     		ldr	r1, [r3, #28]
+ 2069 0944 41F40041 		orr	r1, r1, #32768
+ 2070 0948 D961     		str	r1, [r3, #28]
+ 2071 094a 0DD0     		beq	.L303
+ 2072 094c 032A     		cmp	r2, #3
+ 2073 094e 12D0     		beq	.L304
+ 2074 0950 012A     		cmp	r2, #1
+ 2075 0952 17D1     		bne	.L308
+ 2076 0954 FFF7FEFF 		bl	spi1_ExchangeByte
+ 2077 0958 4520     		movs	r0, #69
+ 2078 095a FFF7FEFF 		bl	spi1_ExchangeByte
+ 2079 095e 4020     		movs	r0, #64
+ 2080              	.L309:
+ 2081 0960 FFF7FEFF 		bl	spi1_ExchangeByte
+ 2082 0964 0025     		movs	r5, #0
+ 2083 0966 17E0     		b	.L305
+ 2084              	.L303:
+ 2085 0968 FFF7FEFF 		bl	spi1_ExchangeByte
+ 2086 096c 4520     		movs	r0, #69
+ 2087 096e FFF7FEFF 		bl	spi1_ExchangeByte
+ 2088 0972 1420     		movs	r0, #20
+ 2089 0974 F4E7     		b	.L309
+ 2090              	.L304:
+ 2091 0976 FFF7FEFF 		bl	spi1_ExchangeByte
+ 2092 097a 4520     		movs	r0, #69
+ 2093 097c FFF7FEFF 		bl	spi1_ExchangeByte
+ 2094 0980 5420     		movs	r0, #84
+ 2095 0982 EDE7     		b	.L309
+ 2096              	.L308:
+ 2097 0984 FFF7FEFF 		bl	spi1_ExchangeByte
+ 2098 0988 4520     		movs	r0, #69
+ 2099 098a FFF7FEFF 		bl	spi1_ExchangeByte
+ 2100 098e 0020     		movs	r0, #0
+ 2101 0990 E6E7     		b	.L309
+ 2102              	.L307:
+ 2103 0992 FFF7FEFF 		bl	spi1_ExchangeByte
+ 2104 0996 0135     		adds	r5, r5, #1
+ 2105              	.L305:
+ 2106 0998 132D     		cmp	r5, #19
+ 2107 099a 605D     		ldrb	r0, [r4, r5]	@ zero_extendqisi2
+ 2108 099c CCBF     		ite	gt
+ 2109 099e 0023     		movgt	r3, #0
+ 2110 09a0 0123     		movle	r3, #1
+ 2111 09a2 0028     		cmp	r0, #0
+ 2112 09a4 0CBF     		ite	eq
+ 2113 09a6 0023     		moveq	r3, #0
+ 2114 09a8 03F00103 		andne	r3, r3, #1
+ 2115 09ac 002B     		cmp	r3, #0
+ 2116 09ae F0D1     		bne	.L307
+ 2117 09b0 024B     		ldr	r3, .L310
+ 2118 09b2 9A69     		ldr	r2, [r3, #24]
+ 2119 09b4 42F40042 		orr	r2, r2, #32768
+ 2120 09b8 9A61     		str	r2, [r3, #24]
+ 2121              	.L299:
+ 2122 09ba 38BD     		pop	{r3, r4, r5, pc}
+ 2123              	.L311:
+ 2124              		.align	2
+ 2125              	.L310:
+ 2126 09bc 00C00920 		.word	537509888
+ 2128              		.align	1
+ 2129              		.global	_ZN3LCD5writeEPKc
+ 2130              		.thumb
+ 2131              		.thumb_func
+ 2133              	_ZN3LCD5writeEPKc:
+ 2134              		@ args = 0, pretend = 0, frame = 0
+ 2135              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2136 09c0 38B5     		push	{r3, r4, r5, lr}
+ 2137 09c2 0D46     		mov	r5, r1
+ 2138 09c4 FFF7FEFF 		bl	_ZN3LCD5clearEv
+ 2139 09c8 0F4B     		ldr	r3, .L315
+ 2140 09ca 0024     		movs	r4, #0
+ 2141 09cc 9A69     		ldr	r2, [r3, #24]
+ 2142 09ce 42F40042 		orr	r2, r2, #32768
+ 2143 09d2 9A61     		str	r2, [r3, #24]
+ 2144 09d4 DA69     		ldr	r2, [r3, #28]
+ 2145 09d6 42F40042 		orr	r2, r2, #32768
+ 2146 09da DA61     		str	r2, [r3, #28]
+ 2147 09dc 02E0     		b	.L313
+ 2148              	.L314:
+ 2149 09de 0134     		adds	r4, r4, #1
+ 2150 09e0 FFF7FEFF 		bl	spi1_ExchangeByte
+ 2151              	.L313:
+ 2152 09e4 4F2C     		cmp	r4, #79
+ 2153 09e6 285D     		ldrb	r0, [r5, r4]	@ zero_extendqisi2
+ 2154 09e8 CCBF     		ite	gt
+ 2155 09ea 0023     		movgt	r3, #0
+ 2156 09ec 0123     		movle	r3, #1
+ 2157 09ee 0028     		cmp	r0, #0
+ 2158 09f0 0CBF     		ite	eq
+ 2159 09f2 0023     		moveq	r3, #0
+ 2160 09f4 03F00103 		andne	r3, r3, #1
+ 2161 09f8 002B     		cmp	r3, #0
+ 2162 09fa F0D1     		bne	.L314
+ 2163 09fc 024B     		ldr	r3, .L315
+ 2164 09fe 9A69     		ldr	r2, [r3, #24]
+ 2165 0a00 42F40042 		orr	r2, r2, #32768
+ 2166 0a04 9A61     		str	r2, [r3, #24]
+ 2167 0a06 38BD     		pop	{r3, r4, r5, pc}
+ 2168              	.L316:
+ 2169              		.align	2
+ 2170              	.L315:
+ 2171 0a08 00C00920 		.word	537509888
+ 2173              		.global	__aeabi_i2f
+ 2174              		.global	__aeabi_fmul
+ 2175              		.align	1
+ 2176              		.global	_ZN17TemperatureSensor10getCelsiusEv
+ 2177              		.thumb
+ 2178              		.thumb_func
+ 2180              	_ZN17TemperatureSensor10getCelsiusEv:
+ 2181              		@ args = 0, pretend = 0, frame = 0
+ 2182              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2183 0a0c 08B5     		push	{r3, lr}
+ 2184 0a0e 0021     		movs	r1, #0
+ 2185 0a10 1830     		adds	r0, r0, #24
+ 2186 0a12 FFF7FEFF 		bl	_ZN15I2C_Device_Base16get16BitRegisterEh
+ 2187 0a16 1023     		movs	r3, #16
+ 2188 0a18 00B2     		sxth	r0, r0
+ 2189 0a1a 90FBF3F0 		sdiv	r0, r0, r3
+ 2190 0a1e FFF7FEFF 		bl	__aeabi_i2f
+ 2191 0a22 4FF07651 		mov	r1, #1031798784
+ 2192 0a26 FFF7FEFF 		bl	__aeabi_fmul
+ 2193 0a2a 08BD     		pop	{r3, pc}
+ 2195              		.global	__aeabi_fdiv
+ 2196              		.global	__aeabi_fadd
+ 2197              		.align	1
+ 2198              		.global	_ZN17TemperatureSensor12getFarenheitEv
+ 2199              		.thumb
+ 2200              		.thumb_func
+ 2202              	_ZN17TemperatureSensor12getFarenheitEv:
+ 2203              		@ args = 0, pretend = 0, frame = 0
+ 2204              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2205 0a2c 08B5     		push	{r3, lr}
+ 2206 0a2e FFF7FEFF 		bl	_ZN17TemperatureSensor10getCelsiusEv
+ 2207 0a32 0549     		ldr	r1, .L319
+ 2208 0a34 FFF7FEFF 		bl	__aeabi_fmul
+ 2209 0a38 0449     		ldr	r1, .L319+4
+ 2210 0a3a FFF7FEFF 		bl	__aeabi_fdiv
+ 2211 0a3e 4FF08441 		mov	r1, #1107296256
+ 2212 0a42 FFF7FEFF 		bl	__aeabi_fadd
+ 2213 0a46 08BD     		pop	{r3, pc}
+ 2214              	.L320:
+ 2215              		.align	2
+ 2216              	.L319:
+ 2217 0a48 00001041 		.word	1091567616
+ 2218 0a4c 0000A040 		.word	1084227584
+ 2220              		.global	__aeabi_f2iz
+ 2221              		.global	__aeabi_fsub
+ 2222              		.align	1
+ 2223              		.global	_ZN17TemperatureSensor16getValueAsStringEv
+ 2224              		.thumb
+ 2225              		.thumb_func
+ 2227              	_ZN17TemperatureSensor16getValueAsStringEv:
+ 2228              		@ args = 0, pretend = 0, frame = 0
+ 2229              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2230 0a50 2DE9FF41 		push	{r0, r1, r2, r3, r4, r5, r6, r7, r8, lr}
+ 2231 0a54 0546     		mov	r5, r0
+ 2232 0a56 FFF7FEFF 		bl	_ZN17TemperatureSensor10getCelsiusEv
+ 2233 0a5a 8046     		mov	r8, r0
+ 2234 0a5c FFF7FEFF 		bl	__aeabi_f2iz
+ 2235 0a60 0646     		mov	r6, r0
+ 2236 0a62 2846     		mov	r0, r5
+ 2237 0a64 FFF7FEFF 		bl	_ZN17TemperatureSensor12getFarenheitEv
+ 2238 0a68 0746     		mov	r7, r0
+ 2239 0a6a 3046     		mov	r0, r6
+ 2240 0a6c FFF7FEFF 		bl	__aeabi_i2f
+ 2241 0a70 0146     		mov	r1, r0
+ 2242 0a72 4046     		mov	r0, r8
+ 2243 0a74 FFF7FEFF 		bl	__aeabi_fsub
+ 2244 0a78 0E49     		ldr	r1, .L322
+ 2245 0a7a FFF7FEFF 		bl	__aeabi_fmul
+ 2246 0a7e FFF7FEFF 		bl	__aeabi_f2iz
+ 2247 0a82 2C1D     		adds	r4, r5, #4
+ 2248 0a84 4FF0B008 		mov	r8, #176
+ 2249 0a88 0546     		mov	r5, r0
+ 2250 0a8a 3846     		mov	r0, r7
+ 2251 0a8c CDF80080 		str	r8, [sp, #0]
+ 2252 0a90 FFF7FEFF 		bl	__aeabi_f2iz
+ 2253 0a94 0849     		ldr	r1, .L322+4
+ 2254 0a96 0190     		str	r0, [sp, #4]
+ 2255 0a98 3246     		mov	r2, r6
+ 2256 0a9a 2046     		mov	r0, r4
+ 2257 0a9c 2B46     		mov	r3, r5
+ 2258 0a9e CDF80880 		str	r8, [sp, #8]
+ 2259 0aa2 FFF7FEFF 		bl	_ZN3str6printfEPKcz
+ 2260 0aa6 2046     		mov	r0, r4
+ 2261 0aa8 04B0     		add	sp, sp, #16
+ 2262 0aaa BDE8F041 		pop	{r4, r5, r6, r7, r8, lr}
+ 2263 0aae FFF7FEBF 		b	_ZNK3strclEv
+ 2264              	.L323:
+ 2265 0ab2 00BF     		.align	2
+ 2266              	.L322:
+ 2267 0ab4 0000C842 		.word	1120403456
+ 2268 0ab8 5F000000 		.word	.LC10
+ 2270              		.global	_ZTV19Acceleration_Sensor
+ 2271              		.global	_ZTV9IR_Sensor
+ 2272              		.global	_ZTV11LED_Display
+ 2273              		.global	_ZTV3LED
+ 2274              		.global	_ZTV12Light_Sensor
+ 2275              		.global	_ZTV8Switches
+ 2276              		.global	_ZTV17TemperatureSensor
+ 2277              		.global	_ZTV6Keypad
+ 2278              		.global	_ZTV3LCD
+ 2279              		.global	KEYPAD_CHAR
+ 2280              		.global	KEYPAD_VAL
+ 2281              		.weak	_ZTV9IO_Device
+ 2282              		.section	.rodata._ZTV9IO_Device,"aG",%progbits,_ZTV9IO_Device,comdat
+ 2283              		.align	3
+ 2286              	_ZTV9IO_Device:
+ 2287 0000 00000000 		.word	0
+ 2288 0004 00000000 		.word	0
+ 2289 0008 00000000 		.word	__cxa_pure_virtual
+ 2290 000c 00000000 		.word	_ZN9IO_Device16getValueAsStringEv
+ 2291 0010 00000000 		.word	_ZN9IO_DeviceD1Ev
+ 2292 0014 00000000 		.word	_ZN9IO_DeviceD0Ev
+ 2293              		.weak	_ZN9IO_DeviceD1Ev
+ 2294              		.thumb_set _ZN9IO_DeviceD1Ev,_ZN9IO_DeviceD2Ev
+ 2295              		.weak	_ZN19Acceleration_SensorD1Ev
+ 2296              		.thumb_set _ZN19Acceleration_SensorD1Ev,_ZN19Acceleration_SensorD2Ev
+ 2297              		.weak	_ZN9IR_SensorD1Ev
+ 2298              		.thumb_set _ZN9IR_SensorD1Ev,_ZN9IR_SensorD2Ev
+ 2299              		.weak	_ZN11LED_DisplayD1Ev
+ 2300              		.thumb_set _ZN11LED_DisplayD1Ev,_ZN11LED_DisplayD2Ev
+ 2301              		.weak	_ZN3LEDD1Ev
+ 2302              		.thumb_set _ZN3LEDD1Ev,_ZN3LEDD2Ev
+ 2303              		.weak	_ZN12Light_SensorD1Ev
+ 2304              		.thumb_set _ZN12Light_SensorD1Ev,_ZN12Light_SensorD2Ev
+ 2305              		.weak	_ZN8SwitchesD1Ev
+ 2306              		.thumb_set _ZN8SwitchesD1Ev,_ZN8SwitchesD2Ev
+ 2307              		.weak	_ZN17TemperatureSensorD1Ev
+ 2308              		.thumb_set _ZN17TemperatureSensorD1Ev,_ZN17TemperatureSensorD2Ev
+ 2309              		.weak	_ZN6KeypadD1Ev
+ 2310              		.thumb_set _ZN6KeypadD1Ev,_ZN6KeypadD2Ev
+ 2311              		.weak	_ZN3LCDD1Ev
+ 2312              		.thumb_set _ZN3LCDD1Ev,_ZN3LCDD2Ev
+ 2313              		.section	.rodata
+ 2314              		.align	3
+ 2315              		.set	.LANCHOR0,. + 0
+ 2318              	_ZTV19Acceleration_Sensor:
+ 2319 0000 00000000 		.word	0
+ 2320 0004 00000000 		.word	0
+ 2321 0008 00000000 		.word	_ZN19Acceleration_Sensor4initEv
+ 2322 000c 00000000 		.word	_ZN19Acceleration_Sensor16getValueAsStringEv
+ 2323 0010 00000000 		.word	_ZN19Acceleration_SensorD1Ev
+ 2324 0014 00000000 		.word	_ZN19Acceleration_SensorD0Ev
+ 2327              	_ZTV9IR_Sensor:
+ 2328 0018 00000000 		.word	0
+ 2329 001c 00000000 		.word	0
+ 2330 0020 00000000 		.word	_ZN9IR_Sensor4initEv
+ 2331 0024 00000000 		.word	_ZN9IR_Sensor16getValueAsStringEv
+ 2332 0028 00000000 		.word	_ZN9IR_SensorD1Ev
+ 2333 002c 00000000 		.word	_ZN9IR_SensorD0Ev
+ 2336              	_ZTV11LED_Display:
+ 2337 0030 00000000 		.word	0
+ 2338 0034 00000000 		.word	0
+ 2339 0038 00000000 		.word	_ZN11LED_Display4initEv
+ 2340 003c 00000000 		.word	_ZN11LED_Display16getValueAsStringEv
+ 2341 0040 00000000 		.word	_ZN11LED_DisplayD1Ev
+ 2342 0044 00000000 		.word	_ZN11LED_DisplayD0Ev
+ 2345              	_ZTV3LED:
+ 2346 0048 00000000 		.word	0
+ 2347 004c 00000000 		.word	0
+ 2348 0050 00000000 		.word	_ZN3LED4initEv
+ 2349 0054 00000000 		.word	_ZN3LED16getValueAsStringEv
+ 2350 0058 00000000 		.word	_ZN3LEDD1Ev
+ 2351 005c 00000000 		.word	_ZN3LEDD0Ev
+ 2354              	_ZTV12Light_Sensor:
+ 2355 0060 00000000 		.word	0
+ 2356 0064 00000000 		.word	0
+ 2357 0068 00000000 		.word	_ZN12Light_Sensor4initEv
+ 2358 006c 00000000 		.word	_ZN12Light_Sensor16getValueAsStringEv
+ 2359 0070 00000000 		.word	_ZN12Light_SensorD1Ev
+ 2360 0074 00000000 		.word	_ZN12Light_SensorD0Ev
+ 2363              	_ZTV8Switches:
+ 2364 0078 00000000 		.word	0
+ 2365 007c 00000000 		.word	0
+ 2366 0080 00000000 		.word	_ZN8Switches4initEv
+ 2367 0084 00000000 		.word	_ZN8Switches16getValueAsStringEv
+ 2368 0088 00000000 		.word	_ZN8SwitchesD1Ev
+ 2369 008c 00000000 		.word	_ZN8SwitchesD0Ev
+ 2372              	_ZTV17TemperatureSensor:
+ 2373 0090 00000000 		.word	0
+ 2374 0094 00000000 		.word	0
+ 2375 0098 00000000 		.word	_ZN17TemperatureSensor4initEv
+ 2376 009c 00000000 		.word	_ZN17TemperatureSensor16getValueAsStringEv
+ 2377 00a0 00000000 		.word	_ZN17TemperatureSensorD1Ev
+ 2378 00a4 00000000 		.word	_ZN17TemperatureSensorD0Ev
+ 2381              	_ZTV6Keypad:
+ 2382 00a8 00000000 		.word	0
+ 2383 00ac 00000000 		.word	0
+ 2384 00b0 00000000 		.word	_ZN6Keypad4initEv
+ 2385 00b4 00000000 		.word	_ZN9IO_Device16getValueAsStringEv
+ 2386 00b8 00000000 		.word	_ZN6KeypadD1Ev
+ 2387 00bc 00000000 		.word	_ZN6KeypadD0Ev
+ 2390              	_ZTV3LCD:
+ 2391 00c0 00000000 		.word	0
+ 2392 00c4 00000000 		.word	0
+ 2393 00c8 00000000 		.word	_ZN3LCD4initEv
+ 2394 00cc 00000000 		.word	_ZN9IO_Device16getValueAsStringEv
+ 2395 00d0 00000000 		.word	_ZN3LCDD1Ev
+ 2396 00d4 00000000 		.word	_ZN3LCDD0Ev
+ 2399              	_ZL19LED_DISPLAY_CHARMAP:
+ 2400 00d8 00       		.byte	0
+ 2401 00d9 00       		.byte	0
+ 2402 00da 00       		.byte	0
+ 2403 00db 00       		.byte	0
+ 2404 00dc 00       		.byte	0
+ 2405 00dd 00       		.byte	0
+ 2406 00de 00       		.byte	0
+ 2407 00df 00       		.byte	0
+ 2408 00e0 00       		.byte	0
+ 2409 00e1 00       		.byte	0
+ 2410 00e2 00       		.byte	0
+ 2411 00e3 00       		.byte	0
+ 2412 00e4 00       		.byte	0
+ 2413 00e5 00       		.byte	0
+ 2414 00e6 00       		.byte	0
+ 2415 00e7 00       		.byte	0
+ 2416 00e8 00       		.byte	0
+ 2417 00e9 00       		.byte	0
+ 2418 00ea 00       		.byte	0
+ 2419 00eb 00       		.byte	0
+ 2420 00ec 00       		.byte	0
+ 2421 00ed 00       		.byte	0
+ 2422 00ee 00       		.byte	0
+ 2423 00ef 00       		.byte	0
+ 2424 00f0 00       		.byte	0
+ 2425 00f1 00       		.byte	0
+ 2426 00f2 00       		.byte	0
+ 2427 00f3 00       		.byte	0
+ 2428 00f4 00       		.byte	0
+ 2429 00f5 00       		.byte	0
+ 2430 00f6 00       		.byte	0
+ 2431 00f7 00       		.byte	0
+ 2432 00f8 00       		.byte	0
+ 2433 00f9 86       		.byte	-122
+ 2434 00fa 00       		.byte	0
+ 2435 00fb 00       		.byte	0
+ 2436 00fc 00       		.byte	0
+ 2437 00fd 00       		.byte	0
+ 2438 00fe 00       		.byte	0
+ 2439 00ff 00       		.byte	0
+ 2440 0100 00       		.byte	0
+ 2441 0101 00       		.byte	0
+ 2442 0102 00       		.byte	0
+ 2443 0103 00       		.byte	0
+ 2444 0104 00       		.byte	0
+ 2445 0105 40       		.byte	64
+ 2446 0106 80       		.byte	-128
+ 2447 0107 00       		.byte	0
+ 2448 0108 BF       		.byte	-65
+ 2449 0109 B0       		.byte	-80
+ 2450 010a DB       		.byte	-37
+ 2451 010b CF       		.byte	-49
+ 2452 010c E6       		.byte	-26
+ 2453 010d ED       		.byte	-19
+ 2454 010e FC       		.byte	-4
+ 2455 010f 87       		.byte	-121
+ 2456 0110 FF       		.byte	-1
+ 2457 0111 E7       		.byte	-25
+ 2458 0112 00       		.byte	0
+ 2459 0113 00       		.byte	0
+ 2460 0114 00       		.byte	0
+ 2461 0115 00       		.byte	0
+ 2462 0116 00       		.byte	0
+ 2463 0117 00       		.byte	0
+ 2464 0118 00       		.byte	0
+ 2465 0119 77       		.byte	119
+ 2466 011a 7F       		.byte	127
+ 2467 011b 39       		.byte	57
+ 2468 011c 3F       		.byte	63
+ 2469 011d 79       		.byte	121
+ 2470 011e 71       		.byte	113
+ 2471 011f 3D       		.byte	61
+ 2472 0120 00000000 		.space	183
+ 2472      00000000 
+ 2472      00000000 
+ 2472      00000000 
+ 2472      00000000 
+ 2473 01d7 00       		.section	.rodata.str1.1,"aMS",%progbits,1
+ 2474              	.LC0:
+ 2475 0000 4C45443A 		.ascii	"LED: %c%c\000"
+ 2475      20256325 
+ 2475      6300
+ 2476              	.LC1:
+ 2477 000a 49523A20 		.ascii	"IR: 0x%08X\000"
+ 2477      30782530 
+ 2477      385800
+ 2478              	.LC2:
+ 2479 0015 4572726F 		.ascii	"Error: Function not implemented\000"
+ 2479      723A2046 
+ 2479      756E6374 
+ 2479      696F6E20 
+ 2479      6E6F7420 
+ 2480              	.LC3:
+ 2481 0035 3100     		.ascii	"1\000"
+ 2482              	.LC4:
+ 2483 0037 3000     		.ascii	"0\000"
+ 2484              	.LC5:
+ 2485 0039 4C454473 		.ascii	"LEDs: \000"
+ 2485      3A2000
+ 2486              	.LC6:
+ 2487 0040 2E00     		.ascii	".\000"
+ 2488              	.LC7:
+ 2489 0042 53573A20 		.ascii	"SW: \000"
+ 2489      00
+ 2490              	.LC8:
+ 2491 0047 2535693A 		.ascii	"%5i:%5i:%5i\000"
+ 2491      2535693A 
+ 2491      25356900 
+ 2492              	.LC9:
+ 2493 0053 4C696768 		.ascii	"Light: %i%%\000"
+ 2493      743A2025 
+ 2493      69252500 
+ 2494              	.LC10:
+ 2495 005f 54533A20 		.ascii	"TS: %i.%i%cC (%i%cF)\000"
+ 2495      25692E25 
+ 2495      69256343 
+ 2495      20282569 
+ 2495      25634629 
+ 2496              		.data
+ 2497              		.align	2
+ 2498              		.set	.LANCHOR2,. + 0
+ 2501              	KEYPAD_CHAR:
+ 2502 0000 31       		.byte	49
+ 2503 0001 32       		.byte	50
+ 2504 0002 33       		.byte	51
+ 2505 0003 41       		.byte	65
+ 2506 0004 34       		.byte	52
+ 2507 0005 35       		.byte	53
+ 2508 0006 36       		.byte	54
+ 2509 0007 42       		.byte	66
+ 2510 0008 37       		.byte	55
+ 2511 0009 38       		.byte	56
+ 2512 000a 39       		.byte	57
+ 2513 000b 43       		.byte	67
+ 2514 000c 2A       		.byte	42
+ 2515 000d 30       		.byte	48
+ 2516 000e 23       		.byte	35
+ 2517 000f 44       		.byte	68
+ 2520              	KEYPAD_VAL:
+ 2521 0010 01000000 		.word	1
+ 2522 0014 02000000 		.word	2
+ 2523 0018 03000000 		.word	3
+ 2524 001c 0A000000 		.word	10
+ 2525 0020 04000000 		.word	4
+ 2526 0024 05000000 		.word	5
+ 2527 0028 06000000 		.word	6
+ 2528 002c 0B000000 		.word	11
+ 2529 0030 07000000 		.word	7
+ 2530 0034 08000000 		.word	8
+ 2531 0038 09000000 		.word	9
+ 2532 003c 0C000000 		.word	12
+ 2533 0040 0E000000 		.word	14
+ 2534 0044 00000000 		.word	0
+ 2535 0048 0F000000 		.word	15
+ 2536 004c 0D000000 		.word	13
+ 2537              		.bss
+ 2538              		.align	2
+ 2539              		.set	.LANCHOR1,. + 0
+ 2542              	_ZL22LAST_DECODED_IR_SIGNAL:
+ 2543 0000 00000000 		.space	4
+ 2546              	_ZZ17TIMER1_IRQHandlerE11signalCount:
+ 2547 0004 0000     		.space	2
+ 2548 0006 0000     		.space	2
+ 2551              	_ZZ17TIMER1_IRQHandlerE11signalArray:
+ 2552 0008 00000000 		.space	128
+ 2552      00000000 
+ 2552      00000000 
+ 2552      00000000 
+ 2552      00000000 
+ 2553              		.ident	"GCC: (GNU) 4.6.2"
+DEFINED SYMBOLS
+                            *ABS*:00000000 io_source.cpp
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:15     .text:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:20     .text:00000000 _ZN3LED4initEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:34     .text:00000010 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:36     .text:00000014 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:41     .text:00000014 _ZN8Switches4initEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:53     .text:00000020 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:55     .text:00000024 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:60     .text:00000024 _ZN6Keypad4initEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:76     .text:00000038 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:79     .text._ZN9IO_DeviceD2Ev:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:84     .text._ZN9IO_DeviceD2Ev:00000000 _ZN9IO_DeviceD2Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:97     .text._ZN9IO_DeviceD2Ev:00000014 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2286   .rodata._ZTV9IO_Device:00000000 _ZTV9IO_Device
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:100    .text._ZN19Acceleration_SensorD2Ev:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:105    .text._ZN19Acceleration_SensorD2Ev:00000000 _ZN19Acceleration_SensorD2Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:118    .text._ZN19Acceleration_SensorD2Ev:00000010 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:121    .text._ZN19Acceleration_SensorD0Ev:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:126    .text._ZN19Acceleration_SensorD0Ev:00000000 _ZN19Acceleration_SensorD0Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:141    .text._ZN19Acceleration_SensorD0Ev:00000018 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:144    .text._ZN9IR_SensorD2Ev:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:149    .text._ZN9IR_SensorD2Ev:00000000 _ZN9IR_SensorD2Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:162    .text._ZN9IR_SensorD2Ev:00000010 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:165    .text._ZN9IR_SensorD0Ev:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:170    .text._ZN9IR_SensorD0Ev:00000000 _ZN9IR_SensorD0Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:185    .text._ZN9IR_SensorD0Ev:00000018 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:188    .text._ZN11LED_DisplayD2Ev:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:193    .text._ZN11LED_DisplayD2Ev:00000000 _ZN11LED_DisplayD2Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:206    .text._ZN11LED_DisplayD2Ev:00000010 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:209    .text._ZN11LED_DisplayD0Ev:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:214    .text._ZN11LED_DisplayD0Ev:00000000 _ZN11LED_DisplayD0Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:229    .text._ZN11LED_DisplayD0Ev:00000018 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:232    .text._ZN3LEDD2Ev:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:237    .text._ZN3LEDD2Ev:00000000 _ZN3LEDD2Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:250    .text._ZN3LEDD2Ev:00000010 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:253    .text._ZN3LEDD0Ev:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:258    .text._ZN3LEDD0Ev:00000000 _ZN3LEDD0Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:273    .text._ZN3LEDD0Ev:00000018 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:276    .text._ZN12Light_SensorD2Ev:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:281    .text._ZN12Light_SensorD2Ev:00000000 _ZN12Light_SensorD2Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:294    .text._ZN12Light_SensorD2Ev:00000010 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:297    .text._ZN12Light_SensorD0Ev:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:302    .text._ZN12Light_SensorD0Ev:00000000 _ZN12Light_SensorD0Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:317    .text._ZN12Light_SensorD0Ev:00000018 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:320    .text._ZN8SwitchesD2Ev:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:325    .text._ZN8SwitchesD2Ev:00000000 _ZN8SwitchesD2Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:338    .text._ZN8SwitchesD2Ev:00000010 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:341    .text._ZN8SwitchesD0Ev:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:346    .text._ZN8SwitchesD0Ev:00000000 _ZN8SwitchesD0Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:361    .text._ZN8SwitchesD0Ev:00000018 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:364    .text._ZN17TemperatureSensorD2Ev:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:369    .text._ZN17TemperatureSensorD2Ev:00000000 _ZN17TemperatureSensorD2Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:382    .text._ZN17TemperatureSensorD2Ev:00000010 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:385    .text._ZN17TemperatureSensorD0Ev:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:390    .text._ZN17TemperatureSensorD0Ev:00000000 _ZN17TemperatureSensorD0Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:405    .text._ZN17TemperatureSensorD0Ev:00000018 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:408    .text._ZN6KeypadD2Ev:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:413    .text._ZN6KeypadD2Ev:00000000 _ZN6KeypadD2Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:426    .text._ZN6KeypadD2Ev:00000010 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:429    .text._ZN6KeypadD0Ev:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:434    .text._ZN6KeypadD0Ev:00000000 _ZN6KeypadD0Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:449    .text._ZN6KeypadD0Ev:00000018 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:452    .text._ZN3LCDD2Ev:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:457    .text._ZN3LCDD2Ev:00000000 _ZN3LCDD2Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:470    .text._ZN3LCDD2Ev:00000010 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:473    .text._ZN3LCDD0Ev:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:478    .text._ZN3LCDD0Ev:00000000 _ZN3LCDD0Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:493    .text._ZN3LCDD0Ev:00000018 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:496    .text._ZN9IO_DeviceD0Ev:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:501    .text._ZN9IO_DeviceD0Ev:00000000 _ZN9IO_DeviceD0Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:84     .text._ZN9IO_DeviceD2Ev:00000000 _ZN9IO_DeviceD1Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:513    .text:0000003c $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:518    .text:0000003c _ZN11LED_Display16getValueAsStringEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:534    .text:00000058 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:536    .text:0000005c $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:541    .text:0000005c _ZN9IR_Sensor16getValueAsStringEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:559    .text:0000007c $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:562    .text:00000084 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:567    .text:00000084 _ZN17TemperatureSensor4initEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:586    .text:0000009c _ZN3LCD4initEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:612    .text:000000d0 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:616    .text._ZN9IO_Device16getValueAsStringEv:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:621    .text._ZN9IO_Device16getValueAsStringEv:00000000 _ZN9IO_Device16getValueAsStringEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:635    .text._ZN9IO_Device16getValueAsStringEv:00000018 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:638    .text:000000d8 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:643    .text:000000d8 _ZN3LED16getValueAsStringEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:679    .text:00000124 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:684    .text:00000134 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:689    .text:00000134 _ZN8Switches16getValueAsStringEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:727    .text:00000180 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:733    .text:00000194 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:738    .text:00000194 _ZN9IR_Sensor4initEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:783    .text:00000200 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:789    .text._ZN15I2C_Device_Base8writeRegEhh:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:794    .text._ZN15I2C_Device_Base8writeRegEhh:00000000 _ZN15I2C_Device_Base8writeRegEhh
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:807    .text:00000210 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:812    .text:00000210 _ZN19Acceleration_Sensor4initEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:831    .text._ZN15I2C_Device_Base16get16BitRegisterEh:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:836    .text._ZN15I2C_Device_Base16get16BitRegisterEh:00000000 _ZN15I2C_Device_Base16get16BitRegisterEh
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:856    .text.adc0_initialize:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:861    .text.adc0_initialize:00000000 adc0_initialize
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:895    .text.adc0_initialize:0000004c $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:905    .text:00000236 _ZN12Light_Sensor4initEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:922    .text:00000254 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:925    .text.spi1_ExchangeByte:00000000 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:930    .text.spi1_ExchangeByte:00000000 spi1_ExchangeByte
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:947    .text.spi1_ExchangeByte:00000014 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:950    .text:00000258 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:955    .text:00000258 _ZN19Acceleration_Sensor4getXEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:972    .text:0000026c _ZN19Acceleration_Sensor4getYEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:989    .text:00000280 _ZN19Acceleration_Sensor4getZEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1006   .text:00000294 _ZN19Acceleration_Sensor16getValueAsStringEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1032   .text:000002c8 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1034   .text:000002cc $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1039   .text:000002cc TIMER1_IRQHandler
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1120   .text:00000360 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1123   .text:00000368 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1128   .text:00000368 _ZN9IR_Sensor16isIRCodeReceivedEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1141   .text:00000374 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1143   .text:00000378 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1148   .text:00000378 _ZN9IR_Sensor13getLastIRCodeEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1160   .text:00000384 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1162   .text:00000388 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1167   .text:00000388 _ZN11LED_Display12setLeftDigitEc
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1181   .text:0000039c $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1183   .text:000003a0 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1188   .text:000003a0 _ZN11LED_Display13setRightDigitEc
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1202   .text:000003b4 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1204   .text:000003b8 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1209   .text:000003b8 _ZN11LED_Display9setNumberEc
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1240   .text:000003ee _ZN11LED_Display4initEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1276   .text:0000042e _ZN3LED6setAllEc
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1329   .text:00000490 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1331   .text:00000494 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1336   .text:00000494 _ZN3LED3offEi
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1353   .text:000004a6 _ZN3LED2onEi
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1371   .text:000004b8 _ZN12Light_Sensor15getLightReadingEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1397   .text:000004e4 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1400   .text:000004ec $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1405   .text:000004ec _ZN12Light_Sensor16getValueAsStringEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1423   .text:0000050c $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1425   .text:00000510 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1430   .text:00000510 _ZN8Switches15getSwitchValuesEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1440   .text:00000518 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1442   .text:0000051c $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1447   .text:0000051c _ZN8Switches9getSwitchEi
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1460   .text:0000052c $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1462   .text:00000530 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1467   .text:00000530 _ZN6Keypad6setColEi
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1476   .text:0000053a $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1480   .text:0000053e $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1502   .text:00000558 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1504   .text:0000055c $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1509   .text:0000055c _ZN6Keypad6chkRowEi
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1518   .text:00000566 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1522   .text:0000056a $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1551   .text:0000059c $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1553   .text:000005a0 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1558   .text:000005a0 _ZN6Keypad6chkRowEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1583   .text:000005cc $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1585   .text:000005d0 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1590   .text:000005d0 _ZN6Keypad7getCharEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1617   .text:000005f6 _ZN6Keypad7getCharEPc
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1651   .text:0000063c $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1653   .text:00000640 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1658   .text:00000640 _ZN6Keypad6getValEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1699   .text:00000694 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1702   .text:0000069c $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1707   .text:0000069c _ZN6Keypad6getValEPi
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1740   .text:000006e0 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1742   .text:000006e4 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1747   .text:000006e4 _ZN3LCD5setupEjjb
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1794   .text:00000750 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1796   .text:00000754 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1801   .text:00000754 _ZN3LCD2onEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1825   .text:00000784 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1827   .text:00000788 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1832   .text:00000788 _ZN3LCD3offEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1856   .text:000007b8 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1858   .text:000007bc $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1863   .text:000007bc _ZN3LCD5clearEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1887   .text:000007ec $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1889   .text:000007f0 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1894   .text:000007f0 _ZN3LCD5clearEj
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1974   .text:000008a8 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1976   .text:000008ac $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:1981   .text:000008ac _ZN3LCD7B_LightEj
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2011   .text:000008e8 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2013   .text:000008ec $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2018   .text:000008ec _ZN3LCD8ContrastEj
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2048   .text:00000928 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2050   .text:0000092c $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2055   .text:0000092c _ZN3LCD5writeEPKcj
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2126   .text:000009bc $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2128   .text:000009c0 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2133   .text:000009c0 _ZN3LCD5writeEPKc
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2171   .text:00000a08 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2175   .text:00000a0c $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2180   .text:00000a0c _ZN17TemperatureSensor10getCelsiusEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2202   .text:00000a2c _ZN17TemperatureSensor12getFarenheitEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2217   .text:00000a48 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2222   .text:00000a50 $t
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2227   .text:00000a50 _ZN17TemperatureSensor16getValueAsStringEv
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2267   .text:00000ab4 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2318   .rodata:00000000 _ZTV19Acceleration_Sensor
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2327   .rodata:00000018 _ZTV9IR_Sensor
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2336   .rodata:00000030 _ZTV11LED_Display
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2345   .rodata:00000048 _ZTV3LED
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2354   .rodata:00000060 _ZTV12Light_Sensor
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2363   .rodata:00000078 _ZTV8Switches
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2372   .rodata:00000090 _ZTV17TemperatureSensor
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2381   .rodata:000000a8 _ZTV6Keypad
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2390   .rodata:000000c0 _ZTV3LCD
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2501   .data:00000000 KEYPAD_CHAR
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2520   .data:00000010 KEYPAD_VAL
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2283   .rodata._ZTV9IO_Device:00000000 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:105    .text._ZN19Acceleration_SensorD2Ev:00000000 _ZN19Acceleration_SensorD1Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:149    .text._ZN9IR_SensorD2Ev:00000000 _ZN9IR_SensorD1Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:193    .text._ZN11LED_DisplayD2Ev:00000000 _ZN11LED_DisplayD1Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:237    .text._ZN3LEDD2Ev:00000000 _ZN3LEDD1Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:281    .text._ZN12Light_SensorD2Ev:00000000 _ZN12Light_SensorD1Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:325    .text._ZN8SwitchesD2Ev:00000000 _ZN8SwitchesD1Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:369    .text._ZN17TemperatureSensorD2Ev:00000000 _ZN17TemperatureSensorD1Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:413    .text._ZN6KeypadD2Ev:00000000 _ZN6KeypadD1Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:457    .text._ZN3LCDD2Ev:00000000 _ZN3LCDD1Ev
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2314   .rodata:00000000 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2399   .rodata:000000d8 _ZL19LED_DISPLAY_CHARMAP
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2497   .data:00000000 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2538   .bss:00000000 $d
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2542   .bss:00000000 _ZL22LAST_DECODED_IR_SIGNAL
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2546   .bss:00000004 _ZZ17TIMER1_IRQHandlerE11signalCount
+C:\Users\TRENTS~1\AppData\Local\Temp\ccylYuBO.s:2551   .bss:00000008 _ZZ17TIMER1_IRQHandlerE11signalArray
+                           .group:00000000 _ZN9IO_DeviceD5Ev
+                           .group:00000000 _ZN19Acceleration_SensorD5Ev
+                           .group:00000000 _ZN9IR_SensorD5Ev
+                           .group:00000000 _ZN11LED_DisplayD5Ev
+                           .group:00000000 _ZN3LEDD5Ev
+                           .group:00000000 _ZN12Light_SensorD5Ev
+                           .group:00000000 _ZN8SwitchesD5Ev
+                           .group:00000000 _ZN17TemperatureSensorD5Ev
+                           .group:00000000 _ZN6KeypadD5Ev
+                           .group:00000000 _ZN3LCDD5Ev
+
+UNDEFINED SYMBOLS
+_ZN3strD1Ev
+_ZdlPv
+_ZN3str6printfEPKcz
+_ZNK3strclEv
+_ZN8I2C_Base7readRegEcc
+spi1_Init
+_ZN3straSEPKc
+_ZN3strpLEPKc
+getCpuClock
+_ZN8I2C_Base8writeRegEccc
+_ZN8I2C_Base13readRegistersEccPcj
+_ZN8I2C_Base15isDevicePresentEc
+delay_ms
+__aeabi_i2f
+__aeabi_fmul
+__aeabi_fdiv
+__aeabi_fadd
+__aeabi_f2iz
+__aeabi_fsub
+__cxa_pure_virtual

@@ -1,0 +1,168 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"uart0.cpp"
+  14              		.text
+  15              		.align	1
+  16              		.global	_ZN5UART04initEjii
+  17              		.thumb
+  18              		.thumb_func
+  20              	_ZN5UART04initEjii:
+  21              		@ args = 0, pretend = 0, frame = 0
+  22              		@ frame_needed = 0, uses_anonymous_args = 0
+  23 0000 F7B5     		push	{r0, r1, r2, r4, r5, r6, r7, lr}
+  24 0002 1F46     		mov	r7, r3
+  25 0004 0E4B     		ldr	r3, .L2
+  26 0006 1446     		mov	r4, r2
+  27 0008 1A68     		ldr	r2, [r3, #0]
+  28 000a 0D46     		mov	r5, r1
+  29 000c 22F0F002 		bic	r2, r2, #240
+  30 0010 1A60     		str	r2, [r3, #0]
+  31 0012 1A68     		ldr	r2, [r3, #0]
+  32 0014 0646     		mov	r6, r0
+  33 0016 42F05002 		orr	r2, r2, #80
+  34 001a 1A60     		str	r2, [r3, #0]
+  35 001c 03F55023 		add	r3, r3, #851968
+  36 0020 D3F8A821 		ldr	r2, [r3, #424]
+  37 0024 22F0C002 		bic	r2, r2, #192
+  38 0028 C3F8A821 		str	r2, [r3, #424]
+  39 002c FFF7FEFF 		bl	getCpuClock
+  40 0030 2A46     		mov	r2, r5
+  41 0032 8108     		lsrs	r1, r0, #2
+  42 0034 2346     		mov	r3, r4
+  43 0036 3046     		mov	r0, r6
+  44 0038 0097     		str	r7, [sp, #0]
+  45 003a FFF7FEFF 		bl	_ZN9UART_Base4initEjjii
+  46 003e FEBD     		pop	{r1, r2, r3, r4, r5, r6, r7, pc}
+  47              	.L3:
+  48              		.align	2
+  49              	.L2:
+  50 0040 00C00240 		.word	1073922048
+  52              		.align	1
+  53              		.global	_ZN5UART0C2Ev
+  54              		.thumb
+  55              		.thumb_func
+  57              	_ZN5UART0C2Ev:
+  58              		@ args = 0, pretend = 0, frame = 0
+  59              		@ frame_needed = 0, uses_anonymous_args = 0
+  60 0044 10B5     		push	{r4, lr}
+  61 0046 0349     		ldr	r1, .L7
+  62 0048 0446     		mov	r4, r0
+  63 004a FFF7FEFF 		bl	_ZN9UART_BaseC2EPj
+  64 004e 2046     		mov	r0, r4
+  65 0050 10BD     		pop	{r4, pc}
+  66              	.L8:
+  67 0052 00BF     		.align	2
+  68              	.L7:
+  69 0054 00C00040 		.word	1073790976
+  71              		.section	.text._ZN17SingletonTemplateI5UART0E11getInstanceEv,"axG",%progbits,_ZN17SingletonTemplat
+  72              		.align	1
+  73              		.weak	_ZN17SingletonTemplateI5UART0E11getInstanceEv
+  74              		.thumb
+  75              		.thumb_func
+  77              	_ZN17SingletonTemplateI5UART0E11getInstanceEv:
+  78              		@ args = 0, pretend = 0, frame = 0
+  79              		@ frame_needed = 0, uses_anonymous_args = 0
+  80 0000 38B5     		push	{r3, r4, r5, lr}
+  81 0002 064C     		ldr	r4, .L11
+  82 0004 2368     		ldr	r3, [r4, #0]
+  83 0006 33B9     		cbnz	r3, .L10
+  84 0008 1020     		movs	r0, #16
+  85 000a FFF7FEFF 		bl	_Znwj
+  86 000e 0546     		mov	r5, r0
+  87 0010 FFF7FEFF 		bl	_ZN5UART0C1Ev
+  88 0014 2560     		str	r5, [r4, #0]
+  89              	.L10:
+  90 0016 2068     		ldr	r0, [r4, #0]
+  91 0018 38BD     		pop	{r3, r4, r5, pc}
+  92              	.L12:
+  93 001a 00BF     		.align	2
+  94              	.L11:
+  95 001c 00000000 		.word	_ZN17SingletonTemplateI5UART0E19mpSingletonInstanceE
+  97              		.text
+  98              		.align	1
+  99              		.global	_ZN5UART017putcharIntrDrivenEc
+ 100              		.thumb
+ 101              		.thumb_func
+ 103              	_ZN5UART017putcharIntrDrivenEc:
+ 104              		@ args = 0, pretend = 0, frame = 0
+ 105              		@ frame_needed = 0, uses_anonymous_args = 0
+ 106 0058 10B5     		push	{r4, lr}
+ 107 005a 0446     		mov	r4, r0
+ 108 005c FFF7FEFF 		bl	_ZN17SingletonTemplateI5UART0E11getInstanceEv
+ 109 0060 2146     		mov	r1, r4
+ 110 0062 4FF0FF32 		mov	r2, #-1
+ 111 0066 BDE81040 		pop	{r4, lr}
+ 112 006a FFF7FEBF 		b	_ZN9UART_Base7putCharEcj
+ 114              		.align	1
+ 115              		.global	_ZN5UART017getcharIntrDrivenEc
+ 116              		.thumb
+ 117              		.thumb_func
+ 119              	_ZN5UART017getcharIntrDrivenEc:
+ 120              		@ args = 0, pretend = 0, frame = 8
+ 121              		@ frame_needed = 0, uses_anonymous_args = 0
+ 122 006e 13B5     		push	{r0, r1, r4, lr}
+ 123 0070 0023     		movs	r3, #0
+ 124 0072 02AC     		add	r4, sp, #8
+ 125 0074 04F8013D 		strb	r3, [r4, #-1]!
+ 126 0078 FFF7FEFF 		bl	_ZN17SingletonTemplateI5UART0E11getInstanceEv
+ 127 007c 2146     		mov	r1, r4
+ 128 007e 4FF0FF32 		mov	r2, #-1
+ 129 0082 FFF7FEFF 		bl	_ZN9UART_Base7getCharEPcj
+ 130 0086 9DF80700 		ldrb	r0, [sp, #7]	@ zero_extendqisi2
+ 131 008a 1CBD     		pop	{r2, r3, r4, pc}
+ 133              		.align	1
+ 134              		.global	UART0_IRQHandler
+ 135              		.thumb
+ 136              		.thumb_func
+ 138              	UART0_IRQHandler:
+ 139              		@ args = 0, pretend = 0, frame = 0
+ 140              		@ frame_needed = 0, uses_anonymous_args = 0
+ 141 008c 08B5     		push	{r3, lr}
+ 142 008e FFF7FEFF 		bl	_ZN17SingletonTemplateI5UART0E11getInstanceEv
+ 143 0092 BDE80840 		pop	{r3, lr}
+ 144 0096 FFF7FEBF 		b	_ZN9UART_Base15handleInterruptEv
+ 146              		.weak	_ZN17SingletonTemplateI5UART0E19mpSingletonInstanceE
+ 147 009a 00BF     		.section	.bss._ZN17SingletonTemplateI5UART0E19mpSingletonInstanceE,"awG",%nobits,_ZN17SingletonTem
+ 148              		.align	2
+ 151              	_ZN17SingletonTemplateI5UART0E19mpSingletonInstanceE:
+ 152 0000 00000000 		.space	4
+ 153              		.global	_ZN5UART0C1Ev
+ 154              		.thumb_set _ZN5UART0C1Ev,_ZN5UART0C2Ev
+ 155              		.ident	"GCC: (GNU) 4.6.2"
+DEFINED SYMBOLS
+                            *ABS*:00000000 uart0.cpp
+C:\Users\Rhonda\AppData\Local\Temp\cceFnWKl.s:15     .text:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\cceFnWKl.s:20     .text:00000000 _ZN5UART04initEjii
+C:\Users\Rhonda\AppData\Local\Temp\cceFnWKl.s:50     .text:00000040 $d
+C:\Users\Rhonda\AppData\Local\Temp\cceFnWKl.s:52     .text:00000044 $t
+C:\Users\Rhonda\AppData\Local\Temp\cceFnWKl.s:57     .text:00000044 _ZN5UART0C2Ev
+C:\Users\Rhonda\AppData\Local\Temp\cceFnWKl.s:69     .text:00000054 $d
+C:\Users\Rhonda\AppData\Local\Temp\cceFnWKl.s:72     .text._ZN17SingletonTemplateI5UART0E11getInstanceEv:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\cceFnWKl.s:77     .text._ZN17SingletonTemplateI5UART0E11getInstanceEv:00000000 _ZN17SingletonTemplateI5UART0E11getInstanceEv
+C:\Users\Rhonda\AppData\Local\Temp\cceFnWKl.s:57     .text:00000044 _ZN5UART0C1Ev
+C:\Users\Rhonda\AppData\Local\Temp\cceFnWKl.s:95     .text._ZN17SingletonTemplateI5UART0E11getInstanceEv:0000001c $d
+C:\Users\Rhonda\AppData\Local\Temp\cceFnWKl.s:151    .bss._ZN17SingletonTemplateI5UART0E19mpSingletonInstanceE:00000000 _ZN17SingletonTemplateI5UART0E19mpSingletonInstanceE
+C:\Users\Rhonda\AppData\Local\Temp\cceFnWKl.s:98     .text:00000058 $t
+C:\Users\Rhonda\AppData\Local\Temp\cceFnWKl.s:103    .text:00000058 _ZN5UART017putcharIntrDrivenEc
+C:\Users\Rhonda\AppData\Local\Temp\cceFnWKl.s:119    .text:0000006e _ZN5UART017getcharIntrDrivenEc
+C:\Users\Rhonda\AppData\Local\Temp\cceFnWKl.s:138    .text:0000008c UART0_IRQHandler
+C:\Users\Rhonda\AppData\Local\Temp\cceFnWKl.s:148    .bss._ZN17SingletonTemplateI5UART0E19mpSingletonInstanceE:00000000 $d
+
+UNDEFINED SYMBOLS
+getCpuClock
+_ZN9UART_Base4initEjjii
+_ZN9UART_BaseC2EPj
+_Znwj
+_ZN9UART_Base7putCharEcj
+_ZN9UART_Base7getCharEPcj
+_ZN9UART_Base15handleInterruptEv

@@ -1,0 +1,119 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"memory.cpp"
+  14              		.text
+  15              		.align	1
+  16              		.global	_Znwj
+  17              		.thumb
+  18              		.thumb_func
+  20              	_Znwj:
+  21              		@ args = 0, pretend = 0, frame = 0
+  22              		@ frame_needed = 0, uses_anonymous_args = 0
+  23              		@ link register save eliminated.
+  24 0000 FFF7FEBF 		b	malloc
+  26              		.align	1
+  27              		.global	_Znaj
+  28              		.thumb
+  29              		.thumb_func
+  31              	_Znaj:
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+  35 0004 FFF7FEBF 		b	malloc
+  37              		.align	1
+  38              		.global	_ZdlPv
+  39              		.thumb
+  40              		.thumb_func
+  42              	_ZdlPv:
+  43              		@ args = 0, pretend = 0, frame = 0
+  44              		@ frame_needed = 0, uses_anonymous_args = 0
+  45              		@ link register save eliminated.
+  46 0008 FFF7FEBF 		b	free
+  48              		.align	1
+  49              		.global	_ZdaPv
+  50              		.thumb
+  51              		.thumb_func
+  53              	_ZdaPv:
+  54              		@ args = 0, pretend = 0, frame = 0
+  55              		@ frame_needed = 0, uses_anonymous_args = 0
+  56              		@ link register save eliminated.
+  57 000c FFF7FEBF 		b	free
+  59              		.align	1
+  60              		.global	getMemoryInfo
+  61              		.thumb
+  62              		.thumb_func
+  64              	getMemoryInfo:
+  65              		@ args = 0, pretend = 0, frame = 40
+  66              		@ frame_needed = 0, uses_anonymous_args = 0
+  67 0010 10B5     		push	{r4, lr}
+  68 0012 8AB0     		sub	sp, sp, #40
+  69 0014 0446     		mov	r4, r0
+  70 0016 6846     		mov	r0, sp
+  71 0018 FFF7FEFF 		bl	mallinfo
+  72 001c 0899     		ldr	r1, [sp, #32]
+  73 001e 079A     		ldr	r2, [sp, #28]
+  74 0020 054B     		ldr	r3, .L6
+  75 0022 A160     		str	r1, [r4, #8]
+  76 0024 2360     		str	r3, [r4, #0]
+  77 0026 C1F50041 		rsb	r1, r1, #32768
+  78 002a D318     		adds	r3, r2, r3
+  79 002c CB1A     		subs	r3, r1, r3
+  80 002e 6260     		str	r2, [r4, #4]
+  81 0030 E360     		str	r3, [r4, #12]
+  82 0032 2046     		mov	r0, r4
+  83 0034 0AB0     		add	sp, sp, #40
+  84 0036 10BD     		pop	{r4, pc}
+  85              	.L7:
+  86              		.align	2
+  87              	.L6:
+  88 0038 000000F0 		.word	_pvHeapStart-268435456
+  90              		.align	1
+  91              		.global	__aeabi_atexit
+  92              		.thumb
+  93              		.thumb_func
+  95              	__aeabi_atexit:
+  96              		@ args = 0, pretend = 0, frame = 0
+  97              		@ frame_needed = 0, uses_anonymous_args = 0
+  98              		@ link register save eliminated.
+  99 003c 0020     		movs	r0, #0
+ 100 003e 7047     		bx	lr
+ 102              		.align	1
+ 103              		.global	_ZN9__gnu_cxx27__verbose_terminate_handlerEv
+ 104              		.thumb
+ 105              		.thumb_func
+ 107              	_ZN9__gnu_cxx27__verbose_terminate_handlerEv:
+ 108              		@ Volatile: function does not return.
+ 109              		@ args = 0, pretend = 0, frame = 0
+ 110              		@ frame_needed = 0, uses_anonymous_args = 0
+ 111              		@ link register save eliminated.
+ 112              	.L10:
+ 113 0040 FEE7     		b	.L10
+ 115 0042 00BF     		.ident	"GCC: (GNU) 4.6.2"
+DEFINED SYMBOLS
+                            *ABS*:00000000 memory.cpp
+C:\Users\Rhonda\AppData\Local\Temp\cc56WIOa.s:15     .text:00000000 $t
+C:\Users\Rhonda\AppData\Local\Temp\cc56WIOa.s:20     .text:00000000 _Znwj
+C:\Users\Rhonda\AppData\Local\Temp\cc56WIOa.s:31     .text:00000004 _Znaj
+C:\Users\Rhonda\AppData\Local\Temp\cc56WIOa.s:42     .text:00000008 _ZdlPv
+C:\Users\Rhonda\AppData\Local\Temp\cc56WIOa.s:53     .text:0000000c _ZdaPv
+C:\Users\Rhonda\AppData\Local\Temp\cc56WIOa.s:64     .text:00000010 getMemoryInfo
+C:\Users\Rhonda\AppData\Local\Temp\cc56WIOa.s:88     .text:00000038 $d
+C:\Users\Rhonda\AppData\Local\Temp\cc56WIOa.s:90     .text:0000003c $t
+C:\Users\Rhonda\AppData\Local\Temp\cc56WIOa.s:95     .text:0000003c __aeabi_atexit
+C:\Users\Rhonda\AppData\Local\Temp\cc56WIOa.s:107    .text:00000040 _ZN9__gnu_cxx27__verbose_terminate_handlerEv
+
+UNDEFINED SYMBOLS
+malloc
+free
+mallinfo
+_pvHeapStart
